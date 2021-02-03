@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'patient_log.apps.PatientLogConfig',
     'ReqAppt.apps.ReqapptConfig',
     'django.contrib.admin',
     'django.contrib.auth',
