@@ -32,12 +32,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'ReqAppt.apps.ReqapptConfig',
+    'Upload_Download.apps.UploadDownloadConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -76,8 +78,12 @@ WSGI_APPLICATION = 'Treeo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'treeohealthdb',
+        'USER': 'treeo_master@treeo-server',
+        'PASSWORD': 'Password1',
+        'HOST': 'treeo-server.mysql.database.azure.com',  # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 

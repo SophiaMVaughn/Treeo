@@ -1,0 +1,6 @@
+{% extends "file_base.html" %}
+{% block content %}
+    {% for file in files %}
+	<h1>{{file.FileName}}</h1>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+<div id="wrapper">
+<div id = "navwrapper">
+<nav>
+	&nbsp;<a href="{% url 'ReqAppt-home' %}">Home</a>
+	<a href="{% url 'file_upload' %}">Calendar</a>
+	<a href="{% url 'file_upload' %}">Account Details</a>
+	<a href="{% url 'file_upload' %}">Inbox</a>
+	<a href="{% url 'file_upload' %}">Logout</a>
+</nav>
+</div>
+<div class="login">
+<div class="login-screen">
+<div class="app-title">
+{% if title %}
+	<title>{{ title }}</title>
+{% else %}
+	<title>Treeo</title>
+{% endif %}
+</div>
+<form method = "post" enctype = "multipart/form-data" class="File" >{% csrf_token %}
+<input type = "file" accept=".doc,.docx,.pdf" name = "filename" value="filename"/></p>
+<input type = "submit" value = "Upload File" /></p>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
