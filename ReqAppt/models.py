@@ -1,10 +1,12 @@
 from django.db import models
 
+
+
 class appt(models.Model):
-    ApptTime= models.CharField(max_length=200)
-    ProviderName= models.CharField(max_length=200)
-    ApptDate=models.CharField(max_length=200)
-
-class scedual(models.Model):
-    Appt =models.ForeignKey(appt, on_delete=models.CASCADE)
-
+    doctor=models.CharField(max_length=70,null=True)
+    Time = models.CharField(max_length=70, null=True)
+    patientNum = models.PositiveIntegerField(null=True)
+    doctorNum = models.PositiveIntegerField(null=True)
+    Date=models.DateField(auto_now=True)
+    status=models.BooleanField(default=False)
+    patient = models.CharField(max_length=70, null=True)
