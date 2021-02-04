@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>Treeo Health</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id = "navwrapper">
+            {% if user.is_authenticated %} <!-- needs "from django.contrib.auth.models import User" -->
+            <nav> 
+                &nbsp;<a href="{{ url '#' }}">Home</a> <!--takes you to home page-->
+                &nbsp;<a href="{{ url '#' }}">Calendar</a> <!--takes you to calendar page-->
+                &nbsp;<a href="{{ url '#' }}">Account Details</a> <!--takes you to account details page-->
+                &nbsp;<a href="{{ url '#' }}">Inbox</a> <!--takes you to message inbox page-->
+                &nbsp;<a href="{{ url '#' }}">Logout</a> <!--performs logout function in views.py and returns to home page-->
+            </nav>
+            {% else %}
+            <nav>
+                <a href="{% url '#' %}">Register</a> <!--takes you to register page-->
+                <a href="{% url '#' %}">Login</a> <!--takes you to login page-->
+            </nav>
+            <!-- maybe put like a welcome page here showing off the register and login buttons. maybe with the treeo logo or something -->
+            {% endif %}
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
