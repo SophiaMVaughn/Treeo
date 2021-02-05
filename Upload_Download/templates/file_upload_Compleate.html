@@ -1,16 +1,9 @@
-{% load static %}
-<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
-<!--&#123;% block body %&#125;-->
-
-<div id="wrapper">
-<div id = "navwrapper">
-</div>
-<div class="login">
-<div class="login-screen">
-<div class="app-title">
+{% extends "file_base.html" %}
+<title>File Upload Compleate</title>
+{% block content %}
 <h1>File Upload Compleate</h1>
+<div>
+<a href="{% url 'file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
 </div>
 </div>
-</div>
-</div>
-</div>
+{% endblock content %}

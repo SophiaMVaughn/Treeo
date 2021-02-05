@@ -1,44 +1,54 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import Fileform
+from django.core.files.storage import FileSystemStorage
+from .models import Uploaded_File
 
 
 
-# Create your views here.
+
 
 def render_file_upload(request):
     if request.method == 'POST':
-        try:
-            up_form = Fileform(request.POST, request.FILES)
-            file = request.FILES['file']
-            print(file.size)
-            if up_form.is_valid():
-                file = request.FILES['file']
-                print(file.size)
-                #if file.size()
-                #return render(request, 'templates/File/fileupload.html')
-        except:
-            return render(request, 'file_upload_Failed.html')
+        up_form = Fileform(request.POST, request.FILES)
+        if up_form.is_valid():
+            if request.FILES["file"].size <= 52428800:
+                if len(request.FILES["file"].name) <= 100:
+                #some logic ?????????
+                    f=Uploaded_File()
+                    f.usern=request.user
+                    f.name = request.FILES["file"].name
+                    f.file =request.FILES["file"]
+                    f.save()
+                    print(f,f.file,f.name,f.file)
+                return render(request, 'file_upload_Compleate.html')
+            else:
+                context = {"errorMsg":"Too Big"}
+                return render(request, 'file_upload_Failed.html', context)
         else:
-            return render(request, 'file_upload_Compleate.html')
+            return render(request, 'file_upload_Failed.html')
     else:
         return render(request, 'fileupload.html')
+
+
 def render_file_download(request):
-    files = [
-        {
-            'FileName': '1.pdf',
-            'Author': 'JG',
-            'Decription': 'First post content',
-            'date_uploaded': 'August 27, 2018'
-        },
-        {
-            'FileName': '2.doc',
-            'Author': 'RAB',
-            'Decription': 'First post content',
-            'date_uploaded': 'August 27, 2018'
-        }
-    ]
+    files = []
+    # dr = {'key': 'value'}
+    # dr['mynewkey'] = 'mynewvalue'
+    #print(Uploaded_File.objects.all())
+    # test = Uploaded_File.objects.get(id=i.id)
+    for i in Uploaded_File.objects.all():
+        files.append({
+                'FileName': i.file_name,
+                'Uploader': i.usern.username,
+                'file': i.file.url,
+                'date_uploaded': i.date_created
+                'id': i.id
+            })
+
     context = {
-        'files': files
+        'file_list': files
     }
     return render(request, 'filedownload.html', context)
+def delete_file(request):
+    test.delete()

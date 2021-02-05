@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'ReqAppt.apps.ReqapptConfig',
     'Upload_Download.apps.UploadDownloadConfig',
+    'users_acc.apps.UsersAccConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,10 +81,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
-        'USER': 'treeo_master@treeo-server',
-        'PASSWORD': 'Password1',
-        'HOST': 'treeo-server.mysql.database.azure.com',  # Or an IP Address that your DB is hosted on
+        'USER': 'root',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
+        'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
+        # 'ENGINE': 'mysql.connector.django',
+        # 'NAME': 'treeohealthdb',
+        # 'USER': 'treeo_master@treeo-server',
+        # 'PASSWORD': 'Password1',
+        # 'HOST': 'treeo-server.mysql.database.azure.com',  # Or an IP Address that your DB is hosted on
+        # 'PORT': '3306',
     }
 }
 
@@ -125,3 +132,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
+
+
+LOGIN_REDIRECT_URL='home'
+LOGIN_URL='login'
+MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('Uploaded_Files')
+MEDIA_URL='media/'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'youremail@gmail.com'
+# EMAIL_HOST_PASSWORD = 'yourpassword'
+# EMAIL_PORT = 587

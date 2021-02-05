@@ -1,23 +1,20 @@
-<link rel="stylesheet" href="/static/style.css" type="text/css">
-<!--&#123;% block body %&#125;-->
-
-<div id="wrapper">
-<div id = "navwrapper">
-<nav> 
-	&nbsp;<a href="{{ url_for('home') }}">Home</a>
-	<a href="{{ url_for('show_mtg') }}">Calendar</a>
-	<a href="{{ url_for('acct_details') }}">Account Details</a>
-	<a href="{{ url_for('openInbox') }}">Inbox</a>
-	<a href="{{ url_for('logout') }}">Logout</a>
-</nav>
+{% extends "file_base.html" %}
+<title>File Upload Compleate</title>
+{% block content %}
+<div>
+<h1>File Download Failed</h1>
+<div class="error">
+    {{errorMsg}}
 </div>
-<div class="login">
-<div class="login-screen">
-<div class="app-title">
+<div>
+<a href="{% url 'file_upload' %}">Upload Another File</a>
+</div>
+</div>
+{% endblock content %}
 <h1>File Download Failed</h1>
 <div class="error">{{errorMsg}}</div>
 </div>
-<a href="{{ url_for('render_file_upload') }}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
+<a href="{% url 'file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
 </div>
 </div>
 </div>
