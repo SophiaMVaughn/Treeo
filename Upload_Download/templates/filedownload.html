@@ -1,15 +1,15 @@
 {% extends "file_base.html" %}
 {% block content %}
 <table class="table">
-    <thread>
+    <thead>
         <tr>
-            <tr>User</tr>
-            <tr>File Name</tr>
-            <tr>Date Created</tr>
-            <tr>Download</tr>
+            <td>User</td>
+            <td>File Name</td>
+            <td>Date Created</td>
+            <td>Download</td>
         </tr>
-    </thread>
-    <tbopy>
+    </thead>
+    <tbody>
         {% for file in file_list %}
         <tr>
             <td>{{file.FileName}}</td>
@@ -17,8 +17,10 @@
             <td>{{file.date_uploaded}}</td>
             <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block">Download A File</a></td>
             <td><a href="{{file.id}}" class="btn btn-primary btn-large btn-block">Delete File</a></td>
-        {% endfor %}
-    </tbopy>
+            {% endfor %}
+        </tr>
+
+    </tbody>
 </table>
 
 {% endblock content %}
