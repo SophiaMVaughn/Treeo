@@ -10,6 +10,9 @@ from django.contrib.auth.models import AbstractUser, User
 #   native_name = models.CharField(max_length = 5)
 #   phone_no = models.CharField(max_length = 10)
 #   profile_pic = models.ImageField(default=profile.png, upload_to='profile_pictures')
+    # if you cant have more than one role
+    # USER_TYPE_OPTIONS = ((1, 'patient'),(2, 'dietician'),(3, 'coach'),(4, 'physician'),(5, 'admin'),)
+    # user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
 #   USERNAME_FIELD = 'email'
 #   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 #   def __str__(self):
@@ -21,10 +24,10 @@ class Admin(models.Model):
     def __str__(self):
         return f'{self.user.username} Admin'
 
-class Pysician(models.Model):
+class Physician(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     def __str__(self):
-        return f'{self.user.username} Pysician'
+        return f'{self.user.username} Physician'
 
 class Dietician(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

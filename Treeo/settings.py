@@ -141,8 +141,3 @@ MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('Uploaded_Files')
 MEDIA_URL='media/'
 
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'youremail@gmail.com'
-# EMAIL_HOST_PASSWORD = 'yourpassword'
-# EMAIL_PORT = 587

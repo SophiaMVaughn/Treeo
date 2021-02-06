@@ -13,6 +13,7 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             #send confirmation email funtion
+            #set is active to else
             messages.success(request, f'Account created')
             return redirect('file_upload')
     else:
