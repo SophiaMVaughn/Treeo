@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="169c89b8-67c2-4c34-ab31-bc99907488c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0002_auto_20210205_1227.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._OldCode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._ReqAppt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._Treeo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/._python" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._.idea" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._DatabaseInfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._Extra Files" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._TODOs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._apptest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._appts.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._classFile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._flaskcalendar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._mySQL_adminDB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._mySQL_apptDB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._mySQL_userDB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._mySQLmessaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._replyIdeas" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._static" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._templates" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._test-insert.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._testLogins.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._testPwEncrypt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._testtable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/._zoomtest_post.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._OldCode.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._inspectionProfiles" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/._vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/.idea/inspectionProfiles/._profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/DatabaseInfo/._AzureDB-workbenchConnect.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/DatabaseInfo/._AzureSetupInfo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/DatabaseInfo/._AzureWorkbenchSetup.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/DatabaseInfo/._DATABASE.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/DatabaseInfo/._mySQLtest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._autocomp-app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._aws_appt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._checkEmail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._checkUnPw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._checkUnPw.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._createTableCmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._databaseChanges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._helloworld.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._messagingTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._mySQLtest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._pagingIdeas.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._patientListPaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._templates" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._testDates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._unassignedTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/._zoomtest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/templates/._approveTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/templates/._pwVisTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/templates/._testForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/Extra Files/templates/._testPg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/._events.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/._main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/._static" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/._templates" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/._fullcalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/._fullcalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/._fullcalendar.print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/._lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/._cupertino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/._jquery-ui.custom.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/._jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/._moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/._images" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/._jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._animated-overlay.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_diagonals-thick_90_eeeeee_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_flat_15_cd0a0a_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_glass_100_e4f1fb_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_glass_50_3baae3_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_glass_80_d7ebf9_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_highlight-hard_100_f2f5f7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_highlight-hard_70_000000_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_highlight-soft_100_deedf7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-bg_highlight-soft_25_ffef8f_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-icons_2694e8_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-icons_3d80b3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-icons_72a7cf_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/static/lib/cupertino/images/._ui-icons_ffffff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/flaskcalendar/templates/._json.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._backward.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._forward.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._fullcalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._fullcalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._fullcalendar.print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._goToDrAcct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._markAsRead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._markAsUnread.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._messageCss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._moveToTrash.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._permenantDelete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._reply.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/._undoTrash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/._cupertino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/._jquery-ui.custom.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/._jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/._moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/._images" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/._jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._animated-overlay.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_diagonals-thick_90_eeeeee_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_flat_15_cd0a0a_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_glass_100_e4f1fb_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_glass_50_3baae3_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_glass_80_d7ebf9_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_highlight-hard_100_f2f5f7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_highlight-hard_70_000000_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_highlight-soft_100_deedf7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-bg_highlight-soft_25_ffef8f_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-icons_2694e8_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-icons_3d80b3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-icons_72a7cf_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/static/lib/cupertino/images/._ui-icons_ffffff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._accessDenied.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._adminHome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._approveConfirmation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._approvedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._apptDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._apptDetailDrOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._assignCareTeam.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._autocTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._calendar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._careTeamDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._checkUnPw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._createAdminAcct.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._create_mtg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._deleteConfirm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._editProfile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptyApprovedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptyInbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptySent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptyTrash.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptyUnapprovedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._emptyUnassignedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._firstPgSize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._homePage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._homePageDr.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._lastPgSize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._messageHome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._messageInbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._middlePgSize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._msgInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._msgInfoNoReply.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._newEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._onlyPgSize.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._ownAcctPg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._patientAcctDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._picture.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._providerAcctDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._providerDoesNotExist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._replyEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._searchPg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._sentBox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._suggestions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._trashBox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._unapproveConfirmation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._unapprovedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/OldCode/templates/._unassignedList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/.___init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/.___pycache__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._migrations" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._templates" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/._views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/migrations/._0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/migrations/._0002_auto_20210205_1227.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/migrations/.___init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/migrations/.___pycache__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/._ReqAppt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._Admin_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._Doctor_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._Patient_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._Pending.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._appointment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/ReqAppt/templates/ReqAppt/._home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/.___init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/.___pycache__" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/._asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/._settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/._urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__MACOSX/Treeo/._wsgi.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1oAgCxWKEDJH7aqsPVWjy4Rw81m" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="169c89b8-67c2-4c34-ab31-bc99907488c4" name="Default Changelist" comment="" />
+      <created>1612734686885</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612734686885</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
