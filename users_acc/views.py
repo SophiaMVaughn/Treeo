@@ -53,6 +53,47 @@ def register(request):
 def account_activation_sent(request):
     return render(request, 'account_activation_sent.html')
 
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        print(uid)
+        user =  get_user_model().objects.get(id=uid)
+    except (TypeError, ValueError, OverflowError,  get_user_model().DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        #user.is_active = True
+        user.is_email_confirmed = True
+        user.save()
+        login(request, user)
+
+        return redirect('home')
+    else:
+        return render(request, 'account_activation_invalid.html')
+
+def button(request):
+    if request.method == 'POST':
+        print("button Pressed")
+        current_site = get_current_site(request)
+        subject = 'Welcome to Treeo'
+        message = render_to_string('account_activation_email.html', {
+            'user': request.user.username,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(request.user.id)),
+            'token': account_activation_token.make_token(request.user),
+        })
+        print(subject, message, settings.EMAIL_HOST_USER, request.user.email)
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [request.user.email],
+            fail_silently=False,
+        )
+        return render(request, 'button.html')
+    else:
+        return render(request, 'button.html')
+
+
 def loginuser(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -85,46 +126,7 @@ def loginuser(request):
         return render(request, 'login.html', {'form': AuthenticationForm()})
 
 
-def button(request):
-    if request.method == 'POST':
-        print("button Pressed")
-        current_site = get_current_site(request)
-        subject = 'Welcome to Treeo'
-        message = render_to_string('account_activation_email.html', {
-            'user': request.user.username,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(request.user.id)),
-            'token': account_activation_token.make_token(request.user),
-        })
-        print(subject, message, settings.EMAIL_HOST_USER, request.user.email)
-        send_mail(
-            subject,
-            message,
-            settings.EMAIL_HOST_USER,
-            [request.user.email],
-            fail_silently=False,
-        )
-        return render(request, 'button.html')
-    else:
-        return render(request, 'button.html')
 
-def account_activation_sent(request):
-    return render(request, 'account_activation_sent.html')
-
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = settings.AUTH_USER_MODEL.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, settings.AUTH_USER_MODEL.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        #user.profile.email_confirmed = True
-        user.save()
-        login(request, user)
-        return redirect('home')
-    else:
-        return render(request, 'account_activation_invalid.html')
 
 @login_required
 def profile(request):

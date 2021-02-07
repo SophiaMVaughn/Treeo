@@ -20,7 +20,8 @@ def render_file_upload(request):
                 #some logic ?????????
                     f=Uploaded_File()
                     f.usern=request.user
-                    f.name = request.FILES["file"].name
+                    print(request.FILES["file"].name)
+                    f.file_name = request.FILES["file"].name
                     f.file =request.FILES["file"]
                     f.save()
                 return render(request, 'file_upload_Compleate.html')
