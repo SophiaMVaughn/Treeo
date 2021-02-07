@@ -1,9 +1,15 @@
-{% extends "file_base.html" %}
+{% extends "base.html" %}
 <title>File Upload</title>
 {% block content %}
+</div>
 <h1>File Upload</h1>
+</div>
 <form method = "post" enctype = "multipart/form-data" class="File" >{% csrf_token %}
 <input type = "file" accept=".doc,.docx,.pdf" name = "file" id="file"/></p>
 <input type = "submit" value = "Upload File" /></p>
 </form>
+</div>
+</div>
+</div>
+</div>
 {% endblock content %}

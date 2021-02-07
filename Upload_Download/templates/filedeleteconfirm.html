@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<b>Are You Sure You Want to Delete This File ?</b>
+<td> <form action="{% url 'file_delete' file %}" method="post">
+{% csrf_token %}
+<input type="submit" class="btn btn-primary btn-large btn-block" value="Delete" />
+</form></td>
+<div><td><a href="{% url 'file_download' %}" class="btn btn-primary btn-large btn-block">Cancel</a></td></div>
+{% endblock content %}

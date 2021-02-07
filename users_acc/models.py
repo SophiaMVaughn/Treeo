@@ -1,23 +1,41 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, User
 # from django.utils.translation import ugettext_lazy as _
-# from django.conf import settings
-# from datetime import date
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import PermissionsMixin
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+#from .managers import CustomUserManager
+
+
+USER_TYPE_CHOICES = (
+        (1, 'Admin'),
+        (2, 'Pysician'),
+        (3, 'Dietician'),
+        (4, 'Coach'),
+        (5, 'Patient'),
+    )
+
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
+    user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES,default=5)
+    is_staff = models.BooleanField(default=False)
+    is_email_confirmed = models.BooleanField(default=False)
+    # phone_no = models.CharField(max_length = 10)
+    # profile_pic = models.ImageField(default=profile.png, upload_to='profile_pictures')
+    #objects = CustomUserManager()
+
+
+# email = models.EmailField(_('email address'), unique=True)
+#     email stuff piont of email adress
 #
-# class User(AbstractUser):
-#   username = models.CharField(max_length = 50, blank = True, null = True, unique = True)
-#   email = models.EmailField(_('email address'), unique = True)
-#   native_name = models.CharField(max_length = 5)
-#   phone_no = models.CharField(max_length = 10)
-#   profile_pic = models.ImageField(default=profile.png, upload_to='profile_pictures')
-    # if you cant have more than one role
-    # USER_TYPE_OPTIONS = ((1, 'patient'),(2, 'dietician'),(3, 'coach'),(4, 'physician'),(5, 'admin'),)
-    # user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES)
-#   USERNAME_FIELD = 'email'
-#   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
-#   def __str__(self):
-#       return "{}".format(self.email)
-#user pic?????????
+# #   USERNAME_FIELD = 'email'
+# #   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+# #   def __str__(self):
+# #       return "{}".format(self.email)
+
+
 
 class Admin(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

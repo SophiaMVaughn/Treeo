@@ -15,21 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as dauth_views
-from users_acc import views as users_acc_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('ReqAppt.urls')),
-    path('', include('Upload_Download.urls')),
-    path('login/', dauth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', dauth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
-    path('password-reset/', dauth_views.PasswordResetView.as_view(template_name='pass_reset.html'), name='pass_reset'),
-    path('password-reset/done/', dauth_views.PasswordResetDoneView.as_view(template_name='pass_reset_done.html'), name='password_reset_done'),
-    path('password-reset/confirm/<uidb64>/<token>/', dauth_views.PasswordResetConfirmView.as_view(template_name='pass_reset_confirm.html'), name='password_reset_confirm'),
-    path('password-reset-complete/', dauth_views.PasswordResetCompleteView.as_view(template_name='pass_reset_complete.html'), name='password_reset_complete'),
-    path('register/', users_acc_views.register, name='register'),
-    path('profile/', users_acc_views.profile, name='profile'),
-    path('edit_profile/', users_acc_views.edit_profile, name='edit_profile'),
-    path('', users_acc_views.home, name='home'),
-]
+    path('', include('ReqAppt.urls')),
+    path('', include('upload_download.urls')),
+    path('', include('users_acc.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) is for debug only for prodution consult documentation for deploying static files

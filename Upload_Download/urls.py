@@ -21,6 +21,7 @@ urlpatterns = [
     #path('', views.render_file_upload),
     path('upload/', views.render_file_upload, name='file_upload'),
     path('download/', views.render_file_download, name='file_download'),
-    path('file_upload_Compleate/', views.render_file_download, name='file_upload_Compleate'),
-    path('file_upload_Failed/', views.render_file_download, name='file_upload_Failed'),
+    path('file_upload_Compleate/', views.render_file_upload, name='file_upload_Compleate'),
+    path('file_upload_Failed/', views.render_file_upload, name='file_upload_Failed'),
+    path('delete/<id>', views.delete_file, name='file_delete'),
 ]
