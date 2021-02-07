@@ -15,15 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ReqAppt import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('home', views.home),
-    path('Doctor', views.Doctor_view),
-    path('Patient', views.Patient_view),
-    path('Admin', views.Admin_view),
-    path('Appointment', views.Appointment_view),
-    path('Pending', views.Pending),
+    path('', include('ReqAppt.urls')),
 ]
