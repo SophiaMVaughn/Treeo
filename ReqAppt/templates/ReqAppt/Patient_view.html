@@ -36,8 +36,7 @@
       <thead>
         <tr>
           <th>Doctor Name</th>
-          <th>Date</th>
-          <th>Time</th>
+          <th>Date and Time</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -45,9 +44,8 @@
 
       {% for a in ApptTable %}
       <tr>
-        <td> {{a.provider}}</td>
+        <td> {{a.provider.firstname}} {{a.provider.lastname}}</td>
         <td>{{a.meetingDate}}</td>
-        <td>{{a.Time}}</td>
         {%if a.status%}
         <td> <span class="Confirmed">Confirmed</span></td>
         {% else %}

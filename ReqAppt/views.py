@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from ReqAppt.forms import ApptRequestForm
@@ -41,6 +41,12 @@ def Admin_view(request):
 def Patient_view(request):
     x = ApptTable.objects.all()
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
+
+
+def Destroy(request, id):
+    appointment = ApptTable.objects.get(apptId=id)
+    appointment.delete()
+    return redirect("/Doctor")
 
 
 

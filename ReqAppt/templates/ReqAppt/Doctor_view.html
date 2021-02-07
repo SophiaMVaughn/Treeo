@@ -32,10 +32,11 @@
     <table class="table table" id="-table">
       <thead>
         <tr>
-          <th>Patient Name</th>
-          <th>patient Number</th>
-          <th>Appointment Date</th>
-          <th>Appointment Time</th>
+          <th>Patient First Name</th>
+          <th>patient Last Name</th>
+          <th>Date and Time</th>
+          <th>Appointment Status</th>
+          <th>Delete</th>
         </tr>
       </thead>
 
@@ -51,8 +52,12 @@
         {% else %}
         <td> <span class="Pending">Pending</span></td>
         {% endif %}
+        <td> <a href="/delete/{{ a.apptId }}"> Delete </a> </td>
+<!--        <td> {{a.patientFname}} </td>-->
+
       </tr>
       {% endfor %}
+
     </table>
   </div>
 </div>
