@@ -7,14 +7,14 @@
     {{errorMsg}}
 </div>
 <div>
-<a href="{% url 'file_upload' %}">Upload Another File</a>
+<a href="{% url 'upload_download_file_upload' %}">Upload Another File</a>
 </div>
 </div>
 {% endblock content %}
 <h1>File Download Failed</h1>
 <div class="error">{{errorMsg}}</div>
 </div>
-<a href="{% url 'file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
+<a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
 </div>
 </div>
 </div>

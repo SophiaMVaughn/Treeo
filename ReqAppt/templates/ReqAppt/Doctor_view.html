@@ -1,0 +1,43 @@
+{% extends "ReqAppt/apt_base.html" %}
+{% block content %}
+<div class="container">
+  <div class="first">
+    <div class="heading">
+      <h6 class="title">Doctor View Appointments</h6>
+    </div>
+    <table class="table table" id="-table">
+      <thead>
+        <tr>
+          <th>Patient First Name</th>
+          <th>patient Last Name</th>
+          <th>Date and Time</th>
+          <th>Appointment Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+
+
+    {% for a in ApptTable %}
+      <tr>
+        <td> {{a.patientFname}}</td>
+        <td>{{a.patientLname}}</td>
+        <td>{{a.meetingDate}}</td>
+        {%if a.status%}
+        <td> <span class="Confirmed">Confirmed</span></td>
+        {% else %}
+        <td> <span class="Pending">Pending</span></td>
+        {% endif %}
+        <td> <a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a> </td>
+<!--        <td> {{a.patientFname}} </td>-->
+
+      </tr>
+      {% endfor %}
+
+    </table>
+  </div>
+</div>
+{% endblock content %}
+
+
+
