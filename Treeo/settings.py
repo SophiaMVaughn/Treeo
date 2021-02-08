@@ -37,6 +37,7 @@ EMAIL_PORT = EMAIL_PORT
 # Application definition
 
 INSTALLED_APPS = [
+    'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
     'upload_download.apps.UploadDownloadConfig',
