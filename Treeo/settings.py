@@ -31,7 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< Updated upstream
     'ReqAppt.apps.ReqapptConfig',
+=======
+    'patient_log.apps.PatientLogConfig',
+    'ReqAppt.apps.ReqapptConfig',
+    'upload_download.apps.UploadDownloadConfig',
+    'users_acc.apps.UsersAccConfig',
+>>>>>>> Stashed changes
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
