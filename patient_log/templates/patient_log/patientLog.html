@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+
 </head>
 <body>
-<h1>Patient Data Log</h1>
+    {% block content %}
+        <h1>Patient Data Log</h1>
+        {% if messages %}
+        {% for message in messages %}
+        <h2 style="color:green;">{{message}}</h2>
+        {% endfor %}
+        {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type = "submit" value = "Submit" /></p>
+    </form>
+    <hr/>
+    {% endblock content %}
 </body>
 </html>
