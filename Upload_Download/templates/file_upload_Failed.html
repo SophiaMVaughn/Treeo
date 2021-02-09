@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+<title>File Upload Compleate</title>
+{% block content %}
+<div>
+<h1>File Upload Failed</h1>
+
+<div class="error">
+    {{errorMsg}}
+</div>
+    <br>
+<div>
+<a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different File</a>
+</div>
+</div>
+{% endblock content %}
