@@ -24,14 +24,14 @@ def render_file_upload(request):
                     f.file_name = request.FILES["file"].name
                     f.file =request.FILES["file"]
                     f.save()
-                return render(request, 'file_upload_Complete.html')
+                return render(request, 'upload_download/file_upload_Complete.html')
             else:
                 context = {"errorMsg":"Your File is Too Big >50MB"}
-                return render(request, 'file_upload_Failed.html', context)
+                return render(request, 'upload_download/file_upload_Failed.html', context)
         else:
-            return render(request, 'file_upload_Failed.html')
+            return render(request, 'upload_download/file_upload_Failed.html')
     else:
-        return render(request, 'fileupload.html')
+        return render(request, 'upload_download/fileupload.html')
 
 @login_required
 def render_file_download(request):
@@ -50,7 +50,7 @@ def render_file_download(request):
     context = {
         'file_list': files
     }
-    return render(request, 'filedownload.html', context)
+    return render(request, 'upload_download/filedownload.html', context)
 
 
 @login_required
@@ -61,4 +61,4 @@ def delete_file(request, id):
         #find a way to actually delete the file in storage mabye a signal
         return redirect('upload_download_file_download')
     context = {'file': id}
-    return render(request, "filedeleteconfirm.html", context)
+    return render(request, "upload_download/filedeleteconfirm.html", context)

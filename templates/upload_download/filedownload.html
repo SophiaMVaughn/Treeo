@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
 <table class="table">
     <thead>
@@ -16,7 +16,7 @@
             <td>{{file.FileName}}</td>
             <td>{{file.Uploader}}</td>
             <td>{{file.date_uploaded}}</td>
-            <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block" target="_blank">Download A File</a></td>
+            <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block" target="_blank" download="file.FileName">Download A File</a></td>
             <td><a href="{% url 'upload_download_file_delete' file.id %}" class="btn btn-primary btn-large btn-block"> Delete</a></td>
 <!--           <td> <form action="{% url 'upload_download_file_delete' file.id %}" method="post">-->
 <!--    {% csrf_token %}-->

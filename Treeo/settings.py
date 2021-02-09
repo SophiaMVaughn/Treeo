@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
-    'Messaging.apps.MessagingConfig',
+    'messaging.apps.MessagingConfig',
     'upload_download.apps.UploadDownloadConfig',
 >>>>>>> Upload_Download
     'django.contrib.admin',
@@ -81,7 +81,7 @@ ROOT_URLCONF = 'Treeo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.joinpath('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -46,12 +46,12 @@ def register(request):
             #some logic to make sure its actually sent
             #return render(request, 'account_activation_sent.html')
         else:
-            return render(request, 'register.html', {'form': form})
+            return render(request, 'users_acc/register.html', {'form': form})
     else:
         return render(request, 'register.html', {'form':PatientRegisterForm()})
 
 def account_activation_sent(request):
-    return render(request, 'account_activation_sent.html')
+    return render(request, 'users_acc/account_activation_sent.html')
 
 def activate(request, uidb64, token):
     try:
@@ -68,7 +68,7 @@ def activate(request, uidb64, token):
 
         return redirect('home')
     else:
-        return render(request, 'account_activation_invalid.html')
+        return render(request, 'users_acc/account_activation_invalid.html')
 
 def button(request):
     if request.method == 'POST':
@@ -89,9 +89,9 @@ def button(request):
             [request.user.email],
             fail_silently=False,
         )
-        return render(request, 'button.html')
+        return render(request, 'users_acc/button.html')
     else:
-        return render(request, 'button.html')
+        return render(request, 'users_acc/button.html')
 
 
 def loginuser(request):
@@ -117,13 +117,13 @@ def loginuser(request):
             if userl.is_email_confirmed == True:
                 #print("test2")
                 login(request, userl)
-                return render(request, 'home.html')
+                return render(request, 'users_acc/home.html')
             else:
-                return render(request, 'login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
+                return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
         else:
-            return render(request, 'login.html', {'form':AuthenticationForm(), 'errorMsg':'Username and password did not match'})
+            return render(request, 'users_acc/login.html', {'form':AuthenticationForm(), 'errorMsg':'Username and password did not match'})
     else:
-        return render(request, 'login.html', {'form': AuthenticationForm()})
+        return render(request, 'users_acc/login.html', {'form': AuthenticationForm()})
 
 
 
@@ -146,10 +146,10 @@ def edit_profile(request):
             return redirect('profile')
     else:
         ep = User_Update_Form(instance=request.user)
-    return render(request, 'edit_profile.html', {'edit_profile': ep})
+    return render(request, 'users_acc/edit_profile.html', {'edit_profile': ep})
 
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'users_acc/home.html')
     # logic for different home pages if logged in if not if doc admain ext
