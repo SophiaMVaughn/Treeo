@@ -42,22 +42,11 @@ EMAIL_PORT = EMAIL_PORT
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    'ReqAppt.apps.ReqapptConfig',
-=======
-    'patient_log.apps.PatientLogConfig',
-    'ReqAppt.apps.ReqapptConfig',
-    'upload_download.apps.UploadDownloadConfig',
-    'users_acc.apps.UsersAccConfig',
->>>>>>> Stashed changes
-=======
     'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
     'messaging.apps.MessagingConfig',
     'upload_download.apps.UploadDownloadConfig',
->>>>>>> Upload_Download
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
