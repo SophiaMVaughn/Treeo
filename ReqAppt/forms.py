@@ -12,3 +12,4 @@ class ApptRequestForm(forms.ModelForm):
         model = ApptTable
         #fields = '__all__'
         exclude = ['meetingDate']
+        exclude = ['status']

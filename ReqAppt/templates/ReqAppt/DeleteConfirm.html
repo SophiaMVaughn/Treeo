@@ -1,0 +1,12 @@
+{% extends "ReqAppt/apt_base.html" %}
+{% block content %}
+<form method="post" action="">
+   {% csrf_token %}
+     <h1>Are you sure you want to delete?</h1><br>
+     <input class="btn btn-1" type="submit" value="Yes" />
+     <a href="reqAppt/DeleteConfirm.html"><div class="btn btn-2">Cancel</div></a>
+</form>
+{% endblock content %}
+
+
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Patient Data Log</h1>
+{% if messages %}
+{% for message in messages %}
+<h2 style="color:green;">{{message}}</h2>
+{% endfor %}
+{% endif %}
+<p>
+    <b>You have successfully submitted your log!</b>
+</p>
+<div>
+    <b>Calories: {{form.calories}}</b>
+</div>
+<div>
+    <b>Water: {{form.water}}</b>
+</div>
+<div>
+    <b>Blood: {{form.blood}}</b>
+</div>
+{% endblock content %}

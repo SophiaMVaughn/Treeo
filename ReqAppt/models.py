@@ -21,9 +21,10 @@ class ProviderTable(models.Model):
 
 
 class ApptTable(models.Model):
-    apptId = models.AutoField(primary_key=True, default = 2)
+    apptId = models.AutoField(primary_key=True)
     providerType = models.CharField(max_length=40)
     provider = models.ForeignKey(ProviderTable, on_delete=models.CASCADE)
     patientFname = models.CharField(max_length=40)
     patientLname = models.CharField(max_length=40)
+    status = models.BooleanField(default=False)
     meetingDate = models.DateTimeField (auto_now=True)

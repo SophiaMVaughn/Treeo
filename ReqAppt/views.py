@@ -6,7 +6,7 @@ from ReqAppt.models import ApptTable
 
 
 def home(request):
-    return render(request,'ReqAppt/home.html')
+    return render(request,'ReqAppt/apt_home.html')
 
 def Pending(request):
     return render(request,'ReqAppt/Pending.html')
@@ -45,8 +45,18 @@ def Patient_view(request):
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
-    appointment.delete()
-    return redirect("/Doctor")
+    if request.method == 'POST':
+	    appointment.delete()
+	    return redirect("reqAppt_Doctor")
+    return render(request,"reqAppt/DeleteConfirm.html")
+
+
+def approve(request,id):
+    appointment=ApptTable.objects.get(apptId=id)
+    appointment.status=True
+    appointment.save()
+    return redirect("reqAppt_Doctor")
+
 
 
 

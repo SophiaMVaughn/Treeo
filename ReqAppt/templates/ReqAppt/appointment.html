@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <meta charset="UTF-8">
-</head>
-<body>
-
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="home">Home View</a>
-        <a class="nav-link active" aria-current="page" href="/Admin">Admin View</a>
-        <a class="nav-link" href="/Doctor">Doctor View</a>
-        <a class="nav-link" href="/Patient">Patient View</a>
-        <a class="nav-link" href="/Appointment">Appointment</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-    <form action="/Appointment" method="post">
+{% extends "ReqAppt/apt_base.html" %}
+{% block content %}
+<div>
+    <form action="{% url 'reqAppt_Appointment' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="OK">
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
     </form>
-
-    <table class="table table" id="-table">
-
-    </table>
-  </div>
 </div>
+<!-- <table class="table table" id="-table">
 
-
-</body>
-
-
-
-</html>
+    </table> -->
+{% endblock content %}
