@@ -1,28 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <table class="table">
-    <thread>
+    <thead>
         <tr>
-            <tr>File Name</tr>
-            <tr>User</tr>
-            <tr>Date Created</tr>
-            <tr>Download</tr>
+            <th>File Name</th>
+            <th>User</th>
+            <th>Date Created</th>
+            <th>Download</th>
+            <th>Delete</th>
         </tr>
-    </thread>
-    <tbopy>
+    </thead>
+    <tbody>
         {% for file in file_list %}
         <tr>
             <td>{{file.FileName}}</td>
             <td>{{file.Uploader}}</td>
             <td>{{file.date_uploaded}}</td>
-            <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block">Download A File</a></td>
+            <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block" target="_blank">Download A File</a></td>
             <td><a href="{% url 'upload_download_file_delete' file.id %}" class="btn btn-primary btn-large btn-block"> Delete</a></td>
 <!--           <td> <form action="{% url 'upload_download_file_delete' file.id %}" method="post">-->
 <!--    {% csrf_token %}-->
 <!--    <input type="submit" class="btn btn-primary btn-large btn-block" value="Delete" />-->
 <!--</form></td>-->
         {% endfor %}
-    </tbopy>
+    </tbody>
 </table>
+
+
 
 {% endblock content %}

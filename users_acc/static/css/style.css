@@ -12,7 +12,11 @@ body {
 }
 .login {
   width: 300px;
-  margin: 20px auto;
+  /* margin: 20px auto; */
+  margin: auto auto;
+  vertical-align: top;
+  display: inline;
+  text-align: center;
 }
 .listwhitespace {
   margin-top: 20px;
@@ -21,7 +25,7 @@ body {
 }
 .login-screen {
   background-color: #ddddf1;
-  padding: 20px;
+  padding: 20px 0px 0px 0px;
   border-radius: 5px;
   min-width: 400px;
 }
@@ -29,6 +33,7 @@ body {
 .app-title {
   text-align: center;
   color: #777;
+  padding-right: 200px;
 }
 
 .profile-box {
@@ -80,9 +85,35 @@ body {
   font-size: 12px;
 }
 
-input {
+input[type=text] {
   text-align: center;
-  background-color:#ddddf1;
+  background-color:white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing:border-box;
+}
+
+input[type=password] {
+  text-align: center;
+  background-color:white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing:border-box;
+}
+
+.id_username {
+  text-align: center;
+  background-color:white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -105,45 +136,53 @@ input:focus {
 }
 #navwrapper nav a {
   text-decoration: none;
-  /*border:2px solid #C5C6C7;*/
+  border:2px solid #C5C6C7;
   padding: 3px;
   color: white;
+  /* border: white solid 1px; */
+  padding: auto;
+  margin: 0px 3px;
+  /* margin: 0px auto; can possibly use to spread out further?*/
 }
 
 #navwrapper nav a:hover {
-  color: white;
+  transition: 0.25s;
+  background: #3498db;
+
 }
 
-#navwrapper nav a:visited {
+/* #navwrapper nav a:visited {
   color: #45a29e;
-}
+} */
 
-.navwrapper {
+/* .navwrapper {
   border: 2px solid #ffc097;
   padding: 3px;
   background-color: #0b0c10;
   background-image: none;
+  min-width: -moz-fit-content;
 }
 
 .navwrapper nav a {
   text-decoration: none;
   /*border:2px solid #C5C6C7;*/
-  padding: 3px;
+  /* padding: 3px;
   color: white;
-}
+} */
 
 .navwrapper nav a:hover {
   color: white;
+
 }
 
-.navwrapper nav a:visited {
+/* .navwrapper nav a:visited {
   color: #45a29e;
-}
+} */
 
-.wrapper {
+/* .wrapper {
   border: 1px solid #ffc097;
   min-width: 700px;
-  max-width: 1024px;
+  max-width: auto;
   box-shadow: 5px 5px #828282;
   background-image: none;
   background-color: #ddddf1;
@@ -152,16 +191,17 @@ input:focus {
   margin-left: auto;
   margin-bottom: 300px;
   padding-bottom: 25px;
-}
+} */
 
 #wrapper {
   border: 1px solid #ffc097;
   min-width: 700px;
-  max-width: 1024px;
-  box-shadow: 5px 5px #828282;
+  max-width: auto;
+  /* box-shadow: 5px 5px #828282; */
   background-image: none;
   background-color:#ddddf1;
-  width: 50%;
+  width: 100%;
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 300px;
@@ -195,7 +235,18 @@ input:focus {
   transition: 0.25s;
   display: block;
   width: 250px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  text-align: center;
+  align-self: center;
+  display: inline;
+  margin: 2px auto
+}
+
+.button {
+  margin-left: 79px;
+  display: grid;
+  align-self: center;
+
 }
 
 .autocomplete-suggestions {
@@ -206,7 +257,7 @@ input:focus {
 }
 
 .btn:hover {
-  background-color: #2980b9;
+  background-color: #71a6c9;
 }
 
 .apptbutton {
@@ -243,4 +294,9 @@ input:focus {
 
 .assign-username a {
   font-size: medium;
+}
+
+.table {
+  vertical-align: center;
+  
 }

@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<b>Profile</b>
 <div>
-<b>Username</b>
-    <h1>{{user.username}}</h1>
-<b>Email</b>
-    <h1>{{user.email}}</h1>
-<b>First Name</b>
-    <h1>{{user.first_name}}</h1>
-<b>Last Name</b>
-    <h1>{{user.last_name}}</h1>
-<div>
-<a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
+    <h1>Profile</h1>
+    <h2>Username</h2>
+    <h3>{{user.username}}</h3>
+    <h2>Email</h2>
+    <h3>{{user.email}}</h3>
+    <h2>First Name</h2>
+    <h3>{{user.first_name}}</h3>
+    <h2>Last Name</h2>
+    <h3>{{user.last_name}}</h3>
+    <br>
     <div>
-<a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
+    </div>
 </div>
-    </div>
-    </div>
 {% endblock content %}

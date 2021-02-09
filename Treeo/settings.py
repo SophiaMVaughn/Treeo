@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
+    'Messaging.apps.MessagingConfig',
     'upload_download.apps.UploadDownloadConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,14 +1,14 @@
 {% extends "ReqAppt/apt_base.html" %}
 {% block content %}
+<div>
     <form action="{% url 'reqAppt_Appointment' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="OK">
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
     </form>
+</div>
+<!-- <table class="table table" id="-table">
 
-    <table class="table table" id="-table">
-
-    </table>
+    </table> -->
 {% endblock content %}
-
-

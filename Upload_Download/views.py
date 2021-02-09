@@ -24,7 +24,7 @@ def render_file_upload(request):
                     f.file_name = request.FILES["file"].name
                     f.file =request.FILES["file"]
                     f.save()
-                return render(request, 'file_upload_Compleate.html')
+                return render(request, 'file_upload_Complete.html')
             else:
                 context = {"errorMsg":"Your File is Too Big >50MB"}
                 return render(request, 'file_upload_Failed.html', context)
