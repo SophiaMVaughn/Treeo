@@ -27,7 +27,7 @@ def register(request):
             m = form.save()
             current_site = get_current_site(request)
             subject = 'Welcome to Treeo'
-            message = render_to_string('account_activation_email.html', {
+            message = render_to_string('users_acc/account_activation_email.html', {
                 'user': form.cleaned_data.get('username'),
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(m.id)),
