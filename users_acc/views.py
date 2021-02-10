@@ -130,7 +130,7 @@ def loginuser(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'users_acc/profile.html')
     #this would be required if you dont use @login_required
     # if request.user.is_authenticated:
     #return render(request, 'profile.html')
