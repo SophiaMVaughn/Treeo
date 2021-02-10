@@ -8,7 +8,7 @@ class message():
     reciever = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     subject = models.CharField(max_length = 70)
     msgbody = models.CharField(max_length = 700)
-    convoID = models.CharField(max_length = 30)# this is for the reply chanin thing in email thing?????????
+    convoID = models.CharField(max_length = 30)# this is for the reply chanin thing in email thing????????? make this a auto incrementing field?
     send_time = models.DateTimeField(auto_now_add=True)
     read_status = models.BooleanField()#1 yes 0 no
     #how does this work?????????????????????????????
