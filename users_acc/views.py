@@ -48,7 +48,7 @@ def register(request):
         else:
             return render(request, 'users_acc/register.html', {'form': form})
     else:
-        return render(request, 'register.html', {'form':PatientRegisterForm()})
+        return render(request, 'users_acc/register.html', {'form':PatientRegisterForm()})
 
 def account_activation_sent(request):
     return render(request, 'users_acc/account_activation_sent.html')
