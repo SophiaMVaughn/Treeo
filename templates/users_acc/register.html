@@ -1,9 +1,0 @@
-{% extends "users_acc/base.html" %}
-{% block content %}
-<h2>{{error}}</h2>
-<form method = "post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-primary btn-large btn-block">Register</button>
-</form>
-{% endblock content %}
