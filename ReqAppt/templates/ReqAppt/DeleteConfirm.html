@@ -4,7 +4,7 @@
    {% csrf_token %}
      <h1>Are you sure you want to delete?</h1><br>
      <input class="btn btn-1" type="submit" value="Yes" />
-     <a href="reqAppt/DeleteConfirm.html"><div class="btn btn-2">Cancel</div></a>
+     <a href="{% url 'reqAppt_Doctor' %}"><div class="btn btn-2">Cancel</div></a>
 </form>
 {% endblock content %}
 

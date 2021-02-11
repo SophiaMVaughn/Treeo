@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+{% load static %}
+<html>
+    <head>
+        <!--[if lte IE 8]>
+            <script src="{% static 'js/excanvas.js' %}"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <h1>Patient Data!</h1>
+
+        <canvas id="Chart" width=".4" height=".4"></canvas>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+        <script type="text/javascript">
+            $.get('{% url "chart_json" %}', function(data) {
+                var ctx = $("#Chart").get(0).getContext("2d");
+                new Chart(ctx, {
+                    type: 'doughnut', data: data
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
+{% endblock content %}

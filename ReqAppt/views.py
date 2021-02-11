@@ -5,6 +5,7 @@ from ReqAppt.forms import ApptRequestForm
 from ReqAppt.models import ApptTable
 
 
+
 def home(request):
     return render(request,'ReqAppt/apt_home.html')
 
@@ -56,7 +57,5 @@ def approve(request,id):
     appointment.status=True
     appointment.save()
     return redirect("reqAppt_Doctor")
-
-
 
 

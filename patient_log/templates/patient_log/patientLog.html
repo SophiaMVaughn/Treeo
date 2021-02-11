@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Patient Data Log</h1>
+
 {% if messages %}
 {% for message in messages %}
 <h2 style="color:green;">{{message}}</h2>
@@ -10,5 +11,8 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
+    <a  href="{% url 'seechart' %}"><div class="btn btn-2">View Chart</div></a>
+
 </form>
+
 {% endblock content %}
