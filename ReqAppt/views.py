@@ -62,3 +62,30 @@ def Destroy(request, id):
 
 
 
+
+STARTING_HOUR = 8
+ENDING_HOUR = 16
+def Doctor_avail_view(request, id, date_str):
+    # parse datetime
+    # query appointments for id(provider) on date
+    # filter for available hour slots from 8-4 , return json list
+    month, day, year = date_str.split('-')
+    appointments = ApptTable.objects.filter(
+        provider_id=id,
+        meetingDate__year=str(year),
+        meetingDate__month=str(month),
+        meetingDate__day=str(day),
+    ).all()
+
+    def appt_to_time(appt: ApptTable):
+        return appt.meetingDate.hour
+
+    unavailable_times = {appt_to_time(appt) for appt in appointments}
+
+    data = [h for h in range(STARTING_HOUR, ENDING_HOUR+1) if h not in unavailable_times]
+
+    return JsonResponse(data, safe=False)
+
+
+
+
