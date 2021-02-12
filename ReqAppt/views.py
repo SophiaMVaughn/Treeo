@@ -15,8 +15,8 @@ def Doctor_view(request):
     x = ApptTable.objects.all()
     return render(request,'ReqAppt/Doctor_view.html',{'ApptTable':x})
 
-def Appointment_view(request):
 
+def Appointment_view(request):
     if request.method == 'POST':
         form = ApptRequestForm(request.POST)
         if not form.is_valid():
@@ -24,14 +24,25 @@ def Appointment_view(request):
             return HttpResponseBadRequest()
         else:
             # Valid, persist in db
+            print(request.POST)
+            apptDate = request.POST['apptDate']
+            apptHour = request.POST['apptHour']
+            print(apptDate)
+            print(apptHour)
+            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
+            meetingDate = meetingDate.replace(hour=int(apptHour))
+            print(meetingDate)
             ApptTable.objects.create(
-                **form.cleaned_data
+                **form.cleaned_data, meetingDate=meetingDate
             )
             return render(request, 'ReqAppt/Pending.html')
 
     else:
         form = ApptRequestForm()
         return render(request,'ReqAppt/appointment.html', {"form": form})
+
+        provider = form.cleaned_data.get('user_defined_code')
+
 
 def Admin_view(request):
     x = ApptTable.objects.all()
