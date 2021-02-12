@@ -26,4 +26,4 @@ class ApptTable(models.Model):
     provider = models.ForeignKey(ProviderTable, on_delete=models.CASCADE)
     patientFname = models.CharField(max_length=40)
     patientLname = models.CharField(max_length=40)
-    meetingDate = models.DateTimeField (auto_now=True)
+    meetingDate = models.DateTimeField ()
