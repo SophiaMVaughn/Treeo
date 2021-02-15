@@ -19,8 +19,8 @@
         </thead>
         {% for a in ApptTable %}
         <tr>
-          <td> {{a.provider.firstname}} {{a.provider.lastname}}</td>
-          <td>{{a.patientFname}} {{a.patientLname}}</td>
+          <td> {{a.provider.user.first_name}} {{a.provider.user.last_name}}</td>
+          <td>{{a.patient.user.first_name}} {{a.patient.user.last_name}}</td>
           <td>{{a.meetingDate}}</td>
           {%if a.status%}
           <td> <span class="Confirmed">Confirmed</span></td>
