@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chartjs',
 ]
 
 MIDDLEWARE = [
@@ -145,5 +146,5 @@ STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
 
 LOGIN_REDIRECT_URL='home'
 LOGIN_URL='login'
-MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('Uploaded_Files')
+MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('uploaded_files')
 MEDIA_URL='media/'

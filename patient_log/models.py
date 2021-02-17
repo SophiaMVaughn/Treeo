@@ -9,6 +9,7 @@ from django.db import models
                 #}
 
 class PatientLog(models.Model):
+    #forin key to patient
     calories = models.IntegerField(default=0)
     water = models.DecimalField(max_digits=5, decimal_places=2)
     blood = models.DecimalField(max_digits=5, decimal_places=2)
