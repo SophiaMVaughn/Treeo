@@ -5,8 +5,38 @@ from ReqAppt.forms import ApptRequestForm
 from ReqAppt.models import ApptTable
 
 
+
 def home(request):
-    return render(request,'ReqAppt/apt_home.html')
+    
+    def previous_month(dday):
+        firstDayofMonth = dday.replace(day=1)
+        previous_month = firstDayofMonth - timedelta(days=1)
+        calMonth = 'month=' + str(previous_month.year) + '-' + str(previous_month.month)
+        return calMonth
+
+    def next_month(dday):
+        days_in_month = calendar.monthrange(dday.year, dday.month)[1]
+        last = dday.replace(day=days_in_month)
+        next_month = last + timedelta(days=1)
+        month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
+        return month
+
+    #placeholder for a year and a month
+    if 'month' in request.GET:
+        year, month = request.GET['month'].split("-")
+        year, month = int(year), int(month)
+        dday = date(year=year, month=month, day=1)
+    else:
+        dday = datetime.now()
+
+    cal = Calendar(dday.year, dday.month)
+    html_cal = cal.formatTheMonth(withyear=True)
+    context = {}
+    context['calendar'] = mark_safe(html_cal)
+    context['prev_month'] = previous_month(dday)
+    context['next_month'] = next_month(dday)
+    return render(request,'ReqAppt/apt_home.html', context)
+
 
 def Pending(request):
     return render(request,'ReqAppt/Pending.html')
