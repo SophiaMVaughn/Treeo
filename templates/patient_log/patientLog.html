@@ -9,46 +9,7 @@
 {% endif %}
 <form method="POST">
     {% csrf_token %}
-    <!-- {{ form.as_p }} -->
-
-    <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
-                <b> {{form.calories.label_tag}} </b>
-                {{form.calories}}
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:right; padding-right:47px; padding-bottom:15px;">
-                <b> {{form.water.label_tag}} </b>
-                {{form.water}}
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:right; padding-right:48px; padding-bottom:15px;">
-                <b> {{form.blood.label_tag}} </b>
-                {{form.blood}}
-            </div>
-        </div>
-    </div>
-
-
-    <!-- <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:right; margin-left:6px; padding-bottom:15px;">
-                <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
-            </div>
-        </div>
-    </div>
-</form>
-{% endblock content %} -->
-    <!-- {{ form.as_p }} -->
+    {{ form.as_p }}
     <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
     <a  href="{% url 'seechart' %}"><div class="btn btn-2">View Chart</div></a>
 

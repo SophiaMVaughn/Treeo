@@ -23,12 +23,15 @@ def home(request):
 def Pending(request):
     return render(request,'ReqAppt/Pending.html')
 
-def Appointment_view(request):
+
+#zoom account required decorator
+def create_Appointment(request):
     if request.method == 'POST':
-        form = ApptRequestForm(request.POST)
+        form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
-            #Invalid, return 400
-            return HttpResponseBadRequest()
+            form = ApptRequestFormPatient(instance=request.user)
+            return render(request, 'ReqAppt/appointment.html', {"form": form})
+            #return HttpResponseBadRequest()
         else:
             # Valid, persist in db
             print(request.POST)
@@ -39,23 +42,17 @@ def Appointment_view(request):
             meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
             meetingDate = meetingDate.replace(hour=int(apptHour))
             print(meetingDate)
+            #call zoom api make meeting and get the url for it
+            # ApptTable.objects.create(
+            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
+            # )
             ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
             return render(request, 'ReqAppt/Pending.html')
 
     else:
-        # if request.user.user_type == 1:
-        #     form = ApptRequestForm()
-        #     return render(request,'ReqAppt/appointment.html', {"form": form})
-        # elif request.user.user_type == 2:
-        #     form = ApptRequestFormDoc()
-        #     return render(request,'ReqAppt/appointment_doctor.html', {"form": form})
-        # elif request.user.user_type == 3:
-        #     form = ApptRequestFormPatient()
-        #     return render(request,'ReqAppt/appointment_patient.html', {"form": form})
-        #form = ApptRequestFormDoc()
-        form = ApptRequestForm()
+        form = ApptRequestFormPatient(instance=request.user)
         return render(request,'ReqAppt/appointment.html', {"form": form})
         #provider = form.cleaned_data.get('user_defined_code')
 
@@ -117,20 +114,3 @@ def Doctor_avail_view(request, id, date_str):
 
 
 
-# def Appointment_view(request):
-#
-#     if request.method == 'POST':
-#         form = ApptRequestForm(request.POST)
-#         if not form.is_valid():
-#             #Invalid, return 400
-#             return HttpResponseBadRequest()
-#         else:
-#             # Valid, persist in db
-#             ApptTable.objects.create(
-#                 **form.cleaned_data
-#             )
-#             return render(request, 'ReqAppt/Pending.html')
-#
-#     else:
-#         form = ApptRequestForm()
-#         return render(request,'ReqAppt/appointment.html', {"form": form})

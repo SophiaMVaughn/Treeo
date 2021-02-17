@@ -210,8 +210,31 @@ def admin_assign(request):
             pat.save()
             return redirect('admin_assign')
     else:
+        print(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1))
         return render(request, 'users_acc/admin_assign.html', {'form':AdminAssignForm()})
 
+@login_required
+def admin_remove(request):
+    if request.method == 'POST':
+        ep = AdminAssignForm(request.POST)
+        if ep.is_valid():
+            pat=ep.cleaned_data.get('patient')
+            doc=ep.cleaned_data.get('doc_d')
+            doc.Patient_count-=1
+            doc.save()
+            doc2=ep.cleaned_data.get('doc_c')
+            doc2.Patient_count-=1
+            doc2.save()
+            doc3=ep.cleaned_data.get('doc_p')
+            doc3.Patient_count-=1
+            doc3.save()
+            pat.doc_d=doc
+            pat.doc_c=doc2
+            pat.doc_p=doc3
+            pat.save()
+            return redirect('admin_assign')
+    else:
+        return render(request, 'users_acc/admin_remove.html', {'form':AdminAssignForm()})
 
 
 @login_required

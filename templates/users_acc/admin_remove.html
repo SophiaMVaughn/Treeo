@@ -2,7 +2,7 @@
 {% block content %}
 <form method = "post">
     {% csrf_token %}
-    {{edit_profile.as_p}}
-    <button type="submit" class="btn btn-primary btn-large btn-block">Edit Profile</button>
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-large btn-block">Assign Providers</button>
 </form>
 {% endblock content %}

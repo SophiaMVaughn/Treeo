@@ -3,59 +3,13 @@
 
 
 <div>
-    <form action="{% url 'reqAppt_Appointment' %}" method="post">
+    <form action="{% url 'create_Appointment' %}" method="post">
         {% csrf_token %}
-        <!-- {{ form.as_p }} -->
-        <!-- Provider Type -->
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
-                    <b> {{form.providerType.label_tag}} </b>
-                    {{form.providerType}}
-                </div>
-            </div>
-        </div>
-
-        <!-- Provider -->
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:27px; padding-bottom:15px;">
-                    <b> {{form.provider.label_tag}} </b>
-                    {{form.provider}}
-                </div>
-            </div>
-        </div>
-
-        <!-- Patient First Name -->
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
-                    <b> {{form.patientFname.label_tag}} </b>
-                    {{form.patientFname}}
-                </div>
-            </div>
-        </div>
-
-        <!-- Patient Last Name -->
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
-                    <b> {{form.patientLname.label_tag}} </b>
-                    {{form.patientLname}}
-                </div>
-            </div>
-        </div>
-        <!-- {{ form.as_p }} -->
-        <p>Date: <input name="apptDate" type="text" id="datepicker" required></p>
-        <p id='hour' style='display: inline'> Hour: <select name="apptHour" id="timeslots" required></p>
-
+        {{ form.as_p }}
+        <p>Date: <input name="apptDate" type="text" id="datepicker" required/></p>
+        <p id='hour' style='display: inline'> Hour: <select name="apptHour" id="timeslots" required/></p>
         <br>
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; margin-left:50px; padding-bottom:15px;">
-                    <button type="submit" class="btn btn-primary btn-large btn-block">OK</button>
-                </div>
-            </div>
+        <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
     </form>
 </div>
 <!-- <table class="table table" id="-table">

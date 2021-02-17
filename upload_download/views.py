@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from .models import Uploaded_File
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.decorators import login_required
-
+from users_acc.models import *
 
 
 
@@ -24,7 +24,10 @@ def render_file_upload(request):
                     f.file_name = request.FILES["file"].name
                     f.file =request.FILES["file"]
                     f.save()
-                return render(request, 'upload_download/file_upload_Complete.html')
+                    return render(request, 'upload_download/file_upload_Complete.html')
+                else:
+                    context = {"errorMsg": "Your File Name is Too Long"}
+                    return render(request, 'upload_download/file_upload_Failed.html', context)
             else:
                 context = {"errorMsg":"Your File is Too Big >50MB"}
                 return render(request, 'upload_download/file_upload_Failed.html', context)
@@ -36,10 +39,42 @@ def render_file_upload(request):
 @login_required
 def render_file_download(request):
     files = []
-    # test = Uploaded_File.objects.get(id=i.id)
-    for i in Uploaded_File.objects.all():
-        #just find a way to query the request.user instead of all
-        files.append({
+    if request.user.user_type == 1:
+        for i in Uploaded_File.objects.all():
+            # just find a way to query the request.user instead of all
+            files.append({
+                'FileName': i.file_name,
+                'Uploader': i.usern.username,
+                'file': i.file.url,
+                'date_uploaded': i.date_created,
+                'id': i.pk
+            })
+    elif request.user.user_type == 2:
+        temp = Uploaded_File.objects.none()
+        g = Uploaded_File.objects.filter(usern=request.user)
+        # provider.user.last_name.
+        # user.related name of profile.Patient_count
+        if request.user.provider.Provider_type == 1:
+            temp = Patient.objects.filter(doc_p=request.user.provider)
+        elif request.user.provider.Provider_type == 2:
+            temp = Patient.objects.filter(doc_d=request.user.provider)
+        elif request.user.provider.Provider_type == 3:
+            temp = Patient.objects.filter(doc_c=request.user.provider)
+        for i in temp:
+            t = Uploaded_File.objects.filter(usern=i.user)
+            g = g | t
+        for i in g:
+            files.append({
+                'FileName': i.file_name,
+                'Uploader': i.usern.username,
+                'file': i.file.url,
+                'date_uploaded': i.date_created,
+                'id': i.pk
+            })
+    elif request.user.user_type == 3:
+        for i in Uploaded_File.objects.filter(usern=request.user):
+            # just find a way to query the request.user instead of all
+            files.append({
                 'FileName': i.file_name,
                 'Uploader': i.usern.username,
                 'file': i.file.url,

@@ -1,4 +1,5 @@
 from django.db import models
+from users_acc.models import *
 
 #blood_category ={
                #('red blood cells', 'red blood cells'),

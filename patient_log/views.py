@@ -32,7 +32,7 @@ def patientlog(request):
 
             #messages.success('your data was saved!')
 
-            return render(request, 'patient_log/patientLog_submit.html ', {"form":saverecord})
+            return render(request, 'patient_log/patientLog_submit.html', {"form":saverecord})
 
         else:
 
