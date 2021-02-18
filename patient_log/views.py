@@ -57,7 +57,7 @@ class Circle(BaseLineChartView):
         return ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
 
     def get_providers(self):
-        return ["Central", "Eastside", "Westside"]
+        return ["One", "Two", "Three"]
 
 
     def get_data(self):

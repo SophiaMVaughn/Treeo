@@ -54,6 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
+    'blogsys.apps.BlogsysConfig',
+
+
 ]
 
 MIDDLEWARE = [
