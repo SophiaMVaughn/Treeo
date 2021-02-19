@@ -7,7 +7,11 @@
 }
 body {
   font-family: Arial;
-  background-color: #ddddf1;
+  font-family: "Titillium Web", sans-serif;
+  /* border: 20px solid black; */
+  /* background-color: #ddddf1; */
+  /* background-color: #ffffff; */
+  /* #ffc097 orange from before */
   /* padding: 50px; */
 }
 .login {
@@ -17,15 +21,12 @@ body {
   vertical-align: top;
   display: inline;
   text-align: center;
+  /* background-color: #f99f71; */
 }
-.listwhitespace {
-  margin-top: 20px;
-  margin-left: 22%;
-  width: 300px;
-}
+
 .login-screen {
-  background-color: #ddddf1;
-  padding: 20px 0px 0px 0px;
+  /* background-color: #f99f71; */
+  /* padding: 20px 0px 0px 0px; */
   border-radius: 5px;
   min-width: 400px;
   /* position: fixed;
@@ -351,8 +352,647 @@ input:focus {
 
 .table {
   vertical-align: center;
+  border-color: #000000;
 }
 
 .message {
   text-align: center;
+}
+
+.rectangle {
+  position: absolute;
+  width: 799px;
+  height: 966px;
+  left: -39px;
+  top: 0px;
+  /* top: 56px; */
+
+  background: #f99f71;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
+
+.treeoLogo {
+  background: url("../img/TreeoLogo.png") no-repeat;
+  background-size: 473px 461px;
+  position: absolute;
+  width: 444px;
+  height: 500px;
+  left: 125px;
+  top: 97px;
+}
+
+.twitter {
+  background: url("../img/TwitterLogo.png");
+  background-size: 177px 162px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 125px;
+  top: 630px;
+}
+
+.instagram {
+  background: url("../img/InstagramLogo.png");
+  background-size: 133px 125px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 250px;
+  top: 651px;
+}
+.facebook {
+  background: url("../img/FacebookLogo.png");
+  background-size: 133px 125px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 350px;
+  top: 651px;
+}
+
+.textOne {
+  position: absolute;
+  width: 473px;
+  height: 157px;
+  left: 170px;
+  top: 441px;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 72px;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.textTwo {
+  position: absolute;
+  width: 452px;
+  height: 40px;
+  left: 868px;
+  top: 255px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 62px;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.textTwo span {
+  font-weight: bold;
+}
+
+.textThree {
+  position: absolute;
+  width: 452px;
+  height: 40px;
+  left: 868px;
+  /* top: 255px; temp until can put placeholder in username and password*/
+  top: 525px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 62px;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.username {
+  position: absolute;
+  width: 481px;
+  height: 107px;
+  left: 851px;
+  top: 390px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.usernameInput {
+  position: absolute;
+  width: 374px;
+  height: 38px;
+  left: 34px;
+  /* top: 431px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.usernameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 414px;
+  height: 105px;
+}
+
+.usernameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.password {
+  position: absolute;
+  width: 481px;
+  height: 107px;
+  left: 851px;
+  top: 600px;
+  /* top: 545px; temp until can put placeholder text in username and password */
+
+  background: #ffffff;
+  border: 4px solid #faa172;
+  border-radius: 100px;
+}
+
+.passwordInput {
+  position: absolute;
+  width: 374px;
+  height: 38px;
+  left: 34px;
+  /* top: 431px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.passwordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 414px;
+  height: 98px;
+}
+
+.passwordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.loginButton {
+  position: absolute;
+  width: 112px;
+  height: 97px;
+  left: 931px;
+  top: 745px;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.loginButton .btn {
+  width: 334px;
+  margin: 7px auto;
+  background: #faa172;
+}
+
+.registerButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  top: 822px;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.registerButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.orange {
+  background-color: #f99f71;
+  min-height: 1080px;
+  padding-top: 5px;
+}
+
+.orange .treeoLogo {
+  background: url("../img/TreeoLogo.png") no-repeat;
+  background-size: 473px 461px;
+  position: absolute;
+  width: 444px;
+  height: 281px;
+  left: 1376px;
+  top: -86px;
+}
+
+.white {
+  background-color: #ffffff;
+  min-height: 1080px;
+  position: fixed;
+}
+
+.signup {
+  position: absolute;
+  width: 422px;
+  height: 157px;
+  left: 190px;
+  top: 191px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 115px;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+}
+
+.fname {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 256px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.fnameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 234px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.fnameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.fnameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.fnameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.lname {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 808px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.lnameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 783px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.lnameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.lnameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.lnameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.email {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 1326px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.emailBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 1332px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.emailInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.emailInput input[type="email"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.emailInput input[type="email"]:focus {
+  border: 2px solid transparent;
+}
+
+.registerUsername {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 256px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerUsernameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 234px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerUsernameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerUsernameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerUsernameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.registerPasswordOne {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 808px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerPasswordOneBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 783px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerPasswordOneInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerPasswordOneInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerPasswordOneInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.registerPasswordTwo {
+  position: absolute;
+  width: 333px;
+  height: 40px;
+  left: 1326px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerPasswordTwoBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 1332px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerPasswordTwoInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerPasswordTwoInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerPasswordTwoInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.verification {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 155px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.emailClick {
+  background: url("../img/EmailClick.png") no-repeat;
+  background-size: 379px 361px;
+  position: absolute;
+  width: 379px;
+  height: 420px;
+  left: 786px;
+  top: 250px;
+}
+
+.almostDone {
+  position: absolute;
+  width: 700px;
+  height: 40px;
+  left: 635px;
+  top: 647px;
+  font-style: normal;
+  /* font-weight: bold; */
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.almostDone span {
+  font-weight: bold;
+}
+
+.theT {
+  background: url("../img/T.png") no-repeat;
+  background-size: 217px 209px;
+  position: absolute;
+  width: 238px;
+  height: 184px;
+  left: 1677px;
+  top: 744px;
+}
+
+.checkmark {
+  background: url("../img/Checkmark.png") no-repeat;
+  background-size: 379px 361px;
+  position: absolute;
+  width: 379px;
+  height: 420px;
+  left: 786px;
+  top: 250px;
 }

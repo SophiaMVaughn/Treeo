@@ -1,16 +1,19 @@
 {% extends "users_acc/base.html" %}
 <title>File Upload Complete</title>
 {% block content %}
-<div>
-    <h1>File Upload Failed</h1>
+<div class="orange">
+    <div>
+        <h1>File Upload Failed</h1>
 
-    <div class="error">
-        {{errorMsg}}
-    </div>
-    <br>
-    <div class="button">
-        <a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different
-            File</a>
+        <div class="error">
+            {{errorMsg}}
+        </div>
+        <br>
+        <div class="button">
+            <a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A
+                Different
+                File</a>
+        </div>
     </div>
 </div>
 {% endblock content %}

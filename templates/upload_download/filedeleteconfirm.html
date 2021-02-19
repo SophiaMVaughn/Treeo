@@ -1,14 +1,16 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<p><b>Are You Sure You Want to Delete This File ?</b></p>
-<div class="button">
-    <form action="{% url 'upload_download_file_delete' file %}" method="post">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-primary btn-large btn-block" value="Delete" />
-    </form>
-</div>
-<br>
-<div class="button">
-    <a href="{% url 'upload_download_file_download' %}" class="btn btn-primary btn-large btn-block">Cancel</a>
+<div class="orange">
+    <p><b>Are You Sure You Want to Delete This File ?</b></p>
+    <div class="button">
+        <form action="{% url 'upload_download_file_delete' file %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary btn-large btn-block" value="Delete" />
+        </form>
+    </div>
+    <br>
+    <div class="button">
+        <a href="{% url 'upload_download_file_download' %}" class="btn btn-primary btn-large btn-block">Cancel</a>
+    </div>
 </div>
 {% endblock content %}

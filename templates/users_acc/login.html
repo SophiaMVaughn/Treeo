@@ -1,13 +1,17 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<div class="error">
+{% load static %}
+
+
+<!-- <div class="error">
     {{errorMsg}}
-</div>
+</div> -->
 <form method="post">
     {% csrf_token %}
-    <!-- {{form.as_p}} -->
-    <!-- Username -->
-    <div class="row">
+    <section>
+        <!-- {{form.as_p}} -->
+        <!-- Username -->
+        <!-- <div class="row">
         <div class="col">
             <div style="color: red; font-size: 1em; padding-right:10px;">
                 {{form.username.errors}}
@@ -20,15 +24,14 @@
             </div>
             {% endif %}
         </div>
-    </div>
+    </div> -->
 
-    <!-- Password -->
-    <div class="row">
+        <!-- Password -->
+        <!-- <div class="row">
         <div class="col">
             <div style="color: red; font-size: 1em;">
                 {{form.password.errors}}
             </div>
-            <!-- <br> -->
             <div style="display:inline-block; text-align:left; padding-right:90px; padding-bottom:15px">
                 <b> {{form.password.label_tag}} </b>
                 {{form.password}}
@@ -37,16 +40,50 @@
             </div>
             {% endif %}
         </div>
-    </div>
+    </div> -->
 
-    <div class="button">
+        <!-- <div class="button">
         <button type="submit" class="btn btn-primary btn-large btn-block">Login</button>
-        <!-- <br> -->
         <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Forgot Your Password?</a>
-        <!-- <br> -->
         <a href="{% url 'register' %}" class="btn btn-primary btn-large btn-block">Register</a>
+    </div> -->
+
+    </section>
+    <div class="white">
+        <div class="rectangle">
+            <div class="treeoLogo"></div>
+            <div class="twitter"></div>
+            <div class="instagram"></div>
+            <div class="facebook"></div>
+            <p class="textOne">we’re here to help you start healing.</p>
+        </div>
+        <div class="textTwo">
+            <span>log in</span> to access your health portal
+            please enter a username
+        </div>
+
+        <div class="username">
+            <div class="usernameInput">
+                {{form.username}}
+            </div>
+        </div>
+
+        <div class="textThree">
+            please enter a password
+        </div>
+
+        <div class="password">
+            <div class="passwordInput">
+                {{form.password}}
+            </div>
+        </div>
+
+        <div class="button loginButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">login</button>
+            <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">forgot your password?</a>
+            <a href="{% url 'register' %}" class="btn btn-primary btn-large btn-block">register</a>
+        </div>
     </div>
 </form>
 <br>
-
 {% endblock content %}

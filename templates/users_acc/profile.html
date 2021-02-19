@@ -1,20 +1,22 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<h1>Profile</h1>
-<div style="display:inline-block; text-align:left; padding-top: 10px;  padding-right:92px;">
-    <p><b>Username: </b>{{user.username}}</p>
+<div class="orange">
+    <h1>Profile</h1>
+    <div style="display:inline-block; text-align:left; padding-top: 10px;  padding-right:92px;">
+        <p><b>Username: </b>{{user.username}}</p>
 
 
-    <p><b>Email: </b>{{user.email}}</p>
+        <p><b>Email: </b>{{user.email}}</p>
 
-    <p><b>First Name: </b>{{user.first_name}}</p>
+        <p><b>First Name: </b>{{user.first_name}}</p>
 
-    <p><b>Last Name: </b>{{user.last_name}}</p>
-</div>
+        <p><b>Last Name: </b>{{user.last_name}}</p>
+    </div>
 
-<div class="button">
-    <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
+    <div class="button">
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
 
-    <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
+        <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
+    </div>
 </div>
 {% endblock content %}
