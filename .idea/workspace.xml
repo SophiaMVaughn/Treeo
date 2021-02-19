@@ -2,42 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0002_auto_20210207_1835.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/appointment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/apt_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/apt_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patient_log/chart_View.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/chart_View.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedownload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedownload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users_acc/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0002_auto_20210207_0253.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0003_auto_20210207_0303.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0002_auto_20210206_1851.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0003_auto_20210206_2106.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0004_auto_20210207_1421.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +30,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1o7U18WXEt0eHclQmIjWcI8T0y9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -61,19 +52,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/users_acc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/patient_log" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\patient_log" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\users_acc" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\ReqAppt" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\ReqAppt\migrations" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\ReqAppt\templates\ReqAppt" />
-      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\upload_download\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo" />
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\static" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,6 +82,16 @@
       <updated>1612636906859</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

@@ -13,6 +13,10 @@ body {
   /* background-color: #ffffff; */
   /* #ffc097 orange from before */
   /* padding: 50px; */
+
+  /* This was added by Gio
+  background-color:#ffc097;
+  padding: 50px; */
 }
 .login {
   width: 300px;
@@ -29,11 +33,6 @@ body {
   /* padding: 20px 0px 0px 0px; */
   border-radius: 5px;
   min-width: 400px;
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0; */
 }
 
 .app-title {
@@ -88,7 +87,7 @@ body {
 .error {
   color: red;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 12px;
 }
 
 input[type="text"] {
@@ -116,58 +115,6 @@ input[type="password"] {
   transition: border 0.5s;
   box-sizing: border-box;
 }
-
-input[type="email"] {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-}
-
-input[type="number"] {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-  -moz-appearance: textfield;
-}
-
-select {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-  -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* 
-label {
-  font-weight: bold;
-} */
 
 .id_username {
   text-align: center;
@@ -219,6 +166,7 @@ input:focus {
   background-image: none;
   min-width: -moz-fit-content;
 }
+
 .navwrapper nav a {
   text-decoration: none;
   /*border:2px solid #C5C6C7;*/
@@ -298,7 +246,7 @@ input:focus {
 }
 
 .button {
-  /* margin-left: 79px; */
+  margin-left: 79px;
   display: grid;
   align-self: center;
 }
@@ -995,4 +943,80 @@ input:focus {
   height: 420px;
   left: 786px;
   top: 250px;
+}
+
+/*This was added by Gio*/
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
+
+#ui-datepicker-div {
+  background: white;
+}
+
+.ui-datepicker-prev {
+  margin-right: 70px;
+}
+
+.ui-datepicker-calendar a {
+  margin-right: 5px;
+}
+
+.calendar-patient.confirmed {
+  color: green;
+}
+
+.calendar-patient.pending {
+  color: red;
 }

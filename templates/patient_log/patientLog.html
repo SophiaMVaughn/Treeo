@@ -1,7 +1,10 @@
-{% extends "users_acc/base.html" %}
+{% extends "patient_log/patient_log_base.html" %}
 {% block content %}
+{% if user.user_type == 3%}
 <h1>Patient Data Log</h1>
-
+{% else %}
+<h1>View a Patient's Data Log</h1>
+{% endif %}
 {% if messages %}
 {% for message in messages %}
 <h2 style="color:green;">{{message}}</h2>
@@ -9,6 +12,7 @@
 {% endif %}
 <form method="POST">
     {% csrf_token %}
+<<<<<<< HEAD
     <!-- {{ form.as_p }} -->
 
     <div class="row">
@@ -56,3 +60,10 @@
 </form>
 
 {% endblock content %} -->
+=======
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
+</form>
+
+{% endblock content %}
+>>>>>>> master

@@ -1,5 +1,6 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<<<<<<< HEAD
 <div class="orange">
     <form method="post">
         {% csrf_token %}
@@ -30,4 +31,11 @@
     </form>
 </div>
 
+=======
+<form method = "post">
+    {% csrf_token %}
+    {{edit_profile.as_p}}
+    <button type="submit" class="btn btn-primary btn-large btn-block">Edit Profile</button>
+</form>
+>>>>>>> master
 {% endblock content %}

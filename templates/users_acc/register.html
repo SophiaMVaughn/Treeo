@@ -1,5 +1,6 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<<<<<<< HEAD
 <div class="orange">
     <h2>{{error}}</h2>
     <form method="post">
@@ -179,3 +180,13 @@
     </form>
 </div>
 {% endblock content %}
+=======
+<h2>{{error}}</h2>
+<form method = "post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-large btn-block">Register</button>
+</form>
+<a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register as Doctor</a>
+{% endblock content %}
+>>>>>>> master
