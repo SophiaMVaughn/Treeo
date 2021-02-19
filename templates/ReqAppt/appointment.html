@@ -3,7 +3,7 @@
 
 
 <div>
-    <form action="{% url 'reqAppt_Appointment' %}" method="post">
+    <form action="{% url 'create_Appointment' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <p>Date: <input name="apptDate" type="text" id="datepicker" required/></p>

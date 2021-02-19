@@ -30,28 +30,28 @@ class User(AbstractUser):
     #objects = CustomUserManager()
 # #   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
-
-
-
-
+#acess via
+# provider.user.last_name.
+# user.related profile name.Patient_count
 
 
 class Admin(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="admin", on_delete=models.CASCADE)
-    def __str__(self):
-        return self.user.first_name+" "+self.user.last_name
+    # def __str__(self):
+    #     return self.user.first_name+" "+self.user.last_name
 
 class Provider(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="provider", on_delete=models.CASCADE)
     Patient_count = models.PositiveSmallIntegerField(default=0)
     Provider_type = models.PositiveSmallIntegerField(choices=PROVIDER_TYPE_CHOICES,default=1)
-    def __str__(self):
-        return self.user.first_name+" "+self.user.last_name
+    # def __str__(self):
+    #     return self.user.first_name+" "+self.user.last_name
 
 class Patient(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="patient",on_delete=models.CASCADE)
-    doc_d = models.OneToOneField(Provider, on_delete=models.CASCADE, related_name='doc_d', null=True)
-    doc_c = models.OneToOneField(Provider, on_delete=models.CASCADE, related_name='doc_c', null=True)
-    doc_p = models.OneToOneField(Provider, on_delete=models.CASCADE, related_name='doc_p', null=True)
-    def __str__(self):
-        return self.user.first_name+" "+self.user.last_name
+    doc_d = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='doc_d', null=True)
+    doc_c = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='doc_c', null=True)
+    doc_p = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='doc_p', null=True)
+    # def __str__(self):
+    #     return self.user.first_name+" "+self.user.last_name
+

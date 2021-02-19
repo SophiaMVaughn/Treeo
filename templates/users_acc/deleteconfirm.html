@@ -1,0 +1,9 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+<form method="post" action="">
+   {% csrf_token %}
+     <h1>Are you sure you want to delete?</h1><br>
+     <input class="btn btn-1" type="submit" value="Yes" />
+     <a href="{% url 'admin_display_team' patient %}"><div class="btn btn-2">Cancel</div></a>
+</form>
+{% endblock content %}
