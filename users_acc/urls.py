@@ -18,4 +18,8 @@ path('edit_profile/', users_acc_views.edit_profile, name='edit_profile'),
 path('button/', users_acc_views.button, name='button'),
 path('', users_acc_views.home, name='home'),
 path('login/', users_acc_views.loginuser, name='login'),
+path('doctor_registration/', users_acc_views.doctor_registration, name='doctor_registration'),
+path('admin_remove_provider/<id>/<id2>', users_acc_views.admin_remove_provider, name='admin_remove_provider'),
+path('admin_assign/', users_acc_views.admin_view, name='admin_view'),
+path('admin_display_team/<id>/', users_acc_views.admin_display_team, name='admin_display_team'),
 ]

@@ -7,20 +7,12 @@ from users_acc.models import *
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def On_create_Patient(sender, instance, created, **kwargs):
     if created:
-        #instance.is_active = False
-        instance.save()
-        if instance.user_type==1:
+        if instance.is_superuser == True:
             Admin.objects.create(user=instance)
-        elif instance.user_type==2:
-            Physician.objects.create(user=instance)
-        elif instance.user_type==3:
-            Dietician.objects.create(user=instance)
-        elif instance.user_type==4:
-            Coach.objects.create(user=instance)
-        elif instance.user_type==5:
+            instance.is_email_confirmed=1
+            instance.save()
+        # elif instance.user_type == 2:
+        #     Provider.objects.create(user=instance)
+        elif instance.user_type == 3:
             Patient.objects.create(user=instance)
 
-#think that this breaks since it can only save patient fix that?
-# @receiver(post_save, sender=User)
-# def On_save_profile(sender, instance, created, **kwargs):
-#     instance.Patient.save()
