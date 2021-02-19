@@ -60,7 +60,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <p>Date: <input name="apptDate" type="text" id="datepicker" required/></p>
-        <p id='hour' style='display: inline'> Hour: <select name="apptHour" id="timeslots" required/></p>
+        <p id='hour' style='display: inline'> Hour: <select name="apptHour" id="timeslots" required></p>
         <br>
         <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
     </form>

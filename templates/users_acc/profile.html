@@ -1,6 +1,5 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<<<<<<< HEAD
 <div class="orange">
     <h1>Profile</h1>
     <div style="display:inline-block; text-align:left; padding-top: 10px;  padding-right:92px;">
@@ -17,24 +16,6 @@
     <div class="button">
         <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
 
-=======
-<div>
-    <h1>Profile</h1>
-    <h2>Username</h2>
-    <h3>{{user.username}}</h3>
-    <h2>Email</h2>
-    <h3>{{user.email}}</h3>
-    <h2>First Name</h2>
-    <h3>{{user.first_name}}</h3>
-    <h2>Last Name</h2>
-    <h3>{{user.last_name}}</h3>
-    <br>
-    <div>
-        <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
-    </div>
-    <br>
-    <div>
->>>>>>> master
         <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
     </div>
 </div>

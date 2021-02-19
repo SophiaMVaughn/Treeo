@@ -1,6 +1,6 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<<<<<<< HEAD
+{% load static %}
 <div class="orange">
     <table class="table">
         <thead>
@@ -34,34 +34,6 @@
         </tbody>
     </table>
 </div>
-=======
-<table class="table">
-    <thead>
-        <tr>
-            <th>File Name</th>
-            <th>User</th>
-            <th>Date Created</th>
-            <th>Download</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for file in file_list %}
-        <tr>
-            <td>{{file.FileName}}</td>
-            <td>{{file.Uploader}}</td>
-            <td>{{file.date_uploaded}}</td>
-            <td><a href="{{file.file}}" class="btn btn-primary btn-large btn-block" target="_blank" download="file.FileName">Download A File</a></td>
-            <td><a href="{% url 'upload_download_file_delete' file.id %}" class="btn btn-primary btn-large btn-block"> Delete</a></td>
-<!--           <td> <form action="{% url 'upload_download_file_delete' file.id %}" method="post">-->
-<!--    {% csrf_token %}-->
-<!--    <input type="submit" class="btn btn-primary btn-large btn-block" value="Delete" />-->
-<!--</form></td>-->
-        {% endfor %}
-    </tbody>
-</table>
-
->>>>>>> master
 
 
 {% endblock content %}

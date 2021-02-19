@@ -80,7 +80,7 @@ def activate(request, uidb64, token):
         # m.save()
         login(request, user)
         # return render(request, 'users_acc/account_activation_success.html')
-        return redirect('home')
+        return render(request, 'users_acc/account_activation_success.html')
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
 
@@ -386,13 +386,8 @@ def admin_remove_provider(request, id, id2):
     #     context['form'] = AdminAssignForm()
     # return render(request, "users_acc/admin_assign.html", context)
 
-
-
-
-
-
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'users_acc/home.html')
     else:
-        return render(request, 'users_acc/generic_home.html')
+        return render(request, 'users_acc/login.html')
