@@ -5,45 +5,12 @@
 </div>
 <form method="post">
     {% csrf_token %}
-    <!-- {{form.as_p}} -->
-    <!-- Username -->
-    <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em; padding-right:10px;">
-                {{form.username.errors}}
-            </div>
-            <div style="display:inline-block; text-align:right; padding-right:116px; padding-bottom:15px;">
-                <b> {{form.username.label_tag}} </b>
-                {{form.username}}
-                {% if form.username.help_text %}
-                <p class="help">{{form.username.help_text|safe}}</p>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-
-    <!-- Password -->
-    <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em;">
-                {{form.password.errors}}
-            </div>
-            <!-- <br> -->
-            <div style="display:inline-block; text-align:left; padding-right:90px; padding-bottom:15px">
-                <b> {{form.password.label_tag}} </b>
-                {{form.password}}
-                {% if form.password.help_text %}
-                <div style="margin-top: 5px;">{{form.password.help_text}}</div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-
+    {{form.as_p}}
     <div class="button">
         <button type="submit" class="btn btn-primary btn-large btn-block">Login</button>
-        <!-- <br> -->
+        <br>
         <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Forgot Your Password?</a>
-        <!-- <br> -->
+        <br>
         <a href="{% url 'register' %}" class="btn btn-primary btn-large btn-block">Register</a>
     </div>
 </form>

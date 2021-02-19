@@ -7,8 +7,8 @@
 }
 body {
   font-family: Arial;
-  background-color: #ddddf1;
-  /* padding: 50px; */
+  background-color:#ffc097;
+  padding: 50px;
 }
 .login {
   width: 300px;
@@ -28,11 +28,6 @@ body {
   padding: 20px 0px 0px 0px;
   border-radius: 5px;
   min-width: 400px;
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0; */
 }
 
 .app-title {
@@ -87,12 +82,12 @@ body {
 .error {
   color: red;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 12px;
 }
 
-input[type="text"] {
+input[type=text] {
   text-align: center;
-  background-color: white;
+  background-color:white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -100,12 +95,12 @@ input[type="text"] {
   padding: 10px 0;
   width: 250px;
   transition: border 0.5s;
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
 
-input[type="password"] {
+input[type=password] {
   text-align: center;
-  background-color: white;
+  background-color:white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -113,64 +108,12 @@ input[type="password"] {
   padding: 10px 0;
   width: 250px;
   transition: border 0.5s;
-  box-sizing: border-box;
+  box-sizing:border-box;
 }
-
-input[type="email"] {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-}
-
-input[type="number"] {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-  -moz-appearance: textfield;
-}
-
-select {
-  text-align: center;
-  background-color: white;
-  border: 2px solid transparent;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
-  transition: border 0.5s;
-  box-sizing: border-box;
-  -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* 
-label {
-  font-weight: bold;
-} */
 
 .id_username {
   text-align: center;
-  background-color: white;
+  background-color:white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -193,7 +136,7 @@ input:focus {
 }
 #navwrapper nav a {
   text-decoration: none;
-  border: 2px solid #c5c6c7;
+  border:2px solid #C5C6C7;
   padding: 3px;
   color: white;
   /* border: white solid 1px; */
@@ -205,6 +148,7 @@ input:focus {
 #navwrapper nav a:hover {
   transition: 0.25s;
   background: #3498db;
+
 }
 
 /* #navwrapper nav a:visited {
@@ -222,12 +166,13 @@ input:focus {
 .navwrapper nav a {
   text-decoration: none;
   /*border:2px solid #C5C6C7;*/
-/* padding: 3px;
+  /* padding: 3px;
   color: white;
 } */
 
 .navwrapper nav a:hover {
   color: white;
+
 }
 
 /* .navwrapper nav a:visited {
@@ -254,7 +199,7 @@ input:focus {
   max-width: auto;
   /* box-shadow: 5px 5px #828282; */
   background-image: none;
-  background-color: #ddddf1;
+  background-color:#ddddf1;
   width: 100%;
   height: 100%;
   margin-right: auto;
@@ -294,13 +239,14 @@ input:focus {
   text-align: center;
   align-self: center;
   display: inline;
-  margin: 2px auto;
+  margin: 2px auto
 }
 
 .button {
-  /* margin-left: 79px; */
+  margin-left: 79px;
   display: grid;
   align-self: center;
+
 }
 
 .autocomplete-suggestions {
@@ -352,8 +298,5 @@ input:focus {
 
 .table {
   vertical-align: center;
-}
-
-.message {
-  text-align: center;
+  
 }
