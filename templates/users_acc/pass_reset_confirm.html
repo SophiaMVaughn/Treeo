@@ -1,43 +1,8 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<form method="post">
+<form method = "post">
     {% csrf_token %}
-    <!-- {{form.as_p}} -->
-    <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em;">
-                {{form.new_password1.errors}}
-            </div>
-            <!-- <br> -->
-            <div style="display:inline-block; text-align:left; margin-left: 25px;">
-                <b> {{form.new_password1.label_tag}} </b>
-                {{form.new_password1}}
-                {% if form.new_password1.help_text %}
-                <div style="margin-top: 5px;">{{form.new_password1.help_text}}</div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em; padding-right:50px;">
-                {{form.new_password2.errors}}
-            </div>
-            <!-- <br> -->
-            <div style="display:inline-block; text-align:left; padding-right: 225px;  padding-bottom:10px;">
-                <b> {{form.new_password2.label_tag}} </b>
-                {{form.new_password2}}
-                {% if form.new_password2.help_text %}
-            </div>
-            <div style="padding-top: 5px; padding-right:17px;">
-                {{form.new_password2.help_text}}
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="button">
-        <button type="submit" class="btn btn-primary btn-large btn-block">Reset Password</button>
-    </div>
-
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-large btn-block">Reset Password</button>
 </form>
 {% endblock content %}
