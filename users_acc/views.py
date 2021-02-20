@@ -270,6 +270,23 @@ def admin_remove_provider(request, id, id2):
     context = {'patient': id, 'provider': id2}
     return render(request, "users_acc/deleteconfirm.html", context)
 
+@login_required
+def admin_view(request):
+    if request.method == 'POST':
+        form = AdminAssignForm(request.POST)
+        if form.is_valid():
+            patient=Patient.objects.none()
+            try:
+                patient = Patient.objects.get(id=request.POST['patient'])
+            except Exception as e:
+                print(e)
+            else:
+                return redirect('admin_display_team', request.POST['patient'])
+        else:
+            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
+    else:
+        return render(request, "users_acc/admin_assign.html", {'form':AdminAssignForm()})
+
 # def render_privider_list(request,pat_obj):
 #     content = {}
 #     context = {}
