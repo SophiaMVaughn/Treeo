@@ -1,0 +1,73 @@
+{% extends "ReqAppt/apt_base.html" %}
+{% block content %}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    function hide(){
+        var confirm = document.querySelectorAll('.confirm');
+        confirm[0].classList.add('hidden');
+        confirm[1].classList.add('hidden');
+    }
+
+</script>
+<style>
+    .hidden {
+        display: none !important;
+    }
+
+</style>
+
+<div class="container">
+    <div class="first">
+        <div class="heading">
+            <h2>Doctor View Appointments</h2>
+        </div>
+        <table class="table table-bordered ">
+
+            <thead>
+            <tr>
+                <th>Patient First Name</th>
+                <th>Patient Last Name</th>
+                <th>Date and Time</th>
+                <th>Appointment Status</th>
+                <th>Approve</th>
+                <th>Reject</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for a in ApptTable %}
+            <tr>
+                <td> {{a.patient.user.first_name}}</td>
+                <td>{{a.patient.user.last_name}}</td>
+                <td>{{a.meetingDate}}</td>
+                {%if a.status%}
+                <td><span class="Confirmed">Confirmed</span></td>
+                {% else %}
+                <td><span class="Pending">Pending</span></td>
+                {% endif %}
+
+                <td>
+                {%if a.status%}
+                <span></span>
+                {% else %}
+                <a href="{% url 'approve_appt' a.apptId %}"  ><span> YES! </span></a>
+                {% endif %}
+                </td>
+                <td>
+                {%if a.status%}
+                <span></span>
+                {% else %}
+                <a href="{% url 'reqAppt_delete' a.apptId  %}" ><span> NO! </span></a>
+                {% endif %}
+                </td>
+
+                <td><a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a></td>
+                <!--        <td> {{a.patientFname}} </td>-->
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

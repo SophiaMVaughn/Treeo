@@ -1,0 +1,68 @@
+{% extends "ReqAppt/apt_base.html" %}
+{% block content %}
+
+
+<div>
+
+    <form action="{% url 'create_Appointment' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Date: <input name="apptDate" type="text" id="datepicker" required/></p>
+        <p id='hour' style='display: inline'> Hour: <select name="apptHour" id="timeslots" required/></p>
+        <br>
+        <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
+    </form>
+</div>
+<!-- <table class="table table" id="-table">
+
+
+
+    </table> -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+
+
+
+      // $( function() {
+      //   $("#datepicker").datepicker({
+      //   });
+      // } );
+      //
+      // $(function() {
+      //   $( "#datepicker" ).datepicker();
+      //       });
+      //
+      $(function() {
+         $( "#datepicker" ).datepicker({ firstDay: 1, minDate: 0 });
+        });
+
+
+      const loadTimeSlots = (data) => {
+          const timeslots = $("#timeslots");
+          timeslots.empty();
+          data.forEach( d => {
+              timeslots.append(`<option value="${d}">${d}</option>`)
+          });
+      }
+
+      const changeHandler = () => {
+          const provider_id = $('#id_provider').val();
+          const date = $('#datepicker').val();
+          if(!!provider_id && !!date){
+              $.get(`availability/provider/${provider_id}/date/${date.replaceAll('/', '-')}`, loadTimeSlots)
+          }else{
+              //Clear out dropdown if either provider or date is null
+              const timeslots = $("#timeslots");
+              timeslots.empty();
+          }
+      };
+
+
+      $(() => $("#id_provider, #datepicker").on('change', changeHandler));
+
+  </script>
+
+{% endblock content %}

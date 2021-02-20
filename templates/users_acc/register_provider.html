@@ -1,0 +1,11 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+<h2>{{error}}</h2>
+<b>Create a Provider Account</b>
+<br>
+<form method = "post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-large btn-block">Register</button>
+</form>
+{% endblock content %}
