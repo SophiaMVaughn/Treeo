@@ -87,7 +87,7 @@ body {
 .error {
   color: red;
   text-align: center;
-  font-size: 12px;
+  font-size: 1.5em;
 }
 
 input[type="text"] {
