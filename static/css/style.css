@@ -574,6 +574,52 @@ input:focus {
   color: #faa172;
 }
 
+.passResetButton {
+  position: absolute;
+  width: 224px;
+  height: 103px;
+  left: 852px;
+  top: 700px;
+}
+
+.passResetButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 224px;
+  height: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.confirmResetButton {
+  position: absolute;
+  width: 198px;
+  height: 103px;
+  left: 900px;
+  top: 615px;
+}
+
+.confirmResetButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 168px;
+  height: 86px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
 .orange {
   background-color: #f99f71;
   min-height: 1080px;
@@ -592,8 +638,8 @@ input:focus {
 
 .white {
   background-color: #ffffff;
-  min-height: 1080px;
-  position: fixed;
+  max-height: 1080px;
+  position: absolute;
 }
 
 .signup {
@@ -742,7 +788,18 @@ input:focus {
   border-radius: 100px;
 }
 
-.emailInput {
+.emailBoxReset {
+  position: absolute;
+  width: 446px;
+  height: 107px;
+  left: 747px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.emailBoxInput {
   position: absolute;
   width: 216px;
   height: 30px;
@@ -757,15 +814,15 @@ input:focus {
   color: #e5e5e5;
 }
 
-.emailInput input[type="email"] {
+.emailBoxInput input[type="email"] {
   border-radius: 22px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 293px;
+  width: 406px;
   height: 97px;
 }
 
-.emailInput input[type="email"]:focus {
+.emailBoxInput input[type="email"]:focus {
   border: 2px solid transparent;
 }
 
@@ -997,6 +1054,227 @@ input:focus {
   top: 250px;
 }
 
+.resetPassword {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 155px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.stepOne {
+  position: absolute;
+  width: 657px;
+  height: 60px;
+  left: 641px;
+  top: 321px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 173%;
+
+  /* or 83px */
+  letter-spacing: 0.015em;
+
+  color: #faa172;
+}
+
+.emailSent {
+  position: absolute;
+  width: 813px;
+  height: 86px;
+  left: 592px;
+  top: 461px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.emailSent span {
+  font-weight: bold;
+}
+
+.resetPasswordTwo {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 115px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.stepThree {
+  position: absolute;
+  width: 657px;
+  height: 60px;
+  left: 641px;
+  top: 237px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 173%;
+  /* or 83px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newPassword {
+  position: absolute;
+  width: 319px;
+  height: 40px;
+  left: 700px;
+  top: 314px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newPasswordBox {
+  position: absolute;
+  width: 465px;
+  height: 107px;
+  left: 737px;
+  top: 370px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.newPasswordInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.newPasswordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 430px;
+  height: 97px;
+}
+
+.newPasswordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.confirmPassword {
+  position: absolute;
+  width: 319px;
+  height: 40px;
+  left: 720px;
+  top: 500px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.confirmPasswordBox {
+  position: absolute;
+  width: 465px;
+  height: 107px;
+  left: 737px;
+  top: 561px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.confirmPasswordInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.confirmPasswordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 430px;
+  height: 97px;
+}
+
+.confirmPasswordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.successReset {
+  position: absolute;
+  width: 907px;
+  height: 157px;
+  left: 540px;
+  top: 242px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+  color: #faa172;
+}
+
+.passwordSaved {
+  position: absolute;
+  width: 813px;
+  height: 86px;
+  left: 592px;
+  top: 461px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.passwordSaved span {
+  font-weight: 800;
+}
 
 /*This was added by Gio*/
 /* .calendar {
