@@ -2,8 +2,5 @@
 {% block content %}
 <p><b>An Email Has Been Sent to Your Inbox With Instructions on How to Reset Your Password</b></p>
 <br>
-<div class="button">
-    <a href="{% url 'login' %}" class="btn btn-primary btn-large btn-block">Login</a>
-</div>
-
+<a href="{% url 'login' %}" class="btn btn-primary btn-large btn-block">Login</a>
 {% endblock content %}

@@ -25,7 +25,7 @@ class User(AbstractUser):
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES,default=3)
     is_staff = models.BooleanField(default=False)
     is_email_confirmed = models.BooleanField(default=False)
-    # phone_no = models.CharField(max_length = 10)
+    phone_no = models.CharField(max_length = 10, default='')
     # profile_pic = models.ImageField(default=profile.png, upload_to='profile_pictures')
     #objects = CustomUserManager()
 # #   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
