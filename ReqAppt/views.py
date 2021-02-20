@@ -1,4 +1,6 @@
 import calendar
+
+from ReqAppt.sms import send_message, approve_message
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
@@ -11,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
+from .sms import *
 
 
 User = get_user_model()
@@ -92,7 +95,10 @@ def create_Appointment(request):
             ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
+            send_message(apptDate, apptHour)
+
             return render(request, 'ReqAppt/Pending.html')
+
     else:
         form = ApptRequestFormPatient(instance=request.user)
         return render(request,'ReqAppt/appointment.html', {"form": form})
@@ -118,15 +124,16 @@ def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
+    approve_message()
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
-	    appointment.delete()
-	    return redirect("reqAppt_Doctor")
+        appointment.delete()
+        reject_message()
+        return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
-
 
 STARTING_HOUR = 8
 ENDING_HOUR = 16
