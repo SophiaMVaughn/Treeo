@@ -54,3 +54,4 @@ class Patient(models.Model):
     doc_p = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name='doc_p', null=True)
     # def __str__(self):
     #     return self.user.first_name+" "+self.user.last_name
+

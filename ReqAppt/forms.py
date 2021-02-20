@@ -3,11 +3,11 @@ from . import models
 from .models import ApptTable
 from users_acc.models import *
 from django.db.models import Q
+from users_acc.forms import CustomModelChoiceField
 
-
-class CustomModelChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, object):
-         return object.user.get_full_name()
+# class CustomModelChoiceField(forms.ModelChoiceField):
+#     def label_from_instance(self, object):
+#          return object.user.get_full_name()
 
 
 
@@ -34,28 +34,25 @@ class ApptRequestFormPatient(forms.ModelForm):
             # self.fields['provider'] = instance.provider
         elif instance.user_type == 3:
             #if (instance.patient.doc_d!=None and instance.patient.doc_p!=None and instance.patient.doc_c!=None):
-            g = Provider.objects.none()
+            providers = Provider.objects.none()
             if(instance.patient.doc_d==None or instance.patient.doc_p==None or instance.patient.doc_c==None):
                 try:
-                    t = Provider.objects.filter(id=instance.patient.doc_d.id)
-                    g = g | t
-                except:
-                    print()
+                    providers = providers | Provider.objects.filter(id=instance.patient.doc_d.id)
+                except Exception as e:
+                    print(e)
                 try:
-                    t = Provider.objects.filter(id=instance.patient.doc_p.id)
-                    g = g | t
-                except:
-                    print()
+                    providers = providers | Provider.objects.filter(id=instance.patient.doc_p.id)
+                except Exception as e:
+                    print(e)
                 try:
-                    t = Provider.objects.filter(id=instance.patient.doc_c.id)
-                    g = g | t
-                except:
-                    print()
+                    providers = providers | Provider.objects.filter(id=instance.patient.doc_c.id)
+                except Exception as e:
+                    print(e)
             else:
                 #make empty set so no error on look up of .id
-                g = Provider.objects.filter(Q(id=instance.patient.doc_d.id) | Q(id=instance.patient.doc_p.id) | Q(id=instance.patient.doc_c.id))
+                providers = Provider.objects.filter(Q(id=instance.patient.doc_d.id) | Q(id=instance.patient.doc_p.id) | Q(id=instance.patient.doc_c.id))
             #this custom chice field retuns fname and lanme not object id in dropdown
-            self.fields['provider'] = CustomModelChoiceField(g, empty_label="(Select a Provider)")
+            self.fields['provider'] = CustomModelChoiceField(providers, empty_label="(Select a Provider)")
             #sets value
             self.fields['patient'].initial = instance.patient
             # hides field

@@ -2,14 +2,243 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogsys/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogsys/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/blogsys/bloglog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/blogsys/bloglog_submit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/blogsys/Health_Coach.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/blogsys/dietitian.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/blogsys/provider.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users_acc/base2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Treeo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Treeo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/OldCode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/OldCode.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/DatabaseInfo/AzureSetupInfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/DatabaseInfo/AzureSetupInfo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/DatabaseInfo/mySQLtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/DatabaseInfo/mySQLtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/autocomp-app.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/autocomp-app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/aws_appt.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/aws_appt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/checkEmail.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/checkEmail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/checkUnPw" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/checkUnPw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/checkUnPw.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/checkUnPw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/databaseChanges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/databaseChanges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/helloworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/helloworld.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/messagingTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/messagingTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/mySQLtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/mySQLtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/pagingIdeas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/pagingIdeas.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/patientListPaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/patientListPaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/templates/approveTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/templates/approveTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/templates/pwVisTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/templates/pwVisTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/templates/testForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/templates/testForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/templates/testPg.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/templates/testPg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/testDates.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/testDates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/unassignedTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/unassignedTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/Extra Files/zoomtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/Extra Files/zoomtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/TODOs" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/TODOs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/apptest.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/apptest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/classFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/classFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.print.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/fullcalendar.print.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/cupertino/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/cupertino/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/jquery-ui.custom.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/jquery-ui.custom.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/moment.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/static/lib/moment.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/flaskcalendar/templates/json.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/flaskcalendar/templates/json.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/mySQL_adminDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/mySQL_adminDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/mySQL_apptDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/mySQL_apptDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/mySQL_userDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/mySQL_userDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/mySQLmessaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/mySQLmessaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/replyIdeas" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/replyIdeas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/fullcalendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/fullcalendar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/fullcalendar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/fullcalendar.print.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/fullcalendar.print.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/lib/cupertino/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/lib/cupertino/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/lib/jquery-ui.custom.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/lib/jquery-ui.custom.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/lib/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/lib/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/lib/moment.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/lib/moment.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/messageCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/messageCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/oldstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/oldstyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/accessDenied.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/accessDenied.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/adminHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/adminHome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/approveConfirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/approveConfirmation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/approvedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/approvedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/apptDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/apptDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/apptDetailDrOptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/apptDetailDrOptions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/assignCareTeam.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/assignCareTeam.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/autocTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/autocTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/careTeamDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/careTeamDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/checkUnPw.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/checkUnPw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/createAdminAcct.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/createAdminAcct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/create_mtg.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/create_mtg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/deleteConfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/deleteConfirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/editProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/editProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptyApprovedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptyApprovedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptyInbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptyInbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptySent.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptySent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptyTrash.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptyTrash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptyUnapprovedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptyUnapprovedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/emptyUnassignedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/emptyUnassignedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/firstPgSize.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/firstPgSize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/homePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/homePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/homePageDr.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/homePageDr.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/lastPgSize.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/lastPgSize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/messageHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/messageHome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/messageInbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/messageInbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/middlePgSize.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/middlePgSize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/msgInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/msgInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/msgInfoNoReply.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/msgInfoNoReply.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/newEmail.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/newEmail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/onlyPgSize.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/onlyPgSize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/ownAcctPg.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/ownAcctPg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/patientAcctDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/patientAcctDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/picture.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/picture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/providerAcctDetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/providerAcctDetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/providerDoesNotExist.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/providerDoesNotExist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/replyEmail.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/replyEmail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/searchPg.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/searchPg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/sentBox.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/sentBox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/trashBox.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/trashBox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/unapproveConfirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/unapproveConfirmation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/unapprovedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/unapprovedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/templates/unassignedList.html" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/templates/unassignedList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/test-insert.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/test-insert.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/testLogins.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/testLogins.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/testPwEncrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/testPwEncrypt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/testtable.json" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/testtable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OldCode/zoomtest_post.py" beforeDir="false" afterPath="$PROJECT_DIR$/OldCode/zoomtest_post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0002_auto_20210216_2008.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/email_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/email_info.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogsys/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogsys/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogsys/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogsys/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogsys/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogsys/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/migrations/0002_auto_20210216_2008.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/patient_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/fullcalendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/fullcalendar.print.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/fullcalendar.print.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/messageCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/messageCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/uploaded_files/A.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/DeleteConfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/DeleteConfirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Pending.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Pending.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/apt_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/apt_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/apt_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/apt_home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blogsys/bloglog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blogsys/bloglog_submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/bloglog_submit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patient_log/chart_View.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/chart_View.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog_submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog_submit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_download_Failed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_download_Failed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_upload_Compleate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_upload_Complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_upload_Complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedownload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedownload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload_download/fileupload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/fileupload.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/account_activation_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/account_activation_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/account_activation_invalid.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/account_activation_invalid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/account_activation_sent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/account_activation_sent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_remove.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/button.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/button.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home_admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home_provider.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/logout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/pass_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/pass_reset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/pass_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/pass_reset_complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/pass_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/pass_reset_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/pass_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/pass_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/register_provider.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/register_provider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/JS/fullcalendar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/JS/fullcalendar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/css/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/fullcalendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/css/fullcalendar.print.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/fullcalendar.print.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/css/messageCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/messageCss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/fix this lib/cupertino/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/fix this lib/cupertino/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/fix this lib/jquery-ui.custom.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/fix this lib/jquery-ui.custom.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/fix this lib/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/fix this lib/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/static/fix this lib/moment.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/fix this lib/moment.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/tokens.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +249,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,19 +271,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/blogsys" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/users_acc" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Aimse\Desktop\Treeo\templates\blogsys" />
-      <recent name="C:\Users\Aimse\Desktop\Treeo\blogsys" />
-      <recent name="C:\Users\Aimse\Desktop\Treeo\blogsys\migrations" />
+      <recent name="C:\Users\Aimse\Desktop\Treeo\templates\users_acc" />
+      <recent name="C:\Users\Aimse\Desktop\Treeo\templates" />
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\patient_log" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\users_acc" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\ReqAppt" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo" />
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\static" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -66,6 +301,16 @@
       <updated>1612636906859</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

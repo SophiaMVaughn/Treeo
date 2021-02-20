@@ -1,5 +1,19 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<h1>Welcome to Treeo!</h1>
-<!--<a href="{% url 'login' %}" class="btn btn-primary btn-large btn-block">Login</a>-->
-{% endblock content %}
+<div class="orange">
+    {% if user.user_type == None%}
+
+    {%else%}
+    {% if user.user_type == 1%}
+    <h1>Welcome to Treeo! Admin</h1>
+    <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign A Care Team </a>
+    {% endif %}
+    {% if user.user_type == 2%}
+    <h1>Welcome to Treeo! Provider</h1>
+    {% endif %}
+    {% if user.user_type == 3%}
+    <h1>Welcome to Treeo! Patient</h1>
+    {% endif %}
+    {% endif %}
+    {% endblock content %}
+</div>

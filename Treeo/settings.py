@@ -55,8 +55,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chartjs',
     'blogsys.apps.BlogsysConfig',
-
-
 ]
 
 MIDDLEWARE = [
@@ -95,8 +93,8 @@ WSGI_APPLICATION = 'Treeo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'appointment',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'treeohealthdb',
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on

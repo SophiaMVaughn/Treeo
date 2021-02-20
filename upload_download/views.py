@@ -93,7 +93,6 @@ def delete_file(request, id):
     if request.method == "POST":
         obj = get_object_or_404(Uploaded_File, id=id)
         obj.delete()
-        #find a way to actually delete the file in storage mabye a signal
         return redirect('upload_download_file_download')
     context = {'file': id}
     return render(request, "upload_download/filedeleteconfirm.html", context)

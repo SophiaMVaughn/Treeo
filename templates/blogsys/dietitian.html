@@ -1,0 +1,48 @@
+{% extends "users_acc/base2.html" %}
+{% block content %}
+<style>
+body {
+
+
+  margin-right: 1000px;
+}
+</style>
+<body>
+<h1>Dietitian!</h1>
+
+{% if messages %}
+{% for message in messages %}
+<h2 style="color:green;">{{message}}</h2>
+{% endfor %}
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
+
+
+</form>
+</body>
+
+<style>
+textfield {
+  resize: none;
+  background-color: white;
+  margin-left: 800px;
+  margin-top: 400px;
+
+}
+</style>
+
+
+<textfield id="texte" name="texte" rows="4" cols="50">
+
+</textfield>
+
+
+
+{% endblock content %}
+
+
+

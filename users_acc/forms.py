@@ -11,6 +11,7 @@ class CustomModelChoiceField(forms.ModelChoiceField):
 
 
 
+
 class PatientRegisterForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
@@ -76,35 +77,56 @@ class User_Update_Form(forms.ModelForm):
 #         model = Patient
 #         fields = ['username','email','first_name','last_name']
 
-
+class TestForm(forms.Form):
+    pass
 
 class AdminAssignForm(forms.Form):
-    patient = CustomModelChoiceField(queryset=(Patient.objects.filter(Q(doc_p=None)|Q(doc_d=None)|Q(doc_c=None))), empty_label="(Select a Patient)")
-    #now javascript for the selected field in patient if None in doc_ show this
-    # if patient.doc_p ==None:
-    #     doc_p = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)),empty_label="(Select a Physician)")
-    # if patient.doc_d == None:
-    #     doc_d = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2)), empty_label="(Select a Dietician)")
-    # if patient.doc_c == None:
-    #     doc_c = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)), empty_label="(Select a Coach)")
+    patient = CustomModelChoiceField(queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
 
-    # if not (instance.patient.doc_d == None and instance.patient.doc_p == None and instance.patient.doc_c == None):
-    #     g = Provider.objects.filter(Q(id=instance.patient.doc_d.id) | Q(id=instance.patient.doc_p.id) | Q(id=instance.patient.doc_c.id))
-    # else:
-    #     # make empty set so no error on look up of .id
-    #     g = Provider.objects.none()
-    # # this custom chice field retuns fname and lanme not object id in dropdown
-    # self.fields['provider'] = CustomModelChoiceField(g)
-
-
-    # class Meta:
-    #     model = Patient
-    #     fields = ['doc_p','doc_d','doc_c']
-    #     def save(self, commit=True):
-    #         user = super(PatientRegisterForm, self).save(commit=False)
-    #         user.doc_p = self.cleaned_data['doc_p'].id
-    #         user.doc_d = self.cleaned_data['doc_d'].id
-    #         user.doc_c = self.cleaned_data['doc_c'].id
-    #         if commit:
-    #             user.save()
-    #         return user
+class AdminProviderUpdateForm(forms.ModelForm):
+    # temp_id = forms.CharField()
+    def __init__(self, *args, **kwargs):
+        instance = kwargs.pop("instance")
+        # super(ApptRequestForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+        if instance.doc_d == None:
+            self.fields['doc_d'].required = False
+            self.fields['doc_d'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2)), empty_label="(Select a Dietician)")
+        else:
+            self.fields['doc_d'].initial = None
+            self.fields['doc_d'].widget = forms.HiddenInput()
+        if instance.doc_c == None:
+            self.fields['doc_c'].required = False
+            self.fields['doc_c'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)), empty_label="(Select a Coach)")
+        else:
+            self.fields['doc_c'].initial = None
+            self.fields['doc_c'].widget = forms.HiddenInput()
+        if instance.doc_p == None:
+            self.fields['doc_p'].required = False
+            self.fields['doc_p'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)), empty_label="(Select a Physician)")
+        else:
+            self.fields['doc_p'].initial = None
+            self.fields['doc_p'].widget = forms.HiddenInput()
+        # self.fields['temp_id'].initial = instance
+        # self.fields['temp_id'].widget = forms.HiddenInput()
+    class Meta:
+        model = Patient
+        fields = ['doc_d', 'doc_c', 'doc_p']
+#             self.fields['doc_p'].widget = forms.HiddenInput()
+#             # this custom chice field retuns fname and lanme not object id in dropdown
+#             self.fields['provider'] = CustomModelChoiceField(providers, empty_label="(Select a Provider)")
+#             # sets value
+#             self.fields['patient'].initial = instance.patient
+#             # hides field
+#             self.fields['patient'].widget = forms.HiddenInput()
+#         else:
+# doc_p = forms.ModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)), empty_label="(Select a Physician)")
+# doc_d = forms.ModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2)), empty_label="(Select a Dietician)")
+# doc_c = forms.ModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)), empty_label="(Select a Coach)")
+# if not (instance.patient.doc_d == None and instance.patient.doc_p == None and instance.patient.doc_c == None):
+#     g = Provider.objects.filter(Q(id=instance.patient.doc_d.id) | Q(id=instance.patient.doc_p.id) | Q(id=instance.patient.doc_c.id))
+# else:
+#     # make empty set so no error on look up of .id
+#     g = Provider.objects.none()
+# # this custom chice field retuns fname and lanme not object id in dropdown
+# self.fields['provider'] = CustomModelChoiceField(g)
