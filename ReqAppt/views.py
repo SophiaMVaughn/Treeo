@@ -93,7 +93,6 @@ def create_Appointment(request):
                 **form.cleaned_data, meetingDate=meetingDate
             )
             return render(request, 'ReqAppt/Pending.html')
-
     else:
         form = ApptRequestFormPatient(instance=request.user)
         return render(request,'ReqAppt/appointment.html', {"form": form})

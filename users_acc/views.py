@@ -57,6 +57,7 @@ def account_activation_sent(request):
     return render(request, 'users_acc/account_activation_sent.html')
 
 def activate(request, uidb64, token):
+    # Issue with yahoo emails, not all of the link is clickable when using yahoo email to signup. Only goes up to the first "(". Must copy and paste link instead.
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         print(uid)
@@ -78,7 +79,8 @@ def activate(request, uidb64, token):
         # m.msgbody = 'Welcome to Treeo'
         # m.save()
         login(request, user)
-        return redirect('home')
+        # return render(request, 'users_acc/account_activation_success.html')
+        return render(request, 'users_acc/account_activation_success.html')
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
 
@@ -384,13 +386,8 @@ def admin_remove_provider(request, id, id2):
     #     context['form'] = AdminAssignForm()
     # return render(request, "users_acc/admin_assign.html", context)
 
-
-
-
-
-
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'users_acc/home.html')
     else:
-        return render(request, 'users_acc/generic_home.html')
+        return redirect('login')
