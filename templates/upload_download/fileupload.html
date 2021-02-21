@@ -2,7 +2,8 @@
 {% block content %}
 <h1>File Upload</h1>
 <br>
-<form method="post" enctype="multipart/form-data" class="File">{% csrf_token %}
+<form method="post" enctype="multipart/form-data" class="File">
+    {% csrf_token %}
     <!-- <div class="button"> -->
         <input type="file" accept=".doc,.docx,.pdf" name="file" id="file" />
         <input type="submit" value="Upload File" /></p>

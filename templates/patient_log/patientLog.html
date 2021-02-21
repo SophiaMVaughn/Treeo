@@ -11,6 +11,8 @@
     <h2 style="color:green;">{{message}}</h2>
     {% endfor %}
     {% endif %}
+
+    {% if user.user_type == 3 %}
     <form method="POST">
         {% csrf_token %}
         <!-- {{ form.as_p }} -->
@@ -42,8 +44,6 @@
             </div>
         </div>
 
-
-
         <div class="row">
             <div class="col">
                 <div style="display:inline-block; text-align:right; margin-left:6px; padding-bottom:15px;">
@@ -52,5 +52,12 @@
             </div>
         </div>
     </form>
+
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+    {% endif %}
 </div>
 {% endblock content %}
