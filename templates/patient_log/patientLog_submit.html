@@ -9,6 +9,6 @@
 <p>
     <b>You have successfully submitted your log!</b>
 </p>
-<a  href="{% url 'log-chart' request.user.id%}"><div class="btn btn-2">View Chart</div></a>
+<a  href="{% url 'log-chart' request.user.patient.id%}"><div class="btn btn-2">View Chart</div></a>
 </div>
 {% endblock content %}
