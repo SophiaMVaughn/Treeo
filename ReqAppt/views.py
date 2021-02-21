@@ -1,6 +1,6 @@
 import calendar
 
-from ReqAppt.sms import send_message, approve_message
+
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
@@ -95,7 +95,7 @@ def create_Appointment(request):
             ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
-            send_message(apptDate, apptHour)
+            #send_message(apptDate, apptHour)
 
             return render(request, 'ReqAppt/Pending.html')
 
@@ -124,14 +124,14 @@ def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
-    approve_message()
+    #approve_message()
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
         appointment.delete()
-        reject_message()
+        #reject_message()
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
