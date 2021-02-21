@@ -151,5 +151,5 @@ STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
 
 LOGIN_REDIRECT_URL='home'
 LOGIN_URL='login'
-MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('uploaded_files')
+MEDIA_ROOT= (BASE_DIR.joinpath('static'))
 MEDIA_URL='media/'

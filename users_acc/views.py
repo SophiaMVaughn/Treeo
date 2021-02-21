@@ -144,10 +144,17 @@ def profile(request):
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        ep = User_Update_Form(request.POST, instance=request.user)
+        ep = User_Update_Form(request.POST, request.FILES, instance=request.user)
         if ep.is_valid():
+            # request.user.username = ep.cleaned_data.get("username")
+            # request.user.email = ep.cleaned_data.get("email")
+            # request.user.first_name = ep.cleaned_data.get("first_name")
+            # request.user.last_name = ep.cleaned_data.get("last_name")
+            # print(ep.cleaned_data.get("profile_pic"))
+            # request.user.profile_pic = ep.cleaned_data.get("profile_pic")
+            # request.user.save()
             ep.save()
-            messages.success(request, f'Edit good')
+            messages.success(request,'')
             return redirect('profile')
     else:
         ep = User_Update_Form(instance=request.user)
@@ -237,6 +244,7 @@ def admin_view(request):
                 patient = Patient.objects.get(id=request.POST['patient'])
             except Exception as e:
                 print(e)
+                return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
             else:
                 return redirect('admin_display_team', request.POST['patient'])
         else:
@@ -269,21 +277,32 @@ def admin_remove_provider(request, id, id2):
     return render(request, "users_acc/deleteconfirm.html", context)
 
 @login_required
-def admin_view(request):
-    if request.method == 'POST':
-        form = AdminAssignForm(request.POST)
-        if form.is_valid():
-            patient=Patient.objects.none()
-            try:
-                patient = Patient.objects.get(id=request.POST['patient'])
-            except Exception as e:
-                print(e)
-            else:
-                return redirect('admin_display_team', request.POST['patient'])
-        else:
-            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
+def admin_approve_provider_render(request):
+    temp=Provider.objects.filter().order_by('is_verified')
+    return render(request, "users_acc/admin_approve_provider.html", {'results': temp})
+
+@login_required
+def admin_approve_provider(request, id):
+    try:
+        temp = Provider.objects.get(id=id)
+    except Exception as e:
+        print(e)
+        return redirect("admin_approve_provider_render")
     else:
-        return render(request, "users_acc/admin_assign.html", {'form':AdminAssignForm()})
+        temp.is_verified=True
+        temp.save()
+    return redirect("admin_approve_provider_render")
+
+@login_required
+def admin_remove_provider(request, id):
+    try:
+        temp = Provider.objects.get(id=id)
+    except Exception as e:
+        print(e)
+    else:
+        temp.is_verified=False
+        temp.save()
+    return redirect("admin_approve_provider_render")
 
 # def render_privider_list(request,pat_obj):
 #     content = {}
@@ -410,4 +429,4 @@ def home(request):
     if request.user.is_authenticated:
         return render(request, 'users_acc/home.html')
     else:
-        return render(request, 'users_acc/generic_home.html')
+        return redirect('login')

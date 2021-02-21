@@ -1,6 +1,6 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<form method = "post">
+<form method = "post" enctype="multipart/form-data">
     {% csrf_token %}
     {{edit_profile.as_p}}
     <button type="submit" class="btn btn-primary btn-large btn-block">Edit Profile</button>

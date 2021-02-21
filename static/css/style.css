@@ -6,11 +6,16 @@
   outline: none;
 }
 
-
 body {
-  font-family: Arial;
+  /* font-family: Arial;
+  /* border: 20px solid black; */
+  /* background-color: #ddddf1; */
+  /* background-color: #ffffff; */
+  /* #ffc097 orange from before */
+  /* padding: 50px; */
   background-color:#ffc097;
-  padding: 50px;
+  padding: 50px; */
+  font-family: "Titillium Web", sans-serif;
 }
 .login {
   width: 300px;
@@ -20,42 +25,12 @@ body {
   display: inline;
   text-align: center;
 }
-.listwhitespace {
-  margin-top: 20px;
-  margin-left: 22%;
-  width: 300px;
-}
+
 .login-screen {
-  background-color: #ddddf1;
-  padding: 20px 0px 0px 0px;
+  /* background-color: #ddddf1;
+  padding: 20px 0px 0px 0px; */
   border-radius: 5px;
   min-width: 400px;
-}
-
-.app-title {
-  text-align: center;
-  color: #777;
-  padding-right: 200px;
-}
-
-.profile-box {
-  color: #777;
-}
-
-.profile-pic {
-  float: left;
-  border: 2px solid black;
-}
-
-.profile-username {
-  padding: 5px;
-  color: #777;
-
-  width: 200px;
-}
-
-.testWrapAbt p {
-  text-align: center;
 }
 
 .login-form {
@@ -67,29 +42,15 @@ body {
   margin-bottom: 10px;
 }
 
-.providerInputField {
-  margin-top: -200px;
-}
-
-.providerLinkImg * {
-  margin-left: 5px;
-  padding: 3px;
-  margin-top: 15px;
-}
-
-.control-group {
-  margin-bottom: 10px;
-}
-
 .error {
   color: red;
   text-align: center;
-  font-size: 12px;
+  font-size: 1.5em;
 }
 
-input[type=text] {
+input[type="text"] {
   text-align: center;
-  background-color:white;
+  background-color: white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -97,12 +58,12 @@ input[type=text] {
   padding: 10px 0;
   width: 250px;
   transition: border 0.5s;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-input[type=password] {
+input[type="password"] {
   text-align: center;
-  background-color:white;
+  background-color: white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -110,12 +71,59 @@ input[type=password] {
   padding: 10px 0;
   width: 250px;
   transition: border 0.5s;
-  box-sizing:border-box;
+  box-sizing: border-box;
+}
+
+input[type="email"] {
+  text-align: center;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing: border-box;
+}
+
+input[type="number"] {
+  text-align: center;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+
+select {
+  text-align: center;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .id_username {
   text-align: center;
-  background-color:white;
+  background-color: white;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -138,7 +146,7 @@ input:focus {
 }
 #navwrapper nav a {
   text-decoration: none;
-  border:2px solid #C5C6C7;
+  border: 2px solid #c5c6c7;
   padding: 3px;
   color: white;
   /* border: white solid 1px; */
@@ -150,7 +158,6 @@ input:focus {
 #navwrapper nav a:hover {
   transition: 0.25s;
   background: #3498db;
-
 }
 
 /* #navwrapper nav a:visited {
@@ -168,13 +175,12 @@ input:focus {
 .navwrapper nav a {
   text-decoration: none;
   /*border:2px solid #C5C6C7;*/
-  /* padding: 3px;
+/* padding: 3px;
   color: white;
 } */
 
 .navwrapper nav a:hover {
   color: white;
-
 }
 
 /* .navwrapper nav a:visited {
@@ -201,7 +207,7 @@ input:focus {
   max-width: auto;
   /* box-shadow: 5px 5px #828282; */
   background-image: none;
-  background-color:#ddddf1;
+  background-color: #ddddf1;
   width: 100%;
   height: 100%;
   margin-right: auto;
@@ -241,14 +247,13 @@ input:focus {
   text-align: center;
   align-self: center;
   display: inline;
-  margin: 2px auto
+  margin: 2px auto;
 }
 
 .button {
-  margin-left: 79px;
+  /* margin-left: 79px; */
   display: grid;
   align-self: center;
-
 }
 
 .autocomplete-suggestions {
@@ -300,89 +305,1089 @@ input:focus {
 
 .table {
   vertical-align: center;
-  
+  border-color: #000000;
 }
+
+.message {
+  text-align: center;
+}
+
+.rectangle {
+  position: absolute;
+  width: 799px;
+  height: 966px;
+  left: -39px;
+  top: 0px;
+  /* top: 56px; */
+
+  background: #f99f71;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
+
+.treeoLogo {
+  background: url("../img/TreeoLogo.png") no-repeat;
+  background-size: 473px 461px;
+  position: absolute;
+  width: 444px;
+  height: 500px;
+  left: 125px;
+  top: 97px;
+}
+
+.twitter {
+  background: url("../img/TwitterLogo.png");
+  background-size: 177px 162px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 125px;
+  top: 630px;
+}
+
+.instagram {
+  background: url("../img/InstagramLogo.png");
+  background-size: 133px 125px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 250px;
+  top: 651px;
+}
+.facebook {
+  background: url("../img/FacebookLogo.png");
+  background-size: 133px 125px;
+  position: absolute;
+  width: 141px;
+  height: 118px;
+  left: 350px;
+  top: 651px;
+}
+
+.textOne {
+  position: absolute;
+  width: 473px;
+  height: 157px;
+  left: 170px;
+  top: 441px;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 72px;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.textTwo {
+  position: absolute;
+  width: 452px;
+  height: 40px;
+  left: 868px;
+  top: 255px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 62px;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.textTwo span {
+  font-weight: bold;
+}
+
+.textThree {
+  position: absolute;
+  width: 452px;
+  height: 40px;
+  left: 868px;
+  /* top: 255px; temp until can put placeholder in username and password*/
+  top: 525px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 62px;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.username {
+  position: absolute;
+  width: 481px;
+  height: 107px;
+  left: 851px;
+  top: 390px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.usernameInput {
+  position: absolute;
+  width: 374px;
+  height: 38px;
+  left: 34px;
+  /* top: 431px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.usernameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 414px;
+  height: 105px;
+}
+
+.usernameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.password {
+  position: absolute;
+  width: 481px;
+  height: 107px;
+  left: 851px;
+  top: 600px;
+  /* top: 545px; temp until can put placeholder text in username and password */
+
+  background: #ffffff;
+  border: 4px solid #faa172;
+  border-radius: 100px;
+}
+
+.passwordInput {
+  position: absolute;
+  width: 374px;
+  height: 38px;
+  left: 34px;
+  /* top: 431px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.passwordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 414px;
+  height: 98px;
+}
+
+.passwordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.loginButton {
+  position: absolute;
+  width: 112px;
+  height: 97px;
+  left: 931px;
+  top: 745px;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.loginButton .btn {
+  width: 334px;
+  margin: 7px auto;
+  background: #faa172;
+}
+
+.registerButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  top: 822px;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.registerButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.passResetButton {
+  position: absolute;
+  width: 224px;
+  height: 103px;
+  left: 852px;
+  top: 700px;
+}
+
+.passResetButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 224px;
+  height: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.confirmResetButton {
+  position: absolute;
+  width: 198px;
+  height: 103px;
+  left: 900px;
+  top: 615px;
+}
+
+.confirmResetButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 168px;
+  height: 86px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.orange {
+  background-color: #f99f71;
+  min-height: 1080px;
+  padding-top: 5px;
+}
+
+.orange .treeoLogo {
+  background: url("../img/TreeoLogo.png") no-repeat;
+  background-size: 473px 461px;
+  position: absolute;
+  width: 444px;
+  height: 281px;
+  left: 1376px;
+  top: -86px;
+}
+
+.white {
+  background-color: #ffffff;
+  max-height: 1080px;
+  position: absolute;
+}
+
+.signup {
+  position: absolute;
+  width: 422px;
+  height: 157px;
+  left: 190px;
+  top: 191px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 115px;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+}
+
+.fname {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 256px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.fnameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 234px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.fnameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.fnameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.fnameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.lname {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 808px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.lnameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 783px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.lnameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.lnameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.lnameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.email {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 1326px;
+  top: 364px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.emailBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 1332px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+
+
+.emailBoxReset {
+  position: absolute;
+  width: 446px;
+  height: 107px;
+  left: 747px;
+  top: 435px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.emailBoxInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.emailBoxInput input[type="email"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 406px;
+  height: 97px;
+}
+
+.emailBoxInput input[type="email"]:focus {
+  border: 2px solid transparent;
+}
+/*#ui-datepicker-div {*/
+/*  background: white;*/
+/*}*/
+
+/*.ui-datepicker-prev {*/
+/*  margin-right: 70px;*/
+/*}*/
+
+/*.ui-datepicker-calendar a {*/
+/*  margin-right: 5px;*/
+/*}*/
+
+.calendar-patient.confirmed {
+  color: green;
+}
+
+.calendar-patient.pending {
+  color: red;
+}
+
+/*Datepicker stuff*/
+
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700italic,700,400italic);
+
+.registerUsername {
+  position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 256px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerUsernameBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 234px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerUsernameInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerUsernameInput input[type="text"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerUsernameInput input[type="text"]:focus {
+  border: 2px solid transparent;
+}
+
+.registerPasswordOne {
+  position: absolute;
+  width: 167px;
+  height: 40px;
+  left: 808px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerPasswordOneBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 783px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerPasswordOneInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerPasswordOneInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerPasswordOneInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.registerPasswordTwo {
+  position: absolute;
+  width: 333px;
+  height: 40px;
+  left: 1326px;
+  top: 600px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerPasswordTwoBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 1332px;
+  top: 670px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerPasswordTwoInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerPasswordTwoInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 293px;
+  height: 97px;
+}
+
+.registerPasswordTwoInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.verification {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 155px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.emailClick {
+  background: url("../img/EmailClick.png") no-repeat;
+  background-size: 379px 361px;
+  position: absolute;
+  width: 379px;
+  height: 420px;
+  left: 786px;
+  top: 250px;
+}
+
+.almostDone {
+  position: absolute;
+  width: 700px;
+  height: 40px;
+  left: 635px;
+  top: 647px;
+  font-style: normal;
+  /* font-weight: bold; */
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #faa172;
+}
+
+.almostDone span {
+  font-weight: bold;
+}
+
+.theT {
+  background: url("../img/T.png") no-repeat;
+  background-size: 217px 209px;
+  position: absolute;
+  width: 238px;
+  height: 184px;
+  left: 1677px;
+  top: 744px;
+}
+
+.checkmark {
+  background: url("../img/Checkmark.png") no-repeat;
+  background-size: 379px 361px;
+  position: absolute;
+  width: 379px;
+  height: 420px;
+  left: 786px;
+  top: 250px;
+}
+
+.resetPassword {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 155px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.stepOne {
+  position: absolute;
+  width: 657px;
+  height: 60px;
+  left: 641px;
+  top: 321px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 173%;
+
+  /* or 83px */
+  letter-spacing: 0.015em;
+
+  color: #faa172;
+}
+
+.emailSent {
+  position: absolute;
+  width: 813px;
+  height: 86px;
+  left: 592px;
+  top: 461px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.emailSent span {
+  font-weight: bold;
+}
+
+.resetPasswordTwo {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 522px;
+  top: 115px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.stepThree {
+  position: absolute;
+  width: 657px;
+  height: 60px;
+  left: 641px;
+  top: 237px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 173%;
+  /* or 83px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newPassword {
+  position: absolute;
+  width: 319px;
+  height: 40px;
+  left: 700px;
+  top: 314px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newPasswordBox {
+  position: absolute;
+  width: 465px;
+  height: 107px;
+  left: 737px;
+  top: 370px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.newPasswordInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.newPasswordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 430px;
+  height: 97px;
+}
+
+.newPasswordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.confirmPassword {
+  position: absolute;
+  width: 319px;
+  height: 40px;
+  left: 720px;
+  top: 500px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.confirmPasswordBox {
+  position: absolute;
+  width: 465px;
+  height: 107px;
+  left: 737px;
+  top: 561px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.confirmPasswordInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.confirmPasswordInput input[type="password"] {
+  border-radius: 22px;
+  font-size: 24px;
+  padding: 0px 0px;
+  width: 430px;
+  height: 97px;
+}
+
+.confirmPasswordInput input[type="password"]:focus {
+  border: 2px solid transparent;
+}
+
+.successReset {
+  position: absolute;
+  width: 907px;
+  height: 157px;
+  left: 540px;
+  top: 242px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+  color: #faa172;
+}
+
+.passwordSaved {
+  position: absolute;
+  width: 813px;
+  height: 86px;
+  left: 592px;
+  top: 461px;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 43px;
+  text-align: center;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.passwordSaved span {
+  font-weight: 800;
+}
+
+/*This was added by Gio*/
+/* .calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
+
+#ui-datepicker-div {
+  background: white;
+}
+
+.ui-datepicker-prev {
+  margin-right: 70px;
+}
+
+.ui-datepicker-calendar a {
+  margin-right: 5px;
+}
+
+.calendar-patient.confirmed {
+  color: green;
+}
+
+.calendar-patient.pending {
+  color: red;
+} */
 
 /*------------*/
 .calendar {
-    width: 98%;
-    margin: auto;
-    font-size: 13px;
-  }
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
 
-  .calendar tr, .calendar td {
-    border: 1px solid black;
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
 
-  }
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
 
-  .calendar th {
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-  }
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
 
-  .calendar td {
-    width: 200px;
-    height: 150px;
-    padding: 20px 0px 0px 5px;
-  }
+.month {
+  font-size: 25px;
+}
 
-  .month {
-    font-size: 25px;
-  }
+.date {
+  font-size: 16px;
+}
 
-  .date {
-    font-size: 16px;
-  }
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
 
-  ul {
-    height: 100%;
-    padding: 0px 5px 0px 20px;
-  }
+a {
+  color: #17a2b8;
+}
 
-  a {
-    color: #17a2b8;
-  }
+.left {
+  float: left;
+}
 
-  .left {
-    float: left;
-  }
+.right {
+  float: right;
+}
 
-  .right {
-    float: right;
-  }
-
-  .btn {
-    outline: none;
-    color: black;
-    background-color: transparent;
-    box-shadow: 0 0 0 0;
-  }
-
-  /*#ui-datepicker-div {*/
-  /*  background: white;*/
-  /*}*/
-
-  /*.ui-datepicker-prev {*/
-  /*  margin-right: 70px;*/
-  /*}*/
-
-  /*.ui-datepicker-calendar a {*/
-  /*  margin-right: 5px;*/
-  /*}*/
-
-  .calendar-patient.confirmed {
-    color: green;
-  }
-
-  .calendar-patient.pending {
-    color: red;
-  }
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
 
 
-  /*Datepicker stuff*/
 
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700italic,700,400italic);
 
 .ui-widget-content,
 .ui-widget-content,
@@ -396,7 +1401,7 @@ input:focus {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default,
 .ui-state-default {
-  background: #484848 url('none');
+  background: #484848 url("none");
 }
 
 .ui-datepicker-inline {
@@ -411,7 +1416,8 @@ input:focus {
   padding: 1.2em 0;
 }
 
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
   top: 23px;
 }
 
@@ -456,7 +1462,6 @@ a.ui-state-default,
 }
 
 /*Style #2 for datepicker*/
-
 
 /*body {*/
 /*  background: #fdfcf9;*/
