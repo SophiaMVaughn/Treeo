@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': '#GGnorem8',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
@@ -146,5 +146,5 @@ STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
 
 LOGIN_REDIRECT_URL='home'
 LOGIN_URL='login'
-MEDIA_ROOT= (BASE_DIR.joinpath('static')).joinpath('uploaded_files')
+MEDIA_ROOT= (BASE_DIR.joinpath('static'))
 MEDIA_URL='media/'

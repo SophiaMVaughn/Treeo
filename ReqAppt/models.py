@@ -11,7 +11,7 @@ class ApptTable(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
     meetingDate = models.DateTimeField()
     status = models.BooleanField(default=False)
-    #meeturl=models.URLField(null=True)
+    meeturl=models.URLField(null=True)
 
 
 

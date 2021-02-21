@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient_log/chart_View.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/chart_View.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/file_upload_Failed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedeleteconfirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/upload_download/filedownload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/filedownload.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/static/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +40,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/patient_log" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/users_acc" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\patient_log" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\users_acc" />
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\patient_log" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\templates\ReqAppt" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\ReqAppt\migrations" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\ReqAppt\templates\ReqAppt" />
