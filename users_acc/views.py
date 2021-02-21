@@ -393,4 +393,4 @@ def home(request):
     if request.user.is_authenticated:
         return render(request, 'users_acc/home.html')
     else:
-        return render(request, 'users_acc/generic_home.html')
+        return redirect('login')
