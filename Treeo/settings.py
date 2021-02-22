@@ -37,6 +37,7 @@ EMAIL_PORT = EMAIL_PORT
 # Application definition
 
 INSTALLED_APPS = [
+    'apptArchive.apps.ApptarchiveConfig',
     'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': '#GGnorem8',
+        'PASSWORD': 'M!ddle1*',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',

@@ -26,7 +26,7 @@ class User(AbstractUser):
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES,default=3)
     is_staff = models.BooleanField(default=False)
     is_email_confirmed = models.BooleanField(default=False)
-    phone_no = models.CharField(max_length = 10, default=None, null=True, blank=True)
+    phone_no = models.CharField(max_length = 10, null=True, blank=True)
     profile_pic = models.ImageField(default='img/profile.png', upload_to='profile_pictures')
     def save(self, *args, **kwargs):
         # this is using a pillow package might be resource heavy on server side alternatives???

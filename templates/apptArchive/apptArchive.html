@@ -1,0 +1,26 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+<div class="container">
+  <div class="first">
+    <div class="heading">
+      <h2 >Archived Appointments</h2>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Doctor Name</th>
+          <th>Patient Name</th>
+          <th>Date and Time</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      {% for i in apptArchive %}
+      <tr>
+        <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
+          <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
+          <td>{{i.meetingDate}}</td>
+      <tr>
+      {%endfor%}
+
+
+{% endblock content %}

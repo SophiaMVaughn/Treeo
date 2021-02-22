@@ -158,7 +158,19 @@ def Doctor_avail_view(request, id, date_str):
 
     return JsonResponse(data, safe=False)
 
-
+def archive_apt(id):
+    #id as object of appointment
+    try:
+        archiveAppt = ApptArchive.objects.create()
+        archiveAppt.meetingDate = id.meetingDate
+        archiveAppt.provider = id.provider
+        archiveAppt.meetingDate = i.meetingDate
+        #more atributes moved to archive
+        archiveAppt.save()
+        id.delete()
+    except Exception as e:
+        print(e)
+        pass
 
 
 
