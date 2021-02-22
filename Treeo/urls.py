@@ -26,5 +26,7 @@ urlpatterns = [
     path('', include('users_acc.urls')),
     path('patient_log/', include('patient_log.urls')),
     path('messaging/', include('messaging.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) is for debug only for prodution consult documentation for deploying static files

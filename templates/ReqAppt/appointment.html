@@ -3,6 +3,7 @@
 
 
 <div>
+
     <form action="{% url 'create_Appointment' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -24,9 +25,19 @@
 <script>
 
 
-      $( function() {
-        $("#datepicker").datepicker();
-      } );
+
+      // $( function() {
+      //   $("#datepicker").datepicker({
+      //   });
+      // } );
+      //
+      // $(function() {
+      //   $( "#datepicker" ).datepicker();
+      //       });
+      //
+      $(function() {
+         $( "#datepicker" ).datepicker({ firstDay: 1, minDate: 0 });
+        });
 
 
       const loadTimeSlots = (data) => {

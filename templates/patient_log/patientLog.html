@@ -1,19 +1,64 @@
 {% extends "patient_log/patient_log_base.html" %}
 {% block content %}
-{% if user.user_type == 3%}
-<h1>Patient Data Log</h1>
-{% else %}
-<h1>View a Patient's Data Log</h1>
-{% endif %}
-{% if messages %}
-{% for message in messages %}
-<h2 style="color:green;">{{message}}</h2>
-{% endfor %}
-{% endif %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
-</form>
+<div class="orange">
+    {% if user.user_type == 3%}
+    <h1>Patient Data Log</h1>
+    {% else %}
+    <h1>View a Patient's Data Log</h1>
+    {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <h2 style="color:green;">{{message}}</h2>
+    {% endfor %}
+    {% endif %}
 
+    {% if user.user_type == 3 %}
+    <form method="POST">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
+                    <b> {{form.calories.label_tag}} </b>
+                    {{form.calories}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:77px; padding-bottom:15px;">
+                    <b> {{form.water.label_tag}} </b>
+                    {{form.water}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:244px; padding-bottom:15px;">
+                    <b> {{form.blood.label_tag}} </b>
+                    {{form.blood}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; margin-left:6px; padding-bottom:15px;">
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% else %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+    </form>
+    {% endif %}
+</div>
 {% endblock content %}

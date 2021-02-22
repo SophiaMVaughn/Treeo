@@ -1,6 +1,6 @@
 import calendar
 
-from ReqAppt.sms import send_message, approve_message
+
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
@@ -118,6 +118,8 @@ def Admin_view(request):
 
 def Patient_view(request):
     x = ApptTable.objects.filter(patient=request.user.patient.id).order_by('meetingDate')
+    for i in x:
+        print(i.meetingDate)
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
 
 def approve(request,id):

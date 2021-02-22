@@ -61,19 +61,28 @@ def pie_chart(request,id):
         temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('calories')).values())
         if None not in temp:
             data += temp
+        else:
+            data += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('water')).values())
         if None not in temp:
             data2 += temp
+        else:
+            data2 += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('blood')).values())
         if None not in temp:
             data3 += temp
-    print(data,data2, data3)
+        else:
+            data3 += ['NaN']
     for i,val in enumerate(data):
-        data[i] = float(val)
+        if data3[i] != 'NaN':
+            data[i] = float(val)
     for i,val in enumerate(data2):
-        data2[i] = float(val)
+        if data3[i] != 'NaN':
+            data2[i] = float(val)
     for i,val in enumerate(data3):
-        data3[i] = float(val)
+        if data3[i] != 'NaN':
+            data3[i] = float(val)
+    print(data, data2, data3)
     return render(request, 'patient_log/chart_View.html', {
         'labels': labels,
         'data': data,
