@@ -164,7 +164,7 @@ def archive_apt(id):
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = id.meetingDate
         archiveAppt.provider = id.provider
-        archiveAppt.meetingDate = i.meetingDate
+        archiveAppt.patient = id.patient
         #more atributes moved to archive
         archiveAppt.save()
         id.delete()
