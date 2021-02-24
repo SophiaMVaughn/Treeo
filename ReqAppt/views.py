@@ -76,6 +76,7 @@ def create_Appointment(request):
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
             form = ApptRequestFormPatient(instance=request.user)
+            #return some error message
             return render(request, 'ReqAppt/appointment.html', {"form": form})
             #return HttpResponseBadRequest()
         else:
@@ -92,10 +93,12 @@ def create_Appointment(request):
             # ApptTable.objects.create(
             #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
             # )
-            ApptTable.objects.create(
+            g=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
             send_message(apptDate, apptHour)
+            # who are you sending this too? patient
+            scheduled_mail_both(g)
 
             return render(request, 'ReqAppt/Pending.html')
 
@@ -103,6 +106,7 @@ def create_Appointment(request):
         form = ApptRequestFormPatient(instance=request.user)
         return render(request,'ReqAppt/appointment.html', {"form": form})
         #provider = form.cleaned_data.get('user_defined_code')
+
 
 
 def Doctor_view(request):
@@ -127,13 +131,17 @@ def approve(request,id):
     appointment.status=True
     appointment.save()
     approve_message()
+    approved_mail_both(appointment)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
+
+
         appointment.delete()
         reject_message()
+        delete_mail_both(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
