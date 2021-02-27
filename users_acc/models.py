@@ -25,7 +25,7 @@ class User(AbstractUser):
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES,default=3)
     is_staff = models.BooleanField(default=False)
     is_email_confirmed = models.BooleanField(default=False)
-    # phone_no = models.CharField(max_length = 10)
+    phone_no = models.CharField(max_length = 10, default='')
     # profile_pic = models.ImageField(default=profile.png, upload_to='profile_pictures')
     #objects = CustomUserManager()
 # #   REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
@@ -33,6 +33,7 @@ class User(AbstractUser):
 #acess via
 # provider.user.last_name.
 # user.related profile name.Patient_count
+#patientobj.doc_d.user.last_name
 
 
 class Admin(models.Model):
