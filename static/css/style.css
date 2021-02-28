@@ -659,6 +659,12 @@ input:focus {
   position: absolute;
 }
 
+.whiteAppointments {
+  background-color: #ffffff;
+  min-height: 1080px;
+  padding-top: 5px;
+}
+
 .signup {
   position: absolute;
   width: 422px;
@@ -1626,7 +1632,7 @@ input:focus {
   position: absolute;
   width: 351px;
   height: 76px;
-  left: 387px;
+  left: 340px;
   top: 121px;
   font-style: normal;
   font-weight: 600;
@@ -1724,7 +1730,6 @@ input:focus {
   color: #faa172;
 }
 
-
 .deleteConfirmButtonAppointment {
   position: absolute;
   width: 196px;
@@ -1783,6 +1788,151 @@ input:focus {
   color: #faa172;
 }
 
+.appointmentBox {
+  position: absolute;
+  width: 1038px;
+  height: 593px;
+  left: 437px;
+  top: 116px;
+}
+
+.appointmentTableHeaders {
+  position: absolute;
+  width: 1038px;
+  height: 36px;
+  left: 125px;
+  /* top: 388px; */
+  display: inline;
+}
+
+.datetime {
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.provider {
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  left: 355px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.status {
+  position: absolute;
+  width: 185px;
+  height: 24px;
+  left: 658px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.appointmentTable {
+  position: absolute;
+  width: 1038px;
+  height: 593px;
+  left: 45px;
+  top: 30px;
+}
+
+.appointmentContainer {
+  position: absolute;
+  width: 990px;
+  height: 128px;
+  /* left: 288px; */
+  /* top: 424px; */
+
+  background: #fff;
+  border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px;
+}
+
+.appointmentBubbleDateTime {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 30px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
+
+.with {
+  position: absolute;
+  width: 33px;
+  height: 40px;
+  left: 301px;
+  top: 49px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #676464;
+}
+
+.appointmentBubbleProvider {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 376px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
+
+.appointmentBubbleStatus {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 721px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
 
 /*This was added by Gio*/
 /* .calendar {
@@ -1982,7 +2132,10 @@ a {
   cursor: pointer;
 }
 
-#ui-datepicker-div .ui-datepicker-calendar .ui-datepicker-days-cell-over  .ui-datepicker-today {
+#ui-datepicker-div
+  .ui-datepicker-calendar
+  .ui-datepicker-days-cell-over
+  .ui-datepicker-today {
   padding: 0px;
 }
 
@@ -2026,7 +2179,7 @@ a.ui-state-default,
 .ui-widget-header .ui-state-highlight {
   background-color: yellow;
   color: black !important;
-  padding: 15px;
+  /* padding: 15px; */
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
 }
