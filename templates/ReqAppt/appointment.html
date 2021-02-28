@@ -1,5 +1,19 @@
 {% extends "ReqAppt/apt_base.html" %}
 {% block content %}
+<!-- <div class="orange">
+    <form action="{% url 'create_Appointment' %}" method="post">
+        {% csrf_token %}
+        <div class="appointment">
+            <b>{{ form.as_p }}</b>
+            <p>Date: <input name="apptDate" type="text" id="datepicker" required></p>
+            <p id='hour'> Hour: <select name="apptHour" id="timeslots" required></p>
+        </div>
+        <div class="button editProfileButton">
+            <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
+        </div>
+    </form>
+</div> -->
+
 <div class="orange">
     <h1>Schedule an Appointment</h1>
     <form action="{% url 'create_Appointment' %}" method="post">

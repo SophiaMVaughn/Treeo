@@ -659,6 +659,12 @@ input:focus {
   position: absolute;
 }
 
+.whiteAppointments {
+  background-color: #ffffff;
+  min-height: 1080px;
+  padding-top: 5px;
+}
+
 .signup {
   position: absolute;
   width: 422px;
@@ -1796,6 +1802,508 @@ input:focus {
   border: 1px solid black;
 }
 
+.editProfileButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 331px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.editProfileButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.editProfileButtonConfirm {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 360px;
+  top: 316px;
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.editProfileButtonConfirm .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newProfilePic {
+  position: absolute;
+  left: 288px;
+  text-align: end;
+  max-width: 530px;
+}
+
+.deleteConfirmButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.deleteConfirmButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.assignCareTeamButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.assignCareTeamButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.fileUploadCompleteButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.fileUploadCompleteButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.adminButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  top: 715px; /*  temp until can put placeholder in username and password */
+}
+
+.adminButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.assignProvidersButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  top: 715px;
+}
+
+.assignProvidersButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.btn:active {
+  transform: translateY(4px);
+}
+
+.welcome {
+  position: absolute;
+  width: 351px;
+  height: 76px;
+  left: 340px;
+  top: 121px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 90px;
+  line-height: 108px;
+  letter-spacing: 0.01em;
+
+  color: #fac372;
+}
+
+.profileBorder {
+  position: absolute;
+  width: 389px;
+  height: 246px;
+  left: 367px;
+  top: 317px;
+
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+}
+
+.profileName {
+  position: absolute;
+  width: 377px;
+  height: 49px;
+  /* left: 451px; */
+  top: 104px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 58px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.profileDateJoined {
+  position: absolute;
+  width: 373px;
+  height: 49px;
+  /* left: 451px; */
+  top: 162px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.profilePic {
+  position: absolute;
+  width: 172px;
+  height: 172px;
+  top: -75px;
+  left: 85px;
+}
+
+.white .theT {
+  width: 226px;
+  top: 723px;
+}
+
+.approve span {
+  font-size: 30px;
+}
+
+.appointment {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 197px;
+  text-align: right;
+}
+
+.makeAppointmentButton {
+  position: absolute;
+  width: 169px;
+  height: 52px;
+  left: 672px;
+  top: 207px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.deleteConfirmButtonAppointment {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.deleteConfirmButtonAppointment .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.patientLog {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 197px;
+  text-align: right;
+}
+
+.patientLogButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 635px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.patientLogButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.appointmentBox {
+  position: absolute;
+  width: 1038px;
+  height: 593px;
+  left: 437px;
+  top: 116px;
+}
+
+.appointmentTableHeaders {
+  position: absolute;
+  width: 1038px;
+  height: 36px;
+  left: 125px;
+  /* top: 388px; */
+  display: inline;
+}
+
+.datetime {
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.provider {
+  position: absolute;
+  width: 76px;
+  height: 24px;
+  left: 355px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.status {
+  position: absolute;
+  width: 185px;
+  height: 24px;
+  left: 658px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.appointmentTable {
+  position: absolute;
+  width: 1038px;
+  height: 593px;
+  left: 45px;
+  top: 30px;
+}
+
+.appointmentContainer {
+  position: absolute;
+  width: 990px;
+  height: 128px;
+  /* left: 288px; */
+  /* top: 424px; */
+
+  background: #fff;
+  border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px;
+}
+
+.appointmentBubbleDateTime {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 30px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
+
+.with {
+  position: absolute;
+  width: 33px;
+  height: 40px;
+  left: 301px;
+  top: 49px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #676464;
+}
+
+.appointmentBubbleProvider {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 376px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
+
+.appointmentBubbleStatus {
+  position: absolute;
+  width: 229px;
+  height: 60px;
+  left: 721px;
+  top: 31px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+}
+
+/*This was added by Gio*/
+/* .calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
 .calendar th {
   padding: 10px;
   text-align: center;
@@ -1982,7 +2490,10 @@ a {
   cursor: pointer;
 }
 
-#ui-datepicker-div .ui-datepicker-calendar .ui-datepicker-days-cell-over  .ui-datepicker-today {
+#ui-datepicker-div
+  .ui-datepicker-calendar
+  .ui-datepicker-days-cell-over
+  .ui-datepicker-today {
   padding: 0px;
 }
 
@@ -2026,7 +2537,7 @@ a.ui-state-default,
 .ui-widget-header .ui-state-highlight {
   background-color: yellow;
   color: black !important;
-  padding: 15px;
+  /* padding: 15px; */
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
 }
