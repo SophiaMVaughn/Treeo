@@ -1,0 +1,61 @@
+{% extends "users_acc/DrMessageViewBase.html" %}
+{% block content %}
+<style>
+body {
+   left: 450px;
+  position: absolute;
+}
+html {
+  text-align: center;
+}
+</style>
+
+<body>
+<h1>Patient 6!</h1>
+<p>Name: {{ q.user.first_name}} {{ q.user.last_name}}</p>
+{% if messages %}
+{% for message in messages %}
+<h2 style="color:green;">{{message}}</h2>
+{% endfor %}
+{% endif %}
+<style type="text/css">
+	.table{
+		width:100%;
+		border-collapse:collapse;
+	}
+	.table td{
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	.table tr{
+		background: #b8d1f3;
+	}
+</style>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block" />
+</form>
+</body>
+<div>
+<table class="table">
+      <thead>
+        <tr>
+             <th>Sent By</th>
+          <th>Messages</th>
+            <th>Time</th>
+        </tr>
+      </thead>
+      {% for a in PostQ %}
+      <tr>
+          <td>{{a.TheActualsender}}</td>
+           <td>{{a.Message}}</td>
+           <td>{{a.meetingDate}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}
+
+

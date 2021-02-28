@@ -14,47 +14,46 @@
 
 <body>
 	<div id="container">
-		<div class="orange" style="padding-top: 0px;">
-			<!-- <div id="navwrapper"> -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav ">
-						<a class="nav-link" href="{% url 'home' %}">Home</a>
-						<a class="nav-link" href="{% url 'reqAppt_calendar' %}">Appointments Calendar</a>
-						{% if user.user_type == 1%}
-						<a class="nav-link" href="{% url 'reqAppt' %}">Search Appointments</a>
-						{% else %}
-						<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
-						{% endif %}
-						<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
-						<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
-						<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
-						{% if user.user_type == 1%}
-						{% else %}
-						<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
-						{% endif %}
-						<!--	<a href="{% url 'register' %}">Inbox</a>-->
-						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-					</div>
-				</div>
-			</nav>
-			<!-- </div> -->
-			<div class="login">
-				<div class="login-screen">
-					<!-- <div class="login-screen"> -->
-					<div class="app-title">
-					</div>
-					{% if messages%}
-					{%for message in messages%}
-					<div>{{message.tags}}</div>
-					{{message}}
-					{% endfor %}
+		<!-- <div id="navwrapper"> -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav ">
+					<a class="nav-link" href="{% url 'home' %}">Home</a>
+					<a class="nav-link" href="{% url 'reqAppt_calendar' %}">Appointments Calendar</a>
+					{% if user.user_type == 1%}
+					<a class="nav-link" href="{% url 'reqAppt' %}">Search Appointments</a>
+					{% else %}
+					<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
 					{% endif %}
-					{% block content %}
-					{% endblock %}
+					<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
+					<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
+					<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
+					{% if user.user_type == 1%}
+					{% else %}
+					<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
+					{% endif %}
+					<!--	<a href="{% url 'register' %}">Inbox</a>-->
+					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 				</div>
 			</div>
+		</nav>
+		<!-- </div> -->
+		<div class="login">
+			<div class="login-screen">
+				<!-- <div class="login-screen"> -->
+				<div class="app-title">
+				</div>
+				{% if messages%}
+				{%for message in messages%}
+				<div>{{message.tags}}</div>
+				{{message}}
+				{% endfor %}
+				{% endif %}
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
+
 	</div>
 </body>
 
