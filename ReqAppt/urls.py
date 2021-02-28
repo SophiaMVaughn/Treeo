@@ -13,4 +13,5 @@ urlpatterns = [
     path('Pending', views.Pending, name='reqAppt_Pending'),
     path('delete/<id>', views.Destroy, name='reqAppt_delete'),
     path('approveappt/<id>', views.approve, name='approve_appt'),
+    path('archive/<id>', views.archive_apt, name='archive'),
 ]

@@ -3,9 +3,9 @@ from ReqAppt.models import *
 
 class ApptArchive(models.Model):
     apptId = models.AutoField(primary_key=True)
-    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    meetingDate = models.DateTimeField(auto_now=False)
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
+    meetingDate = models.DateTimeField(auto_now=False, null=True)
 
 class Notes(models.Model):
     notes = models.CharField(max_length=600)

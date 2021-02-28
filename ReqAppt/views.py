@@ -14,7 +14,7 @@ from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from .sms import *
-
+from apptArchive.models import ApptArchive
 
 User = get_user_model()
 
@@ -158,19 +158,20 @@ def Doctor_avail_view(request, id, date_str):
 
     return JsonResponse(data, safe=False)
 
-def archive_apt(id):
-    #id as object of appointment
+def archive_apt(request,id):
+    appointment = ApptTable.objects.get(apptId=id)
     try:
+
         archiveAppt = ApptArchive.objects.create()
-        archiveAppt.meetingDate = id.meetingDate
-        archiveAppt.provider = id.provider
-        archiveAppt.patient = id.patient
-        #more atributes moved to archive
+        archiveAppt.meetingDate = appointment.meetingDate
+        archiveAppt.provider = appointment.provider
+        archiveAppt.patient = appointment.patient
         archiveAppt.save()
-        id.delete()
+        appointment.delete()
+        return render(request,"reqAppt/appointment.html")
     except Exception as e:
         print(e)
-        pass
+        return render(request,"reqAppt/appointment.html")
 
 
 

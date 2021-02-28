@@ -11,7 +11,7 @@
           <th>Doctor Name</th>
           <th>Patient Name</th>
           <th>Date and Time</th>
-          <th>Notes</th>
+          <th>View Appointment</th>
         </tr>
       </thead>
       {% for i in apptArchive %}
@@ -19,8 +19,10 @@
         <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
           <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
           <td>{{i.meetingDate}}</td>
+          <td><a href="{% url 'archived_appointment' i.apptId %}"> View </a></td>
       <tr>
       {%endfor%}
-
-
+</table>
+</div>
+</div>
 {% endblock content %}
