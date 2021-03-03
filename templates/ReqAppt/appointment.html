@@ -25,9 +25,24 @@
 
 
     // using datepicker
-      $( function() {
-        $("#datepicker").datepicker();
-      } );
+       $(function () {
+        $("#datepicker").datepicker({
+
+            //Pushes the datepicker on the right side of the data field
+            beforeShow: function (input, inst) {
+        setTimeout(function () {
+            inst.dpDiv.css({
+                top: 224,
+                left: 1088
+            });
+        }, 0);
+    },
+            firstDay: 1, minDate: 0
+
+        });
+
+    });
+
 
 
       // Load queried timeslots and load into timeslot dropdown
