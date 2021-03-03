@@ -20,12 +20,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('apptArchive/', include('apptArchive.urls')),
     path('admin/', admin.site.urls),
     path('ReqAppt/', include('ReqAppt.urls')),
     path('upload_download/', include('upload_download.urls')),
     path('', include('users_acc.urls')),
     path('patient_log/', include('patient_log.urls')),
+    path('blogsys/', include('blogsys.urls')),
     path('messaging/', include('messaging.urls')),
 ]
 if settings.DEBUG:
