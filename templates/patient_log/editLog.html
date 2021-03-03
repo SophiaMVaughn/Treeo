@@ -1,0 +1,60 @@
+{% extends "patient_log/patient_log_base.html" %}
+{% block content %}
+<div class="orange">
+    <h1>Edit Your Daily Health Wellness Log</h1>
+    {% if messages %}
+    {% for message in messages %}
+    <h2 style="color:green;">{{message}}</h2>
+    {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <!-- {{ edit_log.as_p }} -->
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
+                    <b> {{edit_log.calories.label_tag}} </b>
+                    {{edit_log.calories}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:130px; padding-bottom:15px;">
+                    <b> {{edit_log.water.label_tag}} </b>
+                    {{edit_log.water}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:90px; padding-bottom:15px;">
+                    <b> {{edit_log.sleep.label_tag}} </b>
+                    {{edit_log.sleep}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; padding-right:90px; padding-bottom:15px;">
+                    <b> {{edit_log.mood.label_tag}} </b>
+                    {{edit_log.mood}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div style="display:inline-block; text-align:right; margin-left:6px; padding-bottom:15px;">
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Edit Log</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

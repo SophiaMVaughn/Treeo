@@ -37,6 +37,7 @@ EMAIL_PORT = EMAIL_PORT
 # Application definition
 
 INSTALLED_APPS = [
+    'apptArchive.apps.ApptarchiveConfig',
     'patient_log.apps.PatientLogConfig',
     'users_acc.apps.UsersAccConfig',
     'ReqAppt.apps.ReqapptConfig',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
+    'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
 ]
 
@@ -135,8 +137,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
+#restricted to us phone numbers as i cant test with country codes
+PHONENUMBER_DB_FORMAT ='E164'
+PHONENUMBER_DEFAULT_REGION = 'US'
+PHONENUMBER_DEFAULT_FORMAT ='NATIONAL'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
