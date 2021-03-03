@@ -691,6 +691,22 @@ input:focus {
   .navbar {
     width: 200%;
   }
+  .orange .messaging {
+    width: 60%;
+    left: 185px;
+  }
+  .messaging .navbar {
+    width: 100%;
+  }
+  body {
+    width: 50%;
+  }
+  body .assignCareTeamButton {
+    position: absolute;
+    width: 196px;
+    height: 110px;
+    left: 515px;
+    }
 }
 
 .white {
