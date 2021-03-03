@@ -1,4 +1,4 @@
-{% extends "users_acc/base.html" %}
+{% extends "users_acc/baseNoNavBar.html" %}
 
 {% block content %}
 <!-- <p>Please confirm your email address to complete the registration. </p> -->
@@ -11,6 +11,7 @@
     Continue to log into your health portal.
 </div>
 <div class="theT"></div>
-<!-- <a href="{% url 'home' %}" class="btn btn-primary btn-large btn-block">go to portal</a> -->
-
+<div class="button portalButton">
+    <a href="{% url 'home' %}" class="btn btn-primary btn-large btn-block">go to portal</a>
+</div>
 {% endblock %}

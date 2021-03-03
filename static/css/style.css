@@ -498,6 +498,36 @@ input:focus {
   /* top: 715px; temp until can put placeholder in username and password */
 }
 
+.signupLink {
+  position: absolute;
+  width: 448px;
+  height: 40px;
+  left: 868px;
+  top: 845px;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.signupLink p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #faa172;
+}
+
+.signupLink p span {
+  font-style: normal;
+  font-weight: 800;
+  color: #faa172;
+}
+
+.signupLink a {
+  text-decoration: none;
+  color: #faa172;
+}
+
 .loginButton .btn {
   /* width: 334px;
   margin: 7px auto;
@@ -641,6 +671,7 @@ input:focus {
   background-color: #f99f71;
   min-height: 1080px;
   padding-top: 5px;
+  width: 100%;
 }
 
 .orange .treeoLogo {
@@ -651,6 +682,15 @@ input:focus {
   height: 281px;
   left: 1376px;
   top: -86px;
+}
+
+@media only screen and (max-width:1280px) {
+  .orange {
+    width: 200%;
+  }
+  .navbar {
+    width: 200%;
+  }
 }
 
 .white {
@@ -867,7 +907,7 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
+  /* left: 16px; */
   top: 5px;
   font-style: normal;
   font-weight: normal;
@@ -879,16 +919,17 @@ input:focus {
 }
 
 .emailBoxInput input[type="email"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 406px;
-  height: 97px;
+  width: 446px;
+  height: 102px;
 }
 
 .emailBoxInput input[type="email"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
+
 /*#ui-datepicker-div {*/
 /*  background: white;*/
 /*}*/
@@ -1155,7 +1196,7 @@ input:focus {
   width: 884px;
   height: 157px;
   left: 522px;
-  top: 155px;
+  top: 150px;
 
   font-style: normal;
   font-weight: 600;
@@ -1213,6 +1254,29 @@ input:focus {
   height: 420px;
   left: 786px;
   top: 250px;
+}
+
+.portalButton {
+  position: absolute;
+  width: 224px;
+  height: 103px;
+  left: 852px;
+  top: 763px;
+}
+
+.portalButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 224px;
+  height: 86px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
 }
 
 .resetPassword {
@@ -1328,7 +1392,7 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
+  /* left: 16px; */
   top: 5px;
   font-style: normal;
   font-weight: normal;
@@ -1340,15 +1404,15 @@ input:focus {
 }
 
 .newPasswordInput input[type="password"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 430px;
-  height: 97px;
+  width: 466px;
+  height: 102px;
 }
 
 .newPasswordInput input[type="password"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .confirmPassword {
@@ -1381,7 +1445,7 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
+  /* left: 16px; */
   top: 5px;
   font-style: normal;
   font-weight: normal;
@@ -1393,15 +1457,15 @@ input:focus {
 }
 
 .confirmPasswordInput input[type="password"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 430px;
-  height: 97px;
+  width: 466px;
+  height: 102px;
 }
 
 .confirmPasswordInput input[type="password"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .successReset {
@@ -1730,7 +1794,6 @@ input:focus {
   color: #faa172;
 }
 
-
 .deleteConfirmButtonAppointment {
   position: absolute;
   width: 196px;
@@ -1789,7 +1852,6 @@ input:focus {
   color: #faa172;
 }
 
-
 /*This was added by Gio*/
 /* .calendar {
   width: 98%;
@@ -1801,7 +1863,7 @@ input:focus {
 .calendar td {
   border: 1px solid black;
 }
-
+*/
 .editProfileButton {
   position: absolute;
   width: 196px;
@@ -2290,6 +2352,91 @@ input:focus {
   text-align: center;
   line-height: 55px;
   border-radius: 100px;
+}
+
+.messaging {
+  left: 583px;
+  margin-top: 10px;
+  position: absolute;
+  background-color: #ddddf1;
+  border: 2px solid;
+  min-width: 770px;
+  min-height: 415px;
+}
+
+.messaging .table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid;
+}
+
+.messaging .table tr {
+  background: #b8d1f3;
+  border: black;
+}
+
+.messaging .table td {
+  padding: 7px;
+  border: #000 1px solid;
+  text-align: left;
+}
+
+.messageBox {
+  position: absolute;
+  height: 157px;
+  text-align: center;
+}
+
+.messagingTable {
+  overflow: auto;
+  max-height: 200px;
+  padding: 5px 9px;
+  border-top: 2px solid;
+}
+
+.messageButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 253px;
+  top: 205px;
+}
+
+.messageButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.logoutButton {
+  position: absolute;
+  width: 224px;
+  height: 103px;
+  left: 852px;
+  top: 763px;
+}
+
+.logoutButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 224px;
+  height: 86px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
 }
 
 /*This was added by Gio*/
