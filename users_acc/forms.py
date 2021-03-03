@@ -4,7 +4,6 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db.models import Q
 
-import phonenumbers as phone
 
 class CustomModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, object):
@@ -19,7 +18,6 @@ class PatientRegisterForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
-
     class Meta:
         model = User
         fields = ['username','email','password1','password2','first_name','last_name']
@@ -65,14 +63,11 @@ class User_Update_Form(forms.ModelForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
-    phone_no = PhoneNumberField(blank=True, null=True)
     profile_pic = forms.ImageField(required=False)
     class Meta:
         model = User
-        fields = ['username','email','first_name','last_name','phone_no','profile_pic']
-        labels = {
-            'phone_no': ('Phone Number'),'last_name': ('Last Name'),'first_name': ('First Name'),
-        }
+        fields = ['username','email','first_name','last_name','profile_pic']
+
 
 
 

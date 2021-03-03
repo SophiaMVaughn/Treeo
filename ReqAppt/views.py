@@ -1,11 +1,13 @@
 import calendar
+import json
 
+from django.contrib.sites import requests
 
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
 from datetime import datetime, date, timedelta
-from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from ReqAppt import models
 from ReqAppt.forms import *
 from ReqAppt.models import ApptTable
@@ -14,9 +16,19 @@ from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from .sms import *
-from apptArchive.models import ApptArchive
+from .email import *
+from datetime import datetime
+import requests
+
 
 User = get_user_model()
+
+def base64_encode(message):
+    import base64
+    message_bytes = message.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    return base64_message
 
 
 
@@ -38,6 +50,7 @@ def reqAppt_calendar(request):
         next_month = last + timedelta(days=1)
         month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
         return month
+
 
     #placeholder for a year and a month
     if 'month' in request.GET:
@@ -75,10 +88,12 @@ def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
-            form2 = ApptRequestFormPatient(instance=request.user)
-            return render(request, 'ReqAppt/appointment.html', {"form": form2,'formerrors': form})
+            form = ApptRequestFormPatient(instance=request.user)
+            #return some error message
+            return render(request, 'ReqAppt/appointment.html', {"form": form})
             #return HttpResponseBadRequest()
         else:
+
             # Valid, persist in db
             print(request.POST)
             apptDate = request.POST['apptDate']
@@ -92,12 +107,18 @@ def create_Appointment(request):
             # ApptTable.objects.create(
             #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
             # )
-            appointment=ApptTable.objects.create(
+            g=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
-            send_message(appointment)
 
+            # Oath, TODO use JWT if this doesn't work
+            # schedule_interview(request)
+            # zoom_callback(request)
+            scheduled_mail_both(g)
+            target_time_print(g)
+            send_message(apptDate, apptHour)
             return render(request, 'ReqAppt/Pending.html')
+
 
     else:
         form = ApptRequestFormPatient(instance=request.user)
@@ -118,20 +139,26 @@ def Admin_view(request):
 
 def Patient_view(request):
     x = ApptTable.objects.filter(patient=request.user.patient.id).order_by('meetingDate')
+    for i in x:
+        print(i.meetingDate)
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
 
 def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
-    approve_message(appointment)
+    approve_message()
+    approved_mail_both(appointment)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
+
+
         appointment.delete()
-        reject_message(appointment)
+        reject_message()
+        delete_mail_both(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
@@ -158,20 +185,78 @@ def Doctor_avail_view(request, id, date_str):
 
     return JsonResponse(data, safe=False)
 
-def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
-    try:
-        archiveAppt = ApptArchive.objects.create()
-        archiveAppt.meetingDate = appointment.meetingDate
-        archiveAppt.provider = appointment.provider
-        archiveAppt.patient = appointment.patient
-        archiveAppt.save()
-        appointment.delete()
-        return render(request,"reqAppt/appointment.html")
-    except Exception as e:
-        print(e)
-        return render(request,"reqAppt/appointment.html")
 
+#### FULL CALL
+def event(request):
+    meeting_arr = []
+    #if request.GET.get('patient') == "all":
+    #    all_meetings = ApptTable.objects.all()
+    #else:
+    #    all_meetings = ApptTable.objects.filter(event_type__icontains=request.GET.get('event_type'))
+    all_meetings = ApptTable.objects.all()
+
+    is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
+
+    for i in all_meetings:
+        meeting_sub_arr = {}
+        user = (i.provider if is_patient else i.patient).user
+        meeting_sub_arr['title'] = f"{user.first_name} {user.last_name}"
+        start = i.meetingDate.strftime('%Y-%m-%dT%H:%M:%S')
+        end = (i.meetingDate + timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S')
+        #meetingDate = datetime.strptime(str(i.meetingDate.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        meeting_sub_arr['start'] = start
+        meeting_sub_arr['end'] = end
+        meeting_arr.append(meeting_sub_arr)
+    return HttpResponse(json.dumps(meeting_arr))
+
+def fullcalendar(request):
+    all_meetings = ApptTable.objects.all()
+    get_meeting_patients = ApptTable.objects.only('patient')
+
+    # if filters applied then get parameter and filter based on condition else return object
+    print(request.method)
+
+    context = {
+        "meeting":all_meetings,
+        "get_meeting_patient":get_meeting_patients,
+    }
+    return render(request,'ReqAppt/fullcalendar.html',context)
+
+#
+# def zoom_callback(request):
+#     code = request.GET["code"]
+#     data = requests.post(f"https://zoom.us/oauth/token?grant_type=authorization_code&code="
+#                          f"obBEe8ewaL_KdYKjnimT4KPd8KKdQt9FQ&redirect_uri="
+#                          f"http://127.0.0.1:8000/ReqAppt/Appointment", headers={
+#         "Authorization": "Basic " + base64_encode("OoIw_Ll1SPG3Me81tIYqQ:0pbxapRDeB187rtT6SQSztYV9obAQpK6")
+#     })
+#     print(data.text)
+#     requests.session["zoom_access_token"] = data.json()["access_token"]
+#
+#     return HttpResponseRedirect("/ReqAppt/appointment")
+#
+#
+#
+# def schedule_interview(request):
+#     if request.method == "POST":
+#
+#         patient = User.objects.get(id=int(request.POST["patient"]))
+#         # patient = Profile.objects.get(patient=patient)
+#
+#         data = requests.post("https://api.zoom.us/v2/users/me/meetings", headers={
+#             'content-type': "application/json",
+#             "authorization": f"Bearer {request.session['zoom_access_token']}"
+#         }, data=json.dumps({
+#             "topic": f"Interview with {ApptTable.patient.name}",
+#             "type": 2,
+#             "start_time": request.POST["time"],
+#         }))
+#
+#         print("*)(@*$)@($*)@($*@)(#*@#)(*@#")
+#         print(data.json()["join_url"], data.json()["start_url"])
+#
+#         return HttpResponseRedirect(f"/ReqAppt/Appointment")
+#
 
 
 

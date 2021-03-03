@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 #from .managers import CustomUserManager
 from PIL import Image
-from phonenumber_field.modelfields import PhoneNumberField
+
 
 USER_TYPE_CHOICES = (
         (1, 'Admin'),
@@ -26,11 +26,11 @@ class User(AbstractUser):
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES,default=3)
     is_staff = models.BooleanField(default=False)
     is_email_confirmed = models.BooleanField(default=False)
-    phone_no = PhoneNumberField(null=True, blank=True, unique=True)
+    phone_no = models.CharField(max_length = 10, default=None, null=True, blank=True)
     profile_pic = models.ImageField(default='img/profile.png', upload_to='profile_pictures')
     def save(self, *args, **kwargs):
         # this is using a pillow package might be resource heavy on server side alternatives???
-        #also might run this check every login??????
+        #also might do this every login??????
         super().save()
         temp=Image.open(self.profile_pic.path)
         if temp.height > 200 or temp.height > 200:

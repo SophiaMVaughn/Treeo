@@ -2,9 +2,9 @@
 {% block content %}
 <div class="orange">
     {% if user.user_type == 3%}
-    <h1>Welcome To Your Daily Health Wellness Log</h1>
+    <h1>Patient Data Log</h1>
     {% else %}
-    <h1>View Wellness Log</h1>
+    <h1>View a Patient's Data Log</h1>
     {% endif %}
     {% if messages %}
     {% for message in messages %}
@@ -13,60 +13,39 @@
     {% endif %}
 
     {% if user.user_type == 3 %}
-    <form method="POST">
-        {% csrf_token %}
-        <!-- {{ form.as_p }} -->
+    <div class="patientLog">
+        <form method="POST">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <p>
+                <b> {{form.calories.label_tag}} </b>
+                {{form.calories}}
+            </p>
 
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:64px; padding-bottom:15px;">
-                    <b> {{form.calories.label_tag}} </b>
-                    {{form.calories}}
-                </div>
-            </div>
-        </div>
+            <p>
+                <b> {{form.water.label_tag}} </b>
+                {{form.water}}
+            </p>
 
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:130px; padding-bottom:15px;">
-                    <b> {{form.water.label_tag}} </b>
-                    {{form.water}}
-                </div>
-            </div>
-        </div>
+            <p>
+                <b> {{form.blood.label_tag}} </b>
+                {{form.blood}}
+            </p>
 
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:90px; padding-bottom:15px;">
-                    <b> {{form.sleep.label_tag}} </b>
-                    {{form.sleep}}
-                </div>
+            <div class="button patientLogButton">
+                <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; padding-right:90px; padding-bottom:15px;">
-                    <b> {{form.mood.label_tag}} </b>
-                    {{form.mood}}
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div style="display:inline-block; text-align:right; margin-left:6px; padding-bottom:15px;">
-                    <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
-                </div>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
     {% else %}
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        <!-- {{ form.as_p }} -->
+        {{form.patient}}
+        <div class="button assignCareTeamButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        </div>
     </form>
     {% endif %}
 </div>

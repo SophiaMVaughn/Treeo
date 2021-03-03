@@ -1,4 +1,4 @@
-{% extends "users_acc/base.html" %}
+{% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
 <!-- <div class="error">
     {{errorMsg}}
@@ -36,8 +36,12 @@
 
         <div class="button loginButton">
             <button type="submit" class="btn btn-primary btn-large btn-block">login</button>
-            <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">forgot your password?</a>
-            <a href="{% url 'register' %}" class="btn btn-primary btn-large btn-block">register</a>
+            <!-- <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">forgot your password?</a> -->
+            <!-- <a href="{% url 'register' %}" class="btn btn-primary btn-large btn-block">register</a> -->
+        </div>
+        <div class="signupLink">
+            <p>don't have an account? <a href="{% url 'register' %}"><span>sign up</span></a></p>
+            <p><a href="{% url 'pass_reset' %}"><span>forgot your password?</span></a></p>
         </div>
     </div>
 </form>

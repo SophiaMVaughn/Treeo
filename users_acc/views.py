@@ -147,25 +147,18 @@ def profile(request):
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        #form = User_Update_Form(request.POST or None)
         ep = User_Update_Form(request.POST, request.FILES, instance=request.user)
         if ep.is_valid():
-            request.user.username = ep.cleaned_data.get("username")
-            request.user.email = ep.cleaned_data.get("email")
-            request.user.first_name = ep.cleaned_data.get("first_name")
-            request.user.last_name = ep.cleaned_data.get("last_name")
-            request.user.phone_no = ep.cleaned_data.get("phone_no")
-            request.user.profile_pic = ep.cleaned_data.get("profile_pic")
-            request.user.save()
-            #print("test")
-            # ep.save()
-            #
+            # request.user.username = ep.cleaned_data.get("username")
+            # request.user.email = ep.cleaned_data.get("email")
+            # request.user.first_name = ep.cleaned_data.get("first_name")
+            # request.user.last_name = ep.cleaned_data.get("last_name")
+            # print(ep.cleaned_data.get("profile_pic"))
+            # request.user.profile_pic = ep.cleaned_data.get("profile_pic")
+            # request.user.save()
+            ep.save()
+            messages.success(request,'')
             return redirect('profile')
-        else:
-            #print some error for validation of stuff
-            #print(ep.errors)
-            form = User_Update_Form(instance=request.user)
-            return render(request, 'users_acc/edit_profile.html', {'edit_profile': form,'formerrors': ep})
     else:
         ep = User_Update_Form(instance=request.user)
     return render(request, 'users_acc/edit_profile.html', {'edit_profile': ep})
@@ -202,7 +195,7 @@ def doctor_registration(request):
             # some logic to make sure its actually sent
             # return render(request, 'account_activation_sent.html')
         else:
-            return render(request, 'users_acc/register_provider.html', {'form': form,'formerrors': form})
+            return render(request, 'users_acc/register_provider.html', {'form': form})
     else:
         return render(request, 'users_acc/register_provider.html', {'form': ProviderRegisterForm()})
 
@@ -259,7 +252,7 @@ def admin_view(request):
             else:
                 return redirect('admin_display_team', request.POST['patient'])
         else:
-            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm(),'formerrors': form})
+            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
     else:
         return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
 
@@ -306,7 +299,7 @@ def admin_approve_provider(request, id):
     return redirect("admin_approve_provider_render")
 
 @login_required
-def admin_revoke_provider(request, id):
+def admin_remove_provider(request, id):
     try:
         temp = Provider.objects.get(id=id)
     except Exception as e:
