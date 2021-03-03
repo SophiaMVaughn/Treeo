@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 <div class="orange">
-    <table class="table table-bordered">
+    <table class="table">
         <thead>
             <tr>
                 <th>File Name</th>
@@ -20,9 +20,9 @@
                 <td>{{file.date_uploaded}}</td>
                 <td><a href="{{file.file}}" target="_blank"
                         download="file.FileName"><img alt="Download" src="{% static 'img/downloadArrow.png' %}"
-                            width="90" height="40" alt="" loading="lazy"/></a></td>
+                            width="50" height="30" alt="" loading="lazy" /></a></td>
                 <td><a href="{% url 'upload_download_file_delete' file.id %}"
-                        ><img alt="Delete"
+                        ><img alt="Download"
                             src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a></td>
                 {% endfor %}
         </tbody>

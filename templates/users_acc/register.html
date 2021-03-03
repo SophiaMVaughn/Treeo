@@ -1,4 +1,4 @@
-{% extends "users_acc/baseNoNavBar.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
 <div class="orange">
     <h2>{{error}}</h2>
@@ -53,7 +53,6 @@
         <div class="registerPasswordOneBox">
             <div class="registerPasswordOneInput">
                 {{form.password1}}
-                <p>At least 8 characters, not entirely numeric, not too similar to your personal information, not a commonly used password</p>
             </div>
         </div>
 
