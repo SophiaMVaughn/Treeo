@@ -25,14 +25,13 @@
 					{% else %}
 					<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
 					{% endif %}
-					<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
-					<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
-					<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
+
 					{% if user.user_type == 1%}
 					{% else %}
 					<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
 					{% endif %}
 					<!--	<a href="{% url 'register' %}">Inbox</a>-->
+					<a class="nav-link" href="{% url 'apptArchive' %}">View Archived Appointments</a>
 					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 				</div>
 			</div>

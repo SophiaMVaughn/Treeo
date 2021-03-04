@@ -8,7 +8,7 @@
                 <th>Provider Type</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Assign</th>
+                <th>Approve</th>
                 <th>Remove</th>
             </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td><a href="{% url 'admin_approve_provider' a.id %}"><span>&#10003;</span></a></td>
                 {% endif %}
                 {%if a.is_verified%}
-                <td><a href="{% url 'admin_remove_provider' a.id %}"><img alt="Delete"
+                <td><a href="{% url 'admin_revoke_provider' a.id %}"><img alt="Delete"
                             src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a></td>
                 {% else %}
                 <td></td>
