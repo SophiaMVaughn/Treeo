@@ -24,7 +24,7 @@
                     <td>{{patient.doc_d.user.first_name}}</td>
                     <td>{{patient.doc_d.user.last_name}}</td>
                     <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
+                    <td><a href="{% url 'admin_revoke_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
                     </td>
                     {% else %}
@@ -40,7 +40,7 @@
                     <td>{{patient.doc_c.user.first_name}}</td>
                     <td>{{patient.doc_c.user.last_name}}</td>
                     <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
+                    <td><a href="{% url 'admin_revoke_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
                     </td>
                     {% else %}
@@ -56,7 +56,7 @@
                     <td>{{patient.doc_p.user.first_name}}</td>
                     <td>{{patient.doc_p.user.last_name}}</td>
                     <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
+                    <td><a href="{% url 'admin_revoke_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
                     </td>
                     {% else %}

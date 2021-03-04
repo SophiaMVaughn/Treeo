@@ -53,7 +53,21 @@
 		</div>
 		{% endfor %}
 		{% endif %}
-
+ 	<!-- Form Error messaging -->
+    {% if formerrors %}
+	<div id="errors">
+		<div class="inner">
+			<p>There was a problem with the information you entered. Please correct the following:</p>
+			{{ formerrors.non_field_errors }}
+			<ul>
+				{% for field in formerrors %}
+					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endif %}
+	<!-- /Form Error messaging -->
 		<div class="login">
 			<div class="login-screen">
 				{% block content %}

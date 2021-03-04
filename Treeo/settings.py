@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': 'M!ddle1*',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
@@ -137,9 +137,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#restricted to us phone numbers as default can store international under e164 standard but no tests with other country codes
+PHONENUMBER_DB_FORMAT ='E164'
+PHONENUMBER_DEFAULT_REGION = 'US'
+PHONENUMBER_DEFAULT_FORMAT ='NATIONAL'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users_acc.User'

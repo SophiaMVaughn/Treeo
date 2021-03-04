@@ -89,9 +89,8 @@ def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
-            form = ApptRequestFormPatient(instance=request.user)
-            #return some error message
-            return render(request, 'ReqAppt/appointment.html', {"form": form})
+            form2 = ApptRequestFormPatient(instance=request.user)
+            return render(request, 'ReqAppt/appointment.html', {"form": form2,'formerrors': form})
             #return HttpResponseBadRequest()
         else:
 
@@ -108,16 +107,16 @@ def create_Appointment(request):
             # ApptTable.objects.create(
             #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
             # )
-            g=ApptTable.objects.create(
+            appointment=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
 
             # Oath, TODO use JWT if this doesn't work
             # schedule_interview(request)
             # zoom_callback(request)
-            scheduled_mail_both(g)
-            target_time_print(g)
-            send_message(apptDate, apptHour)
+            scheduled_mail_both(appointment)
+            target_time_print(appointment)
+            send_message(appointment)
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -148,17 +147,15 @@ def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
-    approve_message()
+    approve_message(appointment)
     approved_mail_both(appointment)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
-
-
         appointment.delete()
-        reject_message()
+        reject_message(appointment)
         delete_mail_both(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
