@@ -1,0 +1,32 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+<div class="orange">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile">
+            <p>
+                <b> {{edit_profile.username.label_tag}} </b>
+                {{edit_profile.username}}
+            </p>
+            <p style="padding-left: 35px;">
+                <b>{{edit_profile.email.label_tag}}</b>
+                {{edit_profile.email}}
+            </p>
+            <p>
+                <b> {{edit_profile.first_name.label_tag}} </b>
+                {{edit_profile.first_name}}
+            </p>
+            <p>
+                <b> {{edit_profile.last_name.label_tag}} </b>
+                {{edit_profile.last_name}}
+            </p>
+            <div class="newProfilePic">
+                {{edit_profile.profile_pic}}
+            </div>
+            <div class="button editProfileButtonConfirm">
+                <button type="submit" class="btn btn-primary btn-large btn-block">Confirm Edit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
