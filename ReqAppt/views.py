@@ -174,4 +174,45 @@ def archive_apt(request,id):
 
 
 
+  
+
+
+
+#### FULL CALL
+def event(request):
+    meeting_arr = []
+    #if request.GET.get('patient') == "all":
+    #    all_meetings = ApptTable.objects.all()
+    #else:
+    #    all_meetings = ApptTable.objects.filter(event_type__icontains=request.GET.get('event_type'))
+    all_meetings = ApptTable.objects.all()
+
+    is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
+
+    for i in all_meetings:
+        meeting_sub_arr = {}
+        user = (i.provider if is_patient else i.patient).user
+        meeting_sub_arr['title'] = f"{user.first_name} {user.last_name}"
+        start = i.meetingDate.strftime('%Y-%m-%dT%H:%M:%S')
+        end = (i.meetingDate + timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S')
+        #meetingDate = datetime.strptime(str(i.meetingDate.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        meeting_sub_arr['start'] = start
+        meeting_sub_arr['end'] = end
+        meeting_arr.append(meeting_sub_arr)
+    return HttpResponse(json.dumps(meeting_arr))
+
+def fullcalendar(request):
+    all_meetings = ApptTable.objects.all()
+    get_meeting_patients = ApptTable.objects.only('patient')
+
+    # if filters applied then get parameter and filter based on condition else return object
+    print(request.method)
+
+    context = {
+        "meeting":all_meetings,
+        "get_meeting_patient":get_meeting_patients,
+    }
+    return render(request,'ReqAppt/fullcalendar.html',context)
+
+
 
