@@ -19,6 +19,7 @@ from .sms import *
 from .email import *
 from datetime import datetime
 import requests
+from apptArchive.models import ApptArchive
 
 
 User = get_user_model()
@@ -222,6 +223,19 @@ def fullcalendar(request):
     }
     return render(request,'ReqAppt/fullcalendar.html',context)
 
+def archive_apt(request,id):
+    appointment = ApptTable.objects.get(apptId=id)
+    try:
+        archiveAppt = ApptArchive.objects.create()
+        archiveAppt.meetingDate = appointment.meetingDate
+        archiveAppt.provider = appointment.provider
+        archiveAppt.patient = appointment.patient
+        archiveAppt.save()
+        appointment.delete()
+        return render(request,"reqAppt/appointment.html")
+    except Exception as e:
+        print(e)
+        return render(request,"reqAppt/appointment.html")
 #
 # def zoom_callback(request):
 #     code = request.GET["code"]

@@ -15,4 +15,5 @@ urlpatterns = [
     path('approveappt/<id>', views.approve, name='approve_appt'),
     path('fullcalendar', views.fullcalendar, name='fullcalendar'),
     path('calendar-events', views.event, name='calendar_events'),
+    path('archive/<id>', views.archive_apt, name='archive'),
 ]

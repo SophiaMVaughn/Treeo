@@ -7,4 +7,5 @@ urlpatterns = [
     # path('Chart', views.chart, name='seechart'),
     # path('charts', Circle.as_view(), name='chart_json'),
     path('log-chart/<id>', views.pie_chart, name='log-chart'),
+    path('edit_log/<id>', views.edit_log, name='edit_log'),
 ]

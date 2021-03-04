@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('apptArchive/', include('apptArchive.urls')),
     path('admin/', admin.site.urls),
     path('ReqAppt/', include('ReqAppt.urls')),
     path('upload_download/', include('upload_download.urls')),

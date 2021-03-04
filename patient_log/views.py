@@ -20,17 +20,12 @@ def patientlog(request):
         if request.user.user_type==3:
             form = PatientLogForm(request.POST)
             if form.is_valid():
-                today = datetime.today().date()
-                if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
-                    saverecord=PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
-                    #theoretical error wherein the date time set happens at midnight on the next day
-                    saverecord.date = datetime.now()
-                else:
-                    saverecord = PatientLog()
+                saverecord = PatientLog()
                 saverecord.patient = request.user.patient
                 saverecord.calories = form.cleaned_data.get('calories')
                 saverecord.water = form.cleaned_data.get('water')
-                saverecord.blood = form.cleaned_data.get('blood')
+                saverecord.mood = form.cleaned_data.get('mood')
+                saverecord.sleep = form.cleaned_data.get('sleep')
                 saverecord.save()
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
@@ -41,13 +36,38 @@ def patientlog(request):
             return redirect('log-chart', request.POST['patient'])
     else:
         if request.user.user_type==3:
-            return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
+            today = datetime.today().date()
+            if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
+                saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
+                return redirect('edit_log',saverecord.id)
+            else:
+                #link to chart on the page
+                return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
         elif request.user.user_type==2:
             return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
         elif request.user.user_type == 1:
             return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
 
-
+def edit_log(request,id):
+    temp = PatientLog.objects.get(id=id)
+    form = PatientLogForm()
+    if request.method =='POST':
+        print("test")
+        form = PatientLogForm(request.POST)
+        if form.is_valid():
+            temp.calories = form.cleaned_data.get('calories')
+            temp.water = form.cleaned_data.get('water')
+            temp.mood = form.cleaned_data.get('mood')
+            temp.sleep = form.cleaned_data.get('sleep')
+            temp.save()
+            #message.success(request,'')
+            #redirects to self
+            return render(request, 'patient_log/patientLog_submit.html', {"form": temp})
+        else:
+            form=PatientLogForm()
+        return render(request,'patient_log/editLog.html', {'edit_log': form})
+    else:
+        return render(request, 'patient_log/editLog.html', {'edit_log': form})
 
 def pie_chart(request,id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
@@ -68,7 +88,7 @@ def pie_chart(request,id):
             data2 += temp
         else:
             data2 += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('blood')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('sleep')).values())
         if None not in temp:
             data3 += temp
         else:
@@ -113,7 +133,6 @@ def pie_chart(request,id):
 #         return [[ baa, 2000,1222,1111],
 #               [aaa, 2.1],
 #                 [caa,1.4]]
-
 
 
 

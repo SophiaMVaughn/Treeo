@@ -6,12 +6,13 @@ from users_acc.models import *
 from django.db.models import Q
 
 class PatientLogForm(forms.Form):
-    calories = forms.IntegerField(label='Calories', widget = forms.TextInput)
-    water = forms.DecimalField(label='Water (oz)', widget = forms.TextInput, max_digits=7, decimal_places=2)
-    blood = forms.DecimalField(label= 'Blood Test Result (hemoglobin)', widget = forms.TextInput,  max_digits=7, decimal_places=2)
+    calories = forms.IntegerField(label='Enter your calories for the day', widget = forms.TextInput)
+    water = forms.DecimalField(label='Enter your daily water intake(oz)', widget = forms.TextInput, max_digits=7, decimal_places=2)
+    sleep = forms.DecimalField(label= 'How many hours of sleep (hrs)', widget = forms.TextInput,  max_digits=7, decimal_places=2)
+    mood = forms.IntegerField(label='What is your current mood (rate 1-5)', widget=forms.TextInput)
     class Meta:
         model = PatientLog
-        fields = fields = ['calories', 'water', 'blood']
+        fields = fields = ['calories', 'water', 'sleep','mood']
 
 
 class AdminProviderLogForm(forms.Form):
