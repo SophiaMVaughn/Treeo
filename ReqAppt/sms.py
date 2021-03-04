@@ -2,6 +2,12 @@
 import os
 from twilio.rest import Client
 from users_acc import models
+# from datetime import datetime
+from .models import ApptTable
+import datetime as datetime
+import time
+# from celery.task import PeriodicTask
+from datetime import timedelta
 
 # Your Account Sid and Auth Token from twilio.com/console
 # and set the environment variables. See http://twil.io/secure
@@ -13,7 +19,36 @@ client = Client(account_sid, auth_token)
 
 
 
+
+
+def target_time_print(apt):
+
+
+            t = apt.meetingDate
+            print(t)
+            print(t.timestamp())
+            time_left = t.timestamp() - datetime.datetime.now().timestamp()
+            time_left = time_left - 10000
+            print("time left till appointment")
+            print(time_left)
+            # t.strftime('%M/%d/%Y')
+            # target_datetime = datetime.strptime(ApptTable.meetingDate, '%M/%d/%Y')
+            # current_datetime = datetime.now() # No need to convert it to string
+            # time_left = target_datetime - current_datetime # return `timedelta` object
+            # print("#@*&#@*#&@*#&*@&#*@&#*@&#*#@")
+            # # print(time_left.total_seconds())
+            # print(ApptTable.meetingDate.total_seconds())
+            #
+
+
+
+
+# returns total seconds
+
+
+
 def send_message(apptDate, apptHour):
+
 
         field_name = 'phone_no'
         obj = models.User.objects.first()

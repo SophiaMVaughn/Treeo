@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
+    'blogsys.apps.BlogsysConfig',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': '#GGnorem8',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
@@ -136,12 +137,15 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users_acc.User'
 STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
+ZOOM_API_KEY = 'u3JZMoifS5euyc_gQDWVGw'
+
 
 
 LOGIN_REDIRECT_URL='home'

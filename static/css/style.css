@@ -231,8 +231,8 @@ input:focus {
 
 .btn {
   border: 2px solid transparent;
-  background: #3498db;
-  color: #ffffff;
+  /* background: #3498db;
+  color: #ffffff; */
   font-size: 16px;
   line-height: 25px;
   padding: 10px 0;
@@ -247,7 +247,7 @@ input:focus {
   text-align: center;
   align-self: center;
   display: inline;
-  margin: 2px auto;
+  margin: 4px auto;
 }
 
 .button {
@@ -264,7 +264,7 @@ input:focus {
 }
 
 .btn:hover {
-  background-color: #71a6c9;
+  /* background-color: #71a6c9; */
 }
 
 .apptbutton {
@@ -426,7 +426,7 @@ input:focus {
   position: absolute;
   width: 374px;
   height: 38px;
-  left: 34px;
+  /* left: 34px; */
   /* top: 431px; */
   font-style: normal;
   font-weight: normal;
@@ -438,15 +438,15 @@ input:focus {
 }
 
 .usernameInput input[type="text"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 414px;
-  height: 105px;
+  width: 481px;
+  height: 108px;
 }
 
 .usernameInput input[type="text"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .password {
@@ -458,7 +458,7 @@ input:focus {
   /* top: 545px; temp until can put placeholder text in username and password */
 
   background: #ffffff;
-  border: 4px solid #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
 }
 
@@ -466,7 +466,7 @@ input:focus {
   position: absolute;
   width: 374px;
   height: 38px;
-  left: 34px;
+  /* left: 34px; */
   /* top: 431px; */
   font-style: normal;
   font-weight: normal;
@@ -478,15 +478,15 @@ input:focus {
 }
 
 .passwordInput input[type="password"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 24px;
   padding: 0px 0px;
-  width: 414px;
-  height: 98px;
+  width: 481px;
+  height: 108px;
 }
 
 .passwordInput input[type="password"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .loginButton {
@@ -499,9 +499,21 @@ input:focus {
 }
 
 .loginButton .btn {
-  width: 334px;
+  /* width: 334px;
   margin: 7px auto;
+  background: #faa172; */
   background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 352px;
+  height: 68px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
 }
 
 .registerButton {
@@ -509,7 +521,9 @@ input:focus {
   width: 196px;
   height: 110px;
   left: 823px;
-  top: 822px;
+  /* top: 1057px; */
+  top: 890px;
+  /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px; temp until can put placeholder in username and password */
 }
 
@@ -522,6 +536,56 @@ input:focus {
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.previousMonth {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 1429px;
+  top: 40px;
+  display: inline-flex;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.previousMonth .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  height: 60px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.nextMonth {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 1647px;
+  top: 40px;
+  display: inline-flex;
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.nextMonth .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  height: 60px;
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
@@ -609,6 +673,20 @@ input:focus {
   color: #ffffff;
 }
 
+.providerSignup {
+  position: absolute;
+  width: 910px;
+  height: 157px;
+  left: 190px;
+  top: 191px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 115px;
+  letter-spacing: 0.025em;
+  color: #ffffff;
+}
+
 .fname {
   position: absolute;
   width: 200px;
@@ -639,8 +717,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -651,15 +729,15 @@ input:focus {
 }
 
 .fnameInput input[type="text"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .fnameInput input[type="text"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .lname {
@@ -692,8 +770,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -704,15 +782,15 @@ input:focus {
 }
 
 .lnameInput input[type="text"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .lnameInput input[type="text"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .email {
@@ -756,8 +834,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -768,15 +846,15 @@ input:focus {
 }
 
 .emailInput input[type="email"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .emailInput input[type="email"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .emailBoxInput {
@@ -859,8 +937,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -871,15 +949,15 @@ input:focus {
 }
 
 .registerUsernameInput input[type="text"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .registerUsernameInput input[type="text"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .registerPasswordOne {
@@ -912,8 +990,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -923,16 +1001,25 @@ input:focus {
   color: #e5e5e5;
 }
 
+.registerPasswordOneInput p {
+  font-size: 18px;
+  color: black;
+  line-height: 30px;
+  position: absolute;
+  width: 342px;
+  top: 105px;
+}
+
 .registerPasswordOneInput input[type="password"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .registerPasswordOneInput input[type="password"]:focus {
-  border: 2px solid transparent;
+  border: 4px solid #faa172;
 }
 
 .registerPasswordTwo {
@@ -965,8 +1052,8 @@ input:focus {
   position: absolute;
   width: 216px;
   height: 30px;
-  left: 16px;
-  top: 5px;
+  left: 0px;
+  top: 0px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -977,15 +1064,80 @@ input:focus {
 }
 
 .registerPasswordTwoInput input[type="password"] {
-  border-radius: 22px;
+  border-radius: 100px;
   font-size: 36px;
   padding: 0px 0px;
-  width: 293px;
-  height: 97px;
+  width: 329px;
+  height: 107px;
 }
 
 .registerPasswordTwoInput input[type="password"]:focus {
+  border: 4px solid #faa172;
+}
+
+.registerProvider {
+  position: absolute;
+  width: 222px;
+  height: 40px;
+  left: 1357px;
+  top: 813px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerProviderBox {
+  position: absolute;
+  width: 329px;
+  height: 90px;
+  left: 1332px;
+  top: 880px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+}
+
+.registerProviderInput {
+  position: absolute;
+  width: 366px;
+  height: 30px;
+  left: -19px;
+  top: 13px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerProviderInput select {
+  text-align: center;
+  background-color: white;
   border: 2px solid transparent;
+  border-radius: 3px;
+  padding: 10px 0;
+  width: 310px;
+  transition: border 0.5s;
+  box-sizing: border-box;
+  font-size: 32px;
+  -moz-appearance: textfield;
+  /* position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 16px;
+  top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5; */
 }
 
 .alert {
@@ -1279,6 +1431,359 @@ input:focus {
   font-weight: 800;
 }
 
+.profile {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 514px;
+}
+
+.editProfileButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 331px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.editProfileButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.editProfileButtonConfirm {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 360px;
+  top: 316px;
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px; temp until can put placeholder in username and password */
+}
+
+.editProfileButtonConfirm .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.newProfilePic {
+  position: absolute;
+  left: 288px;
+  text-align: end;
+  max-width: 530px;
+}
+
+.deleteConfirmButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.deleteConfirmButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.assignCareTeamButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.assignCareTeamButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.fileUploadCompleteButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.fileUploadCompleteButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.adminButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  top: 715px; /*  temp until can put placeholder in username and password */
+}
+
+.adminButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.assignProvidersButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  top: 715px;
+}
+
+.assignProvidersButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.btn:active {
+  transform: translateY(4px);
+}
+
+.welcome {
+  position: absolute;
+  width: 351px;
+  height: 76px;
+  left: 387px;
+  top: 121px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 90px;
+  line-height: 108px;
+  letter-spacing: 0.01em;
+
+  color: #fac372;
+}
+
+.profileBorder {
+  position: absolute;
+  width: 389px;
+  height: 246px;
+  left: 367px;
+  top: 317px;
+
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+}
+
+.profileName {
+  position: absolute;
+  width: 377px;
+  height: 49px;
+  /* left: 451px; */
+  top: 104px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 58px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.profileDateJoined {
+  position: absolute;
+  width: 373px;
+  height: 49px;
+  /* left: 451px; */
+  top: 162px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.profilePic {
+  position: absolute;
+  width: 172px;
+  height: 172px;
+  top: -75px;
+  left: 85px;
+}
+
+.white .theT {
+  width: 226px;
+  top: 723px;
+}
+
+.approve span {
+  font-size: 30px;
+}
+
+.appointment {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 197px;
+  text-align: right;
+}
+
+.makeAppointmentButton {
+  position: absolute;
+  width: 169px;
+  height: 52px;
+  left: 672px;
+  top: 207px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+
+.deleteConfirmButtonAppointment {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.deleteConfirmButtonAppointment .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.patientLog {
+  position: absolute;
+  width: 884px;
+  height: 157px;
+  left: 197px;
+  text-align: right;
+}
+
+.patientLogButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 635px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.patientLogButton .btn {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+
 /*This was added by Gio*/
 /* .calendar {
   width: 98%;
@@ -1358,7 +1863,7 @@ a {
 /*------------*/
 .calendar {
   width: 98%;
-  margin: auto;
+  margin: 30px 0px;
   font-size: 13px;
 }
 
@@ -1377,6 +1882,12 @@ a {
   width: 200px;
   height: 150px;
   padding: 20px 0px 0px 5px;
+}
+
+.table td {
+  width: 250px;
+  /* height: 150px; */
+  /* padding: 20px 0px 0px 5px; */
 }
 
 .month {
@@ -1400,9 +1911,9 @@ a {
   float: left;
 }
 
-.right {
+/* .right {
   float: right;
-}
+} */
 
 /* .btn {
   outline: none;
@@ -1411,8 +1922,10 @@ a {
   box-shadow: 0 0 0 0;
 } */
 
-
-
+#ui-datepicker-div {
+  top: 124px;
+  left: 1092px;
+}
 
 .ui-widget-content,
 .ui-widget-content,
@@ -1426,7 +1939,15 @@ a {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default,
 .ui-state-default {
-  background: #484848 url("none");
+  /* background: #484848 url("none"); */
+  background: #ddddf1 url("none");
+}
+
+.ui-datepicker-title {
+  text-align: center;
+  position: absolute;
+  left: 126px;
+  top: 20px;
 }
 
 .ui-datepicker-inline {
@@ -1443,18 +1964,38 @@ a {
 
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
-  top: 23px;
+  /* top: 23px; */
+}
+
+.ui-datepicker-next {
+  position: absolute;
+  left: 345px;
+}
+
+.ui-datepicker-prev:hover {
+  background-color: #68c1fd;
+  cursor: pointer;
+}
+
+.ui-datepicker-next:hover {
+  background-color: #68c1fd;
+  cursor: pointer;
+}
+
+#ui-datepicker-div .ui-datepicker-calendar .ui-datepicker-days-cell-over  .ui-datepicker-today {
+  padding: 0px;
 }
 
 .ui-icon,
 .ui-datepicker-month,
 .ui-datepicker-year {
-  color: #ffe800;
+  /* color: #ffe800; */
+  color: black;
 }
 
 a.ui-state-default,
 .ui-datepicker th {
-  color: #ffe800 !important;
+  color: black !important;
   border: none !important;
   text-align: center !important;
 }
@@ -1470,6 +2011,10 @@ a.ui-state-default,
   border: 1px solid transparent;
 }
 
+.ui-datepicker-today {
+  padding: 0px;
+}
+
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
@@ -1479,8 +2024,8 @@ a.ui-state-default,
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-  background-color: #ffe800;
-  color: #484848 !important;
+  background-color: yellow;
+  color: black !important;
   padding: 15px;
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
