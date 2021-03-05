@@ -1,11 +1,14 @@
 import calendar
+import json
+import math
 
+from django.contrib.sites import requests
 
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
 from datetime import datetime, date, timedelta
-from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from ReqAppt import models
 from ReqAppt.forms import *
 from ReqAppt.models import ApptTable
@@ -14,9 +17,20 @@ from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from .sms import *
+from .email import *
+from datetime import datetime
+import requests
+from django.conf import settings
 
 
 User = get_user_model()
+
+def base64_encode(message):
+    import base64
+    message_bytes = message.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    return base64_message
 
 
 
@@ -38,6 +52,7 @@ def reqAppt_calendar(request):
         next_month = last + timedelta(days=1)
         month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
         return month
+
 
     #placeholder for a year and a month
     if 'month' in request.GET:
@@ -76,28 +91,37 @@ def create_Appointment(request):
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
             form = ApptRequestFormPatient(instance=request.user)
+            #return some error message
             return render(request, 'ReqAppt/appointment.html', {"form": form})
             #return HttpResponseBadRequest()
         else:
+
             # Valid, persist in db
             print(request.POST)
             apptDate = request.POST['apptDate']
-            apptHour = request.POST['apptHour']
+            apptHour = float(request.POST['apptHour'])
             print(apptDate)
             print(apptHour)
             meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
-            meetingDate = meetingDate.replace(hour=int(apptHour))
+            hour = int(math.floor(apptHour))
+            minute = int((apptHour - hour) * 60)
+            meetingDate = meetingDate.replace(hour=hour, minute=minute)
             print(meetingDate)
             #call zoom api make meeting and get the url for it
             # ApptTable.objects.create(
             #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
             # )
-            ApptTable.objects.create(
+            g=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
-            #send_message(apptDate, apptHour)
 
+            # Oath, TODO use JWT if this doesn't work
+
+            scheduled_mail_both(g)
+            target_time_print(g)
+            send_message(apptDate, apptHour)
             return render(request, 'ReqAppt/Pending.html')
+
 
     else:
         form = ApptRequestFormPatient(instance=request.user)
@@ -118,20 +142,26 @@ def Admin_view(request):
 
 def Patient_view(request):
     x = ApptTable.objects.filter(patient=request.user.patient.id).order_by('meetingDate')
+    for i in x:
+        print(i.meetingDate)
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
 
 def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
-    #approve_message()
+    approve_message()
+    approved_mail_both(appointment)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
+
+
         appointment.delete()
-        #reject_message()
+        reject_message()
+        delete_mail_both(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
@@ -150,16 +180,55 @@ def Doctor_avail_view(request, id, date_str):
     ).all()
 
     def appt_to_time(appt: ApptTable):
-        return appt.meetingDate.hour
+        return appt.meetingDate.hour + (appt.meetingDate.minute * 0.5)
 
     unavailable_times = {appt_to_time(appt) for appt in appointments}
 
-    data = [h for h in range(STARTING_HOUR, ENDING_HOUR+1) if h not in unavailable_times]
+    # data = [h/2 for h in range(STARTING_HOUR * 2, (ENDING_HOUR + 1) * 2) if h/2 not in unavailable_times]
+    data = [h for h in range(STARTING_HOUR , ENDING_HOUR + 1) if h not in unavailable_times]
 
     return JsonResponse(data, safe=False)
 
 
+#### FULL CALL
+def event(request):
+    meeting_arr = []
+    #if request.GET.get('patient') == "all":
+    #    all_meetings = ApptTable.objects.all()
+    #else:
+    #    all_meetings = ApptTable.objects.filter(event_type__icontains=request.GET.get('event_type'))
 
+
+    is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
+    if is_patient:
+        all_meetings = ApptTable.objects.filter(patient__user_id=request.user.id).all()
+    else:
+        all_meetings = ApptTable.objects.filter(provider__user_id=request.user.id).all()
+
+    for i in all_meetings:
+        meeting_sub_arr = {}
+        user = (i.provider if is_patient else i.patient).user
+        meeting_sub_arr['title'] = f"{user.first_name} {user.last_name}"
+        start = i.meetingDate.strftime('%Y-%m-%dT%H:%M:%S')
+        end = (i.meetingDate + timedelta(minutes=30)).strftime('%Y-%m-%dT%H:%M:%S')
+        #meetingDate = datetime.strptime(str(i.meetingDate.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        meeting_sub_arr['start'] = start
+        meeting_sub_arr['end'] = end
+        meeting_arr.append(meeting_sub_arr)
+    return HttpResponse(json.dumps(meeting_arr))
+
+def fullcalendar(request):
+    all_meetings = ApptTable.objects.all()
+    get_meeting_patients = ApptTable.objects.only('patient')
+
+    # if filters applied then get parameter and filter based on condition else return object
+    print(request.method)
+
+    context = {
+        "meeting":all_meetings,
+        "get_meeting_patient":get_meeting_patients,
+    }
+    return render(request,'ReqAppt/fullcalendar.html',context)
 
 
 
