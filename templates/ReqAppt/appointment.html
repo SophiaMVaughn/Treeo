@@ -48,8 +48,26 @@
     //   $( "#datepicker" ).datepicker();
     //       });
     //
-    $(function () {
+    /* $(function () {
         $("#datepicker").datepicker({ firstDay: 1, minDate: 0 });
+    }); */
+
+    $(function () {
+        $("#datepicker").datepicker({
+
+            //Pushes the datepicker on the right side of the data field
+            beforeShow: function (input, inst) {
+        setTimeout(function () {
+            inst.dpDiv.css({
+                top: 181,
+                left: 1088
+            });
+        }, 0);
+    },
+            firstDay: 1, minDate: 0
+
+        });
+
     });
 
 

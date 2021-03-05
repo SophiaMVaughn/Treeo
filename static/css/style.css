@@ -101,6 +101,20 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+input[type="tel"] {
+  text-align: center;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
+}
+
 select {
   text-align: center;
   background-color: white;
@@ -310,6 +324,12 @@ input:focus {
 
 .message {
   text-align: center;
+  font-weight: bold;
+}
+
+.close {
+  position: absolute;
+  right: 1%;
 }
 
 .rectangle {
@@ -672,6 +692,7 @@ input:focus {
   min-height: 1080px;
   padding-top: 5px;
   width: 100%;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .orange .treeoLogo {
@@ -1554,7 +1575,7 @@ input:focus {
   width: 196px;
   height: 110px;
   left: 360px;
-  top: 316px;
+  top: 360px;
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px; temp until can put placeholder in username and password */
@@ -1880,87 +1901,7 @@ input:focus {
   border: 1px solid black;
 }
 */
-.editProfileButton {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 331px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px; temp until can put placeholder in username and password */
-}
 
-.editProfileButton .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
-
-.editProfileButtonConfirm {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 360px;
-  top: 316px;
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px; temp until can put placeholder in username and password */
-}
-
-.editProfileButtonConfirm .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
-
-.newProfilePic {
-  position: absolute;
-  left: 288px;
-  text-align: end;
-  max-width: 530px;
-}
-
-.deleteConfirmButton {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 823px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px;  temp until can put placeholder in username and password */
-}
-
-.deleteConfirmButton .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
 
 .assignCareTeamButton {
   position: absolute;
@@ -1985,54 +1926,6 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
-}
-
-.fileUploadCompleteButton {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 823px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px;  temp until can put placeholder in username and password */
-}
-
-.fileUploadCompleteButton .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
-
-.adminButton {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 823px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  top: 715px; /*  temp until can put placeholder in username and password */
-}
-
-.adminButton .btn {
-  background: #faa172;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 173%;
-  /* or 62px */
-  letter-spacing: 0.015em;
-  color: #ffffff;
 }
 
 .assignProvidersButton {
@@ -2137,91 +2030,6 @@ input:focus {
 
 .approve span {
   font-size: 30px;
-}
-
-.appointment {
-  position: absolute;
-  width: 884px;
-  height: 157px;
-  left: 197px;
-  text-align: right;
-}
-
-.makeAppointmentButton {
-  position: absolute;
-  width: 169px;
-  height: 52px;
-  left: 672px;
-  top: 207px;
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
-
-.deleteConfirmButtonAppointment {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 823px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px;  temp until can put placeholder in username and password */
-}
-
-.deleteConfirmButtonAppointment .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
-}
-
-.patientLog {
-  position: absolute;
-  width: 884px;
-  height: 157px;
-  left: 197px;
-  text-align: right;
-}
-
-.patientLogButton {
-  position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 635px;
-  /* top: 1057px; */
-  /* top: 890px; */
-  /* top: 822px; temp until password reqs accounted for in another way */
-  /* top: 715px;  temp until can put placeholder in username and password */
-}
-
-.patientLogButton .btn {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 173%;
-  letter-spacing: 0.015em;
-  color: #faa172;
 }
 
 .appointmentBox {
@@ -2532,7 +2340,7 @@ a {
 } */
 
 /*------------*/
-.calendar {
+/* .calendar {
   width: 98%;
   margin: 30px 0px;
   font-size: 13px;
@@ -2553,14 +2361,14 @@ a {
   width: 200px;
   height: 150px;
   padding: 20px 0px 0px 5px;
-}
+} */
 
 .table td {
   width: 250px;
   /* height: 150px; */
   /* padding: 20px 0px 0px 5px; */
 }
-
+/* 
 .month {
   font-size: 25px;
 }
@@ -2572,15 +2380,15 @@ a {
 ul {
   height: 100%;
   padding: 0px 5px 0px 20px;
-}
+} */
 
-a {
+/* a {
   color: #17a2b8;
-}
+} */
 
-.left {
+/* .left {
   float: left;
-}
+} */
 
 /* .right {
   float: right;
@@ -2593,7 +2401,7 @@ a {
   box-shadow: 0 0 0 0;
 } */
 
-#ui-datepicker-div {
+/* #ui-datepicker-div {
   top: 124px;
   left: 1092px;
 }
@@ -2610,11 +2418,11 @@ a {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default,
 .ui-state-default {
-  /* background: #484848 url("none"); */
+  background: #484848 url("none"); 
   background: #ddddf1 url("none");
-}
+} */
 
-.ui-datepicker-title {
+/* .ui-datepicker-title {
   text-align: center;
   position: absolute;
   left: 126px;
@@ -2631,14 +2439,14 @@ a {
 
 .ui-datepicker .ui-datepicker-header {
   padding: 1.2em 0;
-}
+} */
 
-.ui-datepicker .ui-datepicker-prev,
+/* .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
-  /* top: 23px; */
-}
+  /* top: 23px; 
+} */
 
-.ui-datepicker-next {
+/* .ui-datepicker-next {
   position: absolute;
   left: 345px;
 }
@@ -2658,16 +2466,16 @@ a {
   .ui-datepicker-days-cell-over
   .ui-datepicker-today {
   padding: 0px;
-}
+} */
 
-.ui-icon,
+/* .ui-icon,
 .ui-datepicker-month,
 .ui-datepicker-year {
-  /* color: #ffe800; */
+  color: #ffe800; 
   color: black;
-}
+} */
 
-a.ui-state-default,
+/* a.ui-state-default,
 .ui-datepicker th {
   color: black !important;
   border: none !important;
@@ -2693,21 +2501,22 @@ a.ui-state-default,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
   color: #f5f5f5 !important;
-}
+} */
 
-.ui-state-highlight,
+/* .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
   background-color: yellow;
   color: black !important;
-  /* padding: 15px; */
   border-top-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
 }
+/* padding: 15px; */
 
+/*
 /*Style #2 for datepicker*/
-
-/*body {*/
+/*
+body {
 /*  background: #fdfcf9;*/
 /*  font-family: sans-serif;*/
 /*}*/
@@ -2806,4 +2615,107 @@ a.ui-state-default,
 /*.ui-datepicker-unselectable .ui-state-default {*/
 /*  color: #eee;*/
 /*  border: 2px solid transparent;*/
-/*}*/
+/*}
+*/
+
+.calendar {
+  position: absolute;
+  width: 280px;
+  left: 50%;
+  top: 50%;
+  margin: -145px 0px 0px -140px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#ui-datepicker-div {
+  background: white;
+}
+
+.ui-datepicker-header {
+  height: 50px;
+  line-height: 50px;
+  color: #b0aead;
+  background: #e9e5e3;
+  margin-bottom: 10px;
+}
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  width: 20px;
+  height: 20px;
+  text-indent: 9999px;
+  border: 2px solid #b0aead;
+  border-radius: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.ui-datepicker-prev {
+  float: left;
+  margin-left: 12px;
+}
+.ui-datepicker-prev:after {
+  transform: rotate(45deg);
+  margin: -43px 0px 0px 8px;
+}
+.ui-datepicker-next {
+  float: right;
+  margin-right: 12px;
+}
+.ui-datepicker-next:after {
+  transform: rotate(-135deg);
+  margin: -43px 0px 0px 6px;
+}
+.ui-datepicker-prev:after,
+.ui-datepicker-next:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-left: 2px solid #b0aead;
+  border-bottom: 2px solid #b0aead;
+}
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover,
+.ui-datepicker-prev:hover:after,
+.ui-datepicker-next:hover:after {
+  border-color: #5ed1cc;
+}
+.ui-datepicker-title {
+  text-align: center;
+}
+.ui-datepicker-calendar {
+  width: 100%;
+  text-align: center;
+}
+.ui-datepicker-calendar thead tr th span {
+  display: block;
+  width: 40px;
+  color: #00a8b2;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+
+.ui-state-default {
+  display: block;
+  text-decoration: none;
+  color: #b5b5b5;
+  line-height: 40px;
+  font-size: 12px;
+}
+.ui-state-default:hover {
+  background: rgba(0,0,0,0.02);
+}
+.ui-state-highlight {
+  color: #000;
+}
+.ui-state-active {
+  color: #5ed1cc;
+}
+.ui-datepicker-unselectable .ui-state-default {
+  color: #eee;
+  border: 2px solid transparent;
+}

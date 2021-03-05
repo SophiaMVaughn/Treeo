@@ -18,12 +18,15 @@
 </head>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.js"></script>
+
+<style>
+	body {
+		font-family: "Titillium Web", sans-serif;
+	}
+</style>
 
 <body>
 	<div id="container">
@@ -47,6 +50,7 @@
 						<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
 						{% endif %}
 						<!--	<a href="{% url 'register' %}">Inbox</a>-->
+						<a class="nav-link" href="{% url 'apptArchive' %}">View Archived Appointments</a>
 						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 					</div>
 				</div>
@@ -54,28 +58,17 @@
 			<!-- </div> -->
 			<div class="login">
 				<div class="login-screen">
-					<!-- <div class="login-screen"> -->
-					<div class="app-title">
-					</div>
-					{% if messages%}
-					{%for message in messages%}
-					<div>{{message.tags}}</div>
-					{{message}}
-					{% endfor %}
-					{% endif %}
-					{% block content %}
-					{% endblock %}
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
 
-<div style="margin: 5%; width: 90%; margin-top: 15px; margin-bottom: 15px; ">
-	<div id="calendar" class="calendar">
+	<div style="margin: 5%; width: 90%; margin-top: 15px; margin-bottom: 15px; ">
+		<div id="calendar" class="calendar">
+		</div>
 	</div>
-</div>
 
+</body>
 
 <script>
 
