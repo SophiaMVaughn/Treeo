@@ -70,24 +70,27 @@
 
 </body>
 
+
+
 <script>
 
 
 
-	$('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		events: '/ReqAppt/calendar-events',
+    $('#calendar').fullCalendar({
+  header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+      events: '/ReqAppt/calendar-events',
 
-		theme: true,
-		defaultView: 'agendaWeek',
-	});
+  theme: true,
+  defaultView: 'agendaWeek',
+});
 
-	if (window.innerWidth < 800) {
-		$('#calendar').fullCalendar('changeView', 'agendaDay');
-	}
+if (window.innerWidth < 800) {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
+        }
 
 </script>
+

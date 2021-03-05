@@ -1,19 +1,5 @@
 {% extends "ReqAppt/apt_base.html" %}
 {% block content %}
-<!-- <div class="orange">
-    <form action="{% url 'create_Appointment' %}" method="post">
-        {% csrf_token %}
-        <div class="appointment">
-            <b>{{ form.as_p }}</b>
-            <p>Date: <input name="apptDate" type="text" id="datepicker" required></p>
-            <p id='hour'> Hour: <select name="apptHour" id="timeslots" required></p>
-        </div>
-        <div class="button editProfileButton">
-            <input type="submit" value="OK" class="btn btn-primary btn-large btn-block">
-        </div>
-    </form>
-</div> -->
-
 <div class="orange">
     <h1>Schedule an Appointment</h1>
     <form action="{% url 'create_Appointment' %}" method="post">
@@ -48,23 +34,30 @@
     //   $( "#datepicker" ).datepicker();
     //       });
     //
-    /* $(function () {
-        $("#datepicker").datepicker({ firstDay: 1, minDate: 0 });
-    }); */
+
+
+
+
 
     $(function () {
         $("#datepicker").datepicker({
 
+
             //Pushes the datepicker on the right side of the data field
             beforeShow: function (input, inst) {
+
         setTimeout(function () {
+
             inst.dpDiv.css({
-                top: 181,
+                top: 224,
                 left: 1088
             });
+
         }, 0);
     },
-            firstDay: 1, minDate: 0
+            firstDay: 1, minDate: 0,
+
+
 
         });
 
@@ -75,7 +68,13 @@
         const timeslots = $("#timeslots");
         timeslots.empty();
         data.forEach(d => {
-            timeslots.append(`<option value="${d}">${d}</option>`)
+            let hour = Math.floor(d);
+            const minutes = d - hour;
+            const pmOrAm = d >= 12 ? 'PM' : 'AM';
+            if(hour > 12) hour -= 12;
+            const display = `${hour}:${minutes===0 ? '00' : '30'} ${pmOrAm}`;
+
+            timeslots.append(`<option value="${d}">${display}</option>`)
         });
     }
 
