@@ -216,28 +216,37 @@ def admin_display_team(request, id):
         return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
     else:
         if request.method == 'POST':
-            if 'doc_d' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_d'])
-                patient.doc_d = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_d' in request.POST and not request.POST['doc_d'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_d'])
+                    patient.doc_d = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
-            if 'doc_p' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_p'])
-                patient.doc_p = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_p' in request.POST and not request.POST['doc_p'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_p'])
+                    patient.doc_p = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
-            if 'doc_c' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_c'])
-                patient.doc_c = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_c' in request.POST and not request.POST['doc_c'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_c'])
+                    patient.doc_c = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
             return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient), 'patient': patient})
