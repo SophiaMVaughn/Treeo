@@ -22,7 +22,6 @@ from messaging.models import *
 from patient_log.models import *
 
 
-
 def register(request):
     if request.method == 'POST':
         form = PatientRegisterForm(request.POST)
@@ -46,21 +45,23 @@ def register(request):
             )
             #m.email_user(subject, message)
             return redirect('account_activation_sent')
-            #some logic to make sure its actually sent
-            #return render(request, 'account_activation_sent.html')
+            # some logic to make sure its actually sent
+            # return render(request, 'account_activation_sent.html')
         else:
             return render(request, 'users_acc/register.html', {'form': form})
     else:
-        return render(request, 'users_acc/register.html', {'form':PatientRegisterForm()})
+        return render(request, 'users_acc/register.html', {'form': PatientRegisterForm()})
+
 
 def account_activation_sent(request):
     return render(request, 'users_acc/account_activation_sent.html')
+
 
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         print(uid)
-        user =  get_user_model().objects.get(id=uid)
+        user = get_user_model().objects.get(id=uid)
     except (TypeError, ValueError, OverflowError,  get_user_model().DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
@@ -78,32 +79,34 @@ def activate(request, uidb64, token):
         # m.msgbody = 'Welcome to Treeo'
         # m.save()
         login(request, user)
-        return redirect('home')
+        return render(request, 'users_acc/account_activation_success.html')
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
+
 
 def button(request):
     if request.method == 'POST':
         #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        # m=message.objects.create()
-        # m.sender = request.user
-        # m.reciever = request.user
-        # m.subject ='test'
-        # m.convoID = 1
-        # m.read_status = False
-        # m.sender_loc = 'Outbox'
-        # m.reciever_loc = 'Inbox'
-        # m.save()
+        m=message.objects.create()
+        m.sender = request.user
+        m.reciever = request.user
+        m.subject ='test'
+        m.convoID = 1
+        m.read_status = False
+        m.sender_loc = 'Outbox'
+        m.reciever_loc = 'Inbox'
+        m.save()
         return redirect('button')
     else:
         return render(request, 'users_acc/button.html')
+
 
 def loginuser(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        #print(username,password)
-        #email or username code need acompying code in model or backend manager to stop @ being used in usernames
+        # print(username,password)
+        # email or username code need acompying code in model or backend manager to stop @ being used in usernames
         # try:
         #     user = get_user_model().objects.get(Q(username__iexact=username) | Q(email__iexact=username))
         # except get_user_model().DoesNotExist:
@@ -117,16 +120,16 @@ def loginuser(request):
         #     user = get_user_model().objects.get(Q(username__iexact=username) | Q(email__iexact=username))
         userl = authenticate(request, username=username, password=password)
         if userl is not None:
-            #print("test1")
+            # print("test1")
             if userl.is_email_confirmed == True:
-                #print("test2")
+                # print("test2")
                 login(request, userl)
-                #get the stuff or the get responce theing here
-                return redirect('home')
+                # get the stuff or the get responce theing here
+                return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
         else:
-            return render(request, 'users_acc/login.html', {'form':AuthenticationForm(), 'errorMsg':'Username and password did not match'})
+            return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Username and password did not match'})
     else:
         return render(request, 'users_acc/login.html', {'form': AuthenticationForm()})
 
@@ -134,9 +137,9 @@ def loginuser(request):
 @login_required
 def profile(request):
     return render(request, 'users_acc/profile.html')
-    #this would be required if you dont use @login_required
+    # this would be required if you dont use @login_required
     # if request.user.is_authenticated:
-    #return render(request, 'profile.html')
+    # return render(request, 'profile.html')
     # else:
     #     return redirect('/login/?next=%s' % request.path)
 
@@ -144,11 +147,25 @@ def profile(request):
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        ep = User_Update_Form(request.POST, instance=request.user)
+        #form = User_Update_Form(request.POST or None)
+        ep = User_Update_Form(request.POST, request.FILES, instance=request.user)
         if ep.is_valid():
-            ep.save()
-            messages.success(request, f'Edit good')
+            request.user.username = ep.cleaned_data.get("username")
+            request.user.email = ep.cleaned_data.get("email")
+            request.user.first_name = ep.cleaned_data.get("first_name")
+            request.user.last_name = ep.cleaned_data.get("last_name")
+            request.user.phone_no = ep.cleaned_data.get("phone_no")
+            request.user.profile_pic = ep.cleaned_data.get("profile_pic")
+            request.user.save()
+            #print("test")
+            # ep.save()
+            #
             return redirect('profile')
+        else:
+            #print some error for validation of stuff
+            #print(ep.errors)
+            form = User_Update_Form(instance=request.user)
+            return render(request, 'users_acc/edit_profile.html', {'edit_profile': form,'formerrors': ep})
     else:
         ep = User_Update_Form(instance=request.user)
     return render(request, 'users_acc/edit_profile.html', {'edit_profile': ep})
@@ -161,7 +178,8 @@ def doctor_registration(request):
             m = form.save(commit=False)
             m.user_type = 2
             m.save()
-            e = Provider.objects.create(user=m,Provider_type=form.cleaned_data.get('providertype'))
+            e = Provider.objects.create(
+                user=m, Provider_type=form.cleaned_data.get('providertype'))
             e.save()
             current_site = get_current_site(request)
             subject = 'Welcome to Treeo'
@@ -181,13 +199,12 @@ def doctor_registration(request):
             )
             #m.email_user(subject, message)
             return redirect('account_activation_sent')
-            #some logic to make sure its actually sent
-            #return render(request, 'account_activation_sent.html')
+            # some logic to make sure its actually sent
+            # return render(request, 'account_activation_sent.html')
         else:
             return render(request, 'users_acc/register_provider.html', {'form': form})
     else:
-        return render(request, 'users_acc/register_provider.html', {'form':ProviderRegisterForm()})
-
+        return render(request, 'users_acc/register_provider.html', {'form': ProviderRegisterForm()})
 
 
 @login_required
@@ -223,30 +240,33 @@ def admin_display_team(request, id):
                 doc.save()
             else:
                 pass
-            return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient),'patient': patient})
+            return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient), 'patient': patient})
         else:
-            return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient),'patient': patient})
+            return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient), 'patient': patient})
+
 
 @login_required
 def admin_view(request):
     if request.method == 'POST':
         form = AdminAssignForm(request.POST)
         if form.is_valid():
-            patient=Patient.objects.none()
+            patient = Patient.objects.none()
             try:
                 patient = Patient.objects.get(id=request.POST['patient'])
             except Exception as e:
                 print(e)
+                return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
             else:
                 return redirect('admin_display_team', request.POST['patient'])
         else:
-            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
+            return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm(),'formerrors': form})
     else:
-        return render(request, "users_acc/admin_assign.html", {'form':AdminAssignForm()})
+        return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
+
 
 def admin_remove_provider(request, id, id2):
     if request.method == "POST":
-        #id = patient id2 =provider
+        # id = patient id2 =provider
         pat = get_object_or_404(Patient, id=id)
         doc = get_object_or_404(Provider, id=id2)
         if doc.Provider_type == 1:
@@ -267,6 +287,34 @@ def admin_remove_provider(request, id, id2):
         return redirect('admin_display_team', pat.id)
     context = {'patient': id, 'provider': id2}
     return render(request, "users_acc/deleteconfirm.html", context)
+
+@login_required
+def admin_approve_provider_render(request):
+    temp=Provider.objects.filter().order_by('is_verified')
+    return render(request, "users_acc/admin_approve_provider.html", {'results': temp})
+
+@login_required
+def admin_approve_provider(request, id):
+    try:
+        temp = Provider.objects.get(id=id)
+    except Exception as e:
+        print(e)
+        return redirect("admin_approve_provider_render")
+    else:
+        temp.is_verified=True
+        temp.save()
+    return redirect("admin_approve_provider_render")
+
+@login_required
+def admin_revoke_provider(request, id):
+    try:
+        temp = Provider.objects.get(id=id)
+    except Exception as e:
+        print(e)
+    else:
+        temp.is_verified=False
+        temp.save()
+    return redirect("admin_approve_provider_render")
 
 # def render_privider_list(request,pat_obj):
 #     content = {}
@@ -385,12 +433,8 @@ def admin_remove_provider(request, id, id2):
     # return render(request, "users_acc/admin_assign.html", context)
 
 
-
-
-
-
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'users_acc/home.html')
     else:
-        return render(request, 'users_acc/generic_home.html')
+        return redirect('login')

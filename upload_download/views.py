@@ -15,16 +15,21 @@ def render_file_upload(request):
     if request.method == 'POST':
         up_form = Fileform(request.POST, request.FILES)
         if up_form.is_valid():
+            fname = request.FILES["file"].name
             if request.FILES["file"].size <= 52428800:
-                if len(request.FILES["file"].name) <= 100:
-                #some logic ?????????
-                    f=Uploaded_File()
-                    f.usern=request.user
-                    print(request.FILES["file"].name)
-                    f.file_name = request.FILES["file"].name
-                    f.file =request.FILES["file"]
-                    f.save()
-                    return render(request, 'upload_download/file_upload_Complete.html')
+                if len(fname) <= 100:
+                    if (fname.endswith(".doc") or fname.endswith(".docx") or fname.endswith(".odf") or fname.endswith(".pdf") or fname.endswith(".jpeg") or fname.endswith(".jpg") or fname.endswith(".png") or fname.endswith(".bmp") or fname.endswith(".gif")):
+                        #some logic ?????????
+                        f=Uploaded_File()
+                        f.usern=request.user
+                        print(request.FILES["file"].name)
+                        f.file_name = request.FILES["file"].name
+                        f.file =request.FILES["file"]
+                        f.save()
+                        return render(request, 'upload_download/file_upload_Complete.html')
+                    else:
+                        context = {"errorMsg": "Unsupported File Type The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif"}
+                        return render(request, 'upload_download/file_upload_Failed.html', context)
                 else:
                     context = {"errorMsg": "Your File Name is Too Long"}
                     return render(request, 'upload_download/file_upload_Failed.html', context)

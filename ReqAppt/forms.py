@@ -66,7 +66,7 @@ class ApptRequestFormPatient(forms.ModelForm):
     class Meta:
         model = ApptTable
         #fields = '__all__'
-        exclude = ['meetingDate', 'status']
+        exclude = ['meetingDate', 'status', 'meeturl']
 
 
 # class ApptRequestForm(forms.ModelForm):

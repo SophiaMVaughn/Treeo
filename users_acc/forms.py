@@ -8,7 +8,9 @@ from django.db.models import Q
 class CustomModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, object):
          return object.user.get_full_name()
-
+class CustomProviderModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, object):
+         return object.user.get_full_name() +" "+str(object.Patient_count)+" Patients"
 
 
 
@@ -61,24 +63,20 @@ class User_Update_Form(forms.ModelForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
+    phone_no = PhoneNumberField(blank=True, null=True)
+    profile_pic = forms.ImageField(required=False)
     class Meta:
         model = User
-        fields = ['username','email','first_name','last_name']
+        fields = ['username','email','first_name','last_name','phone_no','profile_pic']
+        labels = {
+            'phone_no': ('Phone Number'),'last_name': ('Last Name'),'first_name': ('First Name'),
+        }
+#some labels here for the html
 
 
 
-
-# class User_Update_Form(forms.ModelForm):
-#     username = forms.CharField(max_length=30)
-#     email = forms.EmailField()
-#     first_name = forms.CharField(max_length=30)
-#     last_name = forms.CharField(max_length=30)
-#     class Meta:
-#         model = Patient
-#         fields = ['username','email','first_name','last_name']
-
-class TestForm(forms.Form):
-    pass
+# class TestForm(forms.Form):
+#     pass
 
 class AdminAssignForm(forms.Form):
     patient = CustomModelChoiceField(queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
@@ -91,19 +89,19 @@ class AdminProviderUpdateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if instance.doc_d == None:
             self.fields['doc_d'].required = False
-            self.fields['doc_d'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2)), empty_label="(Select a Dietician)")
+            self.fields['doc_d'] = CustomProviderModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2)).order_by('Patient_count'), empty_label="(Select a Dietician)",blank=True)
         else:
             self.fields['doc_d'].initial = None
             self.fields['doc_d'].widget = forms.HiddenInput()
         if instance.doc_c == None:
             self.fields['doc_c'].required = False
-            self.fields['doc_c'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)), empty_label="(Select a Coach)")
+            self.fields['doc_c'] = CustomProviderModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)).order_by('Patient_count'), empty_label="(Select a Coach)",blank=True)
         else:
             self.fields['doc_c'].initial = None
             self.fields['doc_c'].widget = forms.HiddenInput()
         if instance.doc_p == None:
             self.fields['doc_p'].required = False
-            self.fields['doc_p'] = CustomModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)), empty_label="(Select a Physician)")
+            self.fields['doc_p'] = CustomProviderModelChoiceField(queryset=(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)).order_by('Patient_count'), empty_label="(Select a Physician)",blank=True)
         else:
             self.fields['doc_p'].initial = None
             self.fields['doc_p'].widget = forms.HiddenInput()

@@ -1,30 +1,36 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:left; padding-top: 10px;  padding-right:92px;">
-                <!-- {{edit_profile.as_p}} -->
-                <p>
-                    <b> {{edit_profile.username.label_tag}} </b>
-                    {{edit_profile.username}}
-                </p>
-                <p style="margin-left: 35px;">
-                    <b>{{edit_profile.email.label_tag}}</b>
-                    {{edit_profile.email}}
-                </p>
-                <p>
-                    <b> {{edit_profile.first_name.label_tag}} </b>
-                    {{edit_profile.first_name}}
-                </p>
-                <p>
-                    <b> {{edit_profile.last_name.label_tag}} </b>
-                    {{edit_profile.last_name}}
-                </p>
+<div class="orange">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile">
+            <p>
+                <b> {{edit_profile.username.label_tag}} </b>
+                {{edit_profile.username}}
+            </p>
+            <p style="padding-left: 35px;">
+                <b>{{edit_profile.email.label_tag}}</b>
+                {{edit_profile.email}}
+            </p>
+            <p>
+                <b> {{edit_profile.first_name.label_tag}} </b>
+                {{edit_profile.first_name}}
+            </p>
+            <p>
+                <b> {{edit_profile.last_name.label_tag}} </b>
+                {{edit_profile.last_name}}
+            </p>
+            <p style="padding-right: 35px;">
+                <b> {{edit_profile.phone_no.label_tag}} </b>
+                {{edit_profile.phone_no}}
+            </p>
+            <div class="newProfilePic">
+                {{edit_profile.profile_pic}}
+            </div>
+            <div class="button editProfileButtonConfirm">
+                <button type="submit" class="btn btn-primary btn-large btn-block">Confirm Edit</button>
             </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-large btn-block">Edit Profile</button>
-</form>
+    </form>
+</div>
 {% endblock content %}

@@ -1,6 +1,14 @@
-{% extends "users_acc/base.html" %}
+{% extends "users_acc/baseNoNavBar.html" %}
 
 {% block content %}
-  <p>Please confirm your email address to complete the registration. </p>
-<a href="{% url 'login' %}" class="btn btn-primary btn-large btn-block">Login</a>
+<div class="verification">
+  email verification
+</div>
+<div class="emailClick"></div>
+<div class="almostDone">
+  <span>Almost done with account creation.</span>
+  Check your email inbox and click the link to verify the address and access your
+  account.
+</div>
+<div class="theT"></div>
 {% endblock %}
