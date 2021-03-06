@@ -24,5 +24,5 @@ path('admin_assign/', users_acc_views.admin_view, name='admin_view'),
 path('admin_display_team/<id>/', users_acc_views.admin_display_team, name='admin_display_team'),
 path('admin_approve_provider_render/', users_acc_views.admin_approve_provider_render, name='admin_approve_provider_render'),
 path('admin_approve_provider/<id>', users_acc_views.admin_approve_provider, name='admin_approve_provider'),
-path('admin_remove_provider/<id>', users_acc_views.admin_remove_provider, name='admin_remove_provider'),
+path('admin_revoke_provider/<id>', users_acc_views.admin_revoke_provider, name='admin_revoke_provider'),
 ]

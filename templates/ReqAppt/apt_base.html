@@ -25,30 +25,37 @@
 					{% else %}
 					<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
 					{% endif %}
-					<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
-					<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
-					<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
+
 					{% if user.user_type == 1%}
 					{% else %}
 					<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
 					{% endif %}
 					<!--	<a href="{% url 'register' %}">Inbox</a>-->
+					<a class="nav-link" href="{% url 'apptArchive' %}">View Archived Appointments</a>
 					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 				</div>
 			</div>
 		</nav>
-		<!-- </div> -->
+		<!-- Form Error messaging -->
+		{% if formerrors %}
+		<div class="message">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				There was a problem with the information you entered. Please correct the following:
+				{{ formerrors.non_field_errors }}
+				<ul>
+					{% for field in formerrors %}
+					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		<!-- End Form Error messaging -->
 		<div class="login">
 			<div class="login-screen">
-				<!-- <div class="login-screen"> -->
-				<div class="app-title">
-				</div>
-				{% if messages%}
-				{%for message in messages%}
-				<div>{{message.tags}}</div>
-				{{message}}
-				{% endfor %}
-				{% endif %}
 				{% block content %}
 				{% endblock %}
 			</div>

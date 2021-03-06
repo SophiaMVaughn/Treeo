@@ -2,6 +2,7 @@ import calendar
 import json
 
 from django.contrib.sites import requests
+import math
 
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
@@ -84,14 +85,12 @@ def Pending(request):
     return render(request,'ReqAppt/Pending.html')
 
 
-#zoom account required decorator
 def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
-            form = ApptRequestFormPatient(instance=request.user)
-            #return some error message
-            return render(request, 'ReqAppt/appointment.html', {"form": form})
+            form2 = ApptRequestFormPatient(instance=request.user)
+            return render(request, 'ReqAppt/appointment.html', {"form": form2,'formerrors': form})
             #return HttpResponseBadRequest()
         else:
 
@@ -108,16 +107,52 @@ def create_Appointment(request):
             # ApptTable.objects.create(
             #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
             # )
-            g=ApptTable.objects.create(
+            appointment=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
 
             # Oath, TODO use JWT if this doesn't work
             # schedule_interview(request)
             # zoom_callback(request)
-            scheduled_mail_both(g)
-            target_time_print(g)
-            send_message(apptDate, apptHour)
+            scheduled_mail_both(appointment)
+            target_time_print(appointment)
+            send_message(appointment)
+            return render(request, 'ReqAppt/Pending.html')
+
+def create_Appointment(request):
+    if request.method == 'POST':
+        form = ApptRequestFormPatient(data=request.POST, instance=request.user)
+        if not form.is_valid():
+            form = ApptRequestFormPatient(instance=request.user)
+            #return some error message
+            return render(request, 'ReqAppt/appointment.html', {"form": form})
+            #return HttpResponseBadRequest()
+        else:
+
+            # Valid, persist in db
+            print(request.POST)
+            apptDate = request.POST['apptDate']
+            apptHour = float(request.POST['apptHour'])
+            print(apptDate)
+            print(apptHour)
+            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
+            hour = int(math.floor(apptHour))
+            minute = int((apptHour - hour) * 60)
+            meetingDate = meetingDate.replace(hour=hour, minute=minute)
+            print(meetingDate)
+            #call zoom api make meeting and get the url for it
+            # ApptTable.objects.create(
+            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
+            # )
+            appointment=ApptTable.objects.create(
+                **form.cleaned_data, meetingDate=meetingDate
+            )
+
+            # Oath, TODO use JWT if this doesn't work
+
+            scheduled_mail_both(appointment)
+            target_time_print(appointment)
+            send_message(appointment)
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -148,17 +183,15 @@ def approve(request,id):
     appointment=ApptTable.objects.get(apptId=id)
     appointment.status=True
     appointment.save()
-    approve_message()
+    approve_message(appointment)
     approved_mail_both(appointment)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(apptId=id)
     if request.method == 'POST':
-
-
         appointment.delete()
-        reject_message()
+        reject_message(appointment)
         delete_mail_both(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
@@ -178,11 +211,12 @@ def Doctor_avail_view(request, id, date_str):
     ).all()
 
     def appt_to_time(appt: ApptTable):
-        return appt.meetingDate.hour
+        return appt.meetingDate.hour + (appt.meetingDate.minute * 0.5)
 
     unavailable_times = {appt_to_time(appt) for appt in appointments}
 
-    data = [h for h in range(STARTING_HOUR, ENDING_HOUR+1) if h not in unavailable_times]
+    # data = [h/2 for h in range(STARTING_HOUR * 2, (ENDING_HOUR + 1) * 2) if h/2 not in unavailable_times]
+    data = [h for h in range(STARTING_HOUR , ENDING_HOUR + 1) if h not in unavailable_times]
 
     return JsonResponse(data, safe=False)
 
@@ -194,9 +228,13 @@ def event(request):
     #    all_meetings = ApptTable.objects.all()
     #else:
     #    all_meetings = ApptTable.objects.filter(event_type__icontains=request.GET.get('event_type'))
-    all_meetings = ApptTable.objects.all()
+
 
     is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
+    if is_patient:
+        all_meetings = ApptTable.objects.filter(patient__user_id=request.user.id).all()
+    else:
+        all_meetings = ApptTable.objects.filter(provider__user_id=request.user.id).all()
 
     for i in all_meetings:
         meeting_sub_arr = {}

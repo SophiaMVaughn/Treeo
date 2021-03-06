@@ -31,7 +31,9 @@
                     <th>Appointment Status</th>
                     <th>Approve</th>
                     <th>Reject</th>
+                    <th>Archive</th>
                     <th>Delete</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +62,7 @@
                         <a href="{% url 'reqAppt_delete' a.apptId  %}"><span> NO! </span></a>
                         {% endif %}
                     </td>
-
+                    <td><a href="{% url 'archive' a.apptId %}"> Archive </a></td>
                     <!-- <td><a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a></td> -->
                     <td><a href="{% url 'reqAppt_delete' a.apptId %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="35" alt="" loading="lazy" /></a>
