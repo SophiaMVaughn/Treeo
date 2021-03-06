@@ -46,6 +46,7 @@ def patientlog(request):
         elif request.user.user_type==2:
             return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
         elif request.user.user_type == 1:
+            #reject admins
             return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
 
 def edit_log(request,id):

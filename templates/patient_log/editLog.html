@@ -1,7 +1,7 @@
 {% extends "patient_log/patient_log_base.html" %}
 {% block content %}
 <div class="orange">
-	<h1>Edit Your Daily Health Wellness Log</h1>
+	<h1>Edit Today's Health & Wellness Log</h1>
 	{% if messages %}
 	{% for message in messages %}
 	<h2 style="color:green;">{{message}}</h2>
@@ -15,21 +15,25 @@
 			<p>
 				<b> {{edit_log.calories.label_tag}} </b>
 				{{edit_log.calories}}
+				<b> Your Current Calories are {{temp.calories}} </b>
 			</p>
 
 			<p>
 				<b> {{edit_log.water.label_tag}} </b>
 				{{edit_log.water}}
+				<b> Your Current Water Intake is {{temp.water}} </b>
 			</p>
 
 			<p>
 				<b> {{edit_log.sleep.label_tag}} </b>
 				{{edit_log.sleep}}
+				<b> Your Current Sleep is {{temp.sleep}} </b>
 			</p>
 
 			<p>
 				<b> {{edit_log.mood.label_tag}} </b>
 				{{edit_log.mood}}
+				<b> Your Current Mood is {{temp.mood}} </b>
 			</p>
 
 			<div class="button patientLogButton">

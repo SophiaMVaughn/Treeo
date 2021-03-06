@@ -28,6 +28,7 @@ class User(AbstractUser):
     user_type = models.PositiveSmallIntegerField(
         choices=USER_TYPE_CHOICES, default=3)
     is_staff = models.BooleanField(default=False)
+    is_deactivated = models.BooleanField(default=False)
     is_email_confirmed = models.BooleanField(default=False)
     phone_no = PhoneNumberField(null=True, blank=True, unique=True)
     profile_pic = models.ImageField(
