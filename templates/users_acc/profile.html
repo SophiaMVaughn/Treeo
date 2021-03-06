@@ -15,6 +15,12 @@
         <!-- check whatsapp for bootstrap -->
 
 
+        {% if user.user_type == 3 %}
+        {{user.patient.doc_d.user.first_name}} {{user.patient.doc_d.user.last_name}}
+        {{user.patient.doc_p.user.first_name}} {{user.patient.doc_p.user.last_name}}
+        {{user.patient.doc_c.user.first_name}} {{user.patient.doc_c.user.last_name}}
+        {% endif %}
+
         <div class="button editProfileButton">
             <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
             <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>

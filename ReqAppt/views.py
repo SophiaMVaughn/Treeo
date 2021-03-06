@@ -89,40 +89,6 @@ def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
         if not form.is_valid():
-            form2 = ApptRequestFormPatient(instance=request.user)
-            return render(request, 'ReqAppt/appointment.html', {"form": form2,'formerrors': form})
-            #return HttpResponseBadRequest()
-        else:
-
-            # Valid, persist in db
-            print(request.POST)
-            apptDate = request.POST['apptDate']
-            apptHour = request.POST['apptHour']
-            print(apptDate)
-            print(apptHour)
-            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
-            meetingDate = meetingDate.replace(hour=int(apptHour))
-            print(meetingDate)
-            #call zoom api make meeting and get the url for it
-            # ApptTable.objects.create(
-            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
-            # )
-            appointment=ApptTable.objects.create(
-                **form.cleaned_data, meetingDate=meetingDate
-            )
-
-            # Oath, TODO use JWT if this doesn't work
-            # schedule_interview(request)
-            # zoom_callback(request)
-            scheduled_mail_both(appointment)
-            target_time_print(appointment)
-            send_message(appointment)
-            return render(request, 'ReqAppt/Pending.html')
-
-def create_Appointment(request):
-    if request.method == 'POST':
-        form = ApptRequestFormPatient(data=request.POST, instance=request.user)
-        if not form.is_valid():
             form = ApptRequestFormPatient(instance=request.user)
             #return some error message
             return render(request, 'ReqAppt/appointment.html', {"form": form})

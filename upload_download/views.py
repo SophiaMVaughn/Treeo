@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from users_acc.models import *
 
 
+#upatient files should not be in admin view (upload/download)
 
 @login_required
 def render_file_upload(request):
