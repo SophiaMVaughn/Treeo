@@ -35,7 +35,22 @@
         </div>
         {% endfor %}
         {% endif %}
-
+        {% if formerrors %}
+        <div class="message">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                There was a problem with the information you entered. Please correct the following:
+                {{ formerrors.non_field_errors }}
+                <ul>
+                    {% for field in formerrors %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
         <div class="login">
             <div class="login-screen">
                 {% block content %}

@@ -126,11 +126,11 @@ def loginuser(request):
                 # print("test2")
                 login(request, userl)
                 # get the stuff or the get responce theing here
-<<<<<<< HEAD
+
                 return redirect('home')
-=======
+
                 return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
->>>>>>> Messaging
+
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
         else:
@@ -452,7 +452,7 @@ def home(request):
         return render(request, 'users_acc/home.html')
     else:
         return redirect('login')
-<<<<<<< HEAD
+
 
 # def home2(request):
 #     context={}
@@ -471,5 +471,3 @@ def home(request):
 #         return render(request, 'users_acc/home.html', context)
 #     else:
 #         return redirect('login')
-=======
->>>>>>> Messaging

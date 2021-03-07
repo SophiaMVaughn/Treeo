@@ -63,12 +63,12 @@ def edit_log(request,id):
             temp.save()
             #message.success(request,'')
             #redirects to self
-            return render(request, 'patient_log/patientLog_submit.html', {"form": temp})
+            return render(request, 'patient_log/patientLog_submit.html')
         else:
             form2=PatientLogForm()
-        return render(request,'patient_log/editLog.html', {'edit_log': form2,'formerrors': form})
+        return render(request,'patient_log/editLog.html', {'edit_log': form2,'formerrors': form, 'form':temp})
     else:
-        return render(request, 'patient_log/editLog.html', {'edit_log': form})
+        return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 
 def line_chart_Year(request,id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]

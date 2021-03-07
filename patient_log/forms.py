@@ -7,9 +7,9 @@ from django.db.models import Q
 
 class PatientLogForm(forms.Form):
     calories = forms.IntegerField(label='Calories (kCal)', widget = forms.TextInput)
-    water = forms.DecimalField(label='Water Intake(oz)', widget = forms.TextInput, max_digits=7, decimal_places=2)
+    water = forms.DecimalField(label='Water Intake (oz)', widget = forms.TextInput, max_digits=7, decimal_places=2)
     sleep = forms.DecimalField(label= 'Sleep (hrs)', widget = forms.TextInput,  max_digits=7, decimal_places=2)
-    mood = forms.IntegerField(label='Mood(1-5)', widget=forms.TextInput)
+    mood = forms.IntegerField(label='Mood (1-5)', widget=forms.TextInput)
     class Meta:
         model = PatientLog
         fields = fields = ['calories', 'water', 'sleep','mood']
