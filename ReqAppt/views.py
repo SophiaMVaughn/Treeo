@@ -313,7 +313,7 @@ def archive_apt(request,id):
         archiveAppt.patient = appointment.patient
         archiveAppt.save()
         appointment.delete()
-        return render(request,"reqAppt/appointment.html")
+        return redirect('apptArchive')
     except Exception as e:
         print(e)
         return render(request,"reqAppt/appointment.html")
