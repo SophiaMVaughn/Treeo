@@ -36,12 +36,12 @@
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav ">
 						<a class="nav-link" href="{% url 'home' %}">Home</a>
-						<a class="nav-link" href="{% url 'reqAppt_calendar' %}">Appointments Calendar</a>
 						{% if user.user_type == 1%}
 						<a class="nav-link" href="{% url 'reqAppt' %}">Search Appointments</a>
 						{% else %}
 						<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
 						{% endif %}
+						<a class="nav-link" href="{% url 'reqAppt_calendar' %}">Appointments Calendar</a>
 						<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
 						<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
 						<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
@@ -85,6 +85,8 @@
       events: '/ReqAppt/calendar-events',
 
   theme: true,
+			eventBorderColor: '#f99f71',
+				eventBackgroundColor: '#f99f71',
   defaultView: 'agendaWeek',
 });
 

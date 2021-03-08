@@ -21,7 +21,7 @@
         <div class="heading">
             <h2>Doctor View Appointments</h2>
         </div>
-        <table class="table table-bordered ">
+        <table class="table table-bordered approve">
 
             <thead>
                 <tr>
@@ -43,26 +43,26 @@
                     <td>{{a.patient.user.last_name}}</td>
                     <td>{{a.meetingDate}}</td>
                     {%if a.status%}
-                    <td><span class="Confirmed">Confirmed</span></td>
+                    <td>Confirmed</td>
                     {% else %}
-                    <td><span class="Pending">Pending</span></td>
+                    <td>Pending</td>
                     {% endif %}
 
                     <td>
                         {%if a.status%}
                         <span></span>
                         {% else %}
-                        <a href="{% url 'approve_appt' a.apptId %}"><span> YES! </span></a>
+                        <a href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
                         {% endif %}
                     </td>
                     <td>
                         {%if a.status%}
                         <span></span>
                         {% else %}
-                        <a href="{% url 'reqAppt_delete' a.apptId  %}"><span> NO! </span></a>
+                        <a href="{% url 'reqAppt_delete' a.apptId  %}"><span> &#10060; </span></a>
                         {% endif %}
                     </td>
-                    <td><a href="{% url 'archive' a.apptId %}"> Archive </a></td>
+                    <td><a href="{% url 'archive' a.apptId %}"> Click to Archive </a></td>
                     <!-- <td><a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a></td> -->
                     <td><a href="{% url 'reqAppt_delete' a.apptId %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="35" alt="" loading="lazy" /></a>

@@ -53,7 +53,8 @@
         <div class="registerPasswordOneBox">
             <div class="registerPasswordOneInput">
                 {{form.password1}}
-                <p>At least 8 characters, not entirely numeric, not too similar to your personal information, not a commonly used password</p>
+                <p>At least 8 characters, not entirely numeric, not too similar to your personal information, not a
+                    commonly used password</p>
             </div>
         </div>
 
@@ -66,9 +67,16 @@
             </div>
         </div>
 
-        <div class="button registerButton">
-            <button type="submit" class="btn btn-primary btn-large btn-block">done</button>
+        <div class="registerPhone">
+            phone number
         </div>
+        <div class="registerPhoneBox">
+            <div class="registerPhoneInput">
+                {{form.phone_no}}
+                <p>This field is optional. Do not include the country code, spaces, or any other characters</p>
+            </div>
+        </div>
+
         <div class="registerProvider">
             provider type
         </div>
@@ -76,6 +84,10 @@
             <div class="registerProviderInput">
                 {{form.providertype}}
             </div>
+        </div>
+
+        <div class="button registerButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">done</button>
         </div>
     </form>
 </div>

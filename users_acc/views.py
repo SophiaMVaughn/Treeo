@@ -20,7 +20,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from messaging.models import *
 from patient_log.models import *
-
+from blogsys.models import *
+from ReqAppt.models import *
 
 def register(request):
     if request.method == 'POST':
@@ -125,7 +126,11 @@ def loginuser(request):
                 # print("test2")
                 login(request, userl)
                 # get the stuff or the get responce theing here
+
+                return redirect('home')
+
                 return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
+
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
         else:
@@ -447,3 +452,22 @@ def home(request):
         return render(request, 'users_acc/home.html')
     else:
         return redirect('login')
+
+
+# def home2(request):
+#     context={}
+#     if request.user.is_authenticated:
+#         context= {'appointment': "", 'message': "", }
+#         results=PostQ.objects.filter(Thereciever=(request.user)).order_by('meetingDate')[:2]
+#         if results.count() == 0:
+#             print('no appointments')
+#         if request.user.user_type==3:
+#             results=ApptTable.objects.filter(patient=(request.user)).order_by('meetingDate')[:2]
+#         if request.user.user_type==2:
+#             results=ApptTable.objects.filter(provider=(request.user)).order_by('meetingDate')[:2]
+#             if results.count() == 0:
+#                 print('no appointments')
+#             request.user.date_joined.date()
+#         return render(request, 'users_acc/home.html', context)
+#     else:
+#         return redirect('login')
