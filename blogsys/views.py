@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest
 from blogsys.models import PostQ
 from .forms import PostQform

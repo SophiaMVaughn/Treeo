@@ -19,11 +19,11 @@ class PatientRegisterForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
-
+    phone_no = PhoneNumberField(blank=True, null=True)
     class Meta:
         model = User
         fields = ['username', 'email', 'password1',
-                  'password2', 'first_name', 'last_name']
+                  'password2', 'first_name', 'last_name', 'phone_no']
 
         def save(self, commit=True):
             user = super(PatientRegisterForm, self).save(commit=False)
@@ -49,11 +49,11 @@ class ProviderRegisterForm(UserCreationForm):
     last_name = forms.CharField(max_length=30)
     providertype = forms.IntegerField(
         label='What Type of Provider are You?', widget=forms.Select(choices=CHOICES))
-
+    phone_no = PhoneNumberField(blank=True, null=True)
     class Meta:
         model = User
         fields = ['username', 'email', 'password1',
-                  'password2', 'first_name', 'last_name']
+                  'password2', 'first_name', 'last_name', 'phone_no']
         exclude = ('user_type',)
 
         def save(self, commit=True):

@@ -4,7 +4,7 @@
 <div class="orange">
   <div class="messaging">
     <div id="container">
-      <nav class="navbar navbar-expand  navbar-dark bg-dark">
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ">
             <a class="nav-link" href="{% url 'Health_Coach' %}">Health Coach</a>
@@ -14,7 +14,7 @@
         </div>
       </nav>
     </div>
-    <h1>Provider: {{ First }} {{ Last }}</h1>
+    <h1>Physician: {{ First }} {{ Last }}</h1>
     {% if messages %}
     {% for message in messages %}
     <h2 style="color:green;">{{message}}</h2>
