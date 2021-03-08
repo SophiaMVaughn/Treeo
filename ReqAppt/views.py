@@ -97,41 +97,6 @@ def create_Appointment(request):
             # Valid, persist in db
             print(request.POST)
             apptDate = request.POST['apptDate']
-            apptHour = request.POST['apptHour']
-            print(apptDate)
-            print(apptHour)
-            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
-            meetingDate = meetingDate.replace(hour=int(apptHour))
-            print(meetingDate)
-            #call zoom api make meeting and get the url for it
-            # ApptTable.objects.create(
-            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
-            # )
-            appointment=ApptTable.objects.create(
-                **form.cleaned_data, meetingDate=meetingDate
-            )
-
-            # Oath, TODO use JWT if this doesn't work
-            # schedule_interview(request)
-            # zoom_callback(request)
-            scheduled_mail_both(appointment)
-            target_time_print(appointment)
-            send_message(appointment)
-            return render(request, 'ReqAppt/Pending.html')
-
-def create_Appointment(request):
-    if request.method == 'POST':
-        form = ApptRequestFormPatient(data=request.POST, instance=request.user)
-        if not form.is_valid():
-            form = ApptRequestFormPatient(instance=request.user)
-            #return some error message
-            return render(request, 'ReqAppt/appointment.html', {"form": form})
-            #return HttpResponseBadRequest()
-        else:
-
-            # Valid, persist in db
-            print(request.POST)
-            apptDate = request.POST['apptDate']
             apptHour = float(request.POST['apptHour'])
             print(apptDate)
             print(apptHour)
@@ -149,7 +114,6 @@ def create_Appointment(request):
             )
 
             # Oath, TODO use JWT if this doesn't work
-
             scheduled_mail_both(appointment)
             target_time_print(appointment)
             send_message(appointment)
@@ -229,7 +193,6 @@ def event(request):
     #else:
     #    all_meetings = ApptTable.objects.filter(event_type__icontains=request.GET.get('event_type'))
 
-
     is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
     if is_patient:
         all_meetings = ApptTable.objects.filter(patient__user_id=request.user.id).all()
@@ -271,6 +234,86 @@ def archive_apt(request,id):
         archiveAppt.save()
         appointment.delete()
         return render(request,"reqAppt/appointment.html")
+    except Exception as e:
+        print(e)
+        return render(request,"reqAppt/appointment.html")
+#
+# def zoom_callback(request):
+#     code = request.GET["code"]
+#     data = requests.post(f"https://zoom.us/oauth/token?grant_type=authorization_code&code="
+#                          f"obBEe8ewaL_KdYKjnimT4KPd8KKdQt9FQ&redirect_uri="
+#                          f"http://127.0.0.1:8000/ReqAppt/Appointment", headers={
+#         "Authorization": "Basic " + base64_encode("OoIw_Ll1SPG3Me81tIYqQ:0pbxapRDeB187rtT6SQSztYV9obAQpK6")
+#     })
+#     print(data.text)
+#     requests.session["zoom_access_token"] = data.json()["access_token"]
+#
+#     return HttpResponseRedirect("/ReqAppt/appointment")
+#
+#
+#
+# def schedule_interview(request):
+#     if request.method == "POST":
+#
+#         patient = User.objects.get(id=int(request.POST["patient"]))
+#         # patient = Profile.objects.get(patient=patient)
+#
+#         data = requests.post("https://api.zoom.us/v2/users/me/meetings", headers={
+#             'content-type': "application/json",
+#             "authorization": f"Bearer {request.session['zoom_access_token']}"
+#         }, data=json.dumps({
+#             "topic": f"Interview with {ApptTable.patient.name}",
+#             "type": 2,
+#             "start_time": request.POST["time"],
+#         }))
+#
+#         print("*)(@*$)@($*)@($*@)(#*@#)(*@#")
+#         print(data.json()["join_url"], data.json()["start_url"])
+#
+#         return HttpResponseRedirect(f"/ReqAppt/Appointment")
+#
+
+    is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
+    if is_patient:
+        all_meetings = ApptTable.objects.filter(patient__user_id=request.user.id).all()
+    else:
+        all_meetings = ApptTable.objects.filter(provider__user_id=request.user.id).all()
+
+    for i in all_meetings:
+        meeting_sub_arr = {}
+        user = (i.provider if is_patient else i.patient).user
+        meeting_sub_arr['title'] = f"{user.first_name} {user.last_name}"
+        start = i.meetingDate.strftime('%Y-%m-%dT%H:%M:%S')
+        end = (i.meetingDate + timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S')
+        #meetingDate = datetime.strptime(str(i.meetingDate.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        meeting_sub_arr['start'] = start
+        meeting_sub_arr['end'] = end
+        meeting_arr.append(meeting_sub_arr)
+    return HttpResponse(json.dumps(meeting_arr))
+
+def fullcalendar(request):
+    all_meetings = ApptTable.objects.all()
+    get_meeting_patients = ApptTable.objects.only('patient')
+
+    # if filters applied then get parameter and filter based on condition else return object
+    print(request.method)
+
+    context = {
+        "meeting":all_meetings,
+        "get_meeting_patient":get_meeting_patients,
+    }
+    return render(request,'ReqAppt/fullcalendar.html',context)
+
+def archive_apt(request,id):
+    appointment = ApptTable.objects.get(apptId=id)
+    try:
+        archiveAppt = ApptArchive.objects.create()
+        archiveAppt.meetingDate = appointment.meetingDate
+        archiveAppt.provider = appointment.provider
+        archiveAppt.patient = appointment.patient
+        archiveAppt.save()
+        appointment.delete()
+        return redirect('apptArchive')
     except Exception as e:
         print(e)
         return render(request,"reqAppt/appointment.html")

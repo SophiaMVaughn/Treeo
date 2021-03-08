@@ -52,7 +52,7 @@ input[type="text"] {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -65,7 +65,7 @@ input[type="password"] {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -78,7 +78,7 @@ input[type="email"] {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -91,7 +91,7 @@ input[type="number"] {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -105,7 +105,7 @@ input[type="tel"] {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -119,7 +119,7 @@ select {
   text-align: center;
   background-color: white;
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
   padding: 10px 0;
@@ -148,7 +148,7 @@ input::-webkit-inner-spin-button {
 }
 
 input:focus {
-  border: 2px solid #3498db;
+  border: 2px solid black;
   box-shadow: none;
 }
 
@@ -320,6 +320,8 @@ input:focus {
 .table {
   vertical-align: center;
   border-color: #000000;
+  width: 94%;
+  margin: 0 3%;
 }
 
 .message {
@@ -572,7 +574,7 @@ input:focus {
   height: 110px;
   left: 823px;
   /* top: 1057px; */
-  top: 890px;
+  top: 1078px;
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px; temp until can put placeholder in username and password */
 }
@@ -689,7 +691,7 @@ input:focus {
 
 .orange {
   background-color: #f99f71;
-  min-height: 1080px;
+  min-height: 1280px;
   padding-top: 5px;
   width: 100%;
   font-family: "Titillium Web", sans-serif;
@@ -705,7 +707,7 @@ input:focus {
   top: -86px;
 }
 
-@media only screen and (max-width:1280px) {
+@media only screen and (max-width: 1280px) {
   .orange {
     width: 200%;
   }
@@ -727,7 +729,7 @@ input:focus {
     width: 196px;
     height: 110px;
     left: 515px;
-    }
+  }
 }
 
 .white {
@@ -1147,6 +1149,7 @@ input:focus {
   color: #e5e5e5;
 }
 
+
 .registerPasswordTwoInput input[type="password"] {
   border-radius: 100px;
   font-size: 36px;
@@ -1159,12 +1162,74 @@ input:focus {
   border: 4px solid #faa172;
 }
 
+.registerPhone {
+  position: absolute;
+  width: 267px;
+  height: 40px;
+  left: 256px;
+  top: 820px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 173%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.registerPhoneBox {
+  position: absolute;
+  width: 329px;
+  height: 107px;
+  left: 234px;
+  top: 890px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+}
+
+.registerPhoneInput {
+  position: absolute;
+  width: 216px;
+  height: 30px;
+  left: 0px;
+  top: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: -0.04em;
+
+  color: #e5e5e5;
+}
+
+.registerPhoneInput p {
+  font-size: 18px;
+  color: black;
+  line-height: 30px;
+  position: absolute;
+  width: 342px;
+  top: 105px;
+}
+
+.registerPhoneInput input[type="tel"] {
+  border-radius: 100px;
+  font-size: 36px;
+  padding: 0px 0px;
+  width: 329px;
+  height: 107px;
+}
+
+.registerPhoneInput input[type="tel"]:focus {
+  border: 4px solid #faa172;
+}
+
 .registerProvider {
   position: absolute;
   width: 222px;
   height: 40px;
   left: 1357px;
-  top: 813px;
+  top: 819px;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -1177,9 +1242,9 @@ input:focus {
 .registerProviderBox {
   position: absolute;
   width: 329px;
-  height: 90px;
+  height: 96px;
   left: 1332px;
-  top: 880px;
+  top: 891px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 34px;
@@ -1542,7 +1607,53 @@ input:focus {
   position: absolute;
   width: 884px;
   height: 157px;
-  left: 514px;
+  left: 509px;
+}
+
+.currentCareTeam {
+  position: absolute;
+  width: auto;
+  height: 21.2%;
+  left: 838px;
+  top: 0px;
+  background: white;
+  color: black;
+  
+}
+
+.currentCareTeam table {
+  /* border-radius: 50%; */
+  /* color: #00a8b2; */
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.currentCareTeam .table {
+  width: auto;
+  margin: auto;
+}
+
+.currentCareTeam thead {
+  background: #009879;
+  color: white;
+}
+
+.currentCareTeam td {
+  padding: 12px 15px;
+}
+
+.currentCareTeam tbody tr {
+  border-bottom: 1px solid #dddddd;
+  background-color: #f3f3f3;
+  font-weight: bold;
+  color: #000;
+}
+
+.currentCareTeam tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
 
 .editProfileButton {
@@ -1626,6 +1737,13 @@ input:focus {
   letter-spacing: 0.015em;
   color: #faa172;
 }
+
+/* .assignCareTeamTable {
+  position: absolute;
+  left: 336px;
+  width: auto;
+} */
+
 
 .assignCareTeamButton {
   position: absolute;
@@ -1804,6 +1922,10 @@ input:focus {
   font-size: 30px;
 }
 
+.approve a {
+  text-decoration: none;
+}
+
 .appointment {
   position: absolute;
   width: 884px;
@@ -1864,6 +1986,58 @@ input:focus {
   text-align: right;
 }
 
+.current {
+  position: absolute;
+  width: auto;
+  height: 21.2%;
+  left: 1342px;
+  background: white;
+  color: black;
+  
+}
+
+.current table {
+  /* border-radius: 50%; */
+  /* color: #00a8b2; */
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.current .table {
+  width: auto;
+  margin: auto;
+}
+
+.current thead {
+  background: #009879;
+  color: white;
+}
+
+.current td {
+  padding: 12px 15px;
+}
+
+.current tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.current tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.current tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+
+.current tr:nth-child(even) {
+  font-weight: bold;
+  color: #009879;
+}
+
 .patientLogButton {
   position: absolute;
   width: 196px;
@@ -1901,7 +2075,6 @@ input:focus {
   border: 1px solid black;
 }
 */
-
 
 .assignCareTeamButton {
   position: absolute;
@@ -2192,6 +2365,7 @@ input:focus {
   width: 100%;
   border-collapse: collapse;
   border: 2px solid;
+  margin: auto;
 }
 
 .messaging .table tr {
@@ -2669,7 +2843,7 @@ body {
 }
 .ui-datepicker-prev:after,
 .ui-datepicker-next:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 4px;
@@ -2698,7 +2872,6 @@ body {
   font-size: 13px;
 }
 
-
 .ui-state-default {
   display: block;
   text-decoration: none;
@@ -2707,7 +2880,7 @@ body {
   font-size: 12px;
 }
 .ui-state-default:hover {
-  background: rgba(0,0,0,0.02);
+  background: rgba(0, 0, 0, 0.02);
 }
 .ui-state-highlight {
   color: #000;
