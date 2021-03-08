@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
-    # 'channels',
+    'channels',
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
 ]
@@ -85,7 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Treeo.wsgi.application'
-# ASGI_APPLICATION = 'Treeo.routing.application'
+ASGI_APPLICATION = 'Treeo.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
