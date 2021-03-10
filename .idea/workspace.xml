@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/migrations/0002_auto_20210304_1322.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogsys/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
