@@ -203,22 +203,6 @@ input:focus {
   box-sizing: border-box;
 }
 
-#navwrapper nav a {
-  text-decoration: none;
-  border: 2px solid #c5c6c7;
-  padding: 3px;
-  color: white;
-  /* border: white solid 1px; */
-  padding: auto;
-  margin: 0px 3px;
-  /* margin: 0px auto; can possibly use to spread out further?*/
-}
-
-#navwrapper nav a:hover {
-  transition: 0.25s;
-  background: #3498db;
-}
-
 /* #navwrapper nav a:visited {
   color: #45a29e;
 } */
@@ -1645,6 +1629,156 @@ input:focus {
 
 .passwordSaved span {
   font-weight: 800;
+}
+
+.account {
+  position: absolute;
+  width: 247px;
+  height: 76px;
+  left: 311px;
+  top: 177px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 86px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.accountProfilePic {
+  position: absolute;
+  width: 266px;
+  height: 266px;
+  left: 1500px;
+  top: 177px;
+}
+
+.patientNameBox {
+  position: absolute;
+  width: 585px;
+  height: 131px;
+  left: 300px;
+  top: 284px;
+
+  background: #ffffff;
+  border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px;
+}
+
+.patientName {
+  position: absolute;
+  width: 247px;
+  height: 57px;
+  left: 18px;
+  top: 41px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 106%;
+
+  /* or 38px */
+  letter-spacing: 0.01em;
+
+  color: #676464;
+}
+
+.providerTeamBox {
+  position: absolute;
+  width: 744px;
+  height: 332px;
+  left: 300px;
+  top: 457px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.providerTeam {
+  position: absolute;
+  width: 276px;
+  height: 34px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 106%;
+
+  /* or 38px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.dietitianBox {
+  position: absolute;
+  width: 744px;
+  height: 93px;
+  top: 64px;
+  background: #ffffff;
+  box-sizing: border-box;
+  /* border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px; */
+}
+
+.dietitianName {
+  position: absolute;
+  width: 298px;
+  height: 34px;
+  top: 31px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 106%;
+
+  /* or 25px */
+  letter-spacing: 0.01em;
+
+  color: #676464;
+}
+
+.viewProviderDetailsButton {
+  position: absolute;
+  width: 228px;
+  height: 63px;
+  left: 313px;
+  top: 8px;
+
+}
+
+.viewProviderDetailsButton .btn {
+  background: #ffffff;
+  border: 1px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.requestChangeButton {
+  position: absolute;
+  width: 228px;
+  height: 63px;
+  left: 578px;
+  top: 8px;
+
+}
+
+.requestChangeButton .btn {
+  background: #ffffff;
+  border: 1px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
 }
 
 .profile {

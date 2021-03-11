@@ -1,9 +1,38 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<div class="orange">
-    <h1>Profile</h1>
-    <div class="profile">
+<div class="white">
+    <div class="account">
+        account
+    </div>
+    <div class="accountProfilePic">
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
+    </div>
+
+    <div class="patientNameBox">
+        <div class="patientName">
+            {{user.first_name|lower}} {{user.last_name|lower}}
+            <!-- {{user.date_joined}} -->
+        </div>
+    </div>
+
+    <div class="providerTeamBox">
+        <div class="providerTeam">
+            provider team
+        </div>
+        <div class="dietitianBox">
+            <div class="dietitianName">
+                dietitian: {{user.patient.doc_d.user.first_name|lower}} {{user.patient.doc_d.user.last_name|lower}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+            </div>
+            <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
+        </div>
+    </div>
+    <div class="theT"></div>
+    <div class="profile">
         <p><b>Username: </b>{{user.username}}</p>
 
         <p><b>Email: </b>{{user.email}}</p>
