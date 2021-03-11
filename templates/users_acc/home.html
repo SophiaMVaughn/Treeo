@@ -17,6 +17,7 @@
         <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign A Care Team </a>
         <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor
         </a>
+        <a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register Doctor</a>
     </div>
     {% endif %}
     {% if user.user_type == 2%}

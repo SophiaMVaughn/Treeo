@@ -20,7 +20,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from messaging.models import *
 from patient_log.models import *
-
+from blogsys.models import *
+from ReqAppt.models import *
 
 def register(request):
     if request.method == 'POST':
@@ -87,15 +88,15 @@ def activate(request, uidb64, token):
 def button(request):
     if request.method == 'POST':
         #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        # m=message.objects.create()
-        # m.sender = request.user
-        # m.reciever = request.user
-        # m.subject ='test'
-        # m.convoID = 1
-        # m.read_status = False
-        # m.sender_loc = 'Outbox'
-        # m.reciever_loc = 'Inbox'
-        # m.save()
+        m=message.objects.create()
+        m.sender = request.user
+        m.reciever = request.user
+        m.subject ='test'
+        m.convoID = 1
+        m.read_status = False
+        m.sender_loc = 'Outbox'
+        m.reciever_loc = 'Inbox'
+        m.save()
         return redirect('button')
     else:
         return render(request, 'users_acc/button.html')
@@ -125,7 +126,11 @@ def loginuser(request):
                 # print("test2")
                 login(request, userl)
                 # get the stuff or the get responce theing here
+
                 return redirect('home')
+
+                return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
+
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
         else:
@@ -216,28 +221,37 @@ def admin_display_team(request, id):
         return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
     else:
         if request.method == 'POST':
-            if 'doc_d' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_d'])
-                patient.doc_d = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_d' in request.POST and not request.POST['doc_d'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_d'])
+                    patient.doc_d = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
-            if 'doc_p' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_p'])
-                patient.doc_p = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_p' in request.POST and not request.POST['doc_p'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_p'])
+                    patient.doc_p = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
-            if 'doc_c' in request.POST:
-                doc = get_object_or_404(Provider, id=request.POST['doc_c'])
-                patient.doc_c = doc
-                patient.save()
-                doc.Patient_count += 1
-                doc.save()
+            if 'doc_c' in request.POST and not request.POST['doc_c'] == '':
+                try:
+                    doc = get_object_or_404(Provider, id=request.POST['doc_c'])
+                    patient.doc_c = doc
+                    patient.save()
+                    doc.Patient_count += 1
+                    doc.save()
+                except:
+                    pass
             else:
                 pass
             return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient), 'patient': patient})
@@ -438,3 +452,22 @@ def home(request):
         return render(request, 'users_acc/home.html')
     else:
         return redirect('login')
+
+
+# def home2(request):
+#     context={}
+#     if request.user.is_authenticated:
+#         context= {'appointment': "", 'message': "", }
+#         results=PostQ.objects.filter(Thereciever=(request.user)).order_by('meetingDate')[:2]
+#         if results.count() == 0:
+#             print('no appointments')
+#         if request.user.user_type==3:
+#             results=ApptTable.objects.filter(patient=(request.user)).order_by('meetingDate')[:2]
+#         if request.user.user_type==2:
+#             results=ApptTable.objects.filter(provider=(request.user)).order_by('meetingDate')[:2]
+#             if results.count() == 0:
+#                 print('no appointments')
+#             request.user.date_joined.date()
+#         return render(request, 'users_acc/home.html', context)
+#     else:
+#         return redirect('login')

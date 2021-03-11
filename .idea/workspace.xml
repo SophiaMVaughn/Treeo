@@ -2,6 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/Treeo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Treeo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/apptArchive/apptArchive.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/apptArchive/notes.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/patient_log/editLog.html" afterDir="false" />
+>>>>>>> ffc11342db7af193f2fe5c97703e6b796122d73c
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apptArchive/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apptArchive/migrations/0002_auto_20210304_1322.py" beforeDir="false" />
