@@ -3,6 +3,15 @@
 {% load static %}
 <div class="white">
     <h1>File Download</h1>
+    {% if form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.patient }}
+        <div class="button assignCareTeamButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        </div>
+    </form>
+    {% else %}
     <table class="table-sm table-bordered download">
         <thead>
             <tr>
@@ -28,5 +37,6 @@
                 {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 </div>
 {% endblock content %}
