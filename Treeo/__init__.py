@@ -18,3 +18,6 @@
 # django.utils.encoding.python_2_unicode_compatible = _compact
 # django.shortcuts.render_to_response = django.shortcuts.render
 # sys.modules['django.utils.six'] = Six
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)

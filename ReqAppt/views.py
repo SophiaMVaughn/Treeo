@@ -18,6 +18,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from .sms import *
 from .email import *
+from .tasks import *
 from datetime import datetime
 import requests
 from apptArchive.models import ApptArchive
@@ -112,11 +113,10 @@ def create_Appointment(request):
             appointment=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
-
             # Oath, TODO use JWT if this doesn't work
-            scheduled_mail_both(appointment)
+            scheduled_mail_both_task.delay(appointment.id)
             target_time_print(appointment)
-            send_message(appointment)
+            send_message_task.delay(appointment.id)
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -144,7 +144,7 @@ def Patient_view(request):
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
 
 def approve(request,id):
-    appointment=ApptTable.objects.get(apptId=id)
+    appointment=ApptTable.objects.get(id=id)
     appointment.status=True
     appointment.save()
     approve_message(appointment)
@@ -152,7 +152,7 @@ def approve(request,id):
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
         reject_message(appointment)
@@ -225,7 +225,7 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
@@ -305,7 +305,7 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate

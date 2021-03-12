@@ -14,6 +14,7 @@ client = Client(account_sid, auth_token)
 
 
 def send_message(aptobj):
+        output=[]
         if aptobj.patient.user.phone_no is not None:
             print(aptobj.patient.user.phone_no.as_e164)
             message = client.messages \
@@ -27,9 +28,9 @@ def send_message(aptobj):
                 to=f'{aptobj.patient.user.phone_no.as_e164}'
             )
 
-            print(message.sid)
+            output.append("Sent Message to "+str(aptobj.patient.user.phone_no.as_e164))
         else:
-            print("No Phone")
+            output.append("User "+str(aptobj.patient.user)+" has No Phone")
         if aptobj.provider.user.phone_no is not None:
             print(aptobj.provider.user.phone_no.as_e164)
             message = client.messages \
@@ -44,8 +45,10 @@ def send_message(aptobj):
             )
 
             print(message.sid)
+            output.append("Sent Message to "+str(aptobj.patient.user.phone_no.as_e164))
         else:
-            print("No Phone")
+            output.append("User "+str(aptobj.provider.user)+" has No Phone")
+        return output
 
 
 

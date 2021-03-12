@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from patient_log.models import PatientLog
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 import sched, time
 from django.views.generic.edit import UpdateView
@@ -70,6 +70,10 @@ def edit_log(request,id):
     else:
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 
+
+#ideas of a month view??????????????
+
+
 def line_chart_Year(request,id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
     data = []
@@ -81,25 +85,25 @@ def line_chart_Year(request,id):
 
     #second for loop for the years in the PatientLog
     for i in range(1, 13):
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('calories')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('calories')).values())
         if None not in temp:
             temp[0] = float(temp[0])
             data += temp
         else:
             data += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('water')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('water')).values())
         if None not in temp:
             temp[0] = float(temp[0])
             data2 += temp
         else:
             data2 += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('sleep')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('sleep')).values())
         if None not in temp:
             temp[0] = float(temp[0])
             data3 += temp
         else:
             data3 += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('mood')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('mood')).values())
         if None not in temp:
             temp[0] = float(temp[0])
             data4 += temp

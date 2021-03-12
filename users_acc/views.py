@@ -22,6 +22,7 @@ from messaging.models import *
 from patient_log.models import *
 from blogsys.models import *
 from ReqAppt.models import *
+from ReqAppt.tasks import *
 
 def register(request):
     if request.method == 'POST':
@@ -37,12 +38,11 @@ def register(request):
                 'token': account_activation_token.make_token(m),
             })
             #print(subject, message, settings.EMAIL_HOST_USER, m.email)
-            send_mail(
+            send_mail_task(
                 subject,
                 message,
                 settings.EMAIL_HOST_USER,
                 [m.email],
-                fail_silently=False,
             )
             #m.email_user(subject, message)
             return redirect('account_activation_sent')
@@ -195,12 +195,11 @@ def doctor_registration(request):
                 'token': account_activation_token.make_token(m),
             })
             #print(subject, message, settings.EMAIL_HOST_USER, m.email)
-            send_mail(
+            send_mail_task(
                 subject,
                 message,
                 settings.EMAIL_HOST_USER,
                 [m.email],
-                fail_silently=False,
             )
             #m.email_user(subject, message)
             return redirect('account_activation_sent')

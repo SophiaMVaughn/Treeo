@@ -18,18 +18,18 @@
                 <input type="text" placeholder="Search" />
                 <a href="javascript:;" class="search"></a>
             </div>
+            <ul class="people">
 <!--            that people im chating with query we made if people object make people otherwise return null/no object???-->
-            {% if messages %}
-                {% for i in message_data %}
+            {% if threads %}
+                {% for i in threads %}
                 <li class="person" data-chat="person1">
-                    <img class="rounded-circle account-img " src="{{i[0].sender.profile_pic.url}} " alt="">
-                    <span class="name">{i[0].sender.last_name} {i[0].sender.first_name}</span>
-                    <span class="time">i[0].send_time</span>
+                    <img class="rounded-circle account-img " src="{{i.t_sender.profile_pic.url}} " alt="">
+                    <span class="name">{i.t_sender.last_name} {i.t_sender.first_name}</span>
+                    <span class="time">i.send_time</span>
                     <span class="preview">...</span>
                 </li>
                 {% endfor %}
             {% else %}
-            <ul class="people">
                 <li class="person" data-chat="person1">
 <!--                    fix this to a default?-->
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
@@ -74,8 +74,8 @@
 
         <div class="right">
             <div class="top"><span>To: <span class="name"></span></span></div>
-            {% if messages %}
-            {% for user in message_data %}
+            {% if threads %}
+            {% for user in threads %}
                 <div class="chat" data-chat="person{{ forloop.counter }}">
                 <div class="conversation-start">
                     <span>Today, 6:48 AM</span>

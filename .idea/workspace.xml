@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/templates/patient_log/editLog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/editLog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users_acc/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users_acc/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/forms.py" afterDir="false" />
@@ -32,6 +32,8 @@
       <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient_log/patientLog_submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patientLog_submit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient_log/patient_log_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/patient_log_base.html" afterDir="false" />
+=======
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

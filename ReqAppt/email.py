@@ -11,7 +11,7 @@ from Treeo import email_info
 from users_acc import models
 
 def scheduled_mail_both(apt):
-
+    output=[]
     subject = "Appointment Scheduled"
     message = "Your appointment with the patient has been scheduled, please review and approve " \
               "the appointment at your earliest convenience"
@@ -22,6 +22,7 @@ def scheduled_mail_both(apt):
         [apt.provider.user.email],
         fail_silently=False,
     )
+    output.append("Sent Email to " + str(apt.provider.user.email))
     message = "Your appointment with the Treeo provider has been scheduled," \
               " you will be notified once it is approved by the provider"
     send_mail(
@@ -31,6 +32,8 @@ def scheduled_mail_both(apt):
         [apt.patient.user.email],
         fail_silently=False,
     )
+    output.append("Sent Email to " + str(apt.patient.user.email))
+    return output
 
 def approved_mail_both(apt):
 
