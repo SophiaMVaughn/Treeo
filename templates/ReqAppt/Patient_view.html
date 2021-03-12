@@ -28,16 +28,16 @@
       </tr>
       {% endfor %}
     </table>
-    <!-- <table class="table"> -->
-    <!-- <thead>
+    <!-- <table class="table">
+      <thead>
         <tr>
           <th>Date and Time</th>
           <th>Doctor Name</th>
           <th>Status</th>
         </tr>
-      </thead> -->
+      </thead> 
 
-    <!-- <div class="appointmentBox">
+    <div class="appointmentBox">
       <div class="appointmentTableHeaders">
         <div class="datetime">date/time</div>
         <div class="provider">provider</div>
@@ -65,22 +65,31 @@
           </div>
         </div>
         {% endfor %}
-      </div> -->
+      </div>
 
-    <!-- 
-        {% for a in ApptTable %}
-        <tr>
-          <td>{{a.meetingDate}}</td>
-          <td> {{a.provider.user.first_name}} {{a.provider.user.last_name}}</td>
-          {%if a.status%}
-          <td> <span class="Confirmed">Confirmed</span></td>
-          {% else %}
-          <td> <span class="Pending">Pending</span></td>
-          {% endif %}
-        </tr>
-        {% endfor %} -->
-    <!-- </table> -->
+
+      {% for a in ApptTable %}
+      <tr>
+        <td>{{a.meetingDate}}</td>
+        <td> {{a.provider.user.first_name}} {{a.provider.user.last_name}}</td>
+        {%if a.status%}
+        <td> <span class="Confirmed">Confirmed</span></td>
+        {% else %}
+        <td> <span class="Pending">Pending</span></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      </table> -->
   </div>
 </div>
-</div>
+<script>
+  var toAdd = document.createDocumentFragment();
+  for (var i = 0; i < 11; i++) {
+    var newDiv = document.createElement('div');
+    newDiv.id = 'r' + i;
+    newDiv.className = 'ansbox';
+    toAdd.appendChild(newDiv);
+  }
+  document.getElementById('sel').appendChild(toAdd)
+</script>
 {% endblock content %}

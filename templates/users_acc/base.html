@@ -23,36 +23,21 @@
 	<div id="container">
 		{% if user.is_authenticated %}
 		{% if user.user_type == 1 %}
-		<nav class="navbar navbar-expand navbar-dark bg-dark">
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav ">
-					<a class="nav-link" href="{% url 'home' %}">Home</a>
-					<a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a>
-					<a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a>
-					<a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a>
-					<!-- <a class="nav-link" href="{% url 'Health_Coach' %}">Message</a> -->
-					<a class="nav-link" href="{% url 'profile' %}">Account Details</a>
-					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-					<!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-				</div>
-			</div>
-		</nav>
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_view' %}">assign trio</a></li> -->
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">register provider</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+			</ul>
+		</div>
 		{% else %}
-		<!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav ">
-					<a class="nav-link" href="{% url 'home' %}">Home</a>
-					<a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a>
-					<a class="nav-link" href="{% url 'patientlog' %}">Health Log</a>
-					<a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a>
-					<a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a>
-					<a class="nav-link" href="{% url 'Health_Coach' %}">Message</a>
-					<a class="nav-link" href="{% url 'profile' %}">Account Details</a>
-					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> 
-				</div>
-			</div>
-		</nav> -->
 		<div id="navwrapper">
 			<ul>
 				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>

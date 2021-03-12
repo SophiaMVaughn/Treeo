@@ -157,11 +157,12 @@ input:focus {
   width: 272px;
   height: 741px;
   left: -36px;
-  top: 141px;
+  top: 75px;
   border: 4px solid #faa172;
   box-sizing: border-box;
   border-radius: 40px;
   display: flex;
+  text-align: end;
 }
 
 #navwrapper ul {
@@ -169,6 +170,8 @@ input:focus {
   margin: 50px auto;
   padding: 0;
   width: 200px;
+  position: absolute;
+  right: 52px;
   /* background-color: #f1f1f1; */
 }
 
@@ -180,7 +183,7 @@ input:focus {
   /* padding: 8px 0px;
   position: absolute;
   text-decoration: none; */
-  width: 198.22px;
+  width: 239.22px;
   height: 53.18px;
   /* left: -56px;
   top: 199.35px; */
@@ -351,6 +354,11 @@ input:focus {
   border-color: #000000;
   width: 94%;
   margin: 0 3%;
+}
+
+.download {
+  position: absolute;
+  left: 34%;
 }
 
 .message {
@@ -762,8 +770,8 @@ input:focus {
 }
 
 .white {
-  background-color: #ffffff;
   max-height: 1080px;
+  width: 100%;
   position: absolute;
 }
 
@@ -1636,7 +1644,7 @@ input:focus {
   width: 247px;
   height: 76px;
   left: 311px;
-  top: 177px;
+  top: 111px;
   font-style: normal;
   font-weight: 600;
   font-size: 72px;
@@ -1651,7 +1659,7 @@ input:focus {
   width: 266px;
   height: 266px;
   left: 1500px;
-  top: 177px;
+  top: 111px;
 }
 
 .patientNameBox {
@@ -1659,7 +1667,7 @@ input:focus {
   width: 585px;
   height: 131px;
   left: 300px;
-  top: 284px;
+  top: 218px;
 
   background: #ffffff;
   border: 3.95711px solid #e5e5e5;
@@ -1671,8 +1679,9 @@ input:focus {
   position: absolute;
   width: 247px;
   height: 57px;
-  left: 18px;
+  left: 59px;
   top: 41px;
+  text-align: left;
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
@@ -1689,7 +1698,7 @@ input:focus {
   width: 744px;
   height: 332px;
   left: 300px;
-  top: 457px;
+  top: 391px;
   background: #ffffff;
   box-sizing: border-box;
 }
@@ -1698,6 +1707,8 @@ input:focus {
   position: absolute;
   width: 276px;
   height: 34px;
+  left: 13px;
+  text-align: left;
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
@@ -1714,6 +1725,7 @@ input:focus {
   width: 744px;
   height: 93px;
   top: 64px;
+  left: 14px;
   background: #ffffff;
   box-sizing: border-box;
   /* border: 3.95711px solid #e5e5e5;
@@ -1733,17 +1745,126 @@ input:focus {
 
   /* or 25px */
   letter-spacing: 0.01em;
-
+  text-align: left;
   color: #676464;
+}
+
+.physicianBox {
+  position: absolute;
+  width: 744px;
+  height: 93px;
+  top: 157px;
+  left: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  /* border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px; */
+}
+
+.physicianName {
+  position: absolute;
+  width: 348px;
+  height: 34px;
+  top: 31px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 106%;
+
+  /* or 25px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #676464;
+}
+
+.coachBox {
+  position: absolute;
+  width: 744px;
+  height: 93px;
+  top: 249px;
+  left: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  /* border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px; */
+}
+
+.coachName {
+  position: absolute;
+  width: 396px;
+  height: 34px;
+  top: 31px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 106%;
+
+  /* or 25px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #676464;
+}
+
+.questionBox {
+  position: absolute;
+  width: 744px;
+  height: 93px;
+  top: 342px;
+  left: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  /* border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px; */
+}
+
+.questionName {
+  position: absolute;
+  width: 396px;
+  height: 34px;
+  top: 40px;
+  left: 140px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 106%;
+
+  /* or 25px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #faa172;
+}
+
+.helpButton {
+  position: absolute;
+  width: 228px;
+  height: 63px;
+  left: -28px;
+  top: 8px;
+}
+
+.helpButton .btn {
+  background: #ffffff;
+  border: 1px solid #faa172;
+  width: 86px;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
 }
 
 .viewProviderDetailsButton {
   position: absolute;
   width: 228px;
   height: 63px;
-  left: 313px;
+  left: 510px;
   top: 8px;
-
 }
 
 .viewProviderDetailsButton .btn {
@@ -1757,15 +1878,15 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+  padding: 17px 0;
 }
 
 .requestChangeButton {
   position: absolute;
   width: 228px;
   height: 63px;
-  left: 578px;
+  left: 775px;
   top: 8px;
-
 }
 
 .requestChangeButton .btn {
@@ -1779,6 +1900,7 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+  padding: 17px 0;
 }
 
 .profile {
@@ -1837,7 +1959,7 @@ input:focus {
   position: absolute;
   width: 196px;
   height: 110px;
-  left: 331px;
+  left: 38px;
   /* top: 1057px; */
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
@@ -1846,16 +1968,17 @@ input:focus {
 
 .editProfileButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 1px solid #faa172;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
   font-style: normal;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
+  width: 151px;
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+  padding: 17px 0;
 }
 
 .editProfileButtonConfirm {
@@ -2027,15 +2150,30 @@ input:focus {
   position: absolute;
   width: 351px;
   height: 76px;
-  left: 387px;
-  top: 121px;
+  left: 320px;
+  top: 63px;
   font-style: normal;
   font-weight: 600;
   font-size: 90px;
   line-height: 108px;
   letter-spacing: 0.01em;
 
-  color: #fac372;
+  color: #faa172;
+}
+
+.providerHome {
+  position: absolute;
+  width: 657px;
+  height: 76px;
+  left: 284px;
+  top: 63px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 90px;
+  line-height: 108px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
 }
 
 .profileBorder {
@@ -2043,7 +2181,7 @@ input:focus {
   width: 389px;
   height: 246px;
   left: 367px;
-  top: 317px;
+  top: 259px;
 
   background: #ffffff;
   border: 4px solid #faa172;
@@ -2087,6 +2225,290 @@ input:focus {
   height: 172px;
   top: -75px;
   left: 85px;
+}
+
+.upcomingAppointmentsBorder {
+  position: absolute;
+  width: 525px;
+  height: 283px;
+  left: 1283px;
+  top: 150px;
+
+  background: #ffffff;
+  border: 4px solid #fac372;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #fac372;
+}
+
+.upcomingAppointmentsBorder .upcomingAppointments {
+  position: absolute;
+  width: 450px;
+  height: 42px;
+  left: 46px;
+  top: 32px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.01em;
+}
+
+.appointmentsList {
+  position: absolute;
+  width: 46px;
+  height: 50px;
+  left: 50px;
+  top: 130px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 23px;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.appointmentProfilePic {
+  position: absolute;
+  width: 61px;
+  height: 61px;
+  left: 111px;
+  top: 128px;
+}
+
+.bookAppointment {
+  position: absolute;
+  width: 321px;
+  height: 57px;
+  left: 48px;
+  top: 101px;
+}
+
+.bookAppointment .btn {
+  background: #ffffff;
+  border: 4px solid #fac372;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 54%;
+  padding: 20px 0;
+
+  /* or 12px */
+  letter-spacing: 0.01em;
+
+  color: #fac372;
+}
+
+.recentMessagesBorder {
+  position: absolute;
+  width: 449px;
+  height: 320px;
+  left: 366px;
+  top: 555px;
+  background: #ffffff;
+  border: 4px solid #fa7f72;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #fa7f72;
+}
+
+.recentMessagesBorder .recentMessages {
+  position: absolute;
+  width: 450px;
+  height: 42px;
+  left: 0px;
+  top: 32px;
+  text-align: center;
+}
+
+.recentMessagesBorder .recentMessages span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.01em;
+}
+
+.recentMessagesBorder .message1 {
+  position: absolute;
+  width: 218px;
+  height: 58px;
+  top: 33%;
+  left: 46%;
+  font-style: normal;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.recentMessagesBorder .message1 span {
+  font-weight: bold;
+}
+
+.recentMessagesBorder .message2 {
+  position: absolute;
+  width: 218px;
+  height: 58px;
+  top: 60%;
+  left: 46%;
+  font-style: normal;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.recentMessagesBorder .message2 span {
+  font-weight: bold;
+}
+
+.recentMessagesBorderAdmin {
+  position: absolute;
+  width: 449px;
+  height: 320px;
+  left: -7px;
+  top: 320px;
+  background: #ffffff;
+  border: 4px solid #fa7f72;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #fa7f72;
+}
+
+.healthChart {
+  position: absolute;
+  width: 511px;
+  height: 390px;
+  left: 1086px;
+  top: 552px;
+
+  border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px;
+}
+
+.newArrivalsBorder {
+  position: absolute;
+  width: 1332px;
+  height: 283px;
+  left: 367px;
+  top: 231px;
+
+  background: #ffffff;
+  border: 4px solid #fac372;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #fac372;
+}
+
+.newArrivalsBorder .newArrivals {
+  position: absolute;
+  width: 450px;
+  height: 42px;
+  left: 0px;
+  top: 40px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.01em;
+}
+
+.newArrivalsBorder .unassignedProviders {
+  position: absolute;
+  top: 60%;
+  left: 9%;
+}
+
+.newArrivalsBorder .unapprovedProviders {
+  position: absolute;
+  width: 218px;
+  height: 58px;
+  top: 33%;
+  left: 46%;
+  font-style: normal;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.approveProvider {
+  position: absolute;
+  width: 321px;
+  height: 57px;
+  left: 9%;
+  top: 64%;
+}
+
+.approveProvider .btn {
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 54%;
+  padding: 20px 0;
+  width: 25%;
+  letter-spacing: 0.01em;
+  color: #faa172;
+}
+
+.pendingApprovalsBorder {
+  position: absolute;
+  width: 449px;
+  height: 320px;
+  left: 58%;
+  top: 117%;
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: #faa172;
+}
+
+.pendingApprovalsBorder .pendingApproval {
+  position: absolute;
+  width: 450px;
+  height: 42px;
+  left: 0px;
+  top: 32px;
+  text-align: center;
+}
+
+.pendingApprovalsBorder .pendingApproval span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.01em;
+}
+
+.assignTrio {
+  position: absolute;
+  width: 321px;
+  height: 57px;
+  left: 60%;
+  top: 42%;
+}
+
+.assignTrio .btn {
+  background: #ffffff;
+  border: 4px solid #fac372;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 54%;
+  padding: 20px 0;
+
+  /* or 12px */
+  letter-spacing: 0.01em;
+
+  color: #fac372;
 }
 
 .white .theT {
@@ -2300,85 +2722,6 @@ input:focus {
   color: #faa172;
 }
 
-.btn:active {
-  transform: translateY(4px);
-}
-
-.welcome {
-  position: absolute;
-  width: 351px;
-  height: 76px;
-  left: 340px;
-  top: 121px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 90px;
-  line-height: 108px;
-  letter-spacing: 0.01em;
-
-  color: #fac372;
-}
-
-.profileBorder {
-  position: absolute;
-  width: 389px;
-  height: 246px;
-  left: 367px;
-  top: 317px;
-
-  background: #ffffff;
-  border: 4px solid #faa172;
-  box-sizing: border-box;
-  border-radius: 100px;
-}
-
-.profileName {
-  position: absolute;
-  width: 377px;
-  height: 49px;
-  /* left: 451px; */
-  top: 104px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 58px;
-  letter-spacing: 0.01em;
-
-  color: #faa172;
-}
-
-.profileDateJoined {
-  position: absolute;
-  width: 373px;
-  height: 49px;
-  /* left: 451px; */
-  top: 162px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 23px;
-  letter-spacing: 0.01em;
-
-  color: #faa172;
-}
-
-.profilePic {
-  position: absolute;
-  width: 172px;
-  height: 172px;
-  top: -75px;
-  left: 85px;
-}
-
-.white .theT {
-  width: 226px;
-  top: 723px;
-}
-
-.approve span {
-  font-size: 30px;
-}
-
 .appointmentBox {
   position: absolute;
   width: 1038px;
@@ -2408,7 +2751,7 @@ input:focus {
   /* or 20px */
   letter-spacing: 0.01em;
 
-  color: #faa172;
+  /* color: #faa172; */
 }
 
 .provider {
@@ -2425,7 +2768,7 @@ input:focus {
   /* or 20px */
   letter-spacing: 0.01em;
 
-  color: #faa172;
+  /* color: #faa172; */
 }
 
 .status {
@@ -2442,7 +2785,7 @@ input:focus {
   /* or 20px */
   letter-spacing: 0.01em;
 
-  color: #faa172;
+  /* color: #faa172; */
 }
 
 .appointmentTable {
