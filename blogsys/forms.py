@@ -4,7 +4,7 @@ from .models import PostQ
 
 
 class PostQform(forms.Form):
-    Message = forms.CharField(max_length=250, widget=forms.Textarea)
+    Message = forms.CharField(widget=forms.Textarea, max_length=200)
 
     def __init__(self, *args, **kwargs):
         super(PostQform, self).__init__(*args, **kwargs)
