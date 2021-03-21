@@ -58,7 +58,7 @@ def render_file_download(request):
                         'Uploader': i.usern.username,
                         'file': i.file.url,
                         'date_uploaded': i.date_created,
-                        'File Type': i.get_file_type_display(),
+                        'File_Type': i.get_file_type_display(),
                         'id': i.pk
                     })
                 context = {
@@ -90,7 +90,7 @@ def render_file_download(request):
                     'Uploader': i.usern.username,
                     'file': i.file.url,
                     'date_uploaded': i.date_created,
-                    'File Type': i.get_file_type_display(),
+                    'File_Type': i.get_file_type_display(),
                     'id': i.pk
                 })
         elif request.user.user_type == 3:
@@ -101,7 +101,7 @@ def render_file_download(request):
                     'Uploader': i.usern.username,
                     'file': i.file.url,
                     'date_uploaded': i.date_created,
-                    'File Type': i.get_file_type_display(),
+                    'File_Type': i.get_file_type_display(),
                     'id': i.pk
                 })
 

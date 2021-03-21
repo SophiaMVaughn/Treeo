@@ -1,11 +1,8 @@
-{% extends "patient_log/patient_log_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
-<div class="orange">
-    {% if user.user_type == 3%}
-    <h1>Welcome To Your Daily Health Wellness Log</h1>
-    {% else %}
-    <h1>View Wellness Log</h1>
-    {% endif %}
+<div class="white">
+    <div class="theT"></div>
+    <div class="healthLog">health log</div>
     {% if messages %}
     {% for message in messages %}
     <h2 style="color:green;">{{message}}</h2>
@@ -16,29 +13,61 @@
     <div class="patientLog">
         <form method="POST">
             {% csrf_token %}
-            <!-- {{ form.as_p }} -->
-            <p>
-                <b> {{form.calories.label_tag}} </b>
-                {{form.calories}}
-            </p>
+            <div class="caloriesBorder">
+                <div class="calories">
+                    <span>calorie intake</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="calorieIntake">
+                    <span>total kCal</span>
+                    <div class="calorieIntakeInput">
+                        {{form.calories}}
+                    </div>
+                </div>
+            </div>
 
-            <p>
-                <b> {{form.water.label_tag}} </b>
-                {{form.water}}
-            </p>
+            <div class="waterBorder">
+                <div class="water">
+                    <span>water intake</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="waterIntake">
+                    <span>total oz</span>
+                    <div class="waterIntakeInput">
+                        {{form.water}}
+                    </div>
+                </div>
+            </div>
 
-            <p>
-                <b> {{form.sleep.label_tag}} </b>
-                {{form.sleep}}
-            </p>
+            <div class="sleepBorder">
+                <div class="sleep">
+                    <span>hours slept</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="sleepIntake">
+                    <span>total hours</span>
+                    <div class="sleepIntakeInput">
+                        {{form.sleep}}
+                    </div>
+                </div>
+            </div>
 
-            <p>
-                <b> {{form.mood.label_tag}} </b>
-                {{form.mood}}
-            </p>
+            <div class="moodBorder">
+                <div class="mood">
+                    <span>current mood</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="moodIntake">
+                    scale of 1 to 5 <span>(1 is the lowest, 5 is the highest)</span>
+                    <div class="moodIntakeInput">
+                        {{form.mood}}
+                    </div>
+                </div>
+            </div>
 
             <div class="button patientLogButton">
-                <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+                <button type="submit" class="btn btn-primary btn-large btn-block">submit</button>
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.id %}">see chart</a>
             </div>
         </form>
     </div>

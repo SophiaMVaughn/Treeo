@@ -127,9 +127,9 @@ def loginuser(request):
                 login(request, userl)
                 # get the stuff or the get responce theing here
 
-                return redirect('home')
+                
 
-                return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
+                return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
 
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})

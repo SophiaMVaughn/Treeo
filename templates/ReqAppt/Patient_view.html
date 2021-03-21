@@ -1,33 +1,54 @@
-{% extends "ReqAppt/apt_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
 <!-- <div class="whiteAppointments"> -->
-<div class="orange">
+<div class="white">
   <div class="first">
-    <div class="heading">
-      <h2>Patient View Appointments</h2>
+    <div class="appointments">appointments</div>
+    <div class="appointmentViews">
+      <div class="button appointmentViews">
+        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">calendar view</a>
+        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt' %}">list view</a>
+      </div>
     </div>
-    <table class="table table-bordered">
-      <thead>
+    <div class="upcoming">
+      <p>upcoming</p>
+      <div class="bookNewAppointment">
+        <div class="button bookNewAppointment">
+          <a class="btn btn-primary btn-large btn-block" href="{% url 'create_Appointment' %}">book new appointment</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="appointmentTable">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>date/time</th>
+            <th></th>
+            <th>provider</th>
+            <th></th>
+            <th>appointment status</th>
+          </tr>
+        </thead>
+        {% for a in ApptTable %}
         <tr>
-          <th>Doctor Name</th>
-          <th>Date and Time</th>
-          <th>Status</th>
+          <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
+          <td class="with">with</td>
+          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name|lower}}
+            {{a.provider.user.last_name|lower}}</td>
+          <td class="with">at</td>
+          {%if a.status%}
+          <td class="appointmentBubbleStatus"> <span class="Confirmed">confirmed</span></td>
+          {% else %}
+          <td class="appointmentBubbleStatus"> <span class="Pending">pending</span></td>
+          {% endif %}
         </tr>
-      </thead>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="theT">
 
-
-      {% for a in ApptTable %}
-      <tr>
-        <td> {{a.provider.user.first_name}} {{a.provider.user.last_name}}</td>
-        <td>{{a.meetingDate}}</td>
-        {%if a.status%}
-        <td> <span class="Confirmed">Confirmed</span></td>
-        {% else %}
-        <td> <span class="Pending">Pending</span></td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-    </table>
+    </div>
     <!-- <table class="table">
       <thead>
         <tr>

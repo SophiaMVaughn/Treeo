@@ -14,7 +14,9 @@
 	<link href="https://code.jquery.com/ui/1.12.0/themes/flick/jquery-ui.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"> -->
 	<link rel="stylesheet" href="../../static/css/apptCalendarStyle.css" type="text/css">
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
 </head>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -26,44 +28,191 @@
 	body {
 		font-family: "Titillium Web", sans-serif;
 	}
+
+	#navwrapper {
+		position: absolute;
+		width: 272px;
+		height: 741px;
+		left: -36px;
+		top: 75px;
+		border: 4px solid #faa172;
+		box-sizing: border-box;
+		border-radius: 40px;
+		display: flex;
+		text-align: end;
+	}
+
+	#navwrapper ul {
+		list-style-type: none;
+		margin: 50px auto;
+		padding: 0;
+		width: 200px;
+		position: absolute;
+		right: 52px;
+		/* background-color: #f1f1f1; */
+	}
+
+	#navwrapper li {
+		padding-top: 8px;
+	}
+
+	#navwrapper li a {
+		color: #fff;
+		/* padding: 8px 0px;
+		position: absolute;
+		text-decoration: none; */
+		width: 239.22px;
+		height: 53.18px;
+		/* left: -56px;
+		top: 199.35px; */
+		font-style: normal;
+		font-weight: normal;
+		font-size: 22.1585px;
+		line-height: 27px;
+		letter-spacing: 0.01em;
+		background: #faa172;
+		border: 2.95447px solid #ffffff;
+		box-sizing: border-box;
+		border-radius: 73.8617px;
+	}
+
+	/* Change the link color on hover */
+	#navwrapper li a:hover {
+		background-color: #fff;
+		color: #faa172;
+		border: 4px solid #faa172;
+		box-sizing: border-box;
+	}
+
+	.btn {
+		border: 2px solid transparent;
+		/* background: #3498db;
+		color: #ffffff; */
+		font-size: 16px;
+		line-height: 25px;
+		padding: 10px 0;
+		text-decoration: none;
+		text-shadow: none;
+		border-radius: 3px;
+		box-shadow: none;
+		transition: 0.25s;
+		display: block;
+		width: 250px;
+		/* margin: 0 auto; */
+		text-align: center;
+		align-self: center;
+		display: inline;
+		margin: 4px auto;
+	}
+
+	.appointments {
+		position: absolute;
+		width: 351px;
+		height: 76px;
+		left: 320px;
+		top: 63px;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 72px;
+		line-height: 108px;
+		letter-spacing: 0.01em;
+
+		color: #faa172;
+	}
+
+	.appointmentViews {
+		position: absolute;
+		display: flex;
+		width: 443px;
+		height: 76px;
+		left: 37%;
+		top: 43px;
+		font-style: normal;
+		/* font-weight: 600; */
+		/* font-size: 90px; */
+		line-height: 108px;
+		letter-spacing: 0.01em;
+		color: #faa172;
+	}
+
+	.appointmentViews .btn {
+		color: #fff;
+		/* padding: 8px 0px;
+		position: absolute;
+		text-decoration: none; */
+		width: 239.22px;
+		height: 53.18px;
+		/* left: -56px;
+		top: 199.35px; */
+		font-style: normal;
+		font-weight: normal;
+		font-size: 19.1585px;
+		line-height: 27px;
+		letter-spacing: 0.01em;
+		background: #faa172;
+		border: 2.95447px solid #ffffff;
+		box-sizing: border-box;
+		border-radius: 73.8617px;
+	}
+
+	.appointmentViews .btn:hover {
+		background-color: #fff;
+		color: #faa172;
+		border: 4px solid #faa172;
+		box-sizing: border-box;
+	}
 </style>
 
 <body>
 	<div id="container">
-		<div class="orange" style="padding-top: 0px;">
-			<!-- <div id="navwrapper"> -->
-			<nav class="navbar navbar-expand navbar-dark bg-dark">
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav ">
-						<a class="nav-link" href="{% url 'home' %}">Home</a>
-						{% if user.user_type == 1%}
-						<a class="nav-link" href="{% url 'reqAppt' %}">Search Appointments</a>
-						{% else %}
-						<a class="nav-link" href="{% url 'reqAppt' %}">My Appointments</a>
-						{% endif %}
-						<a class="nav-link" href="{% url 'reqAppt_calendar' %}">Appointments Calendar</a>
-						<!--				<a href="{% url 'reqAppt_Admin' %}">Admin Appointment View</a>-->
-						<!--				<a href="{% url 'reqAppt_Doctor' %}">Doctor Appointment View</a>-->
-						<!--				<a href="{% url 'reqAppt_Patient' %}">Patient Appointment View</a>-->
-						{% if user.user_type == 1%}
-						{% else %}
-						<a class="nav-link" href="{% url 'create_Appointment' %}">Make an Appointment</a>
-						{% endif %}
-						<!--	<a href="{% url 'register' %}">Inbox</a>-->
-						<a class="nav-link" href="{% url 'apptArchive' %}">View Archived Appointments</a>
-						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+		<!-- <div class="orange" style="padding-top: 0px;"> -->
+		<!-- <div id="navwrapper"> -->
+		{% if user.user_type == 1 %}
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_view' %}">assign trio</a></li> -->
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">register provider</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+			</ul>
+		</div>
+		{% else %}
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
+				<li><a class="nav-link" href="{% url 'patientlog' %}">health log</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+			</ul>
+		</div>
+		{% endif %}
+		<!-- </div> -->
+		<div class="login">
+			<div class="login-screen">
+				<div class="appointments">appointments</div>
+				<div class="appointmentViews">
+					<div class="button appointmentViews">
+						<a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">calendar
+							view</a>
+						<a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt' %}">list view</a>
 					</div>
-				</div>
-			</nav>
-			<!-- </div> -->
-			<div class="login">
-				<div class="login-screen">
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 
-	<div style="margin: 5%; width: 90%; margin-top: 15px; margin-bottom: 15px; ">
+	<div style="margin: 0 5%; width: 72%; position: relative; left: 10%; top: 205px">
 		<div id="calendar" class="calendar">
 		</div>
 	</div>
@@ -76,23 +225,22 @@
 
 
 
-    $('#calendar').fullCalendar({
-  header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-      events: '/ReqAppt/calendar-events',
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		events: '/ReqAppt/calendar-events',
 
-  theme: true,
-			eventBorderColor: '#f99f71',
-				eventBackgroundColor: '#f99f71',
-  defaultView: 'agendaWeek',
-});
+		theme: true,
+		eventBorderColor: '#f99f71',
+		eventBackgroundColor: '#f99f71',
+		defaultView: 'agendaWeek',
+	});
 
-if (window.innerWidth < 800) {
-            $('#calendar').fullCalendar('changeView', 'agendaDay');
-        }
+	if (window.innerWidth < 800) {
+		$('#calendar').fullCalendar('changeView', 'agendaDay');
+	}
 
 </script>
-

@@ -16,6 +16,7 @@
         <thead>
             <tr>
                 <th>File Name</th>
+                <th>File Type</th>
                 <th>User</th>
                 <th>Date Created</th>
                 <th>Download</th>
@@ -26,6 +27,7 @@
             {% for file in file_list %}
             <tr>
                 <td>{{file.FileName}}</td>
+                <td>{{file.File_Type}}</td>
                 <td>{{file.Uploader}}</td>
                 <td>{{file.date_uploaded}}</td>
                 <td><a href="{{file.file}}" target="_blank"
