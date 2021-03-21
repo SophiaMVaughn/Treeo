@@ -395,8 +395,11 @@ def Patient5(request):
             form = PostQform()
 
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient5.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient5.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -404,8 +407,11 @@ def Patient5(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient5.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient5.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
@@ -428,8 +434,11 @@ def Patient6(request):
             form = PostQform()
 
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient6.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient6.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -437,8 +446,11 @@ def Patient6(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient6.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient6.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
@@ -461,8 +473,11 @@ def Patient7(request):
             form = PostQform()
 
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient7.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient7.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -470,8 +485,11 @@ def Patient7(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient7.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient7.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
@@ -494,8 +512,11 @@ def Patient8(request):
             form = PostQform()
 
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient8.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient8.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -503,8 +524,11 @@ def Patient8(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient8.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient8.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
@@ -527,8 +551,11 @@ def Patient9(request):
             form = PostQform()
 
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient9.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient9.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -536,8 +563,11 @@ def Patient9(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient9.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient9.html', {"form": form, 'PostQ': x, "q":q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
@@ -559,8 +589,11 @@ def Patient10(request):
             save.save()
             form = PostQform()
             if len(q) >= 1:
+                name = setter(request)
                 x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-                return render(request, 'blogsys/patient10.html', {"form": form, 'PostQ': x, "q": q[0]})
+                return render(request, 'blogsys/patient10.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
             else:
                 return render(request, 'blogsys/noassigned.html')
         else:
@@ -568,13 +601,17 @@ def Patient10(request):
     else:
         form = PostQform()
         if len(q) >= 1:
+            name = setter(request)
             x = PostQ.objects.filter(Thesender=(request.user.provider.user), Thereciever=(q[0].user))
-            return render(request, 'blogsys/patient10.html', {"form": form, 'PostQ': x, "q": q[0]})
+            return render(request, 'blogsys/patient10.html', {"form": form, 'PostQ': x, "q": q[0],"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
         else:
             return render(request, 'blogsys/noassigned.html')
 
 def noassigned(request):
     return render(request, 'blogsys/noassigned.html')
+
 
 
 
