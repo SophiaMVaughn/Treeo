@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c74a954-6870-4f5d-bb37-d1c8d6e0ccfb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apptArchive/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogsys/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/migrations/0002_patientlog_patient.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/migrations/0002_uploaded_file_usern.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/migrations/0001_initial.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
