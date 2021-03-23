@@ -1,0 +1,30 @@
+{% extends "patient_log/patient_log_base.html" %}
+{% block content %}
+{% load static %}
+  <div id="container" style="width: 75%;">
+    <b>Calories</b>
+    <canvas id="calories-chart"></canvas>
+  </div>
+<!--1,point color also?,point color,4,5 look up a reference guide or one of the examples https://www.chartjs.org/samples/latest/ idk-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},
+          ],
+        labels: {{ labels|safe }}
+      },
+      options: {responsive: true}
+    };
+    window.onload = function() {
+      var ctx = document.getElementById('calories-chart').getContext('2d');
+      var myChart  = new Chart(ctx, config);
+    };
+
+  </script>
+
+{% endblock content %}
