@@ -77,7 +77,7 @@ input[type="password"] {
 input[type="email"] {
   text-align: center;
   background-color: white;
-  border: 2px solid transparent;
+  border: 1px solid #676464;
   border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
@@ -104,7 +104,7 @@ input[type="number"] {
 input[type="tel"] {
   text-align: center;
   background-color: white;
-  border: 2px solid transparent;
+  border: 1px solid #676464;
   border-radius: 100px;
   font-size: 16px;
   font-weight: 200;
@@ -502,6 +502,7 @@ input:focus {
   padding: 0px 0px;
   width: 481px;
   height: 108px;
+  border: 2px solid transparent;
 }
 
 .usernameInput input[type="text"]:focus {
@@ -593,6 +594,7 @@ input:focus {
   background: #faa172; */
   background: #faa172;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid transparent;
   border-radius: 100px;
   width: 352px;
   height: 68px;
@@ -603,6 +605,14 @@ input:focus {
   /* or 62px */
   letter-spacing: 0.015em;
   color: #ffffff;
+}
+
+.loginButton .btn:hover {
+  background-color: #fff;
+  color: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .registerButton {
@@ -618,7 +628,7 @@ input:focus {
 
 .registerButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #ffffff;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -628,6 +638,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.registerButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #fff;
+  box-sizing: border-box;
 }
 
 .previousMonth {
@@ -1850,7 +1867,7 @@ input:focus {
 
 .helpButton .btn {
   background: #ffffff;
-  border: 1px solid #faa172;
+  border: 4px solid #faa172;
   width: 86px;
   box-sizing: border-box;
   border-radius: 100px;
@@ -1860,6 +1877,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.helpButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .viewProviderDetailsButton {
@@ -1872,7 +1896,7 @@ input:focus {
 
 .viewProviderDetailsButton .btn {
   background: #ffffff;
-  border: 1px solid #faa172;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   border-radius: 100px;
   font-style: normal;
@@ -1882,6 +1906,13 @@ input:focus {
   letter-spacing: 0.015em;
   color: #faa172;
   padding: 17px 0;
+}
+
+.viewProviderDetailsButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid transparent;
+  box-sizing: border-box;
 }
 
 .requestChangeButton {
@@ -1894,7 +1925,7 @@ input:focus {
 
 .requestChangeButton .btn {
   background: #ffffff;
-  border: 1px solid #faa172;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   border-radius: 100px;
   font-style: normal;
@@ -1906,11 +1937,24 @@ input:focus {
   padding: 17px 0;
 }
 
+.requestChangeButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid transparent;
+  box-sizing: border-box;
+}
+
 .profile {
   position: absolute;
+  display: inline-flex;
   width: 884px;
   height: 157px;
-  left: 470px;
+  left: 354px;
+  top: 190px;
+}
+
+.profile p {
+  margin-right: 10px;
 }
 
 .currentCareTeam {
@@ -1971,7 +2015,7 @@ input:focus {
 
 .editProfileButton .btn {
   background: #ffffff;
-  border: 1px solid #faa172;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   border-radius: 100px;
   font-style: normal;
@@ -1984,12 +2028,19 @@ input:focus {
   padding: 17px 0;
 }
 
+.editProfileButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 .editProfileButtonConfirm {
   position: absolute;
   width: 196px;
   height: 110px;
-  left: 360px;
-  top: 360px;
+  left: 478px;
+  top: 178px;
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px; temp until can put placeholder in username and password */
@@ -1997,7 +2048,7 @@ input:focus {
 
 .editProfileButtonConfirm .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 2px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2011,7 +2062,8 @@ input:focus {
 
 .newProfilePic {
   position: absolute;
-  left: 288px;
+  left: 383px;
+  top: 98px;
   text-align: end;
   max-width: 530px;
 }
@@ -2056,6 +2108,18 @@ input:focus {
   color: #faa172;
 }
 
+.assignCareTeam {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 332px;
+  top: 232px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: 0.01em;
+}
+
 /* .assignCareTeamTable {
   position: absolute;
   left: 336px;
@@ -2064,9 +2128,10 @@ input:focus {
 
 .assignCareTeamButton {
   position: absolute;
-  width: 196px;
-  height: 110px;
-  left: 823px;
+  width: auto;
+  height: auto;
+  left: 301px;
+  top: 14%;
   /* top: 1057px; */
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
@@ -2076,6 +2141,7 @@ input:focus {
 .assignCareTeamButton .btn {
   background: #ffffff;
   border: 1px solid #ffffff;
+  width: 67px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2319,6 +2385,13 @@ input:focus {
   color: #fac372;
 }
 
+.bookAppointment .btn:hover {
+  background-color: #fac372;
+  color: #fff;
+  border: 4px solid #fff;
+  box-sizing: border-box;
+}
+
 .recentMessagesBorder {
   position: absolute;
   width: 449px;
@@ -2474,6 +2547,13 @@ input:focus {
   color: #faa172;
 }
 
+.approveProvider .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 .pendingApprovalsBorder {
   position: absolute;
   width: 449px;
@@ -2529,9 +2609,20 @@ input:focus {
   color: #fac372;
 }
 
+.assignTrio .btn:hover {
+  background-color: #fac372;
+  color: #fff;
+  border: 4px solid #fac372;
+  box-sizing: border-box;
+}
+
 .white .theT {
   width: 226px;
   top: 723px;
+}
+
+.approve .assign {
+  text-align: center;
 }
 
 .approve span {
@@ -2540,6 +2631,7 @@ input:focus {
 
 .approve a {
   text-decoration: none;
+  color: #faa172;
 }
 
 .appointment {
@@ -2604,6 +2696,38 @@ input:focus {
   height: 157px;
   left: 197px;
   text-align: right;
+}
+
+.patientLogSubmitButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 823px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.patientLogSubmitButton .btn {
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.patientLogSubmitButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid transparent;
+  box-sizing: border-box;
 }
 
 .current {
@@ -2682,6 +2806,14 @@ input:focus {
   color: #faa172;
 }
 
+.patientLogButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid transparent;
+  box-sizing: border-box;
+}
+
+
 /*This was added by Gio*/
 /* .calendar {
   width: 98%;
@@ -2695,7 +2827,52 @@ input:focus {
 }
 */
 
-.assignCareTeamButton {
+.providerViewLog {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 324px;
+  top: 232px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  letter-spacing: 0.01em;
+}
+
+.submitLogButton {
+  position: absolute;
+  width: 196px;
+  height: 110px;
+  left: 269px;
+  top: -9px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.submitLogButton .btn {
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 173%;
+  letter-spacing: 0.015em;
+  color: #faa172;
+}
+
+.submitLogButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
+.uploadFileButton {
   position: absolute;
   width: 196px;
   height: 110px;
@@ -2706,7 +2883,7 @@ input:focus {
   /* top: 715px;  temp until can put placeholder in username and password */
 }
 
-.assignCareTeamButton .btn {
+.uploadFileButton .btn {
   background: #ffffff;
   border: 1px solid #ffffff;
   box-sizing: border-box;
@@ -2923,7 +3100,7 @@ input:focus {
 
 .bookNewAppointment .btn {
   background: #ffffff;
-  border: 1px solid #faa172;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   border-radius: 100px;
   font-style: normal;
@@ -2941,7 +3118,7 @@ input:focus {
 .bookNewAppointment .btn:hover {
   background-color: #faa172;
   color: #fff;
-  border: 1px solid #fff;
+  border: 4px solid #fff;
   box-sizing: border-box;
 }
 
@@ -2949,7 +3126,7 @@ input:focus {
   position: absolute;
   width: 62%;
   margin-left: 238px;
-  top: 333px;
+  top: 406px;
   overflow: auto;
   max-height: 400px;
 }
@@ -2982,47 +3159,6 @@ input:focus {
   text-align: left;
   position: relative;
   left: 1%;
-  color: #faa172;
-}
-
-.careTeamTable {
-  position: absolute;
-  width: 62%;
-  margin-left: 238px;
-  top: 333px;
-  overflow: auto;
-  max-height: 400px;
-  text-align: left;
-}
-
-.careTeamTable .table {
-  width: 86%;
-  position: relative;
-  left: 4%;
-  top: 100%;
-  border-collapse: separate;
-  border-spacing: 10px;
-}
-
-.careTeamTable table td {
-  border-bottom: transparent;
-  border-top: transparent;
-}
-
-.careTeamTable table th {
-  border-bottom: transparent;
-  border-top: transparent;
-}
-
-.careTeamTable table thead {
-  font-size: 18.9366px;
-  line-height: 106%;
-
-  /* or 20px */
-  letter-spacing: 0.01em;
-  text-align: left;
-  position: relative;
-  left: 0%;
   color: #faa172;
 }
 
@@ -3094,11 +3230,206 @@ input:focus {
   font-size: 24px;
 }
 
+.appointmentTableAdmin {
+  position: absolute;
+  width: 62%;
+  margin-left: 238px;
+  top: 333px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.appointmentTableAdmin .table {
+  width: 86%;
+  position: relative;
+  left: 4%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.appointmentTableAdmin table td {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.appointmentTableAdmin table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.appointmentTableAdmin table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  position: relative;
+  left: 1%;
+  color: #faa172;
+}
+
+.appointmentContainer {
+  position: absolute;
+  width: 990px;
+  height: 128px;
+  /* left: 288px; */
+  /* top: 424px; */
+
+  background: #fff;
+  border: 3.95711px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 39.5711px;
+}
+
+.appointmentTableAdmin table .appointmentBubbleDateTime {
+  /* position: absolute; */
+  width: 26%;
+  height: 60px;
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 19px;
+}
+
+.appointmentTableAdmin table .with {
+  /* position: absolute; */
+  width: 33px;
+  height: 40px;
+  left: 301px;
+  top: 49px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+
+  color: #676464;
+}
+
+.appointmentTableAdmin table .appointmentBubbleProvider {
+  /* position: absolute; */
+  width: 66px;
+  height: 60px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 22px;
+}
+
+.appointmentTableAdmin table .appointmentBubbleStatus {
+  /* position: absolute; */
+  width: 24%;
+  height: 60px;
+
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 24px;
+}
+
+.careTeamTable {
+  position: absolute;
+  width: 62%;
+  margin-left: 238px;
+  top: 333px;
+  overflow: auto;
+  max-height: 400px;
+  text-align: left;
+}
+
+.careTeamTable .table {
+  width: 86%;
+  position: relative;
+  left: 4%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.careTeamTable table td {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.careTeamTable table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.careTeamTable table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  position: relative;
+  left: 0%;
+  color: #faa172;
+}
+
+.careTeamTable table .careTeamBubble {
+  /* position: absolute; */
+  width: auto;
+  height: auto;
+  border: 3.95711px solid #e5e5e5;
+  color: #676464;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.careTeamTable table .providerApprove {
+  position: relative;
+  width: 26%;
+  height: 60px;
+  background: #faa172;
+  color: white;
+  text-align: center;
+  line-height: 34px;
+  border-radius: 100px;
+  display: inline-block;
+  left: 33%;
+}
+
+.careTeamTable table .providerApprove .btn {
+  color: #fff;
+  /* padding: 8px 0px;
+  position: absolute;
+  text-decoration: none; */
+  width: 239.22px;
+  height: 53.18px;
+  /* left: -56px;
+  top: 199.35px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19.1585px;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  background: #faa172;
+  border: 2.95447px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 73.8617px;
+}
+
 .appointmentTableProvider {
   position: absolute;
   width: 69%;
   margin-left: 238px;
-  top: 333px;
+  top: 406px;
   overflow: auto;
   max-height: 400px;
 }
@@ -3249,6 +3580,20 @@ input:focus {
   border-radius: 73.8617px;
 }
 
+.appointmentTableProvider table .appointmentBubbleApprove:hover {
+  background-color: #fff;
+  color: #faa172;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
+.appointmentTableProvider table .appointmentBubbleDelete:hover {
+  background-color: #fff;
+  color: rgb(240, 119, 119);
+  border: 4px solid rgb(240, 119, 119);
+  box-sizing: border-box;
+}
+
 .messaging {
   left: 583px;
   margin-top: 10px;
@@ -3300,7 +3645,7 @@ input:focus {
 
 .messageButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -3310,6 +3655,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.messageButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .logoutButton {
@@ -3323,6 +3675,8 @@ input:focus {
 .logoutButton .btn {
   background: #faa172;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid transparent;
+  /* border: 4px solid #fff; */
   border-radius: 100px;
   width: 224px;
   height: 86px;
@@ -3333,6 +3687,14 @@ input:focus {
   /* or 62px */
   letter-spacing: 0.015em;
   color: #ffffff;
+}
+
+.logoutButton .btn:hover {
+  background-color: #fff;
+  color: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .caloriesBorder {
@@ -3578,7 +3940,7 @@ input:focus {
 
 .healthLog {
   position: absolute;
-  width: 515px;
+  width: auto;
   height: 76px;
   left: 320px;
   top: 63px;
@@ -4059,5 +4421,11 @@ body {
   text-align: left;
   position: relative;
   top: 228px;
-  right: 18%;
+  right: 17%;
+}
+
+.myInputPatient {
+  position: relative;
+  top: 352px;
+  right: 17%;
 }

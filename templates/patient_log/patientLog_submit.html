@@ -7,7 +7,7 @@
     <h2 style="color:green;">{{message}}</h2>
     {% endfor %}
     {% endif %}
-    <div class="button deleteConfirmButtonAppointment">
+    <div class="button patientLogSubmitButton">
         <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
         <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
             View Chart</a>

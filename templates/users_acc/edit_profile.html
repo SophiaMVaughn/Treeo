@@ -1,7 +1,7 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<div class="orange">
-    <h1>Edit Profile</h1>
+<div class="white">
+    <div class="appointments">account</div>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="profile">
@@ -9,7 +9,7 @@
                 <b> {{edit_profile.username.label_tag}} </b>
                 {{edit_profile.username}}
             </p>
-            <p style="padding-left: 35px;">
+            <p>
                 <b>{{edit_profile.email.label_tag}}</b>
                 {{edit_profile.email}}
             </p>
@@ -21,7 +21,7 @@
                 <b> {{edit_profile.last_name.label_tag}} </b>
                 {{edit_profile.last_name}}
             </p>
-            <p style="padding-right: 35px;">
+            <p>
                 <b> {{edit_profile.phone_no.label_tag}} </b>
                 {{edit_profile.phone_no}}
             </p>

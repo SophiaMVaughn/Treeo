@@ -5,7 +5,7 @@
     <div class="appointments">appointments</div>
     <div class="theT"></div>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
-    <div class="appointmentTable">
+    <div class="appointmentTableAdmin">
       <table id="myTable" class="table">
         <thead>
           <tr>
@@ -25,11 +25,6 @@
           <td class="with">with</td>
           <td class="appointmentBubbleStatus">{{a.patient.user.first_name|lower}} {{a.patient.user.last_name|lower}}
           </td>
-          <!-- {%if a.status%}
-          <td class="appointmentBubbleStatus"> <span class="Confirmed">confirmed</span></td>
-          {% else %}
-          <td class="appointmentBubbleStatus"> <span class="Pending">pending</span></td>
-          {% endif %} -->
         </tr>
         {% endfor %}
       </table>

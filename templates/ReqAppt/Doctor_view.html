@@ -35,6 +35,7 @@
             </div>
         </div>
 
+        <!-- <input type="text" id="myInput" class="myInputPatient" onkeyup="myFunction()" placeholder="search for provider"> -->
         <div class="appointmentTableProvider">
             <table class="table approve">
                 <thead>
@@ -52,7 +53,8 @@
                     <tr>
                         <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
                         <td class="with">with</td>
-                        <td class="appointmentBubblePatient">{{a.patient.user.first_name|lower}} {{a.patient.user.last_name|lower}}</td>
+                        <td class="appointmentBubblePatient">{{a.patient.user.first_name|lower}}
+                            {{a.patient.user.last_name|lower}}</td>
                         <td class="with">at</td>
                         {%if a.status%}
                         <td class="appointmentBubbleLink">intro appointment</td>
@@ -64,8 +66,10 @@
                         <td class="appointmentBubbleStatus">approved</td>
                         {% else %}
                         <td>
-                            <a class="appointmentBubbleApprove button btn btn-primary btn-large btn-block" href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
-                            <a class="appointmentBubbleDelete button btn btn-primary btn-large btn-block" href="{% url 'reqAppt_delete' a.apptId  %}"><span> X </span></a>
+                            <a class="appointmentBubbleApprove button btn btn-large btn-block"
+                                href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
+                            <a class="appointmentBubbleDelete button btn btn-large btn-block"
+                                href="{% url 'reqAppt_delete' a.apptId  %}"><span> X </span></a>
                             {% endif %}
                         </td>
                         <!-- <td>
@@ -90,4 +94,27 @@
         </div>
     </div>
 </div>
+<!-- <script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script> -->
 {% endblock content %}

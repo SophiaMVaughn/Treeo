@@ -75,10 +75,11 @@
 
     {% else %}
     <form method="POST">
+        <div class="providerViewLog">
         {% csrf_token %}
         {{ form.patient }}
-        <div class="button assignCareTeamButton">
-            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        <div class="button submitLogButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">submit</button>
         </div>
     </form>
     {% endif %}

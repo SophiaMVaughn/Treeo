@@ -7,7 +7,7 @@ import datetime
 # and set the environment variables. See http://twil.io/secure
 
 account_sid = 'ACd7bc48747087d5cf69476e8e4cd73851'
-auth_token = '700d7041460f3648edb6e1c17b2a5083'
+auth_token = 'd72c441bc1d3f031a75224a9eefac411'
 client = Client(account_sid, auth_token)
 
 

@@ -17,8 +17,8 @@
             <!-- {{user.date_joined}} -->
         </div>
     </div>
-
     <div class="providerTeamBox">
+        {% if user.user_type == 3%}
         <div class="providerTeam">
             provider team
         </div>
@@ -55,6 +55,8 @@
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
             </div>
         </div>
+
+        {% endif %}
         <div class="questionBox">
             <div class="button helpButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">?</a>

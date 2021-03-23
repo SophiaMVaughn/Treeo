@@ -19,6 +19,9 @@
       </div>
     </div>
 
+    <!-- <div class="myInputPatient"> -->
+      <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider"> -->
+    <!-- </div> -->
     <div class="appointmentTable">
       <table class="table">
         <thead>
@@ -49,68 +52,29 @@
     <div class="theT">
 
     </div>
-    <!-- <table class="table">
-      <thead>
-        <tr>
-          <th>Date and Time</th>
-          <th>Doctor Name</th>
-          <th>Status</th>
-        </tr>
-      </thead> 
-
-    <div class="appointmentBox">
-      <div class="appointmentTableHeaders">
-        <div class="datetime">date/time</div>
-        <div class="provider">provider</div>
-        <div class="status">appointment status</div>
-      </div>
-
-      <div class="appointmentTable">
-        {% for a in ApptTable %}
-        <div class="appointmentContainer">
-          <div class="appointmentBubbleDateTime">
-            {{a.meetingDate}}
-          </div>
-          <div class="with">
-            with
-          </div>
-          <div class="appointmentBubbleProvider">
-            {{a.provider.user.first_name}} {{a.provider.user.last_name}}
-          </div>
-          <div class="appointmentBubbleStatus">
-            {%if a.status%}
-            Confirmed
-            {% else %}
-            Pending
-            {% endif %}
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-
-
-      {% for a in ApptTable %}
-      <tr>
-        <td>{{a.meetingDate}}</td>
-        <td> {{a.provider.user.first_name}} {{a.provider.user.last_name}}</td>
-        {%if a.status%}
-        <td> <span class="Confirmed">Confirmed</span></td>
-        {% else %}
-        <td> <span class="Pending">Pending</span></td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-      </table> -->
   </div>
 </div>
-<script>
-  var toAdd = document.createDocumentFragment();
-  for (var i = 0; i < 11; i++) {
-    var newDiv = document.createElement('div');
-    newDiv.id = 'r' + i;
-    newDiv.className = 'ansbox';
-    toAdd.appendChild(newDiv);
+<!-- <script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
   }
-  document.getElementById('sel').appendChild(toAdd)
-</script>
+</script> -->
 {% endblock content %}
