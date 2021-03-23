@@ -9,6 +9,13 @@ from django.template.loader import render_to_string
 from patient_log.models import *
 from Treeo import email_info
 from users_acc import models
+# import zoom
+from .utils import generate_zoom
+
+
+# zoom_link = generate_zoom(request=1)
+
+
 
 def scheduled_mail_both(apt):
 
@@ -22,6 +29,7 @@ def scheduled_mail_both(apt):
         [apt.provider.user.email],
         fail_silently=False,
     )
+
     message = "Your appointment with the Treeo provider has been scheduled," \
               " you will be notified once it is approved by the provider"
     send_mail(
@@ -34,8 +42,10 @@ def scheduled_mail_both(apt):
 
 def approved_mail_both(apt):
 
+    provider_url,patient_url,patient_pwd = generate_zoom(request=1)
+
     subject = "Appointment Confirmed"
-    message = "You approved the meeting with your patient"
+    message = f"You approved the meeting with your patient use this zoom link to start the meeting {provider_url}"
 
     send_mail(
         subject,
@@ -44,7 +54,8 @@ def approved_mail_both(apt):
         [apt.provider.user.email],
         fail_silently=False,
     )
-    message = "Your appointment has been approved by the provider, use this link to enter the meeting: "
+    message = f"Your appointment has been approved by the provider, " \
+              f"the password for your zoom appointment is '{patient_pwd}' use this link to enter the meeting:" + patient_url
     send_mail(
         subject,
         message,
