@@ -29,17 +29,22 @@ def render_file_upload(request):
                         return render(request, 'upload_download/file_upload_Complete.html')
                     else:
                         context = {"errorMsg": "Unsupported File Type The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif"}
+                        print("Unsupported File Type The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif")
                         return render(request, 'upload_download/file_upload_Failed.html', context)
                 else:
                     context = {"errorMsg": "Your File Name is Too Long"}
+                    print(
+                        "Your File Name is Too Long")
                     return render(request, 'upload_download/file_upload_Failed.html', context)
             else:
                 context = {"errorMsg":"Your File is Too Big >50MB"}
+                print(
+                    "Your File is Too Big >50MB")
                 return render(request, 'upload_download/file_upload_Failed.html', context)
         else:
             return render(request, 'upload_download/file_upload_Failed.html')
     else:
-        return render(request, 'upload_download/fileupload.html')
+        return render(request, 'upload_download/fileupload.html',{"form":Fileform()})
 
 
 
