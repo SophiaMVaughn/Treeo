@@ -20,7 +20,7 @@
     </div>
 
     <!-- <div class="myInputPatient"> -->
-      <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider"> -->
+    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider"> -->
     <!-- </div> -->
     <div class="appointmentTable">
       <table class="table">
@@ -30,7 +30,7 @@
             <th></th>
             <th>provider</th>
             <th></th>
-            <th>appointment status</th>
+            <th>appointment name/link</th>
           </tr>
         </thead>
         {% for a in ApptTable %}
@@ -41,9 +41,9 @@
             {{a.provider.user.last_name|lower}}</td>
           <td class="with">at</td>
           {%if a.status%}
-          <td class="appointmentBubbleStatus"> <span class="Confirmed">confirmed</span></td>
+          <td class="appointmentBubbleStatus"><a href={{a.meeturlpatient}} target="_blank">zoom link</a></td>
           {% else %}
-          <td class="appointmentBubbleStatus"> <span class="Pending">pending</span></td>
+          <td class="appointmentBubbleStatus"><span class="Pending">pending</span></td>
           {% endif %}
         </tr>
         {% endfor %}

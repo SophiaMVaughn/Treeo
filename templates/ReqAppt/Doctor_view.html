@@ -57,7 +57,7 @@
                             {{a.patient.user.last_name|lower}}</td>
                         <td class="with">at</td>
                         {%if a.status%}
-                        <td class="appointmentBubbleLink">intro appointment</td>
+                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a></td>
                         {% else %}
                         <td class="appointmentBubbleLink">intro appointment</td>
                         {% endif %}

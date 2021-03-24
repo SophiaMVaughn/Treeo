@@ -104,11 +104,22 @@
     <div class="upcomingAppointmentsBorder">
         <div class="upcomingAppointments">upcoming appointments</div>
         <div class="appointmentsList">
-            <p>mon 2/1</p>
+            {% if appointment %}
+            {% for i in appointment %}
+            <div class="appointmentProfilePic">
+                <p>
+                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="30" height="40" alt="">
+                </p>
+            </div>
+            <!-- use humanize here for time -->
+            <p>You Have an Appointment at{{ i.meetingDate }}</p>
+            {% endfor %}
+            {% else %}
+            <p>You Have No Upcoming Appointments</p>
+            {% endif %}
+
         </div>
-        <div class="appointmentProfilePic">
-            <p>(pic of provider)</p>
-        </div>
+
         <div class="bookAppointment">
             <div class="button bookAppointment">
                 <a href="#" class="btn btn-primary btn-large btn-block">book an appointment</a>
@@ -120,13 +131,18 @@
         <div class="recentMessages">
             <span>recent messages</span>
         </div>
-        <!-- should be a message icon next to each message -->
-        <div class="message1">
-            <span>dr. hill: </span> make sure you remember <span>(read more)</span>
-        </div>
+        {% if recentMessages %}
+        {% for i in recentMessages %}
+        <!-- doesthis class matter  -->
         <div class="message2">
-            <span>lisa: </span> a good tip is to use lemon in <span>(read more)</span>
+            <span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}
         </div>
+        {% endfor %}
+        {% else %}
+        <p>You Have No New Messages</p>
+        {% endif %}
+        <!-- should be a message icon next to each message -->
+
     </div>
 
     <div class="healthChart">

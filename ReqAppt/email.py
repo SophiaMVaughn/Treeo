@@ -16,12 +16,11 @@ from .utils import generate_zoom
 # zoom_link = generate_zoom(request=1)
 
 
-
 def scheduled_mail_both(apt):
 
     subject = "Appointment Scheduled"
-    message = "Your appointment with the patient has been scheduled, please review and approve " \
-              "the appointment at your earliest convenience"
+    message = "Your appointment with the patient has been scheduled. Please review and approve " \
+              "the appointment at your earliest convenience."
     send_mail(
         subject,
         message,
@@ -30,8 +29,8 @@ def scheduled_mail_both(apt):
         fail_silently=False,
     )
 
-    message = "Your appointment with the Treeo provider has been scheduled," \
-              " you will be notified once it is approved by the provider"
+    message = "Your appointment with the Treeo provider has been scheduled." \
+              " You will be notified once it is approved by the provider."
     send_mail(
         subject,
         message,
@@ -40,12 +39,12 @@ def scheduled_mail_both(apt):
         fail_silently=False,
     )
 
-def approved_mail_both(apt):
 
-    provider_url,patient_url,patient_pwd = generate_zoom(request=1)
+def approved_mail_both(apt,patient_pwd):
+
 
     subject = "Appointment Confirmed"
-    message = f"You approved the meeting with your patient use this zoom link to start the meeting {provider_url}"
+    message = f"You approved the meeting with your patient. Use this Zoom link to start the meeting {apt.meeturlprovider}"
 
     send_mail(
         subject,
@@ -54,8 +53,8 @@ def approved_mail_both(apt):
         [apt.provider.user.email],
         fail_silently=False,
     )
-    message = f"Your appointment has been approved by the provider, " \
-              f"the password for your zoom appointment is '{patient_pwd}' use this link to enter the meeting:" + patient_url
+    message = f"Your appointment has been approved by the provider. " \
+              f"The password for your Zoom appointment is: '{patient_pwd}'. Use this link to enter the meeting: " + apt.meeturlpatient
     send_mail(
         subject,
         message,
@@ -64,20 +63,17 @@ def approved_mail_both(apt):
         fail_silently=False,
     )
 
-    print("email succesfully delivered")
-
-
-
+    print("Email succesfully delivered")
 
 
 def delete_mail_both(apt):
 
     subject = "Appointment Cancelled"
     message_for_patient = f"Your appointment with the Treeo provider " \
-                          f"has been cancelled, " \
-                          f"you will receive the message from your provider shortly "
-    message_for_provider = f"You cancelled your appointment with the patient " \
-                           f" please notify your patient"
+                          f"has been cancelled. " \
+                          f"You will receive a message from your provider shortly. "
+    message_for_provider = f"You cancelled your appointment with the patient." \
+                           f" Please notify your patient."
     send_mail(
         subject,
         message_for_provider,
@@ -93,4 +89,4 @@ def delete_mail_both(apt):
         fail_silently=False,
     )
 
-    print("email succesfully delivered")
+    print("Email succesfully delivered")
