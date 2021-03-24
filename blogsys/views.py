@@ -112,7 +112,12 @@ def Health_Coach(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
                     else:
-                        return render(request, 'blogsys/noassigned.html')
+                        name = setter(request)
+                        return render(request, 'blogsys/noassigned.html',
+                                      {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3],
+                                       "name5": name[4],
+                                       "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                       "name10": name[9]})
                 else:
                     return HttpResponseBadRequest()
         else:
@@ -134,8 +139,12 @@ def Health_Coach(request):
                            "name10": name[9]})
 
                 else:
-                    return render(request, 'blogsys/noassigned.html')
-
+                    name = setter(request)
+                    return render(request, 'blogsys/noassigned.html',
+                                  {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3],
+                                   "name5": name[4],
+                                   "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                   "name10": name[9]})
 def provider(request):
     try:
         if request.user.user_type == 3:
@@ -246,7 +255,11 @@ def Patient1(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -258,7 +271,11 @@ def Patient1(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient2(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[1:]
@@ -284,7 +301,11 @@ def Patient2(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -296,8 +317,11 @@ def Patient2(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 def Patient3(request):
     if request.user.provider.Provider_type == 1:
@@ -324,7 +348,11 @@ def Patient3(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -336,8 +364,11 @@ def Patient3(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient4(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[3:]
@@ -363,7 +394,11 @@ def Patient4(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -375,7 +410,11 @@ def Patient4(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient5(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[4:]
@@ -401,7 +440,11 @@ def Patient5(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -413,8 +456,11 @@ def Patient5(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient6(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[5:]
@@ -440,7 +486,11 @@ def Patient6(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -452,8 +502,11 @@ def Patient6(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient7(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[6:]
@@ -479,7 +532,11 @@ def Patient7(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -491,8 +548,11 @@ def Patient7(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient8(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[7:]
@@ -518,7 +578,11 @@ def Patient8(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -530,8 +594,11 @@ def Patient8(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient9(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[8:]
@@ -557,7 +624,11 @@ def Patient9(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -569,8 +640,11 @@ def Patient9(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def Patient10(request):
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[9:]
@@ -595,7 +669,11 @@ def Patient10(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -607,11 +685,14 @@ def Patient10(request):
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
-
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 def noassigned(request):
-    return render(request, 'blogsys/noassigned.html')
-
-
-
+    name = setter(request)
+    return render(request, 'blogsys/noassigned.html',{"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
