@@ -642,4 +642,7 @@ def Patient10(request):
 
 
 def noassigned(request):
-    return render(request, 'blogsys/noassigned.html')
+    name = setter(request)
+    return render(request, 'blogsys/noassigned.html', {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                                                       "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                                       "name10": name[9]})

@@ -2813,7 +2813,6 @@ input:focus {
   box-sizing: border-box;
 }
 
-
 /*This was added by Gio*/
 /* .calendar {
   width: 98%;
@@ -4424,7 +4423,16 @@ body {
   right: 17%;
 }
 
-.myInputPatient {
+#myInputPatient {
+  background-image: url("../img/searchicon.png"); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 31%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  text-align: left;
   position: relative;
   top: 352px;
   right: 17%;
