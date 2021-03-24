@@ -31,7 +31,7 @@ def setter(request):
     return name
 
 
-# This First Function is a bit long due to it being called and used for bot patient and provider.
+# This First Function is a bit long due to it being called and used for both patient and provider.
 def Health_Coach(request):
     # If patient
 
