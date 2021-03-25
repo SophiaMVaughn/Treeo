@@ -2340,8 +2340,9 @@ input:focus {
 
 .appointmentsList {
   position: absolute;
-  width: 46px;
-  height: 50px;
+  display: inline-flex;
+  width: 453px;
+  height: 76px;
   left: 50px;
   top: 130px;
   font-style: normal;
@@ -2352,8 +2353,13 @@ input:focus {
   letter-spacing: 0.01em;
 }
 
+.appointmentsList .meetingDate {
+  margin-left: 8px;
+}
+
 .appointmentProfilePic {
   position: absolute;
+  display: contents;
   width: 61px;
   height: 61px;
   left: 111px;
@@ -2422,35 +2428,35 @@ input:focus {
   letter-spacing: 0.01em;
 }
 
-.recentMessagesBorder .message1 {
+.recentMessagesWrapper {
+  margin-top: 42px;
   position: absolute;
-  width: 218px;
-  height: 58px;
-  top: 33%;
-  left: 46%;
-  font-style: normal;
-  line-height: 29px;
-  letter-spacing: 0.01em;
+  top: 20%;
+  right: 0%;
+  width: 416px;
+  font-size: 18px;
+}
+
+.recentMessagesTable td {
+  width: auto;
+  padding: 5px 0;
   text-align: left;
+  border-style: none;
+  color: #fa7f72;
 }
 
-.recentMessagesBorder .message1 span {
-  font-weight: bold;
+.recentMessagesTable a {
+  color: #fa7f72;
+  text-decoration: underline;
 }
 
-.recentMessagesBorder .message2 {
-  position: absolute;
-  width: 218px;
-  height: 58px;
-  top: 60%;
-  left: 46%;
-  font-style: normal;
-  line-height: 29px;
-  letter-spacing: 0.01em;
-  text-align: left;
+
+.recentMessagesTable a:hover {
+  color: #8b380b;
+  transition: all 0.5s;
 }
 
-.recentMessagesBorder .message2 span {
+.recentMessagesBorder .recentMessagesWrapper .recentMessagesTable span {
   font-weight: bold;
 }
 
@@ -4437,3 +4443,8 @@ body {
   top: 352px;
   right: 17%;
 }
+
+.recentMessagesTable {
+  margin-left: 12%;
+}
+

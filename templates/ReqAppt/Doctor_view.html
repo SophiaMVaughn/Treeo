@@ -61,9 +61,9 @@
                         {% else %}
                         <td>
                             <a class="appointmentBubbleApprove button btn btn-large btn-block"
-                                href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
+                                href="{% url 'approve_appt' a.id %}"><span> &#10004; </span></a>
                             <a class="appointmentBubbleDelete button btn btn-large btn-block"
-                                href="{% url 'reqAppt_delete' a.apptId  %}"><span> X </span></a>
+                                href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
                             {% endif %}
                         </td>
                         <!-- <td>
