@@ -50,9 +50,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chartjs',
-    # 'channels',
+    'channels',
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Treeo.wsgi.application'
-# ASGI_APPLICATION = 'Treeo.routing.application'
+ASGI_APPLICATION = 'Treeo.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -95,7 +96,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': 'M!ddle1*',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
@@ -139,19 +140,31 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+#session time out settings
 #when you close the browser it doesnt log you out
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #your session are closed out after 5min 300 sec
-SESSION_COOKIE_AGE = 3000
+SESSION_COOKIE_AGE = 30000
 SESSION_SAVE_EVERY_REQUEST = True
+
+
 #restricted to us phone numbers as default can store international under e164 standard but no tests with other country codes
 PHONENUMBER_DB_FORMAT ='E164'
 PHONENUMBER_DEFAULT_REGION = 'US'
 PHONENUMBER_DEFAULT_FORMAT ='NATIONAL'
+
+
+#celery
+#CELERY_BROKER_URL = message broker server
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users_acc.User'
 STATICFILES_DIRS = [BASE_DIR.joinpath('static')]

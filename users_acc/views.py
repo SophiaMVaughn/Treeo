@@ -127,9 +127,9 @@ def loginuser(request):
                 login(request, userl)
                 # get the stuff or the get responce theing here
 
-                return redirect('home')
+                
 
-                return redirect(request.POST.get('next')or request.GET.get('next') or 'home')
+                return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
 
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
@@ -449,7 +449,19 @@ def admin_revoke_provider(request, id):
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'users_acc/home.html')
+        context={}
+        if request.user.user_type == 2:
+            context["appointment"] = ApptTable.objects.filter(provider=request.user.provider).order_by("meetingDate")[:2]
+            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
+        elif request.user.user_type == 3:
+            context["appointment"] = ApptTable.objects.filter(patient=request.user.patient).order_by("-meetingDate")[:2]
+            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2]
+            print(ApptTable.objects.filter(patient=request.user.patient).order_by("-meetingDate")[:2])
+            print(PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2])
+        else:
+            context["appointment"] = ApptTable.objects.none
+            context["recentMessages"] = PostQ.objects.none
+        return render(request, 'users_acc/home.html',context)
     else:
         return redirect('login')
 

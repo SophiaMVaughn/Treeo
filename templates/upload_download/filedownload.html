@@ -1,12 +1,22 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-<div class="orange">
+<div class="white">
     <h1>File Download</h1>
-    <table class="table table-bordered">
+    {% if form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.patient }}
+        <div class="button uploadFileButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        </div>
+    </form>
+    {% else %}
+    <table class="table-sm table-bordered download">
         <thead>
             <tr>
                 <th>File Name</th>
+                <th>File Type</th>
                 <th>User</th>
                 <th>Date Created</th>
                 <th>Download</th>
@@ -17,6 +27,7 @@
             {% for file in file_list %}
             <tr>
                 <td>{{file.FileName}}</td>
+                <td>{{file.File_Type}}</td>
                 <td>{{file.Uploader}}</td>
                 <td>{{file.date_uploaded}}</td>
                 <td><a href="{{file.file}}" target="_blank"
@@ -28,5 +39,6 @@
                 {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 </div>
 {% endblock content %}

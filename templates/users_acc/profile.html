@@ -6,6 +6,9 @@
     </div>
     <div class="accountProfilePic">
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
+        <div class="button editProfileButton">
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
+        </div>
     </div>
 
     <div class="patientNameBox">
@@ -14,8 +17,8 @@
             <!-- {{user.date_joined}} -->
         </div>
     </div>
-
     <div class="providerTeamBox">
+        {% if user.user_type == 3%}
         <div class="providerTeam">
             provider team
         </div>
@@ -30,9 +33,42 @@
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
             </div>
         </div>
+        <div class="physicianBox">
+            <div class="physicianName">
+                physician: {{user.patient.doc_p.user.first_name|lower}} {{user.patient.doc_p.user.last_name|lower}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+            </div>
+            <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
+        </div>
+        <div class="coachBox">
+            <div class="coachName">
+                health coach: {{user.patient.doc_c.user.first_name|lower}} {{user.patient.doc_c.user.last_name|lower}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+            </div>
+            <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
+        </div>
+
+        {% endif %}
+        <div class="questionBox">
+            <div class="button helpButton">
+                <a href="#" class="btn btn-primary btn-large btn-block">?</a>
+            </div>
+            <div class="questionName">
+                questions? contact a treeo admin
+            </div>
+        </div>
+
     </div>
     <div class="theT"></div>
-    <div class="profile">
+    <!-- <div class="profile">
         <p><b>Username: </b>{{user.username}}</p>
 
         <p><b>Email: </b>{{user.email}}</p>
@@ -41,7 +77,6 @@
 
         <p><b>Last Name: </b>{{user.last_name}}</p>
         <p><b>Phone Number: </b>{{user.phone_no.as_national}}</p>
-        <!-- check whatsapp for bootstrap -->
 
         <div class="button editProfileButton">
             <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
@@ -77,6 +112,6 @@
             </table>
         </div>
         {% endif %}
-    </div>
+    </div> -->
 </div>
 {% endblock content %}

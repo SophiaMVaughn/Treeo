@@ -1,7 +1,7 @@
-{% extends "users_acc/base.html" %}
+{% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<div class="orange">
-    <p><b>Are You Sure You Want to Delete This File?</b></p>
+<div class="white">
+    <h1>Are You Sure You Want to Delete This File?</h1>
     <form action="{% url 'upload_download_file_delete' file %}" method="post">
         <div class="button deleteConfirmButton">
             {% csrf_token %}
@@ -9,8 +9,5 @@
             <a href="{% url 'upload_download_file_download' %}" class="btn btn-primary btn-large btn-block">Cancel</a>
         </div>
     </form>
-    <!-- <br>
-    <div class="button assignCareTeamButton">
-    </div> -->
 </div>
 {% endblock content %}

@@ -1,4 +1,4 @@
-{% extends "ReqAppt/apt_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -16,63 +16,105 @@
     }
 </style>
 
-<div class="orange">
+<div class="white">
     <div class="first">
-        <div class="heading">
-            <h2>Doctor View Appointments</h2>
+        <div class="appointments">appointments</div>
+        <div class="appointmentViews">
+            <div class="button appointmentViews">
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">calendar view</a>
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt' %}">list view</a>
+            </div>
         </div>
-        <table class="table table-bordered approve">
+        <div class="upcoming">
+            <p>upcoming</p>
+            <div class="bookNewAppointment">
+                <div class="button bookNewAppointment">
+                    <a class="btn btn-primary btn-large btn-block" href="{% url 'create_Appointment' %}">book new
+                        appointment</a>
+                </div>
+            </div>
+        </div>
 
-            <thead>
-                <tr>
-                    <th>Patient First Name</th>
-                    <th>Patient Last Name</th>
-                    <th>Date and Time</th>
-                    <th>Appointment Status</th>
-                    <th>Approve</th>
-                    <th>Reject</th>
-                    <th>Archive</th>
-                    <th>Delete</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                {% for a in ApptTable %}
-                <tr>
-                    <td> {{a.patient.user.first_name}}</td>
-                    <td>{{a.patient.user.last_name}}</td>
-                    <td>{{a.meetingDate}}</td>
-                    {%if a.status%}
-                    <td>Confirmed</td>
-                    {% else %}
-                    <td>Pending</td>
-                    {% endif %}
-
-                    <td>
+        <!-- <input type="text" id="myInput" class="myInputPatient" onkeyup="myFunction()" placeholder="search for provider"> -->
+        <div class="appointmentTableProvider">
+            <table class="table approve">
+                <thead>
+                    <tr>
+                        <th>date/time</th>
+                        <th></th>
+                        <th>patient</th>
+                        <th></th>
+                        <th>appointment name/link</th>
+                        <th>approval status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in ApptTable %}
+                    <tr>
+                        <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
+                        <td class="with">with</td>
+                        <td class="appointmentBubblePatient">{{a.patient.user.first_name|lower}}
+                            {{a.patient.user.last_name|lower}}</td>
+                        <td class="with">at</td>
                         {%if a.status%}
-                        <span></span>
+                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a></td>
                         {% else %}
-                        <a href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
+                        <td class="appointmentBubbleLink">intro appointment</td>
                         {% endif %}
-                    </td>
-                    <td>
-                        {%if a.status%}
-                        <span></span>
-                        {% else %}
-                        <a href="{% url 'reqAppt_delete' a.apptId  %}"><span> &#10060; </span></a>
-                        {% endif %}
-                    </td>
-                    <td><a href="{% url 'archive' a.apptId %}"> Click to Archive </a></td>
-                    <!-- <td><a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a></td> -->
-                    <td><a href="{% url 'reqAppt_delete' a.apptId %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="35" alt="" loading="lazy" /></a>
-                    </td>
-                    <!--        <td> {{a.patientFname}} </td>-->
 
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        {%if a.status%}
+                        <td class="appointmentBubbleStatus">approved</td>
+                        {% else %}
+                        <td>
+                            <a class="appointmentBubbleApprove button btn btn-large btn-block"
+                                href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
+                            <a class="appointmentBubbleDelete button btn btn-large btn-block"
+                                href="{% url 'reqAppt_delete' a.apptId  %}"><span> X </span></a>
+                            {% endif %}
+                        </td>
+                        <!-- <td>
+                            {%if a.status%}
+                            <span></span>
+                            {% else %}
+                            <a href="{% url 'reqAppt_delete' a.id  %}"><span> &#10060; </span></a>
+                            {% endif %}
+                        </td> -->
+                        <!-- <td><a href="{% url 'archive' a.id %}"> Click to Archive </a></td> -->
+                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"> Delete </a></td> -->
+                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"><img alt="Delete"
+                                    src="{% static 'img/trash.png' %}" width="30" height="35" alt=""
+                                    loading="lazy" /></a>
+                        </td> -->
+                        <!--        <td> {{a.patientFname}} </td>-->
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+<!-- <script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script> -->
 {% endblock content %}

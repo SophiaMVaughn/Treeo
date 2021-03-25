@@ -1,77 +1,79 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-<div class="orange">
-    <h2>Patient: {{patient.user.first_name}} {{patient.user.last_name}}</h2>
+<div class="white">
+    <div class="appointments">providers</div>
+    <div class="theT"></div>
+
+    <div class="patient">patient: {{patient.user.first_name|lower}} {{patient.user.last_name|lower}}</div>
     <form action="" method="post">
-        <table class="table table-bordered assignCareTeamTable">
-            <thead>
-                <tr>
-                    <th>Provider Type</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Assign</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--# provider.user.last_name.-->
-                <!--# user.related profile name.Patient_count-->
-                <!--{{ object.get_chices_display }}-->
-                <tr>
-                    {% if patient.doc_d %}
-                    <td>Dietician</td>
-                    <td>{{patient.doc_d.user.first_name}}</td>
-                    <td>{{patient.doc_d.user.last_name}}</td>
-                    <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
-                    </td>
-                    {% else %}
-                    <td>Dietician</td>
-                    <td>Not Assigned</td>
-                    <td>Not Assigned</td>
-                    <td>{{form.doc_d}}</td>
-                    <td></td>
-                    {% endif %}
-                <tr>
-                    {% if patient.doc_c %}
-                    <td>Health Coach</td>
-                    <td>{{patient.doc_c.user.first_name}}</td>
-                    <td>{{patient.doc_c.user.last_name}}</td>
-                    <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
-                    </td>
-                    {% else %}
-                    <td>Health Coach</td>
-                    <td>Not Assigned</td>
-                    <td>Not Assigned</td>
-                    <td>{{form.doc_c}}</td>
-                    <td></td>
-                    {% endif %}
-                <tr>
-                    {% if patient.doc_p %}
-                    <td>Physician</td>
-                    <td>{{patient.doc_p.user.first_name}}</td>
-                    <td>{{patient.doc_p.user.last_name}}</td>
-                    <td></td>
-                    <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
-                    </td>
-                    {% else %}
-                    <td>Physician</td>
-                    <td>Not Assigned</td>
-                    <td>Not Assigned</td>
-                    <td>{{form.doc_p}}</td>
-                    <td></td>
-                    {% endif %}
-            </tbody>
-        </table>
+        <div class="careTeamTable">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>provider type</th>
+                        <th>name</th>
+                        <th>assign</th>
+                        <th>remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--# provider.user.last_name.-->
+                    <!--# user.related profile name.Patient_count-->
+                    <!--{{ object.get_chices_display }}-->
+                    <tr>
+                        {% if patient.doc_d %}
+                        <td class="careTeamBubble">dietician</td>
+                        <td class="careTeamBubble">{{patient.doc_d.user.first_name|lower}} {{patient.doc_d.user.last_name|lower}}</td>
+                        <td></td>
+                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
+                                    src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
+                                    loading="lazy" /></a>
+                        </td>
+                        {% else %}
+                        <td class="careTeamBubble">dietician</td>
+                        <td class="careTeamBubble">not assigned</td>
+                        <td>{{form.doc_d}}</td>
+                        <td></td>
+                        {% endif %}
+                    <tr>
+                        {% if patient.doc_c %}
+                        <td class="careTeamBubble">coach</td>
+                        <td class="careTeamBubble">{{patient.doc_c.user.first_name|lower}} {{patient.doc_c.user.last_name|lower}}</td>
+                        <td></td>
+                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
+                                    src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
+                                    loading="lazy" /></a>
+                        </td>
+                        {% else %}
+                        <td class="careTeamBubble">health coach</td>
+                        <td class="careTeamBubble">not assigned</td>
+                        <td>{{form.doc_c}}</td>
+                        <td></td>
+                        {% endif %}
+                    <tr>
+                        {% if patient.doc_p %}
+                        <td class="careTeamBubble">physician</td>
+                        <td class="careTeamBubble">{{patient.doc_p.user.first_name|lower}} {{patient.doc_p.user.last_name|lower}}</td>
+                        <td></td>
+                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
+                                    src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
+                                    loading="lazy" /></a>
+                        </td>
+                        {% else %}
+                        <td class="careTeamBubble">physician</td>
+                        <td class="careTeamBubble">not assigned</td>
+                        <td>{{form.doc_p}}</td>
+                        <td></td>
+                        {% endif %}
+                </tbody>
+            </table>
+        </div>
         {% csrf_token %}
         <div class="button assignProvidersButton">
-            <button type="submit" class="btn btn-primary btn-large btn-block">Assign Providers</button>
-            <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Select a Different Patient</a>
+            <button type="submit" class="btn btn-primary btn-large btn-block">assign providers</button>
+            <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">
+                select a different patient</a>
         </div>
     </form>
 </div>

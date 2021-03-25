@@ -5,23 +5,55 @@
 
     {%else%}
     {% if user.user_type == 1%}
-    <div class="welcome">welcome!</div>
-    <div class="profileBorder">
-        <div class="profileName">{{user.first_name|lower}} {{user.last_name|lower}}</div>
-        <div class="profileDateJoined">member since {{user.date_joined}}</div>
-        <div class="profilePic">
-            <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
+    <div class="providerHome">admin home</div>
+    <div class="newArrivalsBorder">
+        <div class="newArrivals">
+            new arrivals
         </div>
-    </div>
-    <div class="button adminButton">
-        <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign A Care Team </a>
-        <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor
-        </a>
-        <a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register Doctor</a>
+        <div class="unassignedProviders">
+            This should say "there are x provider(s) unassigned to a patient". Otherwise it should say "no new arrivals"
+        </div>
+        <div class="assignTrio">
+            <div class="button assignTrio">
+                <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">assign trio teams</a>
+                <!-- <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor</a>
+            <a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register Doctor</a> -->
+            </div>
+        </div>
+
+        <div class="recentMessagesBorder recentMessagesBorderAdmin">
+            <div class="recentMessages">
+                <span>recent messages</span>
+            </div>
+            <!-- should be a message icon next to each message -->
+            <div class="message1">
+                <span>dr. hill: </span> make sure you remember <span>(read more)</span>
+            </div>
+            <div class="message2">
+                <span>lisa: </span> a good tip is to use lemon in <span>(read more)</span>
+            </div>
+        </div>
+
+        <div class="pendingApprovalsBorder">
+            <div class="pendingApproval">
+                <span>pending approvals</span>
+            </div>
+            <!-- should be a message icon next to each message -->
+            <div class="unapprovedProviders">
+                This should say "there are x provider(s) awaiting approval" Otherwise it should say "no pending
+                approvals"
+            </div>
+            <div class="approveProvider">
+                <div class="button approveProvider">
+                    <a href="{% url 'admin_approve_provider_render' %}"
+                        class="btn btn-primary btn-large btn-block">go</a>
+                </div>
+            </div>
+        </div>
     </div>
     {% endif %}
     {% if user.user_type == 2%}
-    <div class="welcome">welcome!</div>
+    <div class="providerHome">provider home</div>
     <div class="profileBorder">
         <div class="profileName">{{user.first_name|lower}} {{user.last_name|lower}}</div>
         <div class="profileDateJoined">member since {{user.date_joined}}</div>
@@ -30,7 +62,33 @@
         </div>
     </div>
 
+    <div class="upcomingAppointmentsBorder">
+        <div class="upcomingAppointments">upcoming appointments</div>
+        <div class="appointmentsList">
+            <p>mon 2/1</p>
+        </div>
+        <div class="appointmentProfilePic">
+            <p>(pic of provider)</p>
+        </div>
+        <div class="bookAppointment">
+            <div class="button bookAppointment">
+                <a href="#" class="btn btn-primary btn-large btn-block">book an appointment</a>
+            </div>
+        </div>
+    </div>
 
+    <div class="recentMessagesBorder">
+        <div class="recentMessages">
+            <span>recent messages</span>
+        </div>
+        <!-- should be a message icon next to each message -->
+        <div class="message1">
+            <span>taylor: </span> make sure you remember <span>(read more)</span>
+        </div>
+        <div class="message2">
+            <span>sam: </span> how can i make sure to include <span>(read more)</span>
+        </div>
+    </div>
 
     {% endif %}
     {% if user.user_type == 3%}
@@ -43,8 +101,54 @@
         </div>
     </div>
 
+    <div class="upcomingAppointmentsBorder">
+        <div class="upcomingAppointments">upcoming appointments</div>
+        <div class="appointmentsList">
+            {% if appointment %}
+            {% for i in appointment %}
+            <div class="appointmentProfilePic">
+                <p>
+                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="30" height="40" alt="">
+                </p>
+            </div>
+            <!-- use humanize here for time -->
+            <p>You Have an Appointment at{{ i.meetingDate }}</p>
+            {% endfor %}
+            {% else %}
+            <p>You Have No Upcoming Appointments</p>
+            {% endif %}
 
+        </div>
 
+        <div class="bookAppointment">
+            <div class="button bookAppointment">
+                <a href="#" class="btn btn-primary btn-large btn-block">book an appointment</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="recentMessagesBorder">
+        <div class="recentMessages">
+            <span>recent messages</span>
+        </div>
+        {% if recentMessages %}
+        {% for i in recentMessages %}
+        <!-- doesthis class matter  -->
+        <div class="message2">
+            <span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>You Have No New Messages</p>
+        {% endif %}
+        <!-- should be a message icon next to each message -->
+
+    </div>
+
+    <div class="healthChart">
+        health chart goes here.
+        just one that shows data and can be clicked on to lead to whole page
+    </div>
 
     {% endif %}
     {% endif %}
