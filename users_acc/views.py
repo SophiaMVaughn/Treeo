@@ -22,6 +22,7 @@ from messaging.models import *
 from patient_log.models import *
 from blogsys.models import *
 from ReqAppt.models import *
+from apptArchive.models import *
 
 def register(request):
     if request.method == 'POST':
@@ -88,15 +89,17 @@ def activate(request, uidb64, token):
 def button(request):
     if request.method == 'POST':
         #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        m=message.objects.create()
-        m.sender = request.user
-        m.reciever = request.user
-        m.subject ='test'
-        m.convoID = 1
-        m.read_status = False
-        m.sender_loc = 'Outbox'
-        m.reciever_loc = 'Inbox'
-        m.save()
+        # m=message.objects.create()
+        # m.sender = request.user
+        # m.reciever = request.user
+        # m.subject ='test'
+        # m.convoID = 1
+        # m.read_status = False
+        # m.sender_loc = 'Outbox'
+        # m.reciever_loc = 'Inbox'
+        # m.save()
+        m=ApptTable.objects.first()
+        ApptArchive.objects.create(provider=m.provider, patient=m.patient, meetingDate=m.meetingDate)
         return redirect('button')
     else:
         return render(request, 'users_acc/button.html')
