@@ -3,20 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apptArchive/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/uploaded_files/A.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/upload_download/fileupload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload_download/fileupload.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_download/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
