@@ -1,32 +1,126 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-<div class="orange">
-    <h1>File Download</h1>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>File Name</th>
-                <th>User</th>
-                <th>Date Created</th>
-                <th>Download</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for file in file_list %}
-            <tr>
-                <td>{{file.FileName}}</td>
-                <td>{{file.Uploader}}</td>
-                <td>{{file.date_uploaded}}</td>
-                <td><a href="{{file.file}}" target="_blank"
-                        download="file.FileName"><img alt="Download" src="{% static 'img/downloadArrow.png' %}"
-                            width="90" height="40" alt="" loading="lazy"/></a></td>
-                <td><a href="{% url 'upload_download_file_delete' file.id %}"
-                        ><img alt="Delete"
-                            src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a></td>
-                {% endfor %}
-        </tbody>
-    </table>
+<div class="white">
+    <div class="fileDownload">File Download</div>
+    {% if form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.patient }}
+        <div class="button uploadFileButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        </div>
+    </form>
+    {% else %}
+    <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for file name">
+    <div class="downloadTable">
+        <table id="myTable" class="table download">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">File Name</th>
+                    <th onclick="sortTable(1)">File Type</th>
+                    <th onclick="sortTable(2)">User</th>
+                    <th onclick="sortTable(3)">Date Created</th>
+                    <th>Download</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in file_list %}
+                <tr>
+                    <td>{{file.FileName}}</td>
+                    <td>{{file.File_Type}}</td>
+                    <td>{{file.Uploader}}</td>
+                    <td>{{file.date_uploaded}}</td>
+                    <td><a href="{{file.file}}" target="_blank" download="file.FileName"><img alt="Download"
+                                src="{% static 'img/downloadArrow.png' %}" width="90" height="40" alt=""
+                                loading="lazy" /></a></td>
+                    <td><a href="{% url 'upload_download_file_delete' file.id %}"><img alt="Delete"
+                                src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
+                    </td>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
 </div>
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInputPatient");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "asc";
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < (rows.length - 1); i++) {
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+                /* Get the two elements you want to compare,
+                one from current row and one from the next: */
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /* Check if the two rows should switch place,
+                based on the direction, asc or desc: */
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                // Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /* If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again. */
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
 {% endblock content %}

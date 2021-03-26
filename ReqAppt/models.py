@@ -5,13 +5,14 @@ from users_acc.models import *
 
 
 class ApptTable(models.Model):
-    apptId = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     #this needs to be user not patient? thats a redesign i dont want to do
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
     meetingDate = models.DateTimeField()
     status = models.BooleanField(default=False)
-    meeturl=models.URLField(null=True)
+    meeturlprovider=models.URLField(null=True, max_length=1000)
+    meeturlpatient=models.URLField(null=True, max_length=1000)
 
 
 

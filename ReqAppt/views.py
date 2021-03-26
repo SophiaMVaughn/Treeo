@@ -105,10 +105,6 @@ def create_Appointment(request):
             minute = int((apptHour - hour) * 60)
             meetingDate = meetingDate.replace(hour=hour, minute=minute)
             print(meetingDate)
-            #call zoom api make meeting and get the url for it
-            # ApptTable.objects.create(
-            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
-            # )
             appointment=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
@@ -144,15 +140,21 @@ def Patient_view(request):
     return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
 
 def approve(request,id):
-    appointment=ApptTable.objects.get(apptId=id)
+    appointment=ApptTable.objects.get(id=id)
+    #need tio pass the pass to email stuff
+    provider_url, patient_url, patient_pwd = generate_zoom(request=1)
+    appointment.meeturlprovider=provider_url
+    appointment.meeturlpatient=patient_url
+    print(appointment.meeturlprovider)
+    print(appointment.meeturlpatient)
     appointment.status=True
     appointment.save()
     approve_message(appointment)
-    approved_mail_both(appointment)
+    approved_mail_both(appointment,patient_pwd)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
         reject_message(appointment)
@@ -225,7 +227,7 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
@@ -305,7 +307,7 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
