@@ -8,6 +8,9 @@
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         <div class="button editProfileButton">
             <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">edit profile</a>
+            {% if user.user_type != 1%}
+            <a href="{% url 'user_deactivate' %}" class="btn btn-primary btn-large btn-block">Deactivate Account</a>
+            {% endif %}
         </div>
     </div>
 

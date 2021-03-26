@@ -109,19 +109,6 @@ def loginuser(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        # print(username,password)
-        # email or username code need acompying code in model or backend manager to stop @ being used in usernames
-        # try:
-        #     user = get_user_model().objects.get(Q(username__iexact=username) | Q(email__iexact=username))
-        # except get_user_model().DoesNotExist:
-        #     get_user_model().set_password(password)
-        # except MultipleObjectsReturned:
-        #     return get_user_model().objects.filter(email=username).order_by('id').first()
-        # else:
-        #     if user.check_password(password) and self.user_can_authenticate(user):
-        #         return user
-        # try:
-        #     user = get_user_model().objects.get(Q(username__iexact=username) | Q(email__iexact=username))
         userl = authenticate(request, username=username, password=password)
         if userl is not None:
             # print("test1")
@@ -129,15 +116,14 @@ def loginuser(request):
                 # print("test2")
                 login(request, userl)
                 # get the stuff or the get responce theing here
-
-                
-
                 return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
-
             else:
-                return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Your Account Is Not Confirmed'})
+                return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Is Not Confirmed']})
         else:
-            return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'errorMsg': 'Username and password did not match'})
+            if User.objects.get(username=username).is_active == False:
+                return render(request, 'users_acc/login.html',{'form': AuthenticationForm(), 'messages': ['Your Account Is Deactivated']})
+            else:
+                return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Username and password did not match']})
     else:
         return render(request, 'users_acc/login.html', {'form': AuthenticationForm()})
 
@@ -333,121 +319,43 @@ def admin_revoke_provider(request, id):
         temp.save()
     return redirect("admin_approve_provider_render")
 
-# def render_privider_list(request,pat_obj):
-#     content = {}
-#     context = {}
-#     try:
-#         patient = Patient.objects.get(id=pat_obj)
-#         context['patient'] = patient
-#     except Exception as e:
-#         print(e)
-#     else:
-#         if not patient.doc_d == None:
-#             context['doc_d'] = patient.doc_d
-#         else:
-#             new_fields = {}
-#             new_fields['doc_d'] = CustomModelChoiceField(
-#                 Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2))
-#             DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-#             IngForm = DynamicForm(content)
-#             context['field1'] = IngForm
-#         if not patient.doc_c == None:
-#             context['doc_c'] = patient.doc_c
-#         else:
-#             new_fields = {}
-#             new_fields['doc_c'] = CustomModelChoiceField(
-#                 Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3))
-#             DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-#             IngForm = DynamicForm(content)
-#             context['field2'] = IngForm
-#         if not patient.doc_p == None:
-#             context['doc_p'] = patient.doc_p
-#         else:
-#             new_fields = {}
-#             new_fields['doc_p'] = CustomModelChoiceField(
-#                 Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1))
-#             DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-#             IngForm = DynamicForm()
-#             #see if DynamicForm() works ??????????????????????????????????????????????????????????????????
-#             context['field3'] = IngForm
-#         return render(request, "users_acc/admin_display_team.html", context)
-# def dynamic(request):
-#     context = {}
-#     content = {}
-#     new_fields = {}
-#     patient=Patient.objects.none()
+@login_required
+def admin_user_deactivate_render(request):
+    temp=User.objects.filter(~Q(user_type= 1))
+    if request.method == 'POST':
+        print(request.POST)
+        if "id" in request.POST:
+            id=request.POST.get("id")
+            try:
+                usertmp = User.objects.get(id=id)
+                print(usertmp.is_active)
+            except Exception as e:
+                print(e)
+            else:
+                usertmp.is_active = False
+                usertmp.save()
+        elif "id2" in request.POST:
+            id=request.POST.get("id2")
 
-    # if request.method == 'POST':
-    #     if 'patient' in request.POST:
-    #         try:
-    #             patient = Patient.objects.get(id=patient)
-    #         except Exception as e:
-    #             print(e)
-    #         else:
-    #             # if (patient.doc_d == None or patient.doc_p == None or patient.doc_c == None):
-    #             #     # trys not needer as query sets wont error out?
-    #             #     try:
-    #             #         if patient.doc_d == None:
-    #             #             new_fields['providers_d'] = CustomModelChoiceField(Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=2))
-    #             #     except Exception as e:
-    #             #         print(e)
-    #             #     try:
-    #             #         if patient.doc_c == None:
-    #             #             # providers_c = providers_c | Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3)
-    #             #             new_fields['providers_c'] = CustomModelChoiceField(
-    #             #                 Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=3))
-    #             #     except Exception as e:
-    #             #         print(e)
-    #             #     try:
-    #             #         if patient.doc_p == None:
-    #             #             # providers_p = providers_p | Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1)
-    #             #             new_fields['providers_p'] = CustomModelChoiceField(
-    #             #                 Provider.objects.filter(Patient_count__lt=10).filter(Provider_type=1))
-    #             #     except Exception as e:
-    #             #         print(e)
-    #                 # hides field that passes the patient as hidden field
-    #                 #new_fields['patient2'] = CustomModelChoiceField(widget=forms.HiddenInput(),queryset =Patient.objects.filter(id=patient.id), initial={'field1': patient })
-    #                 DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-    #                 IngForm = DynamicForm(content)
-    #                 context['form2'] = IngForm
-    #                 #context['form2'] = AdminProviderUpdateForm()
-    #                 context['patient'] = patient
-    #                 return render(request, "users_acc/admin_assign.html", context)
-    #             else:
-    #                 #all guys assigned
-    #                 # DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-    #                 # IngForm = DynamicForm(content)
-    #                 # context['form2'] = IngForm
-    #                 context['messages'] = "All Doctors asigned"
-    #                 context['form'] = AdminAssignForm()
-    #                 return render(request, "users_acc/admin_assign.html", context)
-    #     else:
-    #         #need to pass an id of patient
-    #         print(request.POST)
-    #         patient = request.POST['patient2']
-    #         try:
-    #             patient = Patient.objects.get(id=patient)
-    #         except Exception as e:
-    #             print(e)
-    #         else:
-    #             if 'providers_d' in request.POST:
-    #                 patient.doc_d = request.POST['providers_d']
-    #             if 'providers_c' in request.POST:
-    #                 patient.doc_c = request.POST['providers_c']
-    #             if 'providers_p' in request.POST:
-    #                 patient.doc_p = request.POST['providers_p']
-    #             print(patient.doc_p,patient.doc_c,patient.doc_d)
-    #         DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-    #         IngForm = DynamicForm(content)
-    #         context['form2'] = IngForm
-    #         context['form'] = AdminAssignForm()
-    #         return render(request, "users_acc/admin_assign.html", context)
-    # else:
-    #     DynamicForm = type('DynamicForm', (TestForm,), new_fields)
-    #     IngForm = DynamicForm(content)
-    #     context['form2'] = IngForm
-    #     context['form'] = AdminAssignForm()
-    # return render(request, "users_acc/admin_assign.html", context)
+            try:
+                usertmp = User.objects.get(id=id)
+                print(usertmp.is_active)
+            except Exception as e:
+                print(e)
+            else:
+                usertmp.is_active = True
+                usertmp.save()
+        return render(request, "users_acc/admin_deactivate_user.html", {'results': temp})
+    else:
+        return render(request, "users_acc/admin_deactivate_user.html", {'results': temp})
+
+@login_required
+def user_deactivate(request):
+        if request.user.user_type == 3 or request.user.user_type == 2:
+            request.user.is_active = False
+            request.user.save()
+            return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated']})
+
 
 
 def home(request):
@@ -469,20 +377,4 @@ def home(request):
         return redirect('login')
 
 
-# def home2(request):
-#     context={}
-#     if request.user.is_authenticated:
-#         context= {'appointment': "", 'message': "", }
-#         results=PostQ.objects.filter(Thereciever=(request.user)).order_by('meetingDate')[:2]
-#         if results.count() == 0:
-#             print('no appointments')
-#         if request.user.user_type==3:
-#             results=ApptTable.objects.filter(patient=(request.user)).order_by('meetingDate')[:2]
-#         if request.user.user_type==2:
-#             results=ApptTable.objects.filter(provider=(request.user)).order_by('meetingDate')[:2]
-#             if results.count() == 0:
-#                 print('no appointments')
-#             request.user.date_joined.date()
-#         return render(request, 'users_acc/home.html', context)
-#     else:
-#         return redirect('login')
+

@@ -1,75 +1,187 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-  <div id="container" style="width: 75%; margin: 0 auto;">
-    <b>Calories</b>
-    <canvas id="calories-chart"></canvas>
-    <b>Water</b>
-    <canvas id="water-chart"></canvas>
-    <b>Sleep</b>
-    <canvas id="sleep-chart"></canvas>
-    <b>Mood</b>
-    <canvas id="mood-chart"></canvas>
-  </div>
-<!--1,point color also?,point color,4,5 look up a reference guide or one of the examples https://www.chartjs.org/samples/latest/ idk-->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-  <script>
+<button id="0" type="button">Overall (Weekly)</button>
+<button id="1" type="button">Overall (Monthly)</button>
+<button id="2" type="button">Overall (Yearly)</button>
+<button id="3" type="button">Overall (Calories)</button>
+<button id="4" type="button">Overall (Water)</button>
+<button id="5" type="button">Overall (Sleep)</button>
+<button id="6" type="button">Overall (Mood)</button>
+<b id ="title"></b>
+<div id="container" style="width: 75%; margin: 0 auto;">
+<canvas id="Chart"></canvas>
+</div>
 
-    var config = {
-      type: 'line',
-      data: {
-        datasets: [{
-          data: {{ data|safe }},
+
+
+<!-- Add jQuery lib here -->
+<!--1,point color also?,point color,4,5 look up a reference guide or one of the examples https://www.chartjs.org/samples/latest/ idk-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+    var daterange = "Weekly"
+    var chartype = "Calories"
+    const ctx = document.getElementById('Chart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ Weekly.labels|safe }},
+            datasets: [{
+          data: {{ Weekly.Calories|safe }},
           backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},
           ],
-        labels: {{ labels|safe }}
-      },
-      options: {responsive: true}
-    };
-    var config2 = {
-      type: 'line',
-      data: {
-        datasets: [{
-          data: {{ data2|safe }},
-          backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Water',fill: false},
-          ],
-        labels: {{ labels|safe }}
-      },
-      options: {responsive: true}
-    };
-        var config3 = {
-      type: 'line',
-      data: {
-        datasets: [{
-          data: {{ data3|safe }},
-          backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Sleep',fill: false},
-          ],
-        labels: {{ labels|safe }}
-      },
-      options: {responsive: true}
-    };
-        var config4 = {
-      type: 'line',
-      data: {
-        datasets: [{
-          data: {{ data4|safe }},
-          backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Mood',fill: false},
-          ],
-        labels: {{ labels|safe }}
-      },
-      options: {responsive: true}
-    };
-    window.onload = function() {
-      var ctx = document.getElementById('calories-chart').getContext('2d');
-      var myChart  = new Chart(ctx, config);
-      var ctx2 = document.getElementById('water-chart').getContext('2d');
-      var myChart2 = new Chart(ctx2, config2);
-      var ctx3 = document.getElementById('sleep-chart').getContext('2d');
-      var myChart3 = new Chart(ctx3, config3);
-      var ctx4 = document.getElementById('mood-chart').getContext('2d');
-      var myChart4 = new Chart(ctx4, config4);
-    };
 
+        },
+        options: {responsive: true}
+    });
+
+
+    function myFunction(p1, p2) {
+        if (p1 == "Weekly")
+        {
+        if (p2 == "Calories")
+        {
+         var test ={
+            labels: {{ Weekly.labels|safe }},
+            datasets: [{
+          data: {{ Weekly.Calories|safe }},
+          backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},
+          ],
+        }
+        return test
+        }
+        else if (p2 == "Water"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Water|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Water',fill: false},],}
+        return test
+        }
+        else if (p2 == "Sleep"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Sleep|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Sleep',fill: false},],}
+        return test
+        }
+        else if (p2 == "Mood"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Mood|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Mood',fill: false},],}
+        return test
+        }
+        else {
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        }
+        else if (p1 == "Monthly")
+        {
+        if (p2 == "Calories")
+        {
+         var test = {labels: {{ Monthly.labels|safe }}, datasets: [{data: {{ Monthly.Calories|safe|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        else if (p2 == "Water"){
+         var test = {labels: {{ Monthly.labels|safe }}, datasets: [{data: {{ Monthly.Water|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Water',fill: false},],}
+        return test
+        }
+        else if (p2 == "Sleep"){
+         var test = {labels: {{ Monthly.labels|safe }}, datasets: [{data: {{ Monthly.Sleep|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Sleep',fill: false},],}
+        return test
+        }
+        else if (p2 == "Mood"){
+         var test = {labels: {{ Monthly.labels|safe }}, datasets: [{data: {{ Monthly.Mood|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Mood',fill: false},],}
+        return test
+        }
+        else {
+         var test = {labels: {{ Monthly.labels|safe }}, datasets: [{data: {{ Monthly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        }
+        else if (p1 == "Yearly")
+        {
+        if (p2 == "Calories")
+        {
+         var test = {labels: {{ Yearly.labels|safe }}, datasets: [{data: {{ Yearly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        else if (p2 == "Water"){
+         var test = {labels: {{ Yearly.labels|safe }}, datasets: [{data: {{ Yearly.Water|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Water',fill: false},],}
+        return test
+        }
+        else if (p2 == "Sleep"){
+         var test = {labels: {{ Yearly.labels|safe }}, datasets: [{data: {{ Yearly.Sleep|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Sleep',fill: false},],}
+        return test
+        }
+        else if (p2 == "Mood"){
+         var test = {labels: {{ Yearly.labels|safe }}, datasets: [{data: {{ Yearly.Mood|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Mood',fill: false},],}
+        return test
+        }
+        else {
+         var test = {labels: {{ Yearly.labels|safe }}, datasets: [{data: {{ Yearly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        }
+        else {
+        if (p2 == "Calories")
+        {
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        else if (p2 == "Water"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Water|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Water',fill: false},],}
+        return test
+        }
+        else if (p2 == "Sleep"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Sleep|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Sleep',fill: false},],}
+        return test
+        }
+        else if (p2 == "Mood"){
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Mood|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Mood',fill: false},],}
+        return test
+        }
+        else {
+         var test = {labels: {{ Weekly.labels|safe }}, datasets: [{data: {{ Weekly.Calories|safe }},backgroundColor: ['#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'],label: 'Calories',fill: false},],}
+        return test
+        }
+        }
+}
+    document.getElementById("0").addEventListener('click', () => {
+    daterange = "Weekly"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    document.getElementById('title').innerHTML = chartype;
+    });
+    document.getElementById("1").addEventListener('click', () => {
+    daterange = "Monthly"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    document.getElementById('title').innerHTML = chartype;
+    });
+    document.getElementById("2").addEventListener('click', () => {
+    daterange = "Yearly"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    document.getElementById('title').innerHTML = chartype;
+    });
+    document.getElementById("3").addEventListener('click', () => {
+        chartype = "Calories"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    });
+        document.getElementById("4").addEventListener('click', () => {
+        chartype = "Water"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    });
+        document.getElementById("5").addEventListener('click', () => {
+        chartype = "Sleep"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    });
+        document.getElementById("6").addEventListener('click', () => {
+        chartype = "Mood"
+    chart.config.data = myFunction(daterange,chartype)
+    chart.update();
+    });
+    window.onload = function() {
+    document.getElementById('title').innerHTML = chartype;
+};
   </script>
 
 {% endblock content %}
