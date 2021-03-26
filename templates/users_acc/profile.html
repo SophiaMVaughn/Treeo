@@ -7,7 +7,10 @@
     <div class="accountProfilePic">
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         <div class="button editProfileButton">
-            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">edit profile</a>
+            {% if user.user_type != 1%}
+            <a href="{% url 'user_deactivate' %}" class="btn btn-primary btn-large btn-block">Deactivate Account</a>
+            {% endif %}
         </div>
     </div>
 
@@ -29,9 +32,9 @@
             <div class="button viewProviderDetailsButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
             </div>
-            <div class="button requestChangeButton">
+            <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div>
+            </div> -->
         </div>
         <div class="physicianBox">
             <div class="physicianName">
@@ -40,9 +43,9 @@
             <div class="button viewProviderDetailsButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
             </div>
-            <div class="button requestChangeButton">
+            <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div>
+            </div> -->
         </div>
         <div class="coachBox">
             <div class="coachName">
@@ -51,20 +54,20 @@
             <div class="button viewProviderDetailsButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
             </div>
-            <div class="button requestChangeButton">
+            <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div>
+            </div> -->
         </div>
 
         {% endif %}
-        <div class="questionBox">
+        <!-- <div class="questionBox">
             <div class="button helpButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">?</a>
             </div>
             <div class="questionName">
                 questions? contact a treeo admin
             </div>
-        </div>
+        </div> -->
 
     </div>
     <div class="theT"></div>

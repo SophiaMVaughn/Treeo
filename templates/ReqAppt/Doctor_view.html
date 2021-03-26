@@ -2,14 +2,6 @@
 {% block content %}
 {% load static %}
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-    function hide() {
-        var confirm = document.querySelectorAll('.confirm');
-        confirm[0].classList.add('hidden');
-        confirm[1].classList.add('hidden');
-    }
-
-</script>
 <style>
     .hidden {
         display: none !important;
@@ -19,6 +11,7 @@
 <div class="white">
     <div class="first">
         <div class="appointments">appointments</div>
+        <div class="theT"></div>
         <div class="appointmentViews">
             <div class="button appointmentViews">
                 <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">calendar view</a>
@@ -35,17 +28,17 @@
             </div>
         </div>
 
-        <!-- <input type="text" id="myInput" class="myInputPatient" onkeyup="myFunction()" placeholder="search for provider"> -->
+        <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for patient">
         <div class="appointmentTableProvider">
-            <table class="table approve">
+            <table id="myTable" class="table approve">
                 <thead>
                     <tr>
-                        <th>date/time</th>
+                        <th onclick="sortTable(0)">date/time</th>
                         <th></th>
-                        <th>patient</th>
+                        <th onclick="sortTable(1)">patient</th>
                         <th></th>
-                        <th>appointment name/link</th>
-                        <th>approval status</th>
+                        <th onclick="sortTable(2)">appointment name/link</th>
+                        <th onclick="sortTable(3)">approval status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +50,8 @@
                             {{a.patient.user.last_name|lower}}</td>
                         <td class="with">at</td>
                         {%if a.status%}
-                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a></td>
+                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a>
+                        </td>
                         {% else %}
                         <td class="appointmentBubbleLink">intro appointment</td>
                         {% endif %}
@@ -67,9 +61,9 @@
                         {% else %}
                         <td>
                             <a class="appointmentBubbleApprove button btn btn-large btn-block"
-                                href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
+                                href="{% url 'approve_appt' a.id %}"><span> &#10004; </span></a>
                             <a class="appointmentBubbleDelete button btn btn-large btn-block"
-                                href="{% url 'reqAppt_delete' a.apptId  %}"><span> X </span></a>
+                                href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
                             {% endif %}
                         </td>
                         <!-- <td>
@@ -94,11 +88,17 @@
         </div>
     </div>
 </div>
-<!-- <script>
+<script>
+    function hide() {
+        var confirm = document.querySelectorAll('.confirm');
+        confirm[0].classList.add('hidden');
+        confirm[1].classList.add('hidden');
+    }
+
     function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
+        input = document.getElementById("myInputPatient");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
@@ -116,5 +116,60 @@
             }
         }
     }
-</script> -->
+
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "asc";
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < (rows.length - 1); i++) {
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+                /* Get the two elements you want to compare,
+                one from current row and one from the next: */
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /* Check if the two rows should switch place,
+                based on the direction, asc or desc: */
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                // Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /* If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again. */
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
 {% endblock content %}

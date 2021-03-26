@@ -1,6 +1,7 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 <div class="white">
+    <div class="theT"></div>
     {% if user.user_type == None%}
 
     {%else%}
@@ -25,13 +26,29 @@
             <div class="recentMessages">
                 <span>recent messages</span>
             </div>
-            <!-- should be a message icon next to each message -->
-            <div class="message1">
-                <span>dr. hill: </span> make sure you remember <span>(read more)</span>
+            {% if recentMessages %}
+            {% for i in recentMessages %}
+            <!-- doesthis class matter  -->
+            <!-- <div class="message2">
+                    <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
+                </div> -->
+            <div class="recentMessagesWrapper">
+                <table class="table recentMessagesTable">
+                    <tr>
+                        <td><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</td>
+                    </tr>
+                </table>
+                {% endfor %}
             </div>
-            <div class="message2">
-                <span>lisa: </span> a good tip is to use lemon in <span>(read more)</span>
+            {% else %}
+            <div class="recentMessagesWrapper">
+                <table class="table recentMessagesTable">
+                    <tr>
+                        <td><span>you have no recent messages</span></td>
+                    </tr>
+                </table>
             </div>
+            {% endif %}
         </div>
 
         <div class="pendingApprovalsBorder">
@@ -65,14 +82,24 @@
     <div class="upcomingAppointmentsBorder">
         <div class="upcomingAppointments">upcoming appointments</div>
         <div class="appointmentsList">
-            <p>mon 2/1</p>
-        </div>
-        <div class="appointmentProfilePic">
-            <p>(pic of provider)</p>
+            {% if appointment %}
+            {% for i in appointment %}
+            <div class="appointmentProfilePic">
+                <p>
+                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="60"
+                        height="60" alt="">
+                </p>
+            </div>
+            <!-- use humanize here for time You Have an Appointment at  -->
+            <p class="meetingDate">{{ i.meetingDate }}</p>
+            {% endfor %}
+            {% else %}
+            <p>You Have No Upcoming Appointments</p>
+            {% endif %}
         </div>
         <div class="bookAppointment">
             <div class="button bookAppointment">
-                <a href="#" class="btn btn-primary btn-large btn-block">book an appointment</a>
+                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">book an appointment</a>
             </div>
         </div>
     </div>
@@ -81,18 +108,38 @@
         <div class="recentMessages">
             <span>recent messages</span>
         </div>
-        <!-- should be a message icon next to each message -->
-        <div class="message1">
-            <span>taylor: </span> make sure you remember <span>(read more)</span>
+        {% if recentMessages %}
+        {% for i in recentMessages %}
+        <!-- doesthis class matter  -->
+        <!-- <div class="message2">
+            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
+        </div> -->
+        <div class="recentMessagesWrapper">
+            <table class="table recentMessagesTable">
+                <tr>
+                    <td><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</td>
+                </tr>
+            </table>
+            {% endfor %}
         </div>
-        <div class="message2">
-            <span>sam: </span> how can i make sure to include <span>(read more)</span>
+        {% else %}
+        <div class="recentMessagesWrapper">
+            <table class="table recentMessagesTable">
+                <tr>
+                    <td><span>you have no recent messages</span></td>
+                </tr>
+            </table>
         </div>
+        {% endif %}
     </div>
 
     {% endif %}
     {% if user.user_type == 3%}
     <div class="welcome">welcome!</div>
+    <div class="healthChart">
+        health chart goes here.
+        just one that shows data and can be clicked on to lead to whole page
+    </div>
     <div class="profileBorder">
         <div class="profileName">{{user.first_name|lower}} {{user.last_name|lower}}</div>
         <div class="profileDateJoined">member since {{user.date_joined}}</div>
@@ -108,21 +155,21 @@
             {% for i in appointment %}
             <div class="appointmentProfilePic">
                 <p>
-                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="30" height="40" alt="">
+                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="60"
+                        height="60" alt="">
                 </p>
             </div>
-            <!-- use humanize here for time -->
-            <p>You Have an Appointment at{{ i.meetingDate }}</p>
+            <!-- use humanize here for time You Have an Appointment at  -->
+            <p class="meetingDate">{{ i.meetingDate }}</p>
             {% endfor %}
             {% else %}
             <p>You Have No Upcoming Appointments</p>
             {% endif %}
-
         </div>
 
         <div class="bookAppointment">
             <div class="button bookAppointment">
-                <a href="#" class="btn btn-primary btn-large btn-block">book an appointment</a>
+                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">book an appointment</a>
             </div>
         </div>
     </div>
@@ -134,24 +181,30 @@
         {% if recentMessages %}
         {% for i in recentMessages %}
         <!-- doesthis class matter  -->
-        <div class="message2">
-            <span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}
+        <!-- <div class="message2">
+            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
+        </div> -->
+        <div class="recentMessagesWrapper">
+            <table class="table recentMessagesTable">
+                <tr>
+                    <td><a href="{% url 'Health_Coach' %}"><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</a></td>
+                </tr>
+            </table>
+            {% endfor %}
         </div>
-        {% endfor %}
         {% else %}
-        <p>You Have No New Messages</p>
+        <div class="recentMessagesWrapper">
+            <table class="table recentMessagesTable">
+                <tr>
+                    <td><span>you have no recent messages</span></td>
+                </tr>
+            </table>
+        </div>
         {% endif %}
-        <!-- should be a message icon next to each message -->
-
     </div>
+</div>
 
-    <div class="healthChart">
-        health chart goes here.
-        just one that shows data and can be clicked on to lead to whole page
-    </div>
-
-    {% endif %}
-    {% endif %}
-    <div class="theT"></div>
+{% endif %}
+{% endif %}
 </div>
 {% endblock content %}

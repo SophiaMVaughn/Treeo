@@ -89,8 +89,8 @@ class User_Update_Form(forms.ModelForm):
 #     pass
 
 class AdminAssignForm(forms.Form):
-    patient = CustomModelChoiceField(
-        queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
+    patient = CustomModelChoiceField(queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
+
 
 
 class AdminProviderUpdateForm(forms.ModelForm):

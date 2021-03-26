@@ -29,7 +29,7 @@ def setter(request):
     return name
 
 
-# This First Function is a bit long due to it being called and used for bot patient and provider.
+# This First Function is a bit long due to it being called and used for both patient and provider.
 def Health_Coach(request):
     # If patient
 
@@ -112,7 +112,12 @@ def Health_Coach(request):
                                                                          "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                          "name10": name[9]})
                     else:
-                        return render(request, 'blogsys/noassigned.html')
+                        name = setter(request)
+                        return render(request, 'blogsys/noassigned.html',
+                                      {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3],
+                                       "name5": name[4],
+                                       "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                       "name10": name[9]})
                 else:
                     return HttpResponseBadRequest()
         else:
@@ -135,7 +140,12 @@ def Health_Coach(request):
                                                                      "name10": name[9]})
 
                 else:
-                    return render(request, 'blogsys/noassigned.html')
+                    name = setter(request)
+                    return render(request, 'blogsys/noassigned.html',
+                                  {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3],
+                                   "name5": name[4],
+                                   "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                   "name10": name[9]})
 
 
 def provider(request):
@@ -248,7 +258,11 @@ def Patient1(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -261,7 +275,11 @@ def Patient1(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient2(request):
@@ -290,7 +308,11 @@ def Patient2(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -303,7 +325,11 @@ def Patient2(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient3(request):
@@ -332,7 +358,11 @@ def Patient3(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -345,7 +375,11 @@ def Patient3(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient4(request):
@@ -374,7 +408,11 @@ def Patient4(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -387,7 +425,11 @@ def Patient4(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient5(request):
@@ -416,7 +458,11 @@ def Patient5(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -429,7 +475,11 @@ def Patient5(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient6(request):
@@ -458,7 +508,11 @@ def Patient6(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -471,7 +525,11 @@ def Patient6(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient7(request):
@@ -500,7 +558,11 @@ def Patient7(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -513,7 +575,11 @@ def Patient7(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient8(request):
@@ -542,7 +608,11 @@ def Patient8(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -555,7 +625,11 @@ def Patient8(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient9(request):
@@ -584,7 +658,11 @@ def Patient9(request):
                                                                  "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                  "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -597,7 +675,11 @@ def Patient9(request):
                                                              "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                              "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def Patient10(request):
@@ -625,7 +707,11 @@ def Patient10(request):
                                                                   "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                                   "name10": name[9]})
             else:
-                return render(request, 'blogsys/noassigned.html')
+                name = setter(request)
+                return render(request, 'blogsys/noassigned.html',
+                              {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                               "name10": name[9]})
         else:
             return HttpResponseBadRequest()
     else:
@@ -638,8 +724,15 @@ def Patient10(request):
                                                               "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                                                               "name10": name[9]})
         else:
-            return render(request, 'blogsys/noassigned.html')
+            name = setter(request)
+            return render(request, 'blogsys/noassigned.html',
+                          {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                           "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                           "name10": name[9]})
 
 
 def noassigned(request):
-    return render(request, 'blogsys/noassigned.html')
+    name = setter(request)
+    return render(request, 'blogsys/noassigned.html', {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                                                       "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                                       "name10": name[9]})

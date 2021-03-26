@@ -2073,7 +2073,7 @@ input:focus {
   width: 196px;
   height: 110px;
   left: 823px;
-  /* top: 1057px; */
+  top: 746px;
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px;  temp until can put placeholder in username and password */
@@ -2081,7 +2081,7 @@ input:focus {
 
 .deleteConfirmButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2091,6 +2091,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.deleteConfirmButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .patient {
@@ -2155,9 +2162,10 @@ input:focus {
 
 .fileUploadCompleteButton {
   position: absolute;
-  width: 196px;
+  width: auto;
   height: 110px;
   left: 823px;
+  top: 763px;
   /* top: 1057px; */
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
@@ -2166,16 +2174,23 @@ input:focus {
 
 .fileUploadCompleteButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
   font-style: normal;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.fileUploadCompleteButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .adminButton {
@@ -2340,8 +2355,9 @@ input:focus {
 
 .appointmentsList {
   position: absolute;
-  width: 46px;
-  height: 50px;
+  display: inline-flex;
+  width: 453px;
+  height: 76px;
   left: 50px;
   top: 130px;
   font-style: normal;
@@ -2352,8 +2368,13 @@ input:focus {
   letter-spacing: 0.01em;
 }
 
+.appointmentsList .meetingDate {
+  margin-left: 8px;
+}
+
 .appointmentProfilePic {
   position: absolute;
+  display: contents;
   width: 61px;
   height: 61px;
   left: 111px;
@@ -2422,35 +2443,34 @@ input:focus {
   letter-spacing: 0.01em;
 }
 
-.recentMessagesBorder .message1 {
+.recentMessagesWrapper {
+  margin-top: 42px;
   position: absolute;
-  width: 218px;
-  height: 58px;
-  top: 33%;
-  left: 46%;
-  font-style: normal;
-  line-height: 29px;
-  letter-spacing: 0.01em;
+  top: 20%;
+  right: 0%;
+  width: 416px;
+  font-size: 18px;
+}
+
+.recentMessagesTable td {
+  width: auto;
+  padding: 5px 0;
   text-align: left;
+  border-style: none;
+  color: #fa7f72;
 }
 
-.recentMessagesBorder .message1 span {
-  font-weight: bold;
+.recentMessagesTable a {
+  color: #fa7f72;
+  text-decoration: underline;
 }
 
-.recentMessagesBorder .message2 {
-  position: absolute;
-  width: 218px;
-  height: 58px;
-  top: 60%;
-  left: 46%;
-  font-style: normal;
-  line-height: 29px;
-  letter-spacing: 0.01em;
-  text-align: left;
+.recentMessagesTable a:hover {
+  color: #8b380b;
+  transition: all 0.5s;
 }
 
-.recentMessagesBorder .message2 span {
+.recentMessagesBorder .recentMessagesWrapper .recentMessagesTable span {
   font-weight: bold;
 }
 
@@ -2812,7 +2832,6 @@ input:focus {
   border: 4px solid transparent;
   box-sizing: border-box;
 }
-
 
 /*This was added by Gio*/
 /* .calendar {
@@ -4424,8 +4443,105 @@ body {
   right: 17%;
 }
 
-.myInputPatient {
+#myInputPatient {
+  background-image: url("../img/searchicon.png"); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 31%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  text-align: left;
   position: relative;
   top: 352px;
   right: 17%;
+}
+
+.recentMessagesTable {
+  margin-left: 12%;
+}
+
+.fileUpload {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 320px;
+  top: 63px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 108px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.uploading {
+  position: relative;
+  top: 212px;
+  left: 16%;
+  width: 412px;
+}
+
+.uploading p {
+  color: #faa172;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fileDownload {
+  position: absolute;
+  width: auto;
+  height: 157px;
+  left: 285px;
+  top: 150px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.downloadTable {
+  position: absolute;
+  width: 62%;
+  margin-left: 238px;
+  top: 406px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.downloadTable .table {
+  width: 86%;
+  position: relative;
+  left: 0%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.downloadTable table td {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.downloadTable table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.downloadTable table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  position: relative;
+  left: 1%;
+  color: #faa172;
 }

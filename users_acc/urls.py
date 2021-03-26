@@ -25,4 +25,6 @@ path('admin_display_team/<id>/', users_acc_views.admin_display_team, name='admin
 path('admin_approve_provider_render/', users_acc_views.admin_approve_provider_render, name='admin_approve_provider_render'),
 path('admin_approve_provider/<id>', users_acc_views.admin_approve_provider, name='admin_approve_provider'),
 path('admin_revoke_provider/<id>', users_acc_views.admin_revoke_provider, name='admin_revoke_provider'),
+path('admin_user_deactivate/', users_acc_views.admin_user_deactivate_render, name='admin_user_deactivate_render'),
+path('user_deactivate/', users_acc_views.user_deactivate, name='user_deactivate'),
 ]

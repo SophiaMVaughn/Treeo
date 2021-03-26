@@ -5,6 +5,7 @@ pillow
 babel
 zoomus
 twilio
+channels
 django-phonenumber-field[phonenumbers]
 phonenumbers
 PyJWT==2.0.1

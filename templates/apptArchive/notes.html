@@ -5,21 +5,27 @@
     <div class="heading">
       <h2 >Notes</h2>
     </div>
+    <p>{{apptArchive.meetingDate}}</p>
     <table class="table">
       <thead>
         <tr>
           <th>Notes</th>
-          <th>Date and Time</th>
         </tr>
       </thead>
-      {% for i in notes %}
+      {% for i in aptnotes %}
       <tr>
-        <td> {{i.note}}</td>
-          <td>{{i.dateAdded}}</td>
-          <td><a href="{% url 'notes' i.apptId %}"> Add Note </a></td>
+        <td> {{i.notes}}</td>
       <tr>
       {%endfor%}
 </table>
+<!--      if provider show this else dont-->
+        <form method="post">
+        {% csrf_token %}
+        <!-- <div class="button"> -->
+        {{form}}
+        <input type="submit" value="Submit" /></p>
+        <!-- </div> -->
+    </form>
 </div>
 </div>
 {% endblock content %}
