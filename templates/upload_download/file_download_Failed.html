@@ -1,12 +1,14 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<div class="white">
-    <h1>File Download Failed</h1>
-    <div class="error">{{errorMsg}}</div>
-
-    <div class="button fileUploadCompleteButton">
-        <a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload A Different
-            File</a>
-    </div>
+<div class="verification">
+    Download Failed.
+</div>
+<!-- <div class="checkmark"></div> -->
+<div class="almostDone">
+    <span>Please return to the previous page and try again.</span>
+</div>
+<div class="theT"></div>
+<div class="button fileUploadCompleteButton">
+    <a href="{% url 'upload_download_file_download' %}" class="btn btn-primary btn-large btn-block">Return</a>
 </div>
 {% endblock content %}

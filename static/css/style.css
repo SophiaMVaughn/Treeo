@@ -2073,7 +2073,7 @@ input:focus {
   width: 196px;
   height: 110px;
   left: 823px;
-  /* top: 1057px; */
+  top: 746px;
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px;  temp until can put placeholder in username and password */
@@ -2081,7 +2081,7 @@ input:focus {
 
 .deleteConfirmButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2091,6 +2091,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.deleteConfirmButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .patient {
@@ -2155,9 +2162,10 @@ input:focus {
 
 .fileUploadCompleteButton {
   position: absolute;
-  width: 196px;
+  width: auto;
   height: 110px;
   left: 823px;
+  top: 763px;
   /* top: 1057px; */
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
@@ -2166,16 +2174,23 @@ input:focus {
 
 .fileUploadCompleteButton .btn {
   background: #ffffff;
-  border: 1px solid #ffffff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
   font-style: normal;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.fileUploadCompleteButton .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .adminButton {
@@ -2449,7 +2464,6 @@ input:focus {
   color: #fa7f72;
   text-decoration: underline;
 }
-
 
 .recentMessagesTable a:hover {
   color: #8b380b;
@@ -4448,3 +4462,86 @@ body {
   margin-left: 12%;
 }
 
+.fileUpload {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 320px;
+  top: 63px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 108px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.uploading {
+  position: relative;
+  top: 212px;
+  left: 16%;
+  width: 412px;
+}
+
+.uploading p {
+  color: #faa172;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fileDownload {
+  position: absolute;
+  width: auto;
+  height: 157px;
+  left: 285px;
+  top: 150px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 115px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+.downloadTable {
+  position: absolute;
+  width: 62%;
+  margin-left: 238px;
+  top: 406px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.downloadTable .table {
+  width: 86%;
+  position: relative;
+  left: 0%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.downloadTable table td {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.downloadTable table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.downloadTable table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  position: relative;
+  left: 1%;
+  color: #faa172;
+}

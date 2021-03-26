@@ -1,13 +1,14 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
 <div class="white">
-    <h1>Are You Sure You Want to Delete This File?</h1>
-    <form action="{% url 'upload_download_file_delete' file %}" method="post">
-        <div class="button deleteConfirmButton">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-primary btn-large btn-block">Delete</button>
-            <a href="{% url 'upload_download_file_download' %}" class="btn btn-primary btn-large btn-block">Cancel</a>
-        </div>
-    </form>
+    <div class="verification">Are You Sure You Want to Delete This File?</div>
+        <form action="{% url 'upload_download_file_delete' file %}" method="post">
+            <div class="button deleteConfirmButton">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-large btn-block">Delete</button>
+                <a href="{% url 'upload_download_file_download' %}"
+                    class="btn btn-primary btn-large btn-block">Cancel</a>
+            </div>
+        </form>
 </div>
 {% endblock content %}
