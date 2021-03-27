@@ -1,29 +1,30 @@
-{% extends "ReqAppt/apt_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
-<div class="orange">
+<div class="white">
   <div class="first">
-    <div class="heading">
-      <h2 >Archived Appointments</h2>
-    </div>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Doctor Name</th>
-          <th>Patient Name</th>
-          <th>Date and Time</th>
-          <!-- <th>View Notes</th> -->
-        </tr>
-      </thead>
+    <div class="apptArchive">Archived Appointments</div>
 
+      <div class="apptArchiveTable">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+              <th></th>
+              <th>Patient Name</th>
+              <th></th>
+              <th>Date and Time</th>
+          <!-- <th>View Notes</th> -->
+            </tr>
+        </thead>
       {% for i in apptArchive %}
-      <tr>
-        <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
-          <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
-          <td>{{i.meetingDate}}</td>
-        <td><a class="appointmentBubbleApprove button btn btn-large btn-block" href="{% url 'archived_appointment' i.id %}"><span> View This Meeting </span></a></td>
-      <tr>
+          <tr>
+            <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
+            <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
+            <td>{{i.meetingDate}}</td>
+         <tr>
       {%endfor%}
-</table>
-</div>
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock content %}
