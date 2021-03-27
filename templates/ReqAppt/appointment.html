@@ -1,8 +1,8 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 <div class="white">
-    <div class="appointments">appointments</div>
-    <div class="newAppointment">book new appointment</div>
+    <div class="appointments">Appointments</div>
+    <div class="newAppointment">Book New Appointment</div>
     <div class="theT"></div>
     <form action="{% url 'create_Appointment' %}" method="post">
         {% csrf_token %}

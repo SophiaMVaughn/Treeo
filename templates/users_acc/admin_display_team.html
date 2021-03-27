@@ -2,19 +2,19 @@
 {% block content %}
 {% load static %}
 <div class="white">
-    <div class="appointments">providers</div>
+    <div class="appointments">Providers</div>
     <div class="theT"></div>
 
-    <div class="patient">patient: {{patient.user.first_name|lower}} {{patient.user.last_name|lower}}</div>
+    <div class="patient">Patient: {{patient.user.first_name|lower}} {{patient.user.last_name|lower}}</div>
     <form action="" method="post">
         <div class="careTeamTable">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>provider type</th>
-                        <th>name</th>
-                        <th>assign</th>
-                        <th>remove</th>
+                        <th>Provider Type</th>
+                        <th>Name</th>
+                        <th>Assign</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +23,7 @@
                     <!--{{ object.get_chices_display }}-->
                     <tr>
                         {% if patient.doc_d %}
-                        <td class="careTeamBubble">dietician</td>
+                        <td class="careTeamBubble">Dietician</td>
                         <td class="careTeamBubble">{{patient.doc_d.user.first_name|lower}} {{patient.doc_d.user.last_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
@@ -31,14 +31,14 @@
                                     loading="lazy" /></a>
                         </td>
                         {% else %}
-                        <td class="careTeamBubble">dietician</td>
-                        <td class="careTeamBubble">not assigned</td>
+                        <td class="careTeamBubble">Dietician</td>
+                        <td class="careTeamBubble">Not Assigned</td>
                         <td>{{form.doc_d}}</td>
                         <td></td>
                         {% endif %}
                     <tr>
                         {% if patient.doc_c %}
-                        <td class="careTeamBubble">coach</td>
+                        <td class="careTeamBubble">Coach</td>
                         <td class="careTeamBubble">{{patient.doc_c.user.first_name|lower}} {{patient.doc_c.user.last_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
@@ -46,14 +46,14 @@
                                     loading="lazy" /></a>
                         </td>
                         {% else %}
-                        <td class="careTeamBubble">health coach</td>
-                        <td class="careTeamBubble">not assigned</td>
+                        <td class="careTeamBubble">Health Coach</td>
+                        <td class="careTeamBubble">Not Assigned</td>
                         <td>{{form.doc_c}}</td>
                         <td></td>
                         {% endif %}
                     <tr>
                         {% if patient.doc_p %}
-                        <td class="careTeamBubble">physician</td>
+                        <td class="careTeamBubble">Physician</td>
                         <td class="careTeamBubble">{{patient.doc_p.user.first_name|lower}} {{patient.doc_p.user.last_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
@@ -61,8 +61,8 @@
                                     loading="lazy" /></a>
                         </td>
                         {% else %}
-                        <td class="careTeamBubble">physician</td>
-                        <td class="careTeamBubble">not assigned</td>
+                        <td class="careTeamBubble">Physician</td>
+                        <td class="careTeamBubble">Not Assigned</td>
                         <td>{{form.doc_p}}</td>
                         <td></td>
                         {% endif %}
@@ -71,9 +71,9 @@
         </div>
         {% csrf_token %}
         <div class="button assignProvidersButton">
-            <button type="submit" class="btn btn-primary btn-large btn-block">assign providers</button>
+            <button type="submit" class="btn btn-primary btn-large btn-block">Assign Providers</button>
             <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">
-                select a different patient</a>
+                Select A Different Patient</a>
         </div>
     </form>
 </div>

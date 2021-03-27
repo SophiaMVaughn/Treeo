@@ -2,7 +2,7 @@
 {% block content %}
 <div class="white">
 	<div class="theT"></div>
-    <div class="healthLog">edit health log</div>
+    <div class="healthLog">Edit Health Log</div>
 	{% if messages %}
 	{% for message in messages %}
 	<h2 style="color:green;">{{message}}</h2>
@@ -14,11 +14,11 @@
 			{% csrf_token %}
 			<div class="caloriesBorder">
                 <div class="calories">
-                    <span>calorie intake</span>
+                    <span>Calorie Intake</span>
                 </div>
                 <!-- should be a message icon next to each message -->
                 <div class="calorieIntake">
-                    <span>total kCal</span>
+                    <span>Total kCal</span>
                     <div class="calorieIntakeInput">
 						{{edit_log.calories}}
                     </div>
@@ -27,11 +27,11 @@
 
 			<div class="waterBorder">
                 <div class="water">
-                    <span>water intake</span>
+                    <span>Water Intake</span>
                 </div>
                 <!-- should be a message icon next to each message -->
                 <div class="waterIntake">
-                    <span>total oz</span>
+                    <span>Total oz</span>
                     <div class="waterIntakeInput">
 						{{edit_log.water}}
                     </div>
@@ -40,11 +40,11 @@
 
 			<div class="sleepBorder">
                 <div class="sleep">
-                    <span>hours slept</span>
+                    <span>Hours Slept</span>
                 </div>
                 <!-- should be a message icon next to each message -->
                 <div class="sleepIntake">
-                    <span>total hours</span>
+                    <span>Total Hours</span>
                     <div class="sleepIntakeInput">
 						{{edit_log.sleep}}
                     </div>
@@ -53,19 +53,19 @@
 
             <div class="moodBorder">
                 <div class="mood">
-                    <span>current mood</span>
+                    <span>Current Mood</span>
                 </div>
                 <!-- should be a message icon next to each message -->
                 <div class="moodIntake">
-                    scale of 1 to 5 <span>(1 is the lowest, 5 is the highest)</span>
+                    Scale of 1 to 5 <span>(1 is the lowest, 5 is the highest)</span>
                     <div class="moodIntakeInput">
 						{{edit_log.mood}}
                     </div>
                 </div>
             </div>
 			<div class="button patientLogButton">
-				<button type="submit" class="btn btn-primary btn-large btn-block">edit log</button>
-				<a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.id %}">see chart</a>
+				<button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+				<a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.id %}">See Chart</a>
 
 			</div>
 		</form>

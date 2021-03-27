@@ -11,6 +11,7 @@
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -21,33 +22,35 @@
 
 <body>
 	<div id="container">
+		<div class="theT"></div>
+
 		{% if user.is_authenticated %}
 		{% if user.user_type == 1 %}
 		<div id="navwrapper">
 			<ul>
-				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'admin_view' %}">assign trio</a></li> -->
-				<li><a class="nav-link" href="{% url 'doctor_registration' %}">register provider</a></li>
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
-				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'profile' %}">account</a></li> -->
-				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
 			</ul>
 		</div>
 		{% else %}
 		<div id="navwrapper">
 			<ul>
-				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
-				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
-				<li><a class="nav-link" href="{% url 'patientlog' %}">health log</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
-				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
-				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
 			</ul>
 		</div>
 		{% endif %}
