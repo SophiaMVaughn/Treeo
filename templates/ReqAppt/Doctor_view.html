@@ -6,6 +6,7 @@
     .hidden {
         display: none !important;
     }
+
 </style>
 
 <div class="white">
@@ -27,62 +28,69 @@
                 </div>
             </div>
         </div>
+        <div class="viewApptArchive">
+            <div class="button viewApptArchive">
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'apptArchive' %}">View Archived
+                    Appointments</a>
+            </div>
+        </div>
 
         <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for patient">
         <div class="appointmentTableProvider">
             <table id="myTable" class="table approve">
                 <thead>
-                    <tr>
-                        <th onclick="sortTable(0)">date/time</th>
-                        <th></th>
-                        <th onclick="sortTable(2)">patient</th>
-                        <th></th>
-                        <th onclick="sortTable(4)">appointment name/link</th>
-                        <th onclick="sortTable(5)">approval status</th>
-                    </tr>
+                <tr>
+                    <th onclick="sortTable(0)">date/time</th>
+                    <th></th>
+                    <th onclick="sortTable(2)">patient</th>
+                    <th></th>
+                    <th onclick="sortTable(4)">appointment name/link</th>
+                    <th onclick="sortTable(5)">approval status</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for a in ApptTable %}
-                    <tr>
-                        <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
-                        <td class="with">with</td>
-                        <td class="appointmentBubblePatient">{{a.patient.user.first_name|lower}}
-                            {{a.patient.user.last_name|lower}}</td>
-                        <td class="with">at</td>
-                        {%if a.status%}
-                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a>
-                        </td>
-                        {% else %}
-                        <td class="appointmentBubbleLink">intro appointment</td>
+                {% for a in ApptTable %}
+                <tr>
+                    <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
+                    <td class="with">with</td>
+                    <td class="appointmentBubblePatient">{{a.patient.user.first_name|lower}}
+                        {{a.patient.user.last_name|lower}}
+                    </td>
+                    <td class="with">at</td>
+                    {%if a.status%}
+                    <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">zoom link</a>
+                    </td>
+                    {% else %}
+                    <td class="appointmentBubbleLink">intro appointment</td>
+                    {% endif %}
+
+                    {%if a.status%}
+                    <td class="appointmentBubbleStatus">approved</td>
+                    {% else %}
+                    <td>
+                        <a class="appointmentBubbleApprove button btn btn-large btn-block"
+                           href="{% url 'approve_appt' a.id %}"><span> &#10004; </span></a>
+                        <a class="appointmentBubbleDelete button btn btn-large btn-block"
+                           href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
                         {% endif %}
-
+                    </td>
+                    <!-- <td>
                         {%if a.status%}
-                        <td class="appointmentBubbleStatus">approved</td>
+                        <span></span>
                         {% else %}
-                        <td>
-                            <a class="appointmentBubbleApprove button btn btn-large btn-block"
-                                href="{% url 'approve_appt' a.id %}"><span> &#10004; </span></a>
-                            <a class="appointmentBubbleDelete button btn btn-large btn-block"
-                                href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
-                            {% endif %}
-                        </td>
-                        <!-- <td>
-                            {%if a.status%}
-                            <span></span>
-                            {% else %}
-                            <a href="{% url 'reqAppt_delete' a.id  %}"><span> &#10060; </span></a>
-                            {% endif %}
-                        </td> -->
-                        <!-- <td><a href="{% url 'archive' a.id %}"> Click to Archive </a></td> -->
-                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"> Delete </a></td> -->
-                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"><img alt="Delete"
-                                    src="{% static 'img/trash.png' %}" width="30" height="35" alt=""
-                                    loading="lazy" /></a>
-                        </td> -->
-                        <!--        <td> {{a.patientFname}} </td>-->
+                        <a href="{% url 'reqAppt_delete' a.id  %}"><span> &#10060; </span></a>
+                        {% endif %}
+                    </td> -->
+                    <!-- <td><a href="{% url 'archive' a.id %}"> Click to Archive </a></td> -->
+                    <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"> Delete </a></td> -->
+                    <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"><img alt="Delete"
+                                src="{% static 'img/trash.png' %}" width="30" height="35" alt=""
+                                loading="lazy" /></a>
+                    </td> -->
+                    <!--        <td> {{a.patientFname}} </td>-->
 
-                    </tr>
-                    {% endfor %}
+                </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -171,5 +179,6 @@
             }
         }
     }
+
 </script>
 {% endblock content %}

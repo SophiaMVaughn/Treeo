@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/patient_log/chart_View2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/users_acc/admin_deactivate_user.html" afterDir="false" />
+    <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_2021_9_01_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_2021_9_01_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_7_23_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_7_23_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_8_20_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_8_20_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apptArchive/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/notes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patient_log/chart_View.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/chart_View.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +78,14 @@
       <option name="presentableId" value="Default" />
       <updated>1612636906859</updated>
     </task>
+    <task id="LOCAL-00001" summary="preparing to merge with nicoleprototype3">
+      <created>1616804532237</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616804532237</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -92,11 +103,42 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="nicoleprototype3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="nicoleprototype3" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="preparing to merge with nicoleprototype3" />
+    <option name="LAST_COMMIT_MESSAGE" value="preparing to merge with nicoleprototype3" />
   </component>
 </project>

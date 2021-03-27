@@ -4657,3 +4657,30 @@ body {
   letter-spacing: 0.01em;
 }
 
+.viewApptArchive {
+  position: absolute;
+  width: 321px;
+  height: 57px;
+  left: 51%;
+  top: 170px;
+}
+
+.viewApptArchive .btn {
+  background: #ffffff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 53%;
+  padding: 20px 0;
+
+  /* or 12px */
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+
+
