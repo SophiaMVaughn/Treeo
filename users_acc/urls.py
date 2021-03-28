@@ -29,4 +29,8 @@ path('admin_user_deactivate/', users_acc_views.admin_user_deactivate_render, nam
 path('user_deactivate/', users_acc_views.user_deactivate, name='user_deactivate'),
 path('survey/', users_acc_views.take_survey, name='take_survey'),
 path('take_survey/', users_acc_views.render_survey, name='render_survey'),
+path('profile/diet-details', users_acc_views.dietitian_details, name='diet_details'),
+path('profile/doctor-details', users_acc_views.doctor_details, name='doctor_details'),
+path('profile/coach-details', users_acc_views.coach_details, name='coach_details'),
+
 ]
