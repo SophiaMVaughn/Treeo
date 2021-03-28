@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/messaging/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messaging/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

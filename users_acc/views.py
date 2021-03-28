@@ -54,7 +54,11 @@ def register(request):
             else:
                 thread.objects.create(sender=g.user, reciever=m)
                 print("thread created")
-                return redirect('button')
+            if thread.objects.filter(sender=m, reciever=g.user).exists():
+                print("thread exists")
+            else:
+                thread.objects.create(sender=m, reciever=g.user)
+                print("thread created")
             return redirect('account_activation_sent')
             # some logic to make sure its actually sent
             # return render(request, 'account_activation_sent.html')
@@ -257,6 +261,11 @@ def admin_display_team(request, id):
                         pass
                     else:
                         thread.objects.create(sender=doc.user, reciever=patient.user)
+                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                        print("thread exists")
+                        pass
+                    else:
+                        thread.objects.create(sender=patient.user, reciever=doc.user)
                 except:
                     pass
             else:
@@ -273,6 +282,11 @@ def admin_display_team(request, id):
                         pass
                     else:
                         thread.objects.create(sender=doc.user, reciever=patient.user)
+                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                        print("thread exists")
+                        pass
+                    else:
+                        thread.objects.create(sender=patient.user, reciever=doc.user)
                 except:
                     pass
             else:
@@ -289,6 +303,11 @@ def admin_display_team(request, id):
                         pass
                     else:
                         thread.objects.create(sender=doc.user, reciever=patient.user)
+                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                        print("thread exists")
+                        pass
+                    else:
+                        thread.objects.create(sender=patient.user, reciever=doc.user)
                 except:
                     pass
             else:
@@ -319,6 +338,17 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
+            if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
+                print("thread exists")
+                #try except here
+                test=thread.objects.get(sender=pat.user, reciever=doc.user)
+                if message.objects.filter(convoIDt=test).exists():
+                    print("messages present")
+                else:
+                    test.delete()
+                    print("no messages deleting conversation")
+            else:
+                pass
         if doc.Provider_type == 2:
             pat.doc_d = None
             pat.save()
@@ -335,6 +365,17 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
+            if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
+                print("thread exists")
+                #try except here
+                test=thread.objects.get(sender=pat.user, reciever=doc.user)
+                if message.objects.filter(convoIDt=test).exists():
+                    print("messages present")
+                else:
+                    test.delete()
+                    print("no messages deleting conversation")
+            else:
+                pass
         if doc.Provider_type == 3:
             pat.doc_c = None
             pat.save()
@@ -344,6 +385,17 @@ def admin_remove_provider(request, id, id2):
                 print("thread exists")
                 #try except here
                 test=thread.objects.get(sender=doc.user, reciever=pat.user)
+                if message.objects.filter(convoIDt=test).exists():
+                    print("messages present")
+                else:
+                    test.delete()
+                    print("no messages deleting conversation")
+            else:
+                pass
+            if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
+                print("thread exists")
+                #try except here
+                test=thread.objects.get(sender=pat.user, reciever=doc.user)
                 if message.objects.filter(convoIDt=test).exists():
                     print("messages present")
                 else:
