@@ -8,9 +8,44 @@
 {% load humanize %}
 <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
 </head>
 <body>
+    <div id="container">
+		<div class="theT"></div>
+        {% if user.is_authenticated %}
+		{% if user.user_type == 1 %}
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_view' %}">assign trio</a></li> -->
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'profile' %}">account</a></li> -->
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+			</ul>
+		</div>
+		{% else %}
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+			</ul>
+		</div>
+		{% endif %}
+		{% endif %}
+    </div>
 <div class="wrapper">
     <div class="container">
         <div class="left">
