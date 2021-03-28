@@ -17,8 +17,8 @@
             <tbody>
                 {% for a in results %}
                 <tr>
-                    <td class="careTeamBubble">{{a.get_Provider_type_display|lower}}</td>
-                    <td class="careTeamBubble">{{a.user.get_full_name|lower}}</td>
+                    <td class="careTeamBubble">{{a.get_Provider_type_display}}</td>
+                    <td class="careTeamBubble">{{a.user.get_full_name}}</td>
                     {%if a.is_verified%}
                     <td></td>
                     {% else %}

@@ -110,11 +110,14 @@
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those who don't match the search query
+        // The use of 'includes' alllows for partial matches, though this will result in a abundance of records in larger tables and with records 
+        // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until 
+        // the db is of significant size.
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().includes(filter) = true) {
+                if (txtValue.toUpperCase().includes(filter) == true) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";

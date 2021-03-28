@@ -1669,7 +1669,7 @@ input:focus {
 
 .account {
   position: absolute;
-  width: 247px;
+  width: auto;
   height: 76px;
   left: 311px;
   top: 111px;
@@ -1705,7 +1705,7 @@ input:focus {
 
 .patientName {
   position: absolute;
-  width: 247px;
+  width: auto;
   height: 57px;
   left: 59px;
   top: 41px;

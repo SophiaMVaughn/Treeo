@@ -72,7 +72,7 @@
     {% if user.user_type == 2%}
     <div class="providerHome">Provider Home</div>
     <div class="profileBorder">
-        <div class="profileName">{{user.get_full_name|lower}}</div>
+        <div class="profileName">{{user.get_full_name}}</div>
         <div class="profileDateJoined">Member since {{user.date_joined}}</div>
         <div class="profilePic">
             <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
@@ -141,7 +141,7 @@
         just one that shows data and can be clicked on to lead to whole page
     </div> -->
     <div class="profileBorder">
-        <div class="profileName">{{user.get_full_name|lower}}</div>
+        <div class="profileName">{{user.get_full_name}}</div>
         <div class="profileDateJoined">Member since {{user.date_joined}}</div>
         <div class="profilePic">
             <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">

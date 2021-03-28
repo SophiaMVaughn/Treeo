@@ -16,7 +16,7 @@
             <tbody>
                 {% for a in results %}
                 <tr>
-                    <td class="careTeamBubble">{{a.get_full_name|lower}}</td>
+                    <td class="careTeamBubble">{{a.get_full_name}}</td>
                     {%if a.is_active%}
                     <td>
                         <form method="POST" >
