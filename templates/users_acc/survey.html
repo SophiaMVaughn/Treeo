@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Dynamic Survey / Quiz</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900|Open+Sans:400,300,600,700,800|Raleway:400,100,200,300,500,600,700,800,900'>
+<link rel="stylesheet" href="{% static 'css/style4.css' %}" type="text/css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+		<div class="col-sm-12">
+			<div class="mm-survey">
+
+				<div class="mm-survey-progress">
+					<div class="mm-survey-progress-bar mm-progress"></div>
+				</div>
+
+				<div class="mm-survey-results">
+					<div class="mm-survey-results-container">
+						<h3 class="mm-survey-results-score"></h3>
+						<ul class="mm-survey-results-list"></ul>
+					</div>
+					<div class="mm-survey-results-controller">
+						<div class="mm-back-btn">
+							<button>Back</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mm-survey-bottom">
+					<div class="mm-survey-container">
+
+						<div class="mm-survey-page active" data-page="1">
+							<div class="mm-survery-content">
+								<div class="mm-survey-question">
+									<p>Based on history... What is the ideal color for a Ferrari?</p>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio01" data-item="1" name="radio1" value="red" />
+									<label for="radio01"><span></span><p>Red</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio02" data-item="1" name="radio1" value="blue" />
+									<label for="radio02"><span></span><p>Blue</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio03" data-item="1" name="radio1" value="green" />
+									<label for="radio03"><span></span><p>Green</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio04" data-item="1" name="radio1" value="purple" />
+									<label for="radio04"><span></span><p>Purple</p></label>
+								</div>
+							</div>
+						</div>
+						<div class="mm-survey-page" data-page="2">
+							<div class="mm-survery-content">
+								<div class="mm-survey-question">
+									<p>Which one of these car brands is made in Germany?</p>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio05" data-item="2" name="radio2" value="honda" />
+									<label for="radio05"><span></span><p>Honda</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio06" data-item="2" name="radio2" value="ford" />
+									<label for="radio06"><span></span><p>Ford</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio07" data-item="2" name="radio2" value="mercedes" />
+									<label for="radio07"><span></span><p>Mercedes</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio08" data-item="2" name="radio2" value="ferrari" />
+									<label for="radio08"><span></span><p>Ferrari</p></label>
+								</div>
+							</div>
+						</div>
+						<div class="mm-survey-page" data-page="3">
+							<div class="mm-survery-content">
+								<div class="mm-survey-question">
+									<p>Which is the correct integer for Pi?</p>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio09" data-item="3" name="radio3" value="3" />
+									<label for="radio09"><span></span><p>3</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio10" data-item="3" name="radio3" value="4" />
+									<label for="radio10"><span></span><p>4</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio11" data-item="3" name="radio3" value="3.41" />
+									<label for="radio11"><span></span><p>3.41</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio12" data-item="3" name="radio3" value="3.14" />
+									<label for="radio12"><span></span><p>3.14</p></label>
+								</div>
+							</div>
+						</div>
+						<div class="mm-survey-page" data-page="4">
+							<div class="mm-survery-content">
+								<div class="mm-survey-question">
+									<p>The letter 'C' is the nth number in the alphabet, choose the correct number.</p>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio13" data-item="4" name="radio4" value="1" />
+									<label for="radio13"><span></span><p>1</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio14" data-item="4" name="radio4" value="2" />
+									<label for="radio14"><span></span><p>2</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio15" data-item="4" name="radio4" value="3" />
+									<label for="radio15"><span></span><p>3</p></label>
+								</div>
+								<div class="mm-survey-item">
+									<input type="radio" id="radio16" data-item="4" name="radio4" value="4" />
+									<label for="radio16"><span></span><p>4</p></label>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="mm-survey-page" data-page="5">
+							<div class="mm-survery-content">
+
+							</div>
+						</div>
+						<div class="mm-survey-page" data-page="6">
+							<div class="mm-survery-content">
+
+							</div>
+						</div>
+						<div class="mm-survey-page" data-page="7">
+							<div class="mm-survery-content">
+
+							</div>
+						</div> -->
+
+					</div>
+
+					<div class="mm-survey-controller">
+						<div class="mm-prev-btn">
+							<button>Prev</button>
+						</div>
+						<div class="mm-next-btn">
+							<button disabled="true">Next</button>
+						</div>
+						<div class="mm-finish-btn">
+							<button>Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script>
+	jQuery('.mm-prev-btn').hide();
+
+var x;
+var count;
+var current;
+var percent;
+var z = [];
+
+init();
+getCurrentSlide();
+goToNext();
+goToPrev();
+getCount();
+// checkStatus();
+// buttonConfig();
+buildStatus();
+deliverStatus();
+submitData();
+goBack();
+
+function init() {
+
+    jQuery('.mm-survey-container .mm-survey-page').each(function() {
+
+        var item;
+        var page;
+
+        item = jQuery(this);
+        page = item.data('page');
+
+        item.addClass('mm-page-'+page);
+        //item.html(page);
+
+    });
+
+}
+
+function getCount() {
+
+    count = jQuery('.mm-survey-page').length;
+    return count;
+
+}
+
+function goToNext() {
+
+    jQuery('.mm-next-btn').on('click', function() {
+        goToSlide(x);
+        getCount();
+        current = x + 1;
+        var g = current/count;
+        buildProgress(g);
+        var y = (count + 1);
+        getButtons();
+        jQuery('.mm-survey-page').removeClass('active');
+        jQuery('.mm-page-'+current).addClass('active');
+        getCurrentSlide();
+        checkStatus();
+        if( jQuery('.mm-page-'+count).hasClass('active') ){
+            if( jQuery('.mm-page-'+count).hasClass('pass') ) {
+                jQuery('.mm-finish-btn').addClass('active');
+            }
+            else {
+                jQuery('.mm-page-'+count+' .mm-survery-content .mm-survey-item').on('click', function() {
+                    jQuery('.mm-finish-btn').addClass('active');
+                });
+            }
+        }
+        else {
+            jQuery('.mm-finish-btn').removeClass('active');
+            if( jQuery('.mm-page-'+current).hasClass('pass') ) {
+                jQuery('.mm-survey-container').addClass('good');
+                jQuery('.mm-survey').addClass('okay');
+            }
+            else {
+                jQuery('.mm-survey-container').removeClass('good');
+                jQuery('.mm-survey').removeClass('okay');
+            }
+        }
+        buttonConfig();
+    });
+
+}
+
+function goToPrev() {
+
+    jQuery('.mm-prev-btn').on('click', function() {
+        goToSlide(x);
+        getCount();
+        current = (x - 1);
+        var g = current/count;
+        buildProgress(g);
+        var y = count;
+        getButtons();
+        jQuery('.mm-survey-page').removeClass('active');
+        jQuery('.mm-page-'+current).addClass('active');
+        getCurrentSlide();
+        checkStatus();
+        jQuery('.mm-finish-btn').removeClass('active');
+        if( jQuery('.mm-page-'+current).hasClass('pass') ) {
+            jQuery('.mm-survey-container').addClass('good');
+            jQuery('.mm-survey').addClass('okay');
+        }
+        else {
+            jQuery('.mm-survey-container').removeClass('good');
+            jQuery('.mm-survey').removeClass('okay');
+        }
+        buttonConfig();
+    });
+
+}
+
+function buildProgress(g) {
+
+    if(g > 1){
+        g = g - 1;
+    }
+    else if (g === 0) {
+        g = 1;
+    }
+    g = g * 100;
+    jQuery('.mm-survey-progress-bar').css({ 'width' : g+'%' });
+
+}
+
+function goToSlide(x) {
+
+    return x;
+
+}
+
+function getCurrentSlide() {
+
+    jQuery('.mm-survey-page').each(function() {
+
+        var item;
+
+        item = jQuery(this);
+
+        if( jQuery(item).hasClass('active') ) {
+            x = item.data('page');
+        }
+        else {
+
+        }
+
+        return x;
+
+    });
+
+}
+
+function getButtons() {
+
+    if(current === 0) {
+        current = y;
+    }
+    if(current === count) {
+        jQuery('.mm-next-btn').hide();
+    }
+    else if(current === 1) {
+        jQuery('.mm-prev-btn').hide();
+    }
+    else {
+        jQuery('.mm-next-btn').show();
+        jQuery('.mm-prev-btn').show();
+    }
+
+}
+
+jQuery('.mm-survey-q li input').each(function() {
+
+    var item;
+    item = jQuery(this);
+
+    jQuery(item).on('click', function() {
+        if( jQuery('input:checked').length > 0 ) {
+            // console.log(item.val());
+            jQuery('label').parent().removeClass('active');
+            item.closest( 'li' ).addClass('active');
+        }
+        else {
+            //
+        }
+    });
+
+});
+
+percent = (x/count) * 100;
+jQuery('.mm-survey-progress-bar').css({ 'width' : percent+'%' });
+
+function checkStatus() {
+    jQuery('.mm-survery-content .mm-survey-item').on('click', function() {
+        var item;
+        item = jQuery(this);
+        item.closest('.mm-survey-page').addClass('pass');
+    });
+}
+
+function buildStatus() {
+    jQuery('.mm-survery-content .mm-survey-item').on('click', function() {
+        var item;
+        item = jQuery(this);
+        item.addClass('bingo');
+        item.closest('.mm-survey-page').addClass('pass');
+        jQuery('.mm-survey-container').addClass('good');
+    });
+}
+
+function deliverStatus() {
+    jQuery('.mm-survey-item').on('click', function() {
+        if( jQuery('.mm-survey-container').hasClass('good') ){
+            jQuery('.mm-survey').addClass('okay');
+        }
+        else {
+            jQuery('.mm-survey').removeClass('okay');
+        }
+        buttonConfig();
+    });
+}
+
+function lastPage() {
+    if( jQuery('.mm-next-btn').hasClass('cool') ) {
+        alert('cool');
+    }
+}
+
+function buttonConfig() {
+    if( jQuery('.mm-survey').hasClass('okay') ) {
+        jQuery('.mm-next-btn button').prop('disabled', false);
+    }
+    else {
+        jQuery('.mm-next-btn button').prop('disabled', true);
+    }
+}
+
+function submitData() {
+    jQuery('.mm-finish-btn').on('click', function() {
+        collectData();
+        jQuery('.mm-survey-bottom').slideUp();
+        jQuery('.mm-survey-results').slideDown();
+    });
+}
+
+function collectData() {
+
+    var map = {};
+    var ax = ['0','red','mercedes','3.14','3'];
+    var answer = '';
+    var total = 0;
+    var ttl = 0;
+    var g;
+    var c = 0;
+
+    jQuery('.mm-survey-item input:checked').each(function(index, val) {
+        var item;
+        var data;
+        var name;
+        var n;
+
+        item = jQuery(this);
+        data = item.val();
+        name = item.data('item');
+        n = parseInt(data);
+        total += n;
+
+        map[name] = data;
+
+    });
+
+    jQuery('.mm-survey-results-container .mm-survey-results-list').html('');
+
+    for (i = 1; i <= count; i++) {
+
+        var t = {};
+        var m = {};
+        answer += map[i] + '<br>';
+
+        if( map[i] === ax[i]) {
+            g = map[i];
+            p = 'correct';
+            c = 1;
+        }
+        else {
+            g = map[i];
+            p = 'incorrect';
+            c = 0;
+        }
+
+        jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item '+p+'"><span class="mm-item-number">'+i+'</span><span class="mm-item-info">'+g+' - '+p+'</span></li>');
+
+        m[i] = c;
+        ttl += m[i];
+
+    }
+
+    var results;
+    results = ( ( ttl / count ) * 100 ).toFixed(0);
+
+    jQuery('.mm-survey-results-score').html( results + '%' );
+
+}
+
+function goBack() {
+    jQuery('.mm-back-btn').on('click', function() {
+        jQuery('.mm-survey-bottom').slideDown();
+        jQuery('.mm-survey-results').slideUp();
+    });
+}
+</script>
+
+</body>
+</html>

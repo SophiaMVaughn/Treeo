@@ -19,12 +19,17 @@ def render_file_upload(request):
             fname = request.FILES["file"].name
             if request.FILES["file"].size <= 52428800:
                 if len(fname) <= 100:
-                    if (fname.endswith(".doc") or fname.endswith(".docx") or fname.endswith(".odf") or fname.endswith(".pdf") or fname.endswith(".jpeg") or fname.endswith(".jpg") or fname.endswith(".png") or fname.endswith(".bmp") or fname.endswith(".gif")):
+                    fcheck=False
+                    for i in [".doc",".docx",".odf",".pdf",".jpeg",".jpg",".png",".bmp",".gif"]:
+                        if fname.endswith(i):
+                            fcheck = True
+                    if fcheck==True:
                         f=Uploaded_File()
                         f.usern=request.user
                         print(request.FILES["file"].name)
                         f.file_name = request.FILES["file"].name
                         f.file =request.FILES["file"]
+                        f.file_type=up_form.cleaned_data.get('file_type')
                         f.save()
                         return render(request, 'upload_download/file_upload_Complete.html')
                     else:

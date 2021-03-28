@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_2021_9_01_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_2021_9_01_PM__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_7_23_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_7_23_PM__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_8_20_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_26_2021_8_20_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users_acc/takesurvey.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apptArchive/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/notes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient_log/chart_View.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient_log/chart_View.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/email.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apptArchive/apptArchive.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/apptArchive.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/messaging/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messaging/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/deleteconfirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/deleteconfirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,14 +64,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/patient_log" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/users_acc" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\patient_data_log\Treeo\templates\patient_log" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\patient_data_log\Treeo\templates\users_acc" />
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\patient_data_log\Treeo\templates\patient_log" />
       <recent name="C:\Users\Nraco\Treeo\templates\patient_log" />
       <recent name="C:\Users\Nraco\Treeo" />
       <recent name="C:\Users\Nraco\Treeo\templates" />
@@ -72,7 +83,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7036dcf9-c768-45fd-8b9e-9905534e5203" name="Default Changelist" comment="" />
+      <changelist id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3" />
       <created>1612636906859</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
