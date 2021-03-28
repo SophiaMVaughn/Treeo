@@ -17,8 +17,8 @@
         </thead>
         {% for i in apptArchive %}
         <tr>
-          <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
-          <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
+          <td> {{i.provider.user.get_full_name}}</td>
+          <td>{{i.patient.user.get_full_name}}</td>
           <td>{{i.meetingDate}}</td>
           <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
               href="{% url 'archived_appointment' i.id %}"><span>View Meeting Notes </span></a></td>

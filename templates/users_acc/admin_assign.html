@@ -23,19 +23,19 @@
       </thead>
       {% for i in patients %}
       <tr>
-        <td class="appointmentBubbleProvider"> {{i.user.first_name}} {{i.user.last_name}}</td>
+        <td class="appointmentBubbleProvider"> {{i.user.get_full_name}}</td>
         {% if i.doc_p %}
-        <td class="appointmentBubbleProvider">{{i.doc_p.user.first_name}} {{i.doc_p.user.last_name}}</td>
+        <td class="appointmentBubbleProvider">{{i.doc_p.user.get_full_name}}</td>
         {% else %}
         <td class="appointmentBubbleProvider">Unassigned</td>
         {% endif %}
         {% if i.doc_d %}
-        <td class="appointmentBubbleProvider">{{i.doc_d.user.first_name}} {{i.doc_d.user.last_name}}</td>
+        <td class="appointmentBubbleProvider">{{i.doc_d.user.get_full_name}}</td>
         {% else %}
         <td class="appointmentBubbleProvider">Unassigned</td>
         {% endif %}
         {% if i.doc_c %}
-        <td class="appointmentBubbleProvider">{{i.doc_c.user.first_name}} {{i.doc_c.user.last_name}}</td>
+        <td class="appointmentBubbleProvider">{{i.doc_c.user.get_full_name}}</td>
         {% else %}
         <td class="appointmentBubbleProvider">Unassigned</td>
         {% endif %}

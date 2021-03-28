@@ -52,8 +52,7 @@
                     <tr>
                         <td class="appointmentBubbleDateTime" id="{{a.meetingDate.isoformat}}">{{a.meetingDate}}</td>
                         <td class="with">with</td>
-                        <td class="appointmentBubblePatient">{{a.patient.user.first_name}}
-                            {{a.patient.user.last_name}}
+                        <td class="appointmentBubblePatient">{{a.patient.user.get_full_name}}
                         </td>
                         <td class="with">at</td>
                         {%if a.status%}
@@ -115,7 +114,7 @@
             td = tr[i].getElementsByTagName("td")[2];
             if (td) {
                 txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                if (txtValue.toUpperCase().includes(filter) = true) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";

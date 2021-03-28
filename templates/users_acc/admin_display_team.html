@@ -5,7 +5,7 @@
     <div class="appointments">Providers</div>
     
 
-    <div class="patient">Assign Patient: {{patient.user.first_name|lower}} {{patient.user.last_name|lower}}'s Care Team</div>
+    <div class="patient">Assign Patient: {{patient.user.get_full_name|lower}}'s Care Team</div>
     <form action="" method="post">
         <div class="careTeamTable">
             <table class="table">
@@ -24,7 +24,7 @@
                     <tr>
                         {% if patient.doc_d %}
                         <td class="careTeamBubble">Dietician</td>
-                        <td class="careTeamBubble">{{patient.doc_d.user.first_name|lower}} {{patient.doc_d.user.last_name|lower}}</td>
+                        <td class="careTeamBubble">{{patient.doc_d.user.get_full_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
@@ -39,7 +39,7 @@
                     <tr>
                         {% if patient.doc_c %}
                         <td class="careTeamBubble">Coach</td>
-                        <td class="careTeamBubble">{{patient.doc_c.user.first_name|lower}} {{patient.doc_c.user.last_name|lower}}</td>
+                        <td class="careTeamBubble">{{patient.doc_c.user.get_full_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
@@ -54,7 +54,7 @@
                     <tr>
                         {% if patient.doc_p %}
                         <td class="careTeamBubble">Physician</td>
-                        <td class="careTeamBubble">{{patient.doc_p.user.first_name|lower}} {{patient.doc_p.user.last_name|lower}}</td>
+                        <td class="careTeamBubble">{{patient.doc_p.user.get_full_name|lower}}</td>
                         <td></td>
                         <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""

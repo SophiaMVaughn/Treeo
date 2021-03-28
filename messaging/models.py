@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 class thread(models.Model):
+
     # ok so this is interesting do the messages have to be scene from the people after the user is deactivated yes
     sender = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='t_sender', null=True, blank=True)
     reciever = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='t_reciever', null=True,blank=True)
@@ -29,7 +30,7 @@ class Conversation(models.Model):
 # get rid of subject and then add it to the tread??????????
 class message(models.Model):
     convoIDt = models.ForeignKey(thread, on_delete=models.CASCADE, related_name='thread', null=True, blank=True)
-    convoID = models.ForeignKey(Conversation, on_delete=models.CASCADE, related_name='convoID')
+    convoID = models.ForeignKey(Conversation, on_delete=models.CASCADE, related_name='convoID', null=True, blank=True)
     sender = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='sender', null=True, blank=True)
     # subject = models.CharField(max_length=70)
     msgbody = models.CharField(max_length=600)

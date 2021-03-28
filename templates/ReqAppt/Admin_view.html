@@ -20,10 +20,9 @@
         <tr>
           <td class="appointmentBubbleDateTime" id="{{a.meetingDate.isoformat}}">{{a.meetingDate}}</td>
           <td class="with">with</td>
-          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name}}
-            {{a.provider.user.last_name}}</td>
+          <td class="appointmentBubbleProvider"> {{a.provider.user.get_full_name}}</td>
           <td class="with">with</td>
-          <td class="appointmentBubbleStatus">{{a.patient.user.first_name}} {{a.patient.user.last_name}}
+          <td class="appointmentBubbleStatus">{{a.patient.user.get_full_name}}
           </td>
         </tr>
         {% endfor %}

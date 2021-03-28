@@ -33,7 +33,7 @@
         </div>
       </nav>
     </div>
-    <h1>Patient 1: {{ q.user.first_name}} {{ q.user.last_name}}</h1>
+    <h1>Patient 1: {{ q.user.get_full_name}}</h1>
     <form method="POST">
       {% csrf_token %}
       <div class="messageBox">
