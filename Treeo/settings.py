@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
+    'direct',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': '#GGnorem8',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',

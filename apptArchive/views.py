@@ -11,7 +11,7 @@ def view_all_archived_appointments(request):
         apptArchive = ApptArchive.objects.filter(provider=request.user.provider).order_by('meetingDate')
         return render(request, 'apptArchive/apptArchive.html', {'apptArchive': apptArchive})
     else:
-        redirect('home')
+        return redirect('home')
 
 def view_archived_appointment(request,id):
     try:
@@ -21,13 +21,24 @@ def view_archived_appointment(request,id):
         # 404 instead??
         redirect('home')
     if request.method == "POST":
-        form = NotesForm(request.POST)
-        if form.is_valid():
-            Notes.objects.create(apptId=apptArchive, notes=form.cleaned_data.get('notes'))
-            notes = Notes.objects.filter(apptId=id)
-            return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+        if (request.user.user_type == 2 and (apptArchive.patient.doc_c == apptArchive.provider or apptArchive.patient.doc_p == apptArchive.provider or apptArchive.patient.doc_d == apptArchive.provider)):
+            form = NotesForm(request.POST)
+            if form.is_valid():
+                Notes.objects.create(apptId=apptArchive, notes=form.cleaned_data.get('notes'))
+                notes = Notes.objects.filter(apptId=id)
+                return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+        else:
+            return redirect("apptArchive")
     else:
-        return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+        if request.user.user_type== 3 and apptArchive.patient.user.id==request.user.id:
+            print("user")
+            return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+        elif (request.user.user_type== 2 and (apptArchive.patient.doc_c == apptArchive.provider or apptArchive.patient.doc_p == apptArchive.provider or apptArchive.patient.doc_d == apptArchive.provider)):
+            print("provider")
+            return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive, 'aptnotes': notes, "form": NotesForm()})
+        else:
+            print("andmin")
+            return redirect("home")
 # def create_note(request, id):
 #    if request.user.user_type == 2:
 #       if request.method =="POST":

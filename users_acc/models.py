@@ -20,7 +20,11 @@ PROVIDER_TYPE_CHOICES = (
     (2, 'Dietician'),
     (3, 'Coach'),
 )
-
+Survey_TYPE_CHOICES = (
+    (1, 'Not Taken'),
+    (2, 'Taken'),
+    (3, 'Refused'),
+)
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -49,7 +53,7 @@ class User(AbstractUser):
 # acess via
 # provider.user.last_name.
 # user.related profile name.Patient_count
-
+#object.get_chices_display
 
 class Admin(models.Model):
     user = models.OneToOneField(
@@ -74,3 +78,6 @@ class Patient(models.Model):
         Provider, on_delete=models.CASCADE, related_name='doc_c', null=True)
     doc_p = models.ForeignKey(
         Provider, on_delete=models.CASCADE, related_name='doc_p', null=True)
+    survey_status=models.PositiveSmallIntegerField(
+        choices=Survey_TYPE_CHOICES, default=1)
+    survey_info=models.CharField(max_length=20,null=True)

@@ -27,4 +27,6 @@ path('admin_approve_provider/<id>', users_acc_views.admin_approve_provider, name
 path('admin_revoke_provider/<id>', users_acc_views.admin_revoke_provider, name='admin_revoke_provider'),
 path('admin_user_deactivate/', users_acc_views.admin_user_deactivate_render, name='admin_user_deactivate_render'),
 path('user_deactivate/', users_acc_views.user_deactivate, name='user_deactivate'),
+path('survey/', users_acc_views.take_survey, name='take_survey'),
+path('take_survey/', users_acc_views.render_survey, name='render_survey'),
 ]

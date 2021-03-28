@@ -1,0 +1,21 @@
+{% extends "users_acc/baseNoNavBar.html" %}
+{% block content %}
+<div class="white">
+  <form method="post" action="">
+    {% csrf_token %}
+    <h1>Would You Like To Take A Short Survey So We Can Assign The Best Care Team For You?</h1><br>
+    <div class="button deleteConfirmButtonAppointment">
+       <form method="POST" >
+       {% csrf_token %}
+       <input type="hidden" id="flag" name="flag" value="1">
+       <input type="submit" name="btn" value="Yes" class="providerApprove button btn btn-primary btn-large btn-block">
+      </form>
+       <form method="POST" >
+       {% csrf_token %}
+       <input type="hidden" id="flag2" name="flag2" value="2">
+       <input type="submit" name="btn" value="No" class="providerApprove button btn btn-primary btn-large btn-block">
+      </form>
+    </div>
+  </form>
+</div>
+{% endblock content %}

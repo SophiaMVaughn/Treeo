@@ -20,6 +20,7 @@ from .sms import *
 from .email import *
 from datetime import datetime
 import requests
+from .tasks import *
 from apptArchive.models import ApptArchive
 
 
@@ -110,9 +111,9 @@ def create_Appointment(request):
             )
 
             # Oath, TODO use JWT if this doesn't work
-            scheduled_mail_both(appointment)
+            scheduled_mail_both_task.delay(appointment.id)
             target_time_print(appointment)
-            send_message(appointment)
+            send_message_task.delay(appointment.id)
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -149,16 +150,16 @@ def approve(request,id):
     print(appointment.meeturlpatient)
     appointment.status=True
     appointment.save()
-    approve_message(appointment)
-    approved_mail_both(appointment,patient_pwd)
+    approve_message_task.delay(appointment)
+    approved_mail_both_task.delay(appointment,patient_pwd)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
-        reject_message(appointment)
-        delete_mail_both(appointment)
+        reject_message_task.delay(appointment)
+        reject_mail_both_task.delay(appointment)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
