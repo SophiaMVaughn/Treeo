@@ -101,7 +101,7 @@ def create_Appointment(request):
             apptHour = float(request.POST['apptHour'])
             print(apptDate)
             print(apptHour)
-            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
+            meetingDate = datetime.datetime.strptime(apptDate, "%m/%d/%Y")
             hour = int(math.floor(apptHour))
             minute = int((apptHour - hour) * 60)
             meetingDate = meetingDate.replace(hour=hour, minute=minute)

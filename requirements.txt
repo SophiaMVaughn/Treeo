@@ -8,6 +8,8 @@ twilio
 channels
 django-phonenumber-field[phonenumbers]
 phonenumbers
+Celery==4.4.7
+flower
 PyJWT==2.0.1
 
 #to use run

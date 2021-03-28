@@ -106,13 +106,16 @@ def line_chart_Year(id):
             data4 += temp
         else:
             data4 += ['NaN']
-    print(data, data2, data3, data4)
+    #print(data, data2, data3, data4)
+    timeframe=cur_date.strftime("%Y")
+    print(timeframe)
     return {
         'labels': labels,
         'Calories': data,
         'Water': data2,
         'Sleep': data3,
-        'Mood': data4,}
+        'Mood': data4,
+        'timeframe':timeframe}
 
 def line_chart_Month(id):
     #???? declare as empty and populate with the days as it loops
@@ -151,13 +154,16 @@ def line_chart_Month(id):
             data4 += temp
         else:
             data4 += ['NaN']
-    print(data,data2,data3,data4)
+    #print(data,data2,data3,data4)
+    timeframe=cur_date.strftime("%B")
+    print(timeframe)
     return {
         'labels': labels,
         'Calories': data,
         'Water': data2,
         'Sleep': data3,
         'Mood': data4,
+        'timeframe':timeframe
     }
 def line_chart_Week(id):
     labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -170,6 +176,7 @@ def line_chart_Week(id):
     weekday = cur_date.weekday()
     dates = []
     date = cur_date - datetime.timedelta(days=weekday)
+
     for i in range(7):
         dates.append(date + datetime.timedelta(days=i))
     for i in dates:
@@ -197,13 +204,15 @@ def line_chart_Week(id):
             data4 += temp
         else:
             data4 += ['NaN']
-    print(data,data2,data3,data4)
+    #print(data,data2,data3,data4)
+    timeframe=dates[0].strftime("%B %d-") + dates[6].strftime("%d, %Y")
     return {
         'labels': labels,
         'Calories': data,
         'Water': data2,
         'Sleep': data3,
         'Mood': data4,
+        'timeframe':timeframe
     }
 def render_chart(request, id):
     yearly=line_chart_Year(id)

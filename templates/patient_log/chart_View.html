@@ -5,8 +5,8 @@
 <!-- DO NOT FORMAT DOCUMENT USING CTRL + ALT + L, IT WILL BREAK THE JS -->
 <!-- DO NOT FORMAT DOCUMENT USING CTRL + ALT + L, IT WILL BREAK THE JS -->
 
-<div>
-    <button id="3" class="chartButton" type="button">Calories</button>
+<div id=testing>
+    <button id="3"class="chartButton active type="button">Calories</button>
     <button id="4" class="chartButton" type="button">Water</button>
     <button id="5" class="chartButton" type="button">Sleep</button>
     <button id="6" class="chartButton" type="button">Mood</button>
@@ -21,16 +21,25 @@
 <script>
     // Add active class to the current button (highlight it)
     var header = document.getElementById("myDIV");
+    var header2 = document.getElementById("testing");
     var btns = header.getElementsByClassName("chartButton");
+    var btns2 = header2.getElementsByClassName("chartButton");
     for (var i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
+      var current = header.getElementsByClassName("active");
       current[0].className = current[0].className.replace(" active", "");
       this.className += " active";
       });
     }
+    for (var i = 0; i < btns2.length; i++) {
+        btns2[i].addEventListener("click", function() {
+        var current2 = header2.getElementsByClassName("active");
+        current2[0].className = current2[0].className.replace(" active", "");
+        this.className += " active";
+        });
+      }
 </script>
-<b id ="title"></b>
+<b id="timeframe"></b>
 <div id="container" style="width: 75%; margin: 0 auto;">
 <canvas id="Chart"></canvas>
 </div>
@@ -44,6 +53,7 @@
 <script>
     var daterange = "Weekly"
     var chartype = "Calories"
+    document.getElementById('timeframe').innerHTML ="{{Weekly.timeframe|safe}}"
     const ctx = document.getElementById('Chart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'line',
@@ -165,44 +175,42 @@
     document.getElementById("0").addEventListener('click', () => {
     daterange = "Weekly"
     chart.config.data = myFunction(daterange,chartype)
+        document.getElementById('timeframe').innerHTML = "{{Weekly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("1").addEventListener('click', () => {
     daterange = "Monthly"
     chart.config.data = myFunction(daterange,chartype)
+    document.getElementById('timeframe').innerHTML = "{{Monthly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("2").addEventListener('click', () => {
     daterange = "Yearly"
     chart.config.data = myFunction(daterange,chartype)
+    document.getElementById('timeframe').innerHTML = "{{Yearly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("3").addEventListener('click', () => {
         chartype = "Calories"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("4").addEventListener('click', () => {
         chartype = "Water"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("5").addEventListener('click', () => {
         chartype = "Sleep"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("6").addEventListener('click', () => {
         chartype = "Mood"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
     window.onload = function() {
-    document.getElementById('title').innerHTML = chartype;
 };
   </script>
 
