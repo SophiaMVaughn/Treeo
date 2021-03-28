@@ -4,27 +4,30 @@
     <div class="first">
         <div class="notes">Notes</div>
         <p>{{apptArchive.meetingDate}}</p>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Notes</th>
-            </tr>
-            </thead>
-            {% for i in aptnotes %}
-            <tr>
-                <td> {{i.notes}}</td>
-            <tr>
-                {%endfor%}
-        </table>
-        {% if user.user_type==2 %}
-        <form method="post">
-            {% csrf_token %}
-            <!-- <div class="button"> -->
-            {{form}}
-            <input type="submit" value="Submit"/></p>
-            <!-- </div> -->
-        </form>
-        {% endif %}
+        <div class="notesTable">
+        <!-- <div class="messagingTable"> -->
+            <table class="table">
+                <!-- <thead>
+                    <tr>
+                        <th>Notes</th>
+                    </tr>
+                </thead> -->
+                {% for i in aptnotes %}
+                <tr>
+                    <td> {{i.notes}}</td>
+                <tr>
+                    {%endfor%}
+            </table>
+            {% if user.user_type == 2 %}
+            <form method="post">
+                {% csrf_token %}
+                <!-- <div class="button"> -->
+                {{form}}
+                <input type="submit" value="Submit" /></p>
+                <!-- </div> -->
+            </form>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock content %}

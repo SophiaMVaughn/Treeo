@@ -6,17 +6,17 @@
 
     {%else%}
     {% if user.user_type == 1%}
-    <div class="providerHome">admin home</div>
+    <div class="providerHome">Admin Home</div>
     <div class="newArrivalsBorder">
         <div class="newArrivals">
-            new arrivals
+            New Arrivals
         </div>
         <div class="unassignedProviders">
             This should say "there are x provider(s) unassigned to a patient". Otherwise it should say "no new arrivals"
         </div>
         <div class="assignTrio">
             <div class="button assignTrio">
-                <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">assign trio teams</a>
+                <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign Trio Teams</a>
                 <!-- <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor</a>
             <a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register Doctor</a> -->
             </div>
@@ -24,7 +24,7 @@
 
         <div class="recentMessagesBorder recentMessagesBorderAdmin">
             <div class="recentMessages">
-                <span>recent messages</span>
+                <span>Recent Messages</span>
             </div>
             {% if recentMessages %}
             {% for i in recentMessages %}
@@ -44,7 +44,7 @@
             <div class="recentMessagesWrapper">
                 <table class="table recentMessagesTable">
                     <tr>
-                        <td><span>you have no recent messages</span></td>
+                        <td><span>You have no recent messages</span></td>
                     </tr>
                 </table>
             </div>
@@ -53,7 +53,7 @@
 
         <div class="pendingApprovalsBorder">
             <div class="pendingApproval">
-                <span>pending approvals</span>
+                <span>Pending approvals</span>
             </div>
             <!-- should be a message icon next to each message -->
             <div class="unapprovedProviders">
@@ -70,23 +70,23 @@
     </div>
     {% endif %}
     {% if user.user_type == 2%}
-    <div class="providerHome">provider home</div>
+    <div class="providerHome">Provider Home</div>
     <div class="profileBorder">
         <div class="profileName">{{user.first_name|lower}} {{user.last_name|lower}}</div>
-        <div class="profileDateJoined">member since {{user.date_joined}}</div>
+        <div class="profileDateJoined">Member since {{user.date_joined}}</div>
         <div class="profilePic">
             <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         </div>
     </div>
 
     <div class="upcomingAppointmentsBorder">
-        <div class="upcomingAppointments">upcoming appointments</div>
+        <div class="upcomingAppointments">Upcoming Appointments</div>
         <div class="appointmentsList">
             {% if appointment %}
             {% for i in appointment %}
             <div class="appointmentProfilePic">
                 <p>
-                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="60"
+                    <img class="rounded-circle account-img " src="{{ i.patient.user.profile_pic.url }}" width="60"
                         height="60" alt="">
                 </p>
             </div>
@@ -94,19 +94,19 @@
             <p class="meetingDate">{{ i.meetingDate }}</p>
             {% endfor %}
             {% else %}
-            <p>You Have No Upcoming Appointments</p>
+            <p>You have no upcoming appointments</p>
             {% endif %}
         </div>
         <div class="bookAppointment">
             <div class="button bookAppointment">
-                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">book an appointment</a>
+                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
             </div>
         </div>
     </div>
 
     <div class="recentMessagesBorder">
         <div class="recentMessages">
-            <span>recent messages</span>
+            <span>Recent Messages</span>
         </div>
         {% if recentMessages %}
         {% for i in recentMessages %}
@@ -117,7 +117,7 @@
         <div class="recentMessagesWrapper">
             <table class="table recentMessagesTable">
                 <tr>
-                    <td><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</td>
+                    <td>From <span>{{i.TheActualsender}}: </span><a href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
                 </tr>
             </table>
             {% endfor %}
@@ -126,7 +126,7 @@
         <div class="recentMessagesWrapper">
             <table class="table recentMessagesTable">
                 <tr>
-                    <td><span>you have no recent messages</span></td>
+                    <td><span>You have no recent messages</span></td>
                 </tr>
             </table>
         </div>
@@ -135,21 +135,21 @@
 
     {% endif %}
     {% if user.user_type == 3%}
-    <div class="welcome">welcome!</div>
-    <div class="healthChart">
+    <div class="welcome">Patient Home</div>
+    <!-- <div class="healthChart">
         health chart goes here.
         just one that shows data and can be clicked on to lead to whole page
-    </div>
+    </div> -->
     <div class="profileBorder">
         <div class="profileName">{{user.first_name|lower}} {{user.last_name|lower}}</div>
-        <div class="profileDateJoined">member since {{user.date_joined}}</div>
+        <div class="profileDateJoined">Member since {{user.date_joined}}</div>
         <div class="profilePic">
             <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         </div>
     </div>
 
     <div class="upcomingAppointmentsBorder">
-        <div class="upcomingAppointments">upcoming appointments</div>
+        <div class="upcomingAppointments">Upcoming Appointments</div>
         <div class="appointmentsList">
             {% if appointment %}
             {% for i in appointment %}
@@ -163,20 +163,20 @@
             <p class="meetingDate">{{ i.meetingDate }}</p>
             {% endfor %}
             {% else %}
-            <p>You Have No Upcoming Appointments</p>
+            <p>You have no upcoming appointments</p>
             {% endif %}
         </div>
 
         <div class="bookAppointment">
             <div class="button bookAppointment">
-                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">book an appointment</a>
+                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
             </div>
         </div>
     </div>
 
     <div class="recentMessagesBorder">
         <div class="recentMessages">
-            <span>recent messages</span>
+            <span>Recent Messages</span>
         </div>
         {% if recentMessages %}
         {% for i in recentMessages %}
@@ -187,7 +187,7 @@
         <div class="recentMessagesWrapper">
             <table class="table recentMessagesTable">
                 <tr>
-                    <td><a href="{% url 'Health_Coach' %}"><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</a></td>
+                    <td>From <span>{{i.TheActualsender}}: </span><a href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
                 </tr>
             </table>
             {% endfor %}
@@ -196,7 +196,7 @@
         <div class="recentMessagesWrapper">
             <table class="table recentMessagesTable">
                 <tr>
-                    <td><span>you have no recent messages</span></td>
+                    <td><span>You have no recent messages</span></td>
                 </tr>
             </table>
         </div>

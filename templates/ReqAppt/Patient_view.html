@@ -3,18 +3,18 @@
 <!-- <div class="whiteAppointments"> -->
 <div class="white">
   <div class="first">
-    <div class="appointments">appointments</div>
+    <div class="appointments">Appointments</div>
     <div class="appointmentViews">
       <div class="button appointmentViews">
-        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">calendar view</a>
-        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt' %}">list view</a>
+        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">Calendar View</a>
+        <a class="btn btn-primary btn-large btn-block activeButton" href="{% url 'reqAppt' %}">List View</a>
       </div>
     </div>
     <div class="upcoming">
-      <p>upcoming</p>
+      <p>Upcoming</p>
       <div class="bookNewAppointment">
         <div class="button bookNewAppointment">
-          <a class="btn btn-primary btn-large btn-block" href="{% url 'create_Appointment' %}">book new appointment</a>
+          <a class="btn btn-primary btn-large btn-block" href="{% url 'create_Appointment' %}">Book New Appointment</a>
         </div>
       </div>
     </div>
@@ -29,24 +29,24 @@
       <table id="myTable" class="table approve">
         <thead>
           <tr>
-            <th onclick="sortTable(0)">date/time</th>
+            <th onclick="sortTable(0)">Date/Time</th>
             <th></th>
-            <th onclick="sortTable(2)">provider</th>
+            <th onclick="sortTable(2)">Provider</th>
             <th></th>
-            <th onclick="sortTable(4)">appointment name/link</th>
+            <th onclick="sortTable(4)">Appointment Name/Link</th>
           </tr>
         </thead>
         {% for a in ApptTable %}
         <tr>
           <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
           <td class="with">with</td>
-          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name|lower}}
-            {{a.provider.user.last_name|lower}}</td>
+          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name}}
+            {{a.provider.user.last_name}}</td>
           <td class="with">at</td>
           {%if a.status%}
-          <td class="appointmentBubbleStatus"><a href={{a.meeturlpatient}} target="_blank">zoom link</a></td>
+          <td class="appointmentBubbleStatus"><a href={{a.meeturlpatient}} target="_blank">Zoom Link</a></td>
           {% else %}
-          <td class="appointmentBubbleStatus"><span class="Pending">pending</span></td>
+          <td class="appointmentBubbleStatus"><span class="Pending">Pending</span></td>
           {% endif %}
         </tr>
         {% endfor %}

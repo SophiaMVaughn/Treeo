@@ -2,37 +2,31 @@
 {% block content %}
 <div class="white">
   <div class="first">
-    <div class="appointments">appointments</div>
+    <div class="appointments">Appointments</div>
     
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
     <div class="appointmentTableAdmin">
       <table id="myTable" class="table">
         <thead>
           <tr>
-            <th onclick="sortTable(0)">date/time</th>
+            <th onclick="sortTable(0)">Date/Time</th>
             <th></th>
-            <th onclick="sortTable(2)">provider</th>
+            <th onclick="sortTable(2)">Provider</th>
             <th></th>
-            <th onclick="sortTable(4)">patient</th>
+            <th onclick="sortTable(4)">Patient</th>
           </tr>
         </thead>
         {% for a in ApptTable %}
         <tr>
           <td class="appointmentBubbleDateTime">{{a.meetingDate}}</td>
           <td class="with">with</td>
-          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name|lower}}
-            {{a.provider.user.last_name|lower}}</td>
+          <td class="appointmentBubbleProvider"> {{a.provider.user.first_name}}
+            {{a.provider.user.last_name}}</td>
           <td class="with">with</td>
-          <td class="appointmentBubbleStatus">{{a.patient.user.first_name|lower}} {{a.patient.user.last_name|lower}}
+          <td class="appointmentBubbleStatus">{{a.patient.user.first_name}} {{a.patient.user.last_name}}
           </td>
         </tr>
         {% endfor %}
-        <div class="viewApptArchive">
-            <div class="button viewApptArchive">
-                <a class="btn btn-primary btn-large btn-block" href="{% url 'apptArchive' %}">View Archived
-                    Appointments</a>
-            </div>
-        </div>
       </table>
     </div>
   </div>

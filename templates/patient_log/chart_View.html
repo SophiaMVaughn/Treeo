@@ -1,18 +1,39 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-<button id="0" type="button">Weekly</button>
-<button id="1" type="button">Monthly</button>
-<button id="2" type="button">Yearly</button>
-<button id="3" type="button">Calories</button>
-<button id="4" type="button">Water</button>
-<button id="5" type="button">Sleep</button>
-<button id="6" type="button">Mood</button>
+<!-- DO NOT FORMAT DOCUMENT USING CTRL + ALT + L, IT WILL BREAK THE JS -->
+<!-- DO NOT FORMAT DOCUMENT USING CTRL + ALT + L, IT WILL BREAK THE JS -->
+<!-- DO NOT FORMAT DOCUMENT USING CTRL + ALT + L, IT WILL BREAK THE JS -->
+
+<div>
+    <button id="3" class="chartButton" type="button">Calories</button>
+    <button id="4" class="chartButton" type="button">Water</button>
+    <button id="5" class="chartButton" type="button">Sleep</button>
+    <button id="6" class="chartButton" type="button">Mood</button>
+</div>
+<div id="myDIV">
+    <div>
+        <button id="0" class="chartButton active" type="button">Weekly</button>
+        <button id="1" class="chartButton" type="button">Monthly</button>
+        <button id="2" class="chartButton" type="button">Yearly</button>
+    </div>
+</div>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("chartButton");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      });
+    }
+</script>
 <b id ="title"></b>
 <div id="container" style="width: 75%; margin: 0 auto;">
 <canvas id="Chart"></canvas>
 </div>
-
 
 
 <!-- Add jQuery lib here -->
@@ -145,39 +166,40 @@
     daterange = "Weekly"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
     document.getElementById("1").addEventListener('click', () => {
     daterange = "Monthly"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
     document.getElementById("2").addEventListener('click', () => {
     daterange = "Yearly"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
-    document.getElementById('title').innerHTML = chartype;
     });
     document.getElementById("3").addEventListener('click', () => {
         chartype = "Calories"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
+    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("4").addEventListener('click', () => {
         chartype = "Water"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
+    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("5").addEventListener('click', () => {
         chartype = "Sleep"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
+    document.getElementById('title').innerHTML = chartype;
     });
         document.getElementById("6").addEventListener('click', () => {
         chartype = "Mood"
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
+    document.getElementById('title').innerHTML = chartype;
     });
     window.onload = function() {
     document.getElementById('title').innerHTML = chartype;
