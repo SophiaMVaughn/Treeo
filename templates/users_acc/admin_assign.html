@@ -2,49 +2,51 @@
 {% block content %}
 
 <div class="white">
-<!--    {% if patient %}-->
-<!--    <p>{{patient.user.first_name}}</p>-->
-<!--    <p>{{patient.user.last_name}}</p>-->
-<!--    {% else %}-->
-<div class="appointments">Providers</div>
+  <!--    {% if patient %}-->
+  <!--    <p>{{patient.user.first_name}}</p>-->
+  <!--    <p>{{patient.user.last_name}}</p>-->
+  <!--    {% else %}-->
+  <div class="appointments">Providers</div>
 
 
-      <div class="apptArchiveTable">
-        <table class="table">
-          <thead>
-            <tr>
-              <th onclick="sortTable(0)">Patient Name</th>
-              <th onclick="sortTable(1)">Physician</th>
-              <th onclick="sortTable(2)">Dietician</th>
-              <th onclick="sortTable(3)">Health Coach</th>
-              <th onclick="sortTable(4)">Assign Team</th>
+  <div class="apptArchiveTable">
+    <table id="myTable" class="table">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Patient Name</th>
+          <th onclick="sortTable(1)">Physician</th>
+          <th onclick="sortTable(2)">Dietician</th>
+          <th onclick="sortTable(3)">Health Coach</th>
+          <th onclick="sortTable(4)">Assign Team</th>
           <!-- <th>View Notes</th> -->
-            </tr>
-        </thead>
+        </tr>
+      </thead>
       {% for i in patients %}
-          <tr>
-            <td> {{i.user.first_name}} {{i.user.last_name}}</td>
-              {% if i.doc_p %}
-            <td>{{i.doc_p.user.first_name}} {{i.doc_p.user.last_name}}</td>
-              {% else %}
-              <td>Unassigned</td>
-              {% endif %}
-            {% if i.doc_d %}
-            <td>{{i.doc_d.user.first_name}} {{i.doc_d.user.last_name}}</td>
-              {% else %}
-              <td>Unassigned</td>
-              {% endif %}
-              {% if i.doc_c %}
-            <td>{{i.doc_c.user.first_name}} {{i.doc_c.user.last_name}}</td>
-              {% else %}
-              <td>Unassigned</td>
-              {% endif %}
-              <td><a class="appointmentBubbleApprove button btn btn-large btn-block" href="{% url 'admin_display_team' i.id %}"><span> Assign Team</span></a></td>
-         <tr>
-      {%endfor%}
-      </table>
-    </div>
+      <tr>
+        <td class="appointmentBubbleProvider"> {{i.user.first_name}} {{i.user.last_name}}</td>
+        {% if i.doc_p %}
+        <td class="appointmentBubbleProvider">{{i.doc_p.user.first_name}} {{i.doc_p.user.last_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        {% if i.doc_d %}
+        <td class="appointmentBubbleProvider">{{i.doc_d.user.first_name}} {{i.doc_d.user.last_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        {% if i.doc_c %}
+        <td class="appointmentBubbleProvider">{{i.doc_c.user.first_name}} {{i.doc_c.user.last_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
+            href="{% url 'admin_display_team' i.id %}"><span> Assign Team</span></a></td>
+      <tr>
+        {%endfor%}
+    </table>
+  </div>
 </div>
+
 <script>
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -101,4 +103,20 @@
     }
   }
 </script>
+<!--    {% endif %}-->
+<!--    <form method="post">-->
+<!--        <div class="assignCareTeam">-->
+<!--            {% csrf_token %}-->
+<!--            {% for route in form %}-->
+<!--            <p> {{route}} </p>-->
+<!--            {% endfor %}-->
+<!--            {% for k in form2 %}-->
+<!--            <p> {{k}} </p>-->
+<!--            {% endfor %}-->
+<!--            &lt;!&ndash;    should be nested four loops for a combined dictioarny&ndash;&gt;-->
+<!--            <div class="button assignCareTeamButton">-->
+<!--                <button type="submit" class="btn btn-primary btn-large btn-block">Ok</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
 {% endblock content %}

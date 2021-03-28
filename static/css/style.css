@@ -4535,8 +4535,17 @@ body {
   color: #faa172;
 }
 
+.apptArchiveTable table .appointmentBubbleProvider {
+  width: 26%;
+  height: 60px;
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 19px;
+}
 .apptArchiveTable table .appointmentBubbleApprove {
-  width: 87%;
   height: 60px;
   background: #faa172;
   color: white;
