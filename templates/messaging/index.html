@@ -116,12 +116,8 @@ search.onkeyup = function () {
             pllist[i].style.display = 'none';
     }
 }
-document.querySelector('.chat').classList.add('active-chat');
-document.querySelector('.person').classList.add('active');
-var temp = document.querySelector('.person').getAttribute('id');
-document.getElementById("convoid").value = temp.slice(6);
 
-let friends = {
+let persons = {
         list: document.querySelector('ul.people'),
         all: document.querySelectorAll('.left .person'),
         name: '' },
@@ -133,14 +129,27 @@ let friends = {
         name: document.querySelector('.container .right .top .name') };
 
 
-friends.all.forEach(f => {
+persons.all.forEach(f => {
     f.addEventListener('mousedown', () => {
         f.classList.contains('active') || setAciveChat(f);
     });
 });
+
+{% if curconvo %}
+console.log('#' +'person'+'{{curconvo}}' + 'chat');
+console.log('#' +'person'+'{{curconvo}}');
+document.querySelector('#' +'person'+'{{curconvo}}' + 'chat').classList.add('active-chat');
+document.querySelector('#' +'person'+'{{curconvo}}').classList.add('active');
+{% else %}
+document.querySelector('.chat').classList.add('active-chat');
+document.querySelector('.person').classList.add('active');
+{% endif %}
+
+var temp = document.querySelector('.person').getAttribute('id');
+document.getElementById("convoid").value = temp.slice(6);
 function setAciveChat(f) {
 //need some error handling ifs here tha handle null exceptions
-    friends.list.querySelector('.active').classList.remove('active');
+    persons.list.querySelector('.active').classList.remove('active');
     f.classList.add('active');
     // should have some error handling for null exception
     chat.current = chat.container.querySelector('.active-chat');
@@ -149,8 +158,8 @@ function setAciveChat(f) {
     //console.log('[id="#' + chat.person + 'chat"]');
     console.log(document.querySelector('#' + chat.person + 'chat'));
     chat.container.querySelector('#' + chat.person + 'chat').classList.add('active-chat');
-    friends.name = f.querySelector('.name').innerText;
-    chat.name.innerHTML = friends.name;
+    persons.name = f.querySelector('.name').innerText;
+    chat.name.innerHTML = persons.name;
     document.getElementById("convoid").value = chat.person.slice(6);
     console.log(document.getElementById("convoid").value);
 }</script>

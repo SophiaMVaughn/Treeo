@@ -61,6 +61,7 @@ def test2(request):
     print(master_list)
     context['master_list'] = master_list
     context['form'] = MessageForm()
+
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid():
@@ -74,6 +75,7 @@ def test2(request):
                 return render(request, 'messaging/index.html', context)
             context = {}
             master_list = []
+
             # ok conversations when a user call for chat what happens???
             # we get all the conversations that thye are in so
             conversations = Conversation.objects.filter(users=request.user)
@@ -88,6 +90,7 @@ def test2(request):
             print(master_list)
             context['master_list'] = master_list
             context['form'] = MessageForm()
+            context['curconvo'] = request.POST.get("convoid")
             return render(request, 'messaging/index.html', context)
         else:
             return render(request, 'messaging/index.html', context)

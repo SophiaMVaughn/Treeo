@@ -6,33 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Admin_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Patient_view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apptArchive/apptArchive.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/apptArchive.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient10.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient5.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient6.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient7.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient8.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blogsys/patient9.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/patient9.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/messaging/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messaging/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_deactivate_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_deactivate_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/survey.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/survey.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
