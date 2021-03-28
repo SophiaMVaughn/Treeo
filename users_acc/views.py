@@ -504,7 +504,7 @@ def render_survey(request):
                 request.user.patient.save()
                 return redirect("home")
             else:
-                return redirect("render_survey")
+                return render(request, 'users_acc/survey.html')
         else:
             return redirect("home")
     else:

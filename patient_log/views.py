@@ -13,6 +13,7 @@ import sched, time
 from django.views.generic.edit import UpdateView
 import datetime
 import calendar
+from users_acc.models import *
 from django.db.models import Q
 
 @login_required
@@ -45,10 +46,30 @@ def patientlog(request):
                 #link to chart on the page
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
         elif request.user.user_type==2:
-            return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
+            context={}
+
+            master_list=[]
+            try:
+                if request.user.provider.Provider_type ==1:
+                    q = Patient.objects.filter(doc_p=request.user.provider)
+                elif request.user.provider.Provider_type ==2:
+                    q = Patient.objects.filter(doc_d=request.user.provider)
+                elif request.user.provider.Provider_type ==3:
+                    q = Patient.objects.filter(doc_c=request.user.provider)
+                # g=PatientLog.objects.filter(patient__in=q)
+                for i in q:
+                    if PatientLog.objects.filter(patient=i).exists():
+                        master_list.append(PatientLog.objects.filter(patient=i).order_by('date').first())
+                    else:
+                        pass
+            except Exception as e:
+                print(e)
+            context['patients']=master_list
+            print(master_list)
+            return render(request, 'patient_log/patientLog.html', context)
         elif request.user.user_type == 1:
             #reject admins
-            return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
+            return redirect('home')
 
 def edit_log(request,id):
     temp = PatientLog.objects.get(id=id)
