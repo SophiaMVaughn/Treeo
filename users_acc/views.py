@@ -477,4 +477,18 @@ def home(request):
         return redirect('login')
 
 
+    
+    
+@login_required
+def dietitian_details(request):
+    return render(request, 'users_acc/diet_details.html')
+
+@login_required
+def doctor_details(request):
+    return render(request, 'users_acc/doctor_details.html')
+
+@login_required
+def coach_details(request):
+    return render(request, 'users_acc/coach_details.html')
+
 
