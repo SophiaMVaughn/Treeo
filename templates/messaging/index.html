@@ -51,7 +51,7 @@
     <div class="messageContainer">
         <div class="left">
             <div class="top">
-                <input type="text" placeholder="Search" id="search"/>
+                <input type="text" placeholder="Search People" id="search"/>
 <!--                <a href="javascript:;" class="search"></a>-->
             </div>
             <ul class="people" id="listOfPeople">
@@ -89,9 +89,9 @@
                 <div class="chat" id="person{{i.0.id}}chat">
                 <div class="conversation-start">
                     {% if i.1.0 %}
-                    <span>{{i.1.0.send_time}}</span>
+                    {{i.1.0.send_time}}
                     {% else %}
-                    <span></span>
+
                     {% endif %}
                 </div>
                 {% if i.1 %}
@@ -141,7 +141,6 @@
 
   <script>
 var inputform = document.getElementById('{{ form.msgbody.id_for_label }}');
-console.log(inputform);
 inputform.onkeyup = function () {
     var char_count = inputform.value.length;
     document.getElementById('charchount').innerHTML = char_count+'/600'
@@ -149,7 +148,7 @@ inputform.onkeyup = function () {
 var search = document.getElementById('search');
 search.onkeyup = function () {
     var filter = search.value.toLowerCase();
-    var pllist = document.getElementsByTagName('li');
+    var pllist = document.querySelectorAll('li.person');
     for (var i = 0; i < pllist.length; i++) {
         var name = pllist[i].getElementsByClassName('name')[0].innerHTML;
         if (name.toLowerCase().includes(filter) == true)

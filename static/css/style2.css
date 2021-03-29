@@ -271,6 +271,9 @@ body {
 .messageContainer .right .chat.active-chat {
   display: block;
   display: flex;
+  height: 550px;
+  overflow: scroll;
+  word-wrap: break-word;
 }
 .messageContainer .right .chat.active-chat .bubble {
   transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
@@ -392,6 +395,8 @@ body {
   transform: rotate(29deg) skew(-35deg);
 }
 .messageContainer .right .bubble.you {
+max-width: 400px;
+word-wrap: break-word;
   float: left;
   color: var(--white);
   background-color: var(--blue);
@@ -404,6 +409,8 @@ body {
   background-color: var(--blue);
 }
 .messageContainer .right .bubble.me {
+max-width: 400px;
+word-wrap: break-word;
   float: right;
   color: var(--dark);
   background-color: #eceff1;

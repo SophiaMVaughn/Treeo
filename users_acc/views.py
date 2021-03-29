@@ -481,12 +481,10 @@ def take_survey(request):
     if request.user.user_type ==3:
         if request.user.patient.survey_status==1:
             if request.method == 'POST':
-                if "flag" in request.POST:
-                    return redirect("render_survey")
-                elif "flag2" in request.POST:
-                    request.user.patient.survey_status=3
-                    request.user.patient.save()
-                    return redirect("home")
+                if "txtinput" in request.POST:
+                    print(request.POST.get('txtinput'))
+                    return render(request, 'users_acc/takesurvey.html')
+                    #return redirect("home")
                 else:
                     return render(request, 'users_acc/takesurvey.html')
             else:
@@ -504,6 +502,8 @@ def render_survey(request):
             if request.method == 'POST':
                 #is valid
                 #save data of results
+                #??????
+                print("test")
                 request.user.patient.survey_status = 2
                 request.user.patient.save()
                 return redirect("home")

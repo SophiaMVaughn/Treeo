@@ -79,7 +79,22 @@ def render_file_download(request):
                 return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
     else:
         if request.user.user_type == 1:
-            return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
+            for i in Uploaded_File.objects.all():
+                # just find a way to query the request.user instead of all
+                if i.usern.user_type == 2:
+                    files.append({
+                        'FileName': i.file_name,
+                        'Uploader': i.usern.username,
+                        'file': i.file.url,
+                        'date_uploaded': i.date_created,
+                        'File_Type': i.get_file_type_display(),
+                        'id': i.pk
+                    })
+
+            context = {
+                'file_list': files
+            }
+            return render(request, 'upload_download/filedownload.html', context)
         elif request.user.user_type == 2:
             temp = Uploaded_File.objects.none()
             g = Uploaded_File.objects.filter(usern=request.user)
