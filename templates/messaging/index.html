@@ -133,13 +133,19 @@
                  {{form}}
                  <input type="hidden" id="convoid" name="convoid" value="">
                 </form>
-<!--                <a href="javascript:;" class="write-link send"></a>-->
+                <div id="charchount">/600</div>
             </div>
         </div>
     </div>
 </div>
 
   <script>
+var inputform = document.getElementById('{{ form.msgbody.id_for_label }}');
+console.log(inputform);
+inputform.onkeyup = function () {
+    var char_count = inputform.value.length;
+    document.getElementById('charchount').innerHTML = char_count+'/600'
+}
 var search = document.getElementById('search');
 search.onkeyup = function () {
     var filter = search.value.toLowerCase();
