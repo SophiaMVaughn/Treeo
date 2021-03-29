@@ -477,16 +477,20 @@ def user_deactivate(request):
 
 @login_required
 def take_survey(request):
-    #this should be called in login and confimation email link als omabye include the logic for 3 and 1 checks in there
     if request.user.user_type ==3:
         if request.user.patient.survey_status==1:
             if request.method == 'POST':
-                if "txtinput" in request.POST:
-                    print(request.POST.get('txtinput'))
-                    return render(request, 'users_acc/takesurvey.html')
-                    #return redirect("home")
+                if "flag" in request.POST:
+                    print(request.POST.get('flag'))
+                    return redirect("render_survey")
+                elif "flag2" in request.POST:
+                    print(request.POST.get('flag2'))
+                    request.user.patient.survey_status = 3
+                    request.user.patient.save()
+                    return redirect("home")
                 else:
-                    return render(request, 'users_acc/takesurvey.html')
+                    print(request.POST)
+                    return redirect("home")
             else:
                 return render(request, 'users_acc/takesurvey.html')
         else:
@@ -503,10 +507,13 @@ def render_survey(request):
                 #is valid
                 #save data of results
                 #??????
-                print("test")
-                request.user.patient.survey_status = 2
-                request.user.patient.save()
-                return redirect("home")
+                if "txtinput" in request.POST:
+                    request.user.patient.survey_info = request.POST.get('txtinput')
+                    request.user.patient.survey_status = 2
+                    request.user.patient.save()
+                    return redirect("home")
+                else:
+                    return redirect("home")
             else:
                 return render(request, 'users_acc/survey.html')
         else:

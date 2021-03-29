@@ -1,131 +1,124 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900|Open+Sans:400,300,600,700,800|Raleway:400,100,200,300,500,600,700,800,900'>
-{% load static %}
-{% load humanize %}
-
-</head>
-<body>
+{% extends "users_acc/base.html" %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 <div class="container">
 		<div>
 			<div class="survey">
 
 				<div class="survey_progress_bar">
-					<div>survey progrress bar here mabye</div>
+					<div>
+						<label id ="pbarlabel"for="pbar">Survey Progress: 0%</label>
+						<progress id="pbar" value="0" max="100"> </progress></div>
 				</div>
-
 				<div class="survey_body">
 					<div class="survey_container">
 						<div class="survey_page">
 							<div class="survey_question_body">
-								<div class="survey_question">
+								<div class="survey_question btn-group" data-toggle="buttons">
 									<p>Based on history... What is the ideal color for a Ferrari?</p>
 								</div>
 								<div class="survey_answer">
-									<input type="radio" id="radio01" data-item="1" name="radio1" value="1" />
-									<label for="radio01"><span></span><p>Red</p></label>
+									<input type="radio" id="radio01" name="radio1" value="1" />
+									<label class="btn btn-warning" for="radio01"><span></span><p>Red</p></label>
 								</div>
 								<div class="survey_answer">
-									<input type="radio" id="radio02" data-item="1" name="radio1" value="2" />
-									<label for="radio02"><span></span><p>Blue</p></label>
+									<input type="radio" id="radio02" name="radio1" value="2" />
+									<label class="btn btn-warning" for="radio02"><span></span><p>Blue</p></label>
 								</div>
 								<div class="survey_answer">
-									<input type="radio" id="radio03" data-item="1" name="radio1" value="3" />
-									<label for="radio03"><span></span><p>Green</p></label>
+									<input type="radio" id="radio03" name="radio1" value="3" />
+									<label class="btn btn-warning" for="radio03"><span></span><p>Green</p></label>
 								</div>
 								<div class="survey_answer">
-									<input type="radio" id="radio04" data-item="1" name="radio1" value="4" />
-									<label for="radio04"><span></span><p>Purple</p></label>
+									<input type="radio" id="radio04" name="radio1" value="4" />
+									<label class="btn btn-warning" for="radio04"><span></span><p>Purple</p></label>
 								</div>
 							</div>
 						</div>
 						<div class="survey_page" data-page="2">
 							<div class="survey_question_body">
-								<div class="survey_question">
+								<div class="survey_question btn-group">
 									<p>Which one of these car brands is made in Germany?</p>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio05" data-item="2" name="radio2" value="1" />
-									<label for="radio05"><span></span><p>Honda</p></label>
+									<label class="btn btn-warning" for="radio05"><span></span><p>Honda</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio06" data-item="2" name="radio2" value="2" />
-									<label for="radio06"><span></span><p>Ford</p></label>
+									<label class="btn btn-warning" for="radio06"><span></span><p>Ford</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio07" data-item="2" name="radio2" value="3" />
-									<label for="radio07"><span></span><p>Mercedes</p></label>
+									<label class="btn btn-warning" for="radio07"><span></span><p>Mercedes</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio08" data-item="2" name="radio2" value="4" />
-									<label for="radio08"><span></span><p>Ferrari</p></label>
+									<label class="btn btn-warning" for="radio08"><span></span><p>Ferrari</p></label>
 								</div>
 							</div>
 						</div>
 						<div class="survey_page" data-page="3">
 							<div class="survey_question_body">
-								<div class="survey_question">
+								<div class="survey_question btn-group">
 									<p>Which is the correct integer for Pi?</p>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio09" data-item="3" name="radio3" value="1" />
-									<label for="radio09"><span></span><p>3</p></label>
+									<label class="btn btn-warning" for="radio09"><span></span><p>3</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio10" data-item="3" name="radio3" value="2" />
-									<label for="radio10"><span></span><p>4</p></label>
+									<label class="btn btn-warning" for="radio10"><span></span><p>4</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio11" data-item="3" name="radio3" value="3" />
-									<label for="radio11"><span></span><p>3.41</p></label>
+									<label class="btn btn-warning" for="radio11"><span></span><p>3.41</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio12" data-item="3" name="radio3" value="4" />
-									<label for="radio12"><span></span><p>3.14</p></label>
+									<label class="btn btn-warning" for="radio12"><span></span><p>3.14</p></label>
 								</div>
 							</div>
 						</div>
 						<div class="survey_page" data-page="4">
 							<div class="survey_question_body">
-								<div class="survey_question">
+								<div class="survey_question btn-group">
 									<p>The letter 'C' is the nth number in the alphabet, choose the correct number.</p>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio13" data-item="4" name="radio4" value="1" />
-									<label for="radio13"><span></span><p>1</p></label>
+									<label class="btn btn-warning" for="radio13"><span></span><p>1</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio14" data-item="4" name="radio4" value="2" />
-									<label for="radio14"><span></span><p>2</p></label>
+									<label class="btn btn-warning" for="radio14"><span></span><p>2</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio15" data-item="4" name="radio4" value="3" />
-									<label for="radio15"><span></span><p>3</p></label>
+									<label class="btn btn-warning" for="radio15"><span></span><p>3</p></label>
 								</div>
 								<div class="survey_answer">
 									<input type="radio" id="radio16" data-item="4" name="radio4" value="4" />
-									<label for="radio16"><span></span><p>4</p></label>
+									<label class="btn btn-warning" for="radio16"><span></span><p>4</p></label>
 								</div>
 							</div>
 						</div>
 					</div>
 <!--					you can make this a hidden django form so we can use validation-->
-					<form id="form">
+					<form method="post" id="form">
 						{% csrf_token %}
-					<input type="hidden" id="txtinput" value="">
+						<input type="hidden" id="txtinput" name="txtinput" value="">
 					</form>
 					<div class="mm-survey-controller">
 						<div class="mm-prev-btn">
-							<button disabled="true" onclick="prevpage()" id="prev">Prev</button>
+							<button disabled="true" onclick="prevpage()" id="prev" class="btn btn-light">Prev</button>
 						</div>
 						<div class="mm-next-btn">
-							<button disabled="true" onclick="nextpage()" id="next">Next</button>
+							<button disabled="true" onclick="nextpage()" id="next" class="btn btn-light">Next</button>
 						</div>
 						<div class="mm-finish-btn">
-							<button onclick="submit()" id="submit">Submit</button>
+							<button onclick="submit()" id="submit" class="btn btn-light">Submit</button>
 						</div>
 					</div>
 				</div>
@@ -148,12 +141,18 @@ for(var i = 0; i < all_inputs.length; i++) {
 });
     }
 }
+function updateprogress(var1) {
+var1++
+var progbar = document.getElementById('pbar');
+var precent = (var1/pages.length)*100;
+progbar.value =precent;
+document.getElementById('pbarlabel').innerHTML="Survey Progress:"+ String(precent) +"%"
 
+}
 
 function isOneChecked(var1) {
 
     var chx = pages[var1].getElementsByTagName('input');
-    console.log(chx)
     for (var i=0; i<chx.length; i++) {
         // If you have more than one radio group, also check the name attribute
         // for the one you want as in && chx[i].name == 'choose'
@@ -214,15 +213,19 @@ function renderpage(var1) {
     for (var i=0; i<pages.length; i++) {
         if (i == var1){
             pages[i].style.display = "";
+            if (isOneChecked(page_on)) {
+            document.getElementById("next").disabled = false
+        }
         }
         else{
             pages[i].style.display = 'none';
         }
     }
+    updateprogress(page_on)
 }
 
 function submit() {
-    let str = '';
+    var str = '';
     var chx = all_inputs
     if (allareChecked()) {
         for (var i = 0; i < chx.length; i++) {
@@ -230,8 +233,8 @@ function submit() {
             // for the one you want as in && chx[i].name == 'choose'
             // Return true from the function on first match of a checked item
             if (chx[i].type == 'radio' && chx[i].checked) {
-                str += ',';
                 str += chx[i].value;
+                str += ',';
             }
         }
 
@@ -242,5 +245,4 @@ function submit() {
 
 </script>
 
-</body>
-</html>
+{% endblock content %}
