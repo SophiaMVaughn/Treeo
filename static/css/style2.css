@@ -271,7 +271,7 @@ body {
 .messageContainer .right .chat.active-chat {
   display: block;
   display: flex;
-  height: 550px;
+  max-height: 550px;
   overflow: scroll;
   word-wrap: break-word;
 }
