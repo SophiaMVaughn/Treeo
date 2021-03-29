@@ -14,9 +14,10 @@ def view_all_archived_appointments(request):
         return redirect('home')
 
 def view_archived_appointment(request,id):
+    notes = Notes.objects.none()
     try:
         apptArchive = ApptArchive.objects.get(id=id)
-        notes = Notes.objects.filter(apptId=id)
+        notes = Notes.objects.filter(apptId=id).order_by("date")
     except:
         # 404 instead??
         redirect('home')
@@ -25,17 +26,17 @@ def view_archived_appointment(request,id):
             form = NotesForm(request.POST)
             if form.is_valid():
                 Notes.objects.create(apptId=apptArchive, notes=form.cleaned_data.get('notes'))
-                notes = Notes.objects.filter(apptId=id)
-                return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+                notes = Notes.objects.filter(apptId=id).order_by("date")
+                return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': notes, "form": NotesForm()})
         else:
             return redirect("apptArchive")
     else:
         if request.user.user_type== 3 and apptArchive.patient.user.id==request.user.id:
             print("user")
-            return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive,'aptnotes': notes, "form": NotesForm()})
+            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': notes, "form": NotesForm()})
         elif (request.user.user_type== 2 and (apptArchive.patient.doc_c == apptArchive.provider or apptArchive.patient.doc_p == apptArchive.provider or apptArchive.patient.doc_d == apptArchive.provider)):
             print("provider")
-            return render(request, 'apptArchive/notes.html', {'Archivedappt': apptArchive, 'aptnotes': notes, "form": NotesForm()})
+            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive, 'aptnotes': notes, "form": NotesForm()})
         else:
             print("andmin")
             return redirect("home")
