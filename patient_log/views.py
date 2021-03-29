@@ -22,6 +22,7 @@ def patientlog(request):
         if request.user.user_type==3:
             form = PatientLogForm(request.POST)
             if form.is_valid():
+                print("flag")
                 saverecord = PatientLog()
                 saverecord.patient = request.user.patient
                 saverecord.calories = form.cleaned_data.get('calories')
@@ -29,6 +30,9 @@ def patientlog(request):
                 saverecord.mood = form.cleaned_data.get('mood')
                 saverecord.sleep = form.cleaned_data.get('sleep')
                 saverecord.save()
+                saverecord.date = datetime.datetime.today()
+                saverecord.save()
+                #when this is saved tis saved as monday rathe than sun
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm(),'formerrors': form})
@@ -47,7 +51,6 @@ def patientlog(request):
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
         elif request.user.user_type==2:
             context={}
-
             master_list=[]
             try:
                 if request.user.provider.Provider_type ==1:
@@ -75,7 +78,7 @@ def edit_log(request,id):
     temp = PatientLog.objects.get(id=id)
     form = PatientLogForm()
     if request.method =='POST':
-        print("test")
+        print("edit_log")
         form = PatientLogForm(request.POST)
         if form.is_valid():
             temp.calories = form.cleaned_data.get('calories')
@@ -129,7 +132,7 @@ def line_chart_Year(id):
             data4 += ['NaN']
     #print(data, data2, data3, data4)
     timeframe=cur_date.strftime("%Y")
-    print(timeframe)
+    # print(timeframe)
     return {
         'labels': labels,
         'Calories': data,
@@ -148,7 +151,7 @@ def line_chart_Month(id):
     #for current week
     cur_date = datetime.datetime.today()
     num_days = calendar.monthrange(cur_date.year, cur_date.month)[1]
-    print(num_days)
+    # print(num_days)
     for day in range(1, num_days + 1):
         labels += [str(day)]
         temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('calories')).values())
@@ -177,7 +180,7 @@ def line_chart_Month(id):
             data4 += ['NaN']
     #print(data,data2,data3,data4)
     timeframe=cur_date.strftime("%B")
-    print(timeframe)
+    # print(timeframe)
     return {
         'labels': labels,
         'Calories': data,

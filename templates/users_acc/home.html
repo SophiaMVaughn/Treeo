@@ -1,13 +1,13 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 <div class="white">
-    
+
     {% if user.user_type == None%}
 
     {%else%}
     {% if user.user_type == 1%}
     <div class="providerHome">Admin Home</div>
-    <div class="newArrivalsBorder">
+    <!-- <div class="newArrivalsBorder"> 
         <div class="newArrivals">
             New Arrivals
         </div>
@@ -16,23 +16,23 @@
         </div>
         <div class="assignTrio">
             <div class="button assignTrio">
-                <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign Trio Teams</a>
-                <!-- <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor</a>
+                <a href="{% url 'admin_view' %}" class="btn btn-primary btn-large btn-block">Assign Trio Teams</a> -->
+    <!-- <a href="{% url 'admin_approve_provider_render' %}" class="btn btn-primary btn-large btn-block">Approve Doctor</a>
             <a href="{% url 'doctor_registration' %}" class="btn btn-primary btn-large btn-block">Register Doctor</a> -->
-            </div>
-        </div>
+    <!-- </div>
+        </div> -->
 
-        <div class="recentMessagesBorder recentMessagesBorderAdmin">
+    <!-- <div class="recentMessagesBorder recentMessagesBorderAdmin">
             <div class="recentMessages">
                 <span>Recent Messages</span>
             </div>
             {% if recentMessages %}
-            {% for i in recentMessages %}
-            <!-- doesthis class matter  -->
-            <!-- <div class="message2">
+            {% for i in recentMessages %} -->
+    <!-- doesthis class matter  -->
+    <!-- <div class="message2">
                     <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
                 </div> -->
-            <div class="recentMessagesWrapper">
+    <!-- <div class="recentMessagesWrapper">
                 <table class="table recentMessagesTable">
                     <tr>
                         <td><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</td>
@@ -49,14 +49,14 @@
                 </table>
             </div>
             {% endif %}
-        </div>
+        </div> -->
 
-        <div class="pendingApprovalsBorder">
+    <!-- <div class="pendingApprovalsBorder">
             <div class="pendingApproval">
-                <span>Pending approvals</span>
-            </div>
-            <!-- should be a message icon next to each message -->
-            <div class="unapprovedProviders">
+                <span>Pending approvals</span> -->
+</div>
+<!-- should be a message icon next to each message -->
+<!-- <div class="unapprovedProviders">
                 This should say "there are x provider(s) awaiting approval" Otherwise it should say "no pending
                 approvals"
             </div>
@@ -66,142 +66,144 @@
                         class="btn btn-primary btn-large btn-block">go</a>
                 </div>
             </div>
-        </div>
+        </div> 
+</div> -->
+{% endif %}
+{% if user.user_type == 2%}
+<div class="providerHome">Provider Home</div>
+<div class="profileBorder">
+    <div class="profileName">{{user.get_full_name}}</div>
+    <div class="profileDateJoined">Member since {{user.date_joined}}</div>
+    <div class="profilePic">
+        <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
     </div>
-    {% endif %}
-    {% if user.user_type == 2%}
-    <div class="providerHome">Provider Home</div>
-    <div class="profileBorder">
-        <div class="profileName">{{user.get_full_name}}</div>
-        <div class="profileDateJoined">Member since {{user.date_joined}}</div>
-        <div class="profilePic">
-            <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
-        </div>
-    </div>
+</div>
 
-    <div class="upcomingAppointmentsBorder">
-        <div class="upcomingAppointments">Upcoming Appointments</div>
-        <div class="appointmentsList">
-            {% if appointment %}
-            {% for i in appointment %}
-            <div class="appointmentProfilePic">
-                <p>
-                    <img class="rounded-circle account-img " src="{{ i.patient.user.profile_pic.url }}" width="60"
-                        height="60" alt="">
-                </p>
-            </div>
-            <!-- use humanize here for time You Have an Appointment at  -->
-            <p class="meetingDate">{{ i.meetingDate }}</p>
-            {% endfor %}
-            {% else %}
-            <p>You have no upcoming appointments</p>
-            {% endif %}
+<div class="upcomingAppointmentsBorder">
+    <div class="upcomingAppointments">Upcoming Appointments</div>
+    <div class="appointmentsList">
+        {% if appointment %}
+        {% for i in appointment %}
+        <div class="appointmentProfilePic">
+            <p>
+                <img class="rounded-circle account-img " src="{{ i.patient.user.profile_pic.url }}" width="60"
+                    height="60" alt="">
+            </p>
         </div>
-        <div class="bookAppointment">
-            <div class="button bookAppointment">
-                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="recentMessagesBorder">
-        <div class="recentMessages">
-            <span>Recent Messages</span>
-        </div>
-        {% if recentMessages %}
-        {% for i in recentMessages %}
-        <!-- doesthis class matter  -->
-        <!-- <div class="message2">
-            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
-        </div> -->
-        <div class="recentMessagesWrapper">
-            <table class="table recentMessagesTable">
-                <tr>
-                    <td>From <span>{{i.TheActualsender}}: </span><a href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
-                </tr>
-            </table>
-            {% endfor %}
-        </div>
+        <!-- use humanize here for time You Have an Appointment at  -->
+        <p class="meetingDate">{{ i.meetingDate }}</p>
+        {% endfor %}
         {% else %}
-        <div class="recentMessagesWrapper">
-            <table class="table recentMessagesTable">
-                <tr>
-                    <td><span>You have no recent messages</span></td>
-                </tr>
-            </table>
-        </div>
+        <p>You have no upcoming appointments</p>
         {% endif %}
     </div>
+    <div class="bookAppointment">
+        <div class="button bookAppointment">
+            <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
+        </div>
+    </div>
+</div>
 
+<div class="recentMessagesBorder">
+    <div class="recentMessages">
+        <span>Recent Messages</span>
+    </div>
+    {% if recentMessages %}
+    {% for i in recentMessages %}
+    <!-- doesthis class matter  -->
+    <!-- <div class="message2">
+            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
+        </div> -->
+    <div class="recentMessagesWrapper">
+        <table class="table recentMessagesTable">
+            <tr>
+                <td>From <span>{{i.TheActualsender}}: </span><a
+                        href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="recentMessagesWrapper">
+        <table class="table recentMessagesTable">
+            <tr>
+                <td><span>You have no recent messages</span></td>
+            </tr>
+        </table>
+    </div>
     {% endif %}
-    {% if user.user_type == 3%}
-    <div class="welcome">Patient Home</div>
-    <!-- <div class="healthChart">
+</div>
+
+{% endif %}
+{% if user.user_type == 3%}
+<div class="welcome">Patient Home</div>
+<!-- <div class="healthChart">
         health chart goes here.
         just one that shows data and can be clicked on to lead to whole page
     </div> -->
-    <div class="profileBorder">
-        <div class="profileName">{{user.get_full_name}}</div>
-        <div class="profileDateJoined">Member since {{user.date_joined}}</div>
-        <div class="profilePic">
-            <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
-        </div>
+<div class="profileBorder">
+    <div class="profileName">{{user.get_full_name}}</div>
+    <div class="profileDateJoined">Member since {{user.date_joined}}</div>
+    <div class="profilePic">
+        <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
     </div>
+</div>
 
-    <div class="upcomingAppointmentsBorder">
-        <div class="upcomingAppointments">Upcoming Appointments</div>
-        <div class="appointmentsList">
-            {% if appointment %}
-            {% for i in appointment %}
-            <div class="appointmentProfilePic">
-                <p>
-                    <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="60"
-                        height="60" alt="">
-                </p>
-            </div>
-            <!-- use humanize here for time You Have an Appointment at  -->
-            <p class="meetingDate">{{ i.meetingDate }}</p>
-            {% endfor %}
-            {% else %}
-            <p>You have no upcoming appointments</p>
-            {% endif %}
+<div class="upcomingAppointmentsBorder">
+    <div class="upcomingAppointments">Upcoming Appointments</div>
+    <div class="appointmentsList">
+        {% if appointment %}
+        {% for i in appointment %}
+        <div class="appointmentProfilePic">
+            <p>
+                <img class="rounded-circle account-img " src="{{ i.provider.user.profile_pic.url }}" width="60"
+                    height="60" alt="">
+            </p>
         </div>
-
-        <div class="bookAppointment">
-            <div class="button bookAppointment">
-                <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="recentMessagesBorder">
-        <div class="recentMessages">
-            <span>Recent Messages</span>
-        </div>
-        {% if recentMessages %}
-        {% for i in recentMessages %}
-        <!-- doesthis class matter  -->
-        <!-- <div class="message2">
-            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
-        </div> -->
-        <div class="recentMessagesWrapper">
-            <table class="table recentMessagesTable">
-                <tr>
-                    <td>From <span>{{i.TheActualsender}}: </span><a href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
-                </tr>
-            </table>
-            {% endfor %}
-        </div>
+        <!-- use humanize here for time You Have an Appointment at  -->
+        <p class="meetingDate">{{ i.meetingDate }}</p>
+        {% endfor %}
         {% else %}
-        <div class="recentMessagesWrapper">
-            <table class="table recentMessagesTable">
-                <tr>
-                    <td><span>You have no recent messages</span></td>
-                </tr>
-            </table>
-        </div>
+        <p>You have no upcoming appointments</p>
         {% endif %}
     </div>
+
+    <div class="bookAppointment">
+        <div class="button bookAppointment">
+            <a href="{% url 'reqAppt' %}" class="btn btn-primary btn-large btn-block">Book an Appointment</a>
+        </div>
+    </div>
+</div>
+
+<div class="recentMessagesBorder">
+    <div class="recentMessages">
+        <span>Recent Messages</span>
+    </div>
+    {% if recentMessages %}
+    {% for i in recentMessages %}
+    <!-- doesthis class matter  -->
+    <!-- <div class="message2">
+            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
+        </div> -->
+    <div class="recentMessagesWrapper">
+        <table class="table recentMessagesTable">
+            <tr>
+                <td>From <span>{{i.TheActualsender}}: </span><a
+                        href="{% url 'Health_Coach' %}">{{i.Message|truncatechars:20}}</a></td>
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="recentMessagesWrapper">
+        <table class="table recentMessagesTable">
+            <tr>
+                <td><span>You have no recent messages</span></td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+</div>
 </div>
 
 {% endif %}

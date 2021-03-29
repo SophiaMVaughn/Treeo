@@ -51,7 +51,7 @@ def approve_message_task(aptobj_id):
         for i in x:
             logger.info(i)
     except:
-        logger.info('Failed to Send SMS Messages for Appointment Approval:'+str(aptobj.id))
+        logger.info('Failed to Send SMS Messages for Appointment Approval:'+str(aptobj_id))
 
 @shared_task(name='Treeo.tasks.reject_message_task')
 def reject_message_task(aptobj_id):
@@ -61,7 +61,7 @@ def reject_message_task(aptobj_id):
         for i in x:
             logger.info(i)
     except:
-        logger.info('Failed to Send SMS Messages for Appointment Rejection:'+str(aptobj.id))
+        logger.info('Failed to Send SMS Messages for Appointment Rejection:'+str(aptobj_id))
 
 @shared_task(name='Treeo.tasks.approved_mail_both_task')
 def approved_mail_both_task(aptobj_id,patients_pwd):
@@ -71,7 +71,7 @@ def approved_mail_both_task(aptobj_id,patients_pwd):
         for i in x:
             logger.info(i)
     except:
-        logger.info('Failed to Send Email Messages for Appointment Approval:'+str(aptobj.id))
+        logger.info('Failed to Send Email Messages for Appointment Approval:'+str(aptobj_id))
 
 @shared_task(name='Treeo.tasks.delete_mail_both_task')
 def reject_mail_both_task(aptobj_id):
@@ -81,5 +81,5 @@ def reject_mail_both_task(aptobj_id):
         for i in x:
             logger.info(i)
     except:
-        logger.info('Failed to Send Email Messages for Appointment Rejection:'+str(aptobj.id))
+        logger.info('Failed to Send Email Messages for Appointment Rejection:'+str(aptobj_id))
 

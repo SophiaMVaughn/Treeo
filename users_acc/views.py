@@ -24,6 +24,7 @@ from blogsys.models import *
 from ReqAppt.models import *
 from messaging.models import *
 from ReqAppt.tasks import *
+from ReqAppt.views import *
 
 def register(request):
     if request.method == 'POST':
@@ -111,16 +112,19 @@ def button(request):
         # m.sender_loc = 'Outbox'
         # m.reciever_loc = 'Inbox'
         # m.save()
-        m=User.objects.first()
-        g=User.objects.latest('id')
+
+        m=ApptTable.objects.first()
+        archive_apt(m.id)
+        m.delete()
         #thread.objects.create(sender=g, reciever=m)
-        if thread.objects.filter(sender=g, reciever=m).exists():
-            print("thread exists")
-            return redirect('button')
-        else:
-            thread.objects.create(sender=g, reciever=m)
-            print("thread created")
-            return redirect('button')
+        # if thread.objects.filter(sender=g, reciever=m).exists():
+        #     print("thread exists")
+        #     return redirect('button')
+        # else:
+        #     thread.objects.create(sender=g, reciever=m)
+        #     print("thread created")
+        #     return redirect('button')
+        return redirect('button')
     else:
         return render(request, 'users_acc/button.html')
 

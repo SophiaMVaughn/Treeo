@@ -150,16 +150,16 @@ def approve(request,id):
     print(appointment.meeturlpatient)
     appointment.status=True
     appointment.save()
-    approve_message_task.delay(appointment)
-    approved_mail_both_task.delay(appointment,patient_pwd)
+    approve_message_task.delay(appointment.id)
+    approved_mail_both_task.delay(appointment.id,patient_pwd)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
     appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
-        reject_message_task.delay(appointment)
-        reject_mail_both_task.delay(appointment)
+        reject_message_task.delay(appointment.id)
+        reject_mail_both_task.delay(appointment.id)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
@@ -307,7 +307,7 @@ def fullcalendar(request):
     }
     return render(request,'ReqAppt/fullcalendar.html',context)
 
-def archive_apt(request,id):
+def archive_apt(id):
     appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
@@ -316,10 +316,8 @@ def archive_apt(request,id):
         archiveAppt.patient = appointment.patient
         archiveAppt.save()
         appointment.delete()
-        return redirect('apptArchive')
     except Exception as e:
         print(e)
-        return render(request,"reqAppt/appointment.html")
 #
 # def zoom_callback(request):
 #     code = request.GET["code"]

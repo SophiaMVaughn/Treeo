@@ -890,7 +890,7 @@ input:focus {
 
 .lname {
   position: absolute;
-  width: 167px;
+  width: auto;
   height: 40px;
   left: 808px;
   top: 364px;
