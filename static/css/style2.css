@@ -259,12 +259,12 @@ body {
 .messageContainer .right .chat {
   position: relative;
   display: none;
-  overflow: hidden;
+  overflow: scroll;
   padding: 0 35px 92px;
   border-width: 1px 1px 1px 0;
   border-style: solid;
   border-color: var(--light);
-  height: calc(100% - 48px);
+  height: 474px;
   justify-content: flex-end;
   flex-direction: column;
 }
@@ -273,7 +273,6 @@ body {
   display: flex;
   max-height: 550px;
   overflow: scroll;
-  word-wrap: break-word;
 }
 .messageContainer .right .chat.active-chat .bubble {
   transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);

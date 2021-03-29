@@ -1,288 +1,281 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-{% load humanize %}
+{% extends "users_acc/base.html" %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+	<div>
+		<div class="survey">
 
-<head>
-	<meta charset="UTF-8">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-	<link rel='stylesheet'
-		href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900|Open+Sans:400,300,600,700,800|Raleway:400,100,200,300,500,600,700,800,900'>
-	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
-	<title>Treeo</title>
-</head>
-
-<body>
-	<div class="container">
-		<div>
-			<div class="survey">
-
-				<div class="survey_progress_bar">
-					<!-- <div>survey progrress bar here mabye</div> -->
-					<div>Hi, {{user.get_full_name}}! </div>
+			<div class="survey_progress_bar">
+				<div>
+					<label id="pbarlabel" for="pbar">Survey Progress: 0%</label>
+					<progress id="pbar" value="0" max="100"> </progress>
 				</div>
-
-				<div class="survey_body">
-					<div class="survey_container">
-						<div class="survey_page">
-							<div class="survey_question_body">
-								<div class="survey_question">
-									<!-- <p>Based on history... What is the ideal color for a Ferrari?</p> -->
-									<p> Which best describes the health concern you created a Treeo account for?</p>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio01" data-item="1" name="radio1" value="1" />
-									<label for="radio01"><span></span>
-										<p>digestive issues</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio02" data-item="1" name="radio1" value="2" />
-									<label for="radio02"><span></span>
-										<p>skin issues</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio03" data-item="1" name="radio1" value="3" />
-									<label for="radio03"><span></span>
-										<p>hormone imbalance</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio04" data-item="1" name="radio1" value="4" />
-									<label for="radio04"><span></span>
-										<p>other chronic condition</p>
-									</label>
-								</div>
+			</div>
+			<div class="survey_body">
+				<div class="survey_container">
+					<div class="survey_page">
+						<div class="survey_question_body">
+							<div class="survey_question btn-group" data-toggle="buttons">
+								<p> Which best describes the health concern you created a Treeo account for?</p>
 							</div>
-						</div>
-						<div class="survey_page" data-page="2">
-							<div class="survey_question_body">
-								<div class="survey_question">
-									<!-- <p>Which one of these car brands is made in Germany?</p> -->
-									<p>What age group do you fall under?</p>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio05" data-item="2" name="radio2" value="1" />
-									<label for="radio05"><span></span>
-										<p>35-45</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio06" data-item="2" name="radio2" value="2" />
-									<label for="radio06"><span></span>
-										<p>45-55</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio07" data-item="2" name="radio2" value="3" />
-									<label for="radio07"><span></span>
-										<p>55-65</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio08" data-item="2" name="radio2" value="4" />
-									<label for="radio08"><span></span>
-										<p>65+</p>
-									</label>
-								</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio01" name="radio1" value="1" />
+								<label class="btn btn-warning" for="radio01"><span></span>
+									<p>digestive issues</p>
+								</label>
 							</div>
-						</div>
-						<div class="survey_page" data-page="3">
-							<div class="survey_question_body">
-								<div class="survey_question">
-									<!-- <p>Which is the correct integer for Pi?</p> -->
-									<p>Are you currently on any medications?</p>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio09" data-item="3" name="radio3" value="1" />
-									<label for="radio09"><span></span>
-										<p>yes</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio10" data-item="3" name="radio3" value="2" />
-									<label for="radio10"><span></span>
-										<p>no</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio11" data-item="3" name="radio3" value="3" />
-									<label for="radio11"><span></span>
-										<p>choose not to answer</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio12" data-item="3" name="radio3" value="4" />
-									<label for="radio12"><span></span>
-										<p>not applicable</p>
-									</label>
-								</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio02" name="radio1" value="2" />
+								<label class="btn btn-warning" for="radio02"><span></span>
+									<p>skin issues</p>
+								</label>
 							</div>
-						</div>
-						<div class="survey_page" data-page="4">
-							<div class="survey_question_body">
-								<div class="survey_question">
-									<p>How advanced are you with using technology?</p>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio13" data-item="4" name="radio4" value="1" />
-									<label for="radio13"><span></span>
-										<p>not at all</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio14" data-item="4" name="radio4" value="2" />
-									<label for="radio14"><span></span>
-										<p>some experience</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio15" data-item="4" name="radio4" value="3" />
-									<label for="radio15"><span></span>
-										<p>well versed</p>
-									</label>
-								</div>
-								<div class="survey_answer">
-									<input type="radio" id="radio16" data-item="4" name="radio4" value="4" />
-									<label for="radio16"><span></span>
-										<p>completely proficient</p>
-									</label>
-								</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio03" name="radio1" value="3" />
+								<label class="btn btn-warning" for="radio03"><span></span>
+									<p>hormone imbalance</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio04" name="radio1" value="4" />
+								<label class="btn btn-warning" for="radio04"><span></span>
+									<p>other chronic condition</p>
+								</label>
 							</div>
 						</div>
 					</div>
-					<!--					you can make this a hidden django form so we can use validation-->
-					<form id="form">
-						{% csrf_token %}
-						<input type="hidden" id="txtinput" value="">
-					</form>
-					<div class="mm-survey-controller">
-						<div class="mm-prev-btn">
-							<button disabled="true" onclick="prevpage()" id="prev">Prev</button>
+					<div class="survey_page" data-page="2">
+						<div class="survey_question_body">
+							<div class="survey_question btn-group">
+								<p>What age group do you fall under?</p>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio05" data-item="2" name="radio2" value="1" />
+								<label class="btn btn-warning" for="radio05"><span></span>
+									<p>35-45</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio06" data-item="2" name="radio2" value="2" />
+								<label class="btn btn-warning" for="radio06"><span></span>
+									<p>45-55</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio07" data-item="2" name="radio2" value="3" />
+								<label class="btn btn-warning" for="radio07"><span></span>
+									<p>55-65</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio08" data-item="2" name="radio2" value="4" />
+								<label class="btn btn-warning" for="radio08"><span></span>
+									<p>65+</p>
+								</label>
+							</div>
 						</div>
-						<div class="mm-next-btn">
-							<button disabled="true" onclick="nextpage()" id="next">Next</button>
+					</div>
+					<div class="survey_page" data-page="3">
+						<div class="survey_question_body">
+							<div class="survey_question btn-group">
+								<p>>Are you currently on any medications?</p>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio09" data-item="3" name="radio3" value="1" />
+								<label class="btn btn-warning" for="radio09"><span></span>
+									<p>yes</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio10" data-item="3" name="radio3" value="2" />
+								<label class="btn btn-warning" for="radio10"><span></span>
+									<p>no</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio11" data-item="3" name="radio3" value="3" />
+								<label class="btn btn-warning" for="radio11"><span></span>
+									<p>choose not to answer</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio12" data-item="3" name="radio3" value="4" />
+								<label class="btn btn-warning" for="radio12"><span></span>
+									<p>not applicable</p>
+								</label>
+							</div>
 						</div>
-						<div class="mm-finish-btn">
-							<button onclick="submit()" id="submit">Submit</button>
+					</div>
+					<div class="survey_page" data-page="4">
+						<div class="survey_question_body">
+							<div class="survey_question btn-group">
+								<p>How advanced are you with using technology?</p>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio13" data-item="4" name="radio4" value="1" />
+								<label class="btn btn-warning" for="radio13"><span></span>
+									<p>not at all</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio14" data-item="4" name="radio4" value="2" />
+								<label class="btn btn-warning" for="radio14"><span></span>
+									<p>some experience</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio15" data-item="4" name="radio4" value="3" />
+								<label class="btn btn-warning" for="radio15"><span></span>
+									<p>well versed</p>
+								</label>
+							</div>
+							<div class="survey_answer">
+								<input type="radio" id="radio16" data-item="4" name="radio4" value="4" />
+								<label class="btn btn-warning" for="radio16"><span></span>
+									<p>completely proficient</p>
+								</label>
+							</div>
 						</div>
+					</div>
+				</div>
+				<!--					you can make this a hidden django form so we can use validation-->
+				<form method="post" id="form">
+					{% csrf_token %}
+					<input type="hidden" id="txtinput" name="txtinput" value="">
+				</form>
+				<div class="mm-survey-controller">
+					<div class="mm-prev-btn">
+						<button disabled="true" onclick="prevpage()" id="prev" class="btn btn-light">Prev</button>
+					</div>
+					<div class="mm-next-btn">
+						<button disabled="true" onclick="nextpage()" id="next" class="btn btn-light">Next</button>
+					</div>
+					<div class="mm-finish-btn">
+						<button onclick="submit()" id="submit" class="btn btn-light">Submit</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<script>
-		var page_on = 0
-		var pages = document.getElementsByClassName('survey_page');
-		renderpage(page_on)
+<script>
+	var page_on = 0
+	var pages = document.getElementsByClassName('survey_page');
+	renderpage(page_on)
 
 
-		var all_inputs = document.getElementsByTagName('input');
-		for (var i = 0; i < all_inputs.length; i++) {
-			if (all_inputs[i].type.toLowerCase() == 'radio') {
+	var all_inputs = document.getElementsByTagName('input');
+	for (var i = 0; i < all_inputs.length; i++) {
+		if (all_inputs[i].type.toLowerCase() == 'radio') {
 
-				all_inputs[i].addEventListener("click", function () {
-					document.getElementById("next").disabled = false;
-				});
+			all_inputs[i].addEventListener("click", function () {
+				document.getElementById("next").disabled = false;
+			});
+		}
+	}
+	function updateprogress(var1) {
+		var1++
+		var progbar = document.getElementById('pbar');
+		var precent = (var1 / pages.length) * 100;
+		progbar.value = precent;
+		document.getElementById('pbarlabel').innerHTML = "Survey Progress:" + String(precent) + "%"
+
+	}
+
+	function isOneChecked(var1) {
+
+		var chx = pages[var1].getElementsByTagName('input');
+		for (var i = 0; i < chx.length; i++) {
+			// If you have more than one radio group, also check the name attribute
+			// for the one you want as in && chx[i].name == 'choose'
+			// Return true from the function on first match of a checked item
+			if (chx[i].type == 'radio' && chx[i].checked) {
+				return true;
 			}
 		}
+		// End of the loop, return false
+		return false;
+	}
 
+	function allareChecked(radioname) {
+		var flag = true
+		for (var i = 0; i < pages.length; i++) {
+			if (isOneChecked(i)) {
 
-		function isOneChecked(var1) {
+			}
+			else {
+				flag = false;
+			}
+		}
+		// End of the loop, return false
+		return flag;
+	}
 
-			var chx = pages[var1].getElementsByTagName('input');
-			console.log(chx)
+	function prevpage() {
+		page_on--
+		document.getElementById("next").disabled = false
+		if (page_on == 0) {
+			document.getElementById("prev").disabled = true
+			renderpage(page_on)
+		}
+		else {
+			renderpage(page_on)
+		}
+	}
+
+	function nextpage() {
+		document.getElementById("prev").disabled = false
+		if (isOneChecked(page_on)) {
+			page_on++
+			document.getElementById("next").disabled = true
+			renderpage(page_on)
+		}
+	}
+
+	function renderpage(var1) {
+		if (page_on == pages.length - 1) {
+			//hide next and display submit if on last page
+			document.getElementById("next").style.display = 'none';
+			document.getElementById("submit").style.display = "";
+		}
+		else {
+			document.getElementById("next").style.display = '';
+			document.getElementById("submit").style.display = "none";
+		}
+		for (var i = 0; i < pages.length; i++) {
+			if (i == var1) {
+				pages[i].style.display = "";
+				if (isOneChecked(page_on)) {
+					document.getElementById("next").disabled = false
+				}
+			}
+			else {
+				pages[i].style.display = 'none';
+			}
+		}
+		updateprogress(page_on)
+	}
+
+	function submit() {
+		var str = '';
+		var chx = all_inputs
+		if (allareChecked()) {
 			for (var i = 0; i < chx.length; i++) {
 				// If you have more than one radio group, also check the name attribute
 				// for the one you want as in && chx[i].name == 'choose'
 				// Return true from the function on first match of a checked item
 				if (chx[i].type == 'radio' && chx[i].checked) {
-					return true;
+					str += chx[i].value;
+					str += ',';
 				}
 			}
-			// End of the loop, return false
-			return false;
+
+			document.getElementById("txtinput").value = str;
+			document.getElementById("form").submit();
 		}
+	}
 
-		function allareChecked(radioname) {
-			var flag = true
-			for (var i = 0; i < pages.length; i++) {
-				if (isOneChecked(i)) {
+</script>
 
-				}
-				else {
-					flag = false;
-				}
-			}
-			// End of the loop, return false
-			return flag;
-		}
-
-		function prevpage() {
-			page_on--
-			document.getElementById("next").disabled = false
-			if (page_on == 0) {
-				document.getElementById("prev").disabled = true
-				renderpage(page_on)
-			}
-			else {
-				renderpage(page_on)
-			}
-		}
-
-		function nextpage() {
-			document.getElementById("prev").disabled = false
-			if (isOneChecked(page_on)) {
-				page_on++
-				document.getElementById("next").disabled = true
-				renderpage(page_on)
-			}
-		}
-
-		function renderpage(var1) {
-			if (page_on == pages.length - 1) {
-				//hide next and display submit if on last page
-				document.getElementById("next").style.display = 'none';
-				document.getElementById("submit").style.display = "";
-			}
-			else {
-				document.getElementById("next").style.display = '';
-				document.getElementById("submit").style.display = "none";
-			}
-			for (var i = 0; i < pages.length; i++) {
-				if (i == var1) {
-					pages[i].style.display = "";
-				}
-				else {
-					pages[i].style.display = 'none';
-				}
-			}
-		}
-
-		function submit() {
-			let str = '';
-			var chx = all_inputs
-			if (allareChecked()) {
-				for (var i = 0; i < chx.length; i++) {
-					// If you have more than one radio group, also check the name attribute
-					// for the one you want as in && chx[i].name == 'choose'
-					// Return true from the function on first match of a checked item
-					if (chx[i].type == 'radio' && chx[i].checked) {
-						str += ',';
-						str += chx[i].value;
-					}
-				}
-
-				document.getElementById("txtinput").value = str;
-				document.getElementById("form").submit();
-			}
-		}
-
-	</script>
-
-</body>
-
-</html>
+{% endblock content %}
