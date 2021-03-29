@@ -65,7 +65,23 @@
           ],
 
         },
-        options: {responsive: true}
+        options: {
+    responsive: true,
+        scales: {
+        xAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Days'
+            }
+        }],
+            yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: 'Calories (kCal)'
+            }
+        }]
+    }
+}
     });
 
 
@@ -174,39 +190,46 @@
 }
     document.getElementById("0").addEventListener('click', () => {
     daterange = "Weekly"
+    chart.options.scales.xAxes[ 0 ].scaleLabel.labelString = "Days";
     chart.config.data = myFunction(daterange,chartype)
         document.getElementById('timeframe').innerHTML = "{{Weekly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("1").addEventListener('click', () => {
     daterange = "Monthly"
+    chart.options.scales.xAxes[ 0 ].scaleLabel.labelString = "Days";
     chart.config.data = myFunction(daterange,chartype)
     document.getElementById('timeframe').innerHTML = "{{Monthly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("2").addEventListener('click', () => {
     daterange = "Yearly"
+    chart.options.scales.xAxes[ 0 ].scaleLabel.labelString = "Months";
     chart.config.data = myFunction(daterange,chartype)
     document.getElementById('timeframe').innerHTML = "{{Yearly.timeframe|safe}}"
     chart.update();
     });
     document.getElementById("3").addEventListener('click', () => {
         chartype = "Calories"
+        chart.options.scales.yAxes[ 0 ].scaleLabel.labelString = "Calories (kCal)";
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
     });
         document.getElementById("4").addEventListener('click', () => {
         chartype = "Water"
+        chart.options.scales.yAxes[ 0 ].scaleLabel.labelString = "Water (oz)";
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
     });
         document.getElementById("5").addEventListener('click', () => {
         chartype = "Sleep"
+        chart.options.scales.yAxes[ 0 ].scaleLabel.labelString = "Sleep (Hours)";
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
     });
         document.getElementById("6").addEventListener('click', () => {
         chartype = "Mood"
+        chart.options.scales.yAxes[ 0 ].scaleLabel.labelString = "Mood (1-5)";
     chart.config.data = myFunction(daterange,chartype)
     chart.update();
     });
