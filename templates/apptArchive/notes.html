@@ -5,7 +5,7 @@
         <div class="notes">Notes</div>
         <p>{{apptArchive.meetingDate}}</p>
         <div class="notesTable">
-        <!-- <div class="messagingTable"> -->
+            <!-- <div class="messagingTable"> -->
             <table class="table">
                 <!-- <thead>
                     <tr>
@@ -18,16 +18,16 @@
                 <tr>
                     {%endfor%}
             </table>
-            {% if user.user_type == 2 %}
-            <form method="post">
-                {% csrf_token %}
-                <!-- <div class="button"> -->
-                {{form}}
-                <input type="submit" value="Submit" /></p>
-                <!-- </div> -->
-            </form>
-            {% endif %}
         </div>
+        {% if user.user_type == 2 %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="notesSubmit">
+                {{form.notes}}
+                <p><input type="submit" value="Submit" /></p>
+            </div>
+        </form>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

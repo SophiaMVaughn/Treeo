@@ -3,12 +3,11 @@
 {% load static %}
 <div class="white">
     <div class="appointments">Providers</div>
-    
 
     <div class="patient">Assign Patient: {{patient.user.get_full_name}}'s Care Team</div>
     <form action="" method="post">
         <div class="careTeamTable">
-            <table class="table">
+            <table id="myTable" class="table">
                 <thead>
                     <tr>
                         <th>Provider Type</th>
