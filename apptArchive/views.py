@@ -1,15 +1,40 @@
 from django.shortcuts import render, redirect
 from apptArchive.models import ApptArchive, Notes
 from apptArchive.forms import NotesForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def view_all_archived_appointments(request):
     # query appointment table or notes after they select a n appointment request.user
     if request.user.user_type == 3:
         apptArchive=ApptArchive.objects.filter( patient=request.user.patient).order_by('meetingDate')
-        return render(request, 'apptArchive/apptArchive.html', {'apptArchive': apptArchive})
+        pagination = Paginator(apptArchive, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
+        # general except 501????
+        context = {
+            'apptArchive': pagination
+        }
+        return render(request, 'apptArchive/apptArchive.html', context)
     elif request.user.user_type == 2:
         apptArchive = ApptArchive.objects.filter(provider=request.user.provider).order_by('meetingDate')
-        return render(request, 'apptArchive/apptArchive.html', {'apptArchive': apptArchive})
+        pagination = Paginator(apptArchive, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
+        # general except 501????
+        context = {
+            'apptArchive': pagination
+        }
+        return render(request, 'apptArchive/apptArchive.html', context)
     else:
         return redirect('home')
 

@@ -7,7 +7,7 @@ from .models import *
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.decorators import login_required
 from users_acc.models import *
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #upatient files should not be in admin view (upload/download)
 
@@ -71,8 +71,17 @@ def render_file_download(request):
                         'File_Type': i.get_file_type_display(),
                         'id': i.pk
                     })
+                pagination = Paginator(files, 5)
+                page = request.GET.get('page', 1)
+                try:
+                    pagination = pagination.page(page)
+                except PageNotAnInteger:
+                    pagination = pagination.page(1)
+                except EmptyPage:
+                    pagination = pagination.page(pagination.num_pages)
+                #general except 501????
                 context = {
-                    'file_list': files
+                    'file_list': pagination
                 }
                 return render(request, 'upload_download/filedownload.html', context)
             else:
@@ -90,9 +99,16 @@ def render_file_download(request):
                         'File_Type': i.get_file_type_display(),
                         'id': i.pk
                     })
-
+            pagination = Paginator(files, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
             context = {
-                'file_list': files
+                'file_list': pagination
             }
             return render(request, 'upload_download/filedownload.html', context)
         elif request.user.user_type == 2:
@@ -129,9 +145,16 @@ def render_file_download(request):
                     'File_Type': i.get_file_type_display(),
                     'id': i.pk
                 })
-
+        pagination = Paginator(files, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
         context = {
-            'file_list': files
+            'file_list': pagination
         }
         return render(request, 'upload_download/filedownload.html', context)
 

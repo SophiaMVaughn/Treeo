@@ -99,30 +99,27 @@
         confirm[1].classList.add('hidden');
     }
 
-    function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInputPatient");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        // The use of 'includes' alllows for partial matches, though this will result in a abundance of records in larger tables and with records
-        // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
-        // the db is of significant size.
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().includes(filter) == true) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
+function myFunction() {
+    // Declare variables
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
             }
         }
     }
+}
 
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
