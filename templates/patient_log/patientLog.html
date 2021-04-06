@@ -70,7 +70,7 @@
     {% else %}
     <div class="healthLog">Review a Patient's Health Log</div>
             <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for patient">
-        <div class="appointmentTableProvider">
+        <div class="healthLogTable">
             <table id="myTable" class="table approve">
                 <thead>
                     <tr>
@@ -85,7 +85,9 @@
                     {% for a in patients %}
                     <tr>
                         <td> {{a.patient.user.get_full_name}}</td>
+                        <td></td>
                         <td id="{{a.date.isoformat}}">{{a.date}}</td>
+                        <td></td>
                         <td><a href="{% url 'log-chart' a.patient.user.id %}"><span> View Log</span></a></td>
                     </tr>
                     {% endfor %}
