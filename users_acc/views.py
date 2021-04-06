@@ -25,6 +25,7 @@ from ReqAppt.models import *
 from messaging.models import *
 from ReqAppt.tasks import *
 from ReqAppt.views import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def register(request):
     if request.method == 'POST':
@@ -241,7 +242,19 @@ def admin_view(request):
     #         return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm(),'formerrors': form})
     # else:
     patient = Patient.objects.all()
-    return render(request, "users_acc/admin_assign.html", {'patients': patient})
+    pagination = Paginator(patient, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'patients': pagination
+    }
+    return render(request, "users_acc/admin_assign.html", context)
 
 
 @login_required
@@ -414,7 +427,19 @@ def admin_remove_provider(request, id, id2):
 @login_required
 def admin_approve_provider_render(request):
     temp=Provider.objects.filter().order_by('is_verified')
-    return render(request, "users_acc/admin_approve_provider.html", {'results': temp})
+    pagination = Paginator(temp, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'results': pagination
+    }
+    return render(request, "users_acc/admin_approve_provider.html", context)
 
 @login_required
 def admin_approve_provider(request, id):
@@ -464,9 +489,33 @@ def admin_user_deactivate_render(request):
             else:
                 usertmp.is_active = True
                 usertmp.save()
-        return render(request, "users_acc/admin_deactivate_user.html", {'results': temp})
+        pagination = Paginator(temp, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
+        # general except 501????
+        context = {
+            'results': pagination
+        }
+        return render(request, "users_acc/admin_deactivate_user.html", context)
     else:
-        return render(request, "users_acc/admin_deactivate_user.html", {'results': temp})
+        pagination = Paginator(temp, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
+        # general except 501????
+        context = {
+            'results': pagination
+        }
+        return render(request, "users_acc/admin_deactivate_user.html", context)
 
 @login_required
 def user_deactivate(request):
@@ -541,7 +590,7 @@ def home(request):
 
 
     
-    
+#coales to one view and add error handling
 @login_required
 def dietitian_details(request):
     return render(request, 'users_acc/diet_details.html')

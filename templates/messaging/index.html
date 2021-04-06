@@ -147,17 +147,14 @@ inputform.onkeyup = function () {
 }
 var search = document.getElementById('search');
 search.onkeyup = function () {
-    var filter = search.value.toLowerCase();
-    var pllist = document.querySelectorAll('li.person');
-    for (var i = 0; i < pllist.length; i++) {
-        var name = pllist[i].getElementsByClassName('name')[0].innerHTML;
-        if (name.toLowerCase().includes(filter) == true)
-            pllist[i].style.display = 'list-item';
+    for (let i of document.querySelectorAll('li.person')) {
+        var name = i.getElementsByClassName('name')[0].innerHTML;
+        if (name.toLowerCase().includes(search.value.toLowerCase()) == true)
+            i.style.display = 'list-item';
         else
-            pllist[i].style.display = 'none';
+            i.style.display = 'none';
     }
 }
-
 let persons = {
         list: document.querySelector('ul.people'),
         all: document.querySelectorAll('.left .person'),

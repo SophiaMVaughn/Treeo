@@ -29,33 +29,60 @@
       </table>
     </div>
   </div>
+      {% if ApptTable.has_other_pages %}
+  <ul class="pagination">
+    {% if ApptTable.has_previous %}
+      <li><a href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8592;</span></li>
+    {% endif %}
+    {% for i in ApptTable.paginator.page_range %}
+      {% if ApptTable.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif ApptTable.paginator.num_pages > 5%}
+      {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == ApptTable.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if ApptTable.has_next %}
+      <li><a href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </div>
 <script>
-  function myFunction() {
+function myFunction() {
     // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
     // Loop through all table rows, and hide those who don't match the search query
-    // The use of 'includes' alllows for partial matches, though this will result in a abundance of records in larger tables and with records 
-    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until 
-    // the db is of significant size.
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[2];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().includes(filter) == true) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
+            }
         }
-      }
     }
-  }
-
+}
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

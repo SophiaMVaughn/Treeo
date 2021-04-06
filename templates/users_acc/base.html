@@ -94,4 +94,36 @@
 			</div>
 		</div>
 	</div>
+<script>
+//we see if the user is logged in and of yes we hilight a the navelment the user is on currently on
+{% if user.is_authenticated %}
+function active_navbar(){
+    //we get all the elements from the navbar element that are that li and loop throught them
+    //to use break we label each of the nested loops
+    loop1:
+    for (let i of document.getElementById("navwrapper").getElementsByTagName("li")) {
+    loop2:
+        for (let j of i.childNodes) {
+            // special case for home as it causes matches for all nav elements
+            if (window.location.origin+'/' == window.location.href && window.location.href == j.href) {
+                i.classList.add('nav_active');
+                //we set the class so the correct navelment is highlighted and break the loop
+                break loop1;
+            }
+            // here we see if the current page has the base elements of one of the nav bar elments
+            else if (j.href.includes(window.location.href))
+            {
+            //we set the class so the correct navelment is highlighted
+                i.classList.add('nav_active');
+                break loop1;
+            }
+        }
+    }
+}
+    window.onload = function() {
+    //since this is the base nav bar it loads the script into each page however this limits the pages as there can only be one onload
+        active_navbar();
+    };
+{% endif %}
+</script>
 </body>

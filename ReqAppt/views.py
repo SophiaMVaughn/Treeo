@@ -22,6 +22,7 @@ from datetime import datetime
 import requests
 from .tasks import *
 from apptArchive.models import ApptArchive
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 User = get_user_model()
@@ -125,24 +126,58 @@ def create_Appointment(request):
 
 def Doctor_view(request):
     x = ApptTable.objects.filter(provider= request.user.provider.id).order_by('meetingDate')
-    return render(request,'ReqAppt/Doctor_view.html',{'ApptTable':x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request,'ReqAppt/Doctor_view.html',context)
 
 
 def Admin_view(request):
     #need to make some search criteria here
     x = ApptTable.objects.all()
-    return render(request, 'ReqAppt/Admin_view.html', {'ApptTable': x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request, 'ReqAppt/Admin_view.html', context)
 
 
 def Patient_view(request):
     x = ApptTable.objects.filter(patient=request.user.patient.id).order_by('meetingDate')
-    for i in x:
-        print(i.meetingDate)
-    return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request,'ReqAppt/Patient_view.html',context)
 
 def approve(request,id):
     appointment=ApptTable.objects.get(id=id)
-    #need tio pass the pass to email stuff
+    #need error handling
     provider_url, patient_url, patient_pwd = generate_zoom(request=1)
     appointment.meeturlprovider=provider_url
     appointment.meeturlpatient=patient_url
@@ -228,6 +263,7 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
+    #try error handling
     appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()

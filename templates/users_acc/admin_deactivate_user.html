@@ -44,5 +44,36 @@
             </tbody>
         </table>
     </div>
+    {% if results.has_other_pages %}
+  <ul class="pagination">
+    {% if results.has_previous %}
+      <li><a href="?page={{results.previous_page_number}}">&#8592;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8592;</span></li>
+    {% endif %}
+    {% for i in results.paginator.page_range %}
+      {% if results.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif results.paginator.num_pages > 5%}
+      {% if i > results.number|add:'-3' and i < results.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == results.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{results.paginator.num_pages}}">{{results.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if results.has_next %}
+      <li><a href="?page={{results.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </div>
 {% endblock content %}
