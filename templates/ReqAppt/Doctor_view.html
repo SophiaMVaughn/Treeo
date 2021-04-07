@@ -1,7 +1,130 @@
-{% extends "ReqAppt/apt_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+    .hidden {
+        display: none !important;
+    }
+</style>
+
+<div class="white">
+    <div class="first">
+        <div class="appointments">Appointments</div>
+
+        <div class="appointmentViews">
+            <div class="button appointmentViews">
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">Calendar View</a>
+                <a class="btn btn-primary btn-large btn-block activeButton" href="{% url 'reqAppt' %}">List View</a>
+            </div>
+        </div>
+        <div class="upcoming">
+            <p>upcoming</p>
+            <div class="bookNewAppointment">
+                <div class="button bookNewAppointment">
+                    <a class="btn btn-primary btn-large btn-block" href="{% url 'create_Appointment' %}">Book New
+                        Appointment</a>
+                </div>
+            </div>
+        </div>
+        <div class="viewApptArchive">
+            <div class="button viewApptArchive">
+                <a class="btn btn-primary btn-large btn-block" href="{% url 'apptArchive' %}">View Archived
+                    Appointments</a>
+            </div>
+        </div>
+
+        <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for patient">
+        <div class="appointmentTableProvider">
+            <table id="myTable" class="table approve">
+                <thead>
+                    <tr>
+                        <th onclick="sortTabledates(0)">Date/Time</th>
+                        <th></th>
+                        <th onclick="sortTable(2)">Patient</th>
+                        <th></th>
+                        <th onclick="sortTable(4)">Appointment Name/Link</th>
+                        <th onclick="sortTable(5)">Approval Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in ApptTable %}
+                    <tr>
+                        <td class="appointmentBubbleDateTime" id="{{a.meetingDate.isoformat}}">{{a.meetingDate}}</td>
+                        <td class="with">with</td>
+                        <td class="appointmentBubblePatient">{{a.patient.user.get_full_name}}
+                        </td>
+                        <td class="with">at</td>
+                        {%if a.status%}
+                        <td class="appointmentBubbleLink"><a href={{a.meeturlprovider}} target="_blank">Zoom Link</a>
+                        </td>
+                        {% else %}
+                        <td class="appointmentBubbleLink">Intro Appointment</td>
+                        {% endif %}
+
+                        {%if a.status%}
+                        <td class="appointmentBubbleStatus">Approved</td>
+                        {% else %}
+                        <td>
+                            <a class="appointmentBubbleApprove button btn btn-large btn-block"
+                                href="{% url 'approve_appt' a.id %}"><span> &#10004; </span></a>
+                            <a class="appointmentBubbleDelete button btn btn-large btn-block"
+                                href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
+                            {% endif %}
+                        </td>
+                        <!-- <td>
+                        {%if a.status%}
+                        <span></span>
+                        {% else %}
+                        <a href="{% url 'reqAppt_delete' a.id  %}"><span> &#10060; </span></a>
+                        {% endif %}
+                    </td> -->
+                        <!-- <td><a href="{% url 'archive' a.id %}"> Click to Archive </a></td> -->
+                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"> Delete </a></td> -->
+                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"><img alt="Delete"
+                                src="{% static 'img/trash.png' %}" width="30" height="35" alt=""
+                                loading="lazy" /></a>
+                    </td> -->
+                        <!--        <td> {{a.patientFname}} </td>-->
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% if ApptTable.has_other_pages %}
+  <ul class="pagination">
+    {% if ApptTable.has_previous %}
+      <li><a href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8592;</span></li>
+    {% endif %}
+    {% for i in ApptTable.paginator.page_range %}
+      {% if ApptTable.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif ApptTable.paginator.num_pages > 5%}
+      {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == ApptTable.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if ApptTable.has_next %}
+      <li><a href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
 <script>
     function hide() {
         var confirm = document.querySelectorAll('.confirm');
@@ -9,70 +132,137 @@
         confirm[1].classList.add('hidden');
     }
 
-</script>
-<style>
-    .hidden {
-        display: none !important;
+function myFunction() {
+    // Declare variables
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
+            }
+        }
     }
-</style>
+}
 
-<div class="orange">
-    <div class="first">
-        <div class="heading">
-            <h2>Doctor View Appointments</h2>
-        </div>
-        <table class="table table-bordered approve">
-
-            <thead>
-                <tr>
-                    <th>Patient First Name</th>
-                    <th>Patient Last Name</th>
-                    <th>Date and Time</th>
-                    <th>Appointment Status</th>
-                    <th>Approve</th>
-                    <th>Reject</th>
-                    <th>Archive</th>
-                    <th>Delete</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                {% for a in ApptTable %}
-                <tr>
-                    <td> {{a.patient.user.first_name}}</td>
-                    <td>{{a.patient.user.last_name}}</td>
-                    <td>{{a.meetingDate}}</td>
-                    {%if a.status%}
-                    <td>Confirmed</td>
-                    {% else %}
-                    <td>Pending</td>
-                    {% endif %}
-
-                    <td>
-                        {%if a.status%}
-                        <span></span>
-                        {% else %}
-                        <a href="{% url 'approve_appt' a.apptId %}"><span> &#10004; </span></a>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {%if a.status%}
-                        <span></span>
-                        {% else %}
-                        <a href="{% url 'reqAppt_delete' a.apptId  %}"><span> &#10060; </span></a>
-                        {% endif %}
-                    </td>
-                    <td><a href="{% url 'archive' a.apptId %}"> Click to Archive </a></td>
-                    <!-- <td><a href="{% url 'reqAppt_delete' a.apptId %}"> Delete </a></td> -->
-                    <td><a href="{% url 'reqAppt_delete' a.apptId %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="35" alt="" loading="lazy" /></a>
-                    </td>
-                    <!--        <td> {{a.patientFname}} </td>-->
-
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "asc";
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < (rows.length - 1); i++) {
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+                /* Get the two elements you want to compare,
+                one from current row and one from the next: */
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /* Check if the two rows should switch place,
+                based on the direction, asc or desc: */
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                // Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /* If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again. */
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+    function sortTabledates(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "asc";
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < (rows.length - 1); i++) {
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+                /* Get the two elements you want to compare,
+                one from current row and one from the next: */
+                x2 = rows[i].getElementsByTagName("TD")[n];
+                y2 = rows[i + 1].getElementsByTagName("TD")[n];
+                x=new Date(x2.id)
+                y=new Date(y2.id)
+                /* Check if the two rows should switch place,
+                based on the direction, asc or desc: */
+                if (dir == "asc") {
+                    if (x > y) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x < y) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                // Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /* If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again. */
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
 {% endblock content %}

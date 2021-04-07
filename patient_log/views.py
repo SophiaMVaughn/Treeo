@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 import sched, time
 from django.views.generic.edit import UpdateView
 import datetime
+import calendar
+from users_acc.models import *
 from django.db.models import Q
 
 @login_required
@@ -20,6 +22,7 @@ def patientlog(request):
         if request.user.user_type==3:
             form = PatientLogForm(request.POST)
             if form.is_valid():
+                print("flag")
                 saverecord = PatientLog()
                 saverecord.patient = request.user.patient
                 saverecord.calories = form.cleaned_data.get('calories')
@@ -27,6 +30,9 @@ def patientlog(request):
                 saverecord.mood = form.cleaned_data.get('mood')
                 saverecord.sleep = form.cleaned_data.get('sleep')
                 saverecord.save()
+                saverecord.date = datetime.datetime.today()
+                saverecord.save()
+                #when this is saved tis saved as monday rathe than sun
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm(),'formerrors': form})
@@ -44,16 +50,35 @@ def patientlog(request):
                 #link to chart on the page
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
         elif request.user.user_type==2:
-            return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
+            context={}
+            master_list=[]
+            try:
+                if request.user.provider.Provider_type ==1:
+                    q = Patient.objects.filter(doc_p=request.user.provider)
+                elif request.user.provider.Provider_type ==2:
+                    q = Patient.objects.filter(doc_d=request.user.provider)
+                elif request.user.provider.Provider_type ==3:
+                    q = Patient.objects.filter(doc_c=request.user.provider)
+                # g=PatientLog.objects.filter(patient__in=q)
+                for i in q:
+                    if PatientLog.objects.filter(patient=i).exists():
+                        master_list.append(PatientLog.objects.filter(patient=i).order_by('date').first())
+                    else:
+                        pass
+            except Exception as e:
+                print(e)
+            context['patients']=master_list
+            print(master_list)
+            return render(request, 'patient_log/patientLog.html', context)
         elif request.user.user_type == 1:
             #reject admins
-            return render(request, 'patient_log/patientLog.html', {"form": AdminProviderLogForm(instance=request)})
+            return redirect('home')
 
 def edit_log(request,id):
     temp = PatientLog.objects.get(id=id)
     form = PatientLogForm()
     if request.method =='POST':
-        print("test")
+        print("edit_log")
         form = PatientLogForm(request.POST)
         if form.is_valid():
             temp.calories = form.cleaned_data.get('calories')
@@ -70,7 +95,7 @@ def edit_log(request,id):
     else:
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 
-def line_chart_Year(request,id):
+def line_chart_Year(id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
     data = []
     data2 = []
@@ -105,28 +130,66 @@ def line_chart_Year(request,id):
             data4 += temp
         else:
             data4 += ['NaN']
-    # for i,val in enumerate(data):
-    #     if data[i] != 'NaN':
-    #         data[i] = float(val)
-    # for i,val in enumerate(data2):
-    #     if data2[i] != 'NaN':
-    #         data2[i] = float(val)
-    # for i,val in enumerate(data3):
-    #     if data3[i] != 'NaN':
-    #         data3[i] = float(val)
-    # for i,val in enumerate(data4):
-    #     if data4[i] != 'NaN':
-    #         data4[i] = float(val)
-    print(data, data2, data3, data4)
-    return render(request, 'patient_log/chart_View.html', {
+    #print(data, data2, data3, data4)
+    timeframe=cur_date.strftime("%Y")
+    # print(timeframe)
+    return {
         'labels': labels,
-        'data': data,
-        'data2': data2,
-        'data3': data3,
-        'data4': data4,
-    })
+        'Calories': data,
+        'Water': data2,
+        'Sleep': data3,
+        'Mood': data4,
+        'timeframe':timeframe}
 
-def line_chart_Week(request,id):
+def line_chart_Month(id):
+    #???? declare as empty and populate with the days as it loops
+    labels = []
+    data = []
+    data2 = []
+    data3 = []
+    data4 = []
+    #for current week
+    cur_date = datetime.datetime.today()
+    num_days = calendar.monthrange(cur_date.year, cur_date.month)[1]
+    # print(num_days)
+    for day in range(1, num_days + 1):
+        labels += [str(day)]
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('calories')).values())
+        if None not in temp:
+            temp[0] = float(temp[0])
+            data += temp
+        else:
+            data += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('water')).values())
+        if None not in temp:
+            temp[0] = float(temp[0])
+            data2 += temp
+        else:
+            data2 += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('sleep')).values())
+        if None not in temp:
+            temp[0] = float(temp[0])
+            data3 += temp
+        else:
+            data3 += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('mood')).values())
+        if None not in temp:
+            temp[0]=float(temp[0])
+            data4 += temp
+        else:
+            data4 += ['NaN']
+    #print(data,data2,data3,data4)
+    timeframe=cur_date.strftime("%B")
+    # print(timeframe)
+    return {
+        'labels': labels,
+        'Calories': data,
+        'Water': data2,
+        'Sleep': data3,
+        'Mood': data4,
+        'timeframe':timeframe
+    }
+def line_chart_Week(id):
     labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     data = []
     data2 = []
@@ -137,6 +200,7 @@ def line_chart_Week(request,id):
     weekday = cur_date.weekday()
     dates = []
     date = cur_date - datetime.timedelta(days=weekday)
+
     for i in range(7):
         dates.append(date + datetime.timedelta(days=i))
     for i in dates:
@@ -164,56 +228,22 @@ def line_chart_Week(request,id):
             data4 += temp
         else:
             data4 += ['NaN']
-    print(data,data2,data3,data4)
-    # for i,val in enumerate(data):
-    #     if data[i] != 'NaN':
-    #         data[i] = float(val)
-    # for i,val in enumerate(data2):
-    #     if data2[i] != 'NaN':
-    #         data2[i] = float(val)
-    # for i,val in enumerate(data3):
-    #     if data3[i] != 'NaN':
-    #         data3[i] = float(val)
-    # for i,val in enumerate(data4):
-    #     if data4[i] != 'NaN':
-    #         data4[i] = float(val)
-    print(data, data2, data3, data4)
-    return render(request, 'patient_log/chart_View.html', {
+    #print(data,data2,data3,data4)
+    timeframe=dates[0].strftime("%B %d-") + dates[6].strftime("%d, %Y")
+    return {
         'labels': labels,
-        'data': data,
-        'data2': data2,
-        'data3': data3,
-        'data4': data4,
+        'Calories': data,
+        'Water': data2,
+        'Sleep': data3,
+        'Mood': data4,
+        'timeframe':timeframe
+    }
+def render_chart(request, id):
+    yearly=line_chart_Year(id)
+    monthly=line_chart_Month(id)
+    weekly=line_chart_Week(id)
+    return render(request, 'patient_log/chart_View.html', {
+        'Weekly': weekly,
+        'Monthly': monthly,
+        'Yearly': yearly,
     })
-
-# def chart(request):
-#     return render(request,'patient_log/chart_View.html')
-#
-# class Circle(BaseLineChartView):
-#     slug = None
-#     print("2")
-#     def get_labels(self):
-#         return ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
-#
-#     def get_providers(self):
-#         return ["Central", "Eastside", "Westside"]
-#
-#
-#     def get_data(self):
-#         aaa = list(PatientLog.objects.filter(patient=id).aggregate(Sum('blood')).values())[0]
-#         baa = list(PatientLog.objects.filter(patient=id).aggregate(Sum('calories')).values())[0]
-#         caa = list(PatientLog.objects.filter(patient=id).aggregate(Sum('water')).values())[0]
-#         print(self.kwargs['slug'])
-#         return [[ baa, 2000,1222,1111],
-#               [aaa, 2.1],
-#                 [caa,1.4]]
-
-
-
-
-
-
-
-
-
-

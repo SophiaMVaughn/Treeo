@@ -1,0 +1,20 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+
+<div class="orange">
+    <div class="messaging">
+        <div id="container">
+            <nav class="navbar navbar-expand  navbar-dark bg-dark">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ">
+                        <a class="nav-link" href="{% url 'Health_Coach' %}">Health Coach</a>
+                        <a class="nav-link" href="{% url 'provider' %}">Provider</a>
+                        <a class="nav-link" href="{% url 'dietitian' %}">Dietitian</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <h1>No Provider Assigned!</h1>
+    </div>
+</div>
+{% endblock content %}

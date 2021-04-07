@@ -20,7 +20,9 @@ from .sms import *
 from .email import *
 from datetime import datetime
 import requests
+from .tasks import *
 from apptArchive.models import ApptArchive
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 User = get_user_model()
@@ -100,23 +102,19 @@ def create_Appointment(request):
             apptHour = float(request.POST['apptHour'])
             print(apptDate)
             print(apptHour)
-            meetingDate = datetime.strptime(apptDate, "%m/%d/%Y")
+            meetingDate = datetime.datetime.strptime(apptDate, "%m/%d/%Y")
             hour = int(math.floor(apptHour))
             minute = int((apptHour - hour) * 60)
             meetingDate = meetingDate.replace(hour=hour, minute=minute)
             print(meetingDate)
-            #call zoom api make meeting and get the url for it
-            # ApptTable.objects.create(
-            #     **form.cleaned_data, meetingDate=meetingDate meeturl=zoom url
-            # )
             appointment=ApptTable.objects.create(
                 **form.cleaned_data, meetingDate=meetingDate
             )
 
             # Oath, TODO use JWT if this doesn't work
-            scheduled_mail_both(appointment)
+            scheduled_mail_both_task.delay(appointment.id)
             target_time_print(appointment)
-            send_message(appointment)
+            send_message_task.delay(appointment.id)
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -128,35 +126,75 @@ def create_Appointment(request):
 
 def Doctor_view(request):
     x = ApptTable.objects.filter(provider= request.user.provider.id).order_by('meetingDate')
-    return render(request,'ReqAppt/Doctor_view.html',{'ApptTable':x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request,'ReqAppt/Doctor_view.html',context)
 
 
 def Admin_view(request):
     #need to make some search criteria here
     x = ApptTable.objects.all()
-    return render(request, 'ReqAppt/Admin_view.html', {'ApptTable': x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request, 'ReqAppt/Admin_view.html', context)
 
 
 def Patient_view(request):
     x = ApptTable.objects.filter(patient=request.user.patient.id).order_by('meetingDate')
-    for i in x:
-        print(i.meetingDate)
-    return render(request,'ReqAppt/Patient_view.html',{'ApptTable':x})
+    pagination = Paginator(x, 5)
+    page = request.GET.get('page', 1)
+    try:
+        pagination = pagination.page(page)
+    except PageNotAnInteger:
+        pagination = pagination.page(1)
+    except EmptyPage:
+        pagination = pagination.page(pagination.num_pages)
+    # general except 501????
+    context = {
+        'ApptTable': pagination
+    }
+    return render(request,'ReqAppt/Patient_view.html',context)
 
 def approve(request,id):
-    appointment=ApptTable.objects.get(apptId=id)
+    appointment=ApptTable.objects.get(id=id)
+    #need error handling
+    provider_url, patient_url, patient_pwd = generate_zoom(request=1)
+    appointment.meeturlprovider=provider_url
+    appointment.meeturlpatient=patient_url
+    print(appointment.meeturlprovider)
+    print(appointment.meeturlpatient)
     appointment.status=True
     appointment.save()
-    approve_message(appointment)
-    approved_mail_both(appointment)
+    approve_message_task.delay(appointment.id)
+    approved_mail_both_task.delay(appointment.id,patient_pwd)
     return redirect("reqAppt_Doctor")
 
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(apptId=id)
+    appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
-        reject_message(appointment)
-        delete_mail_both(appointment)
+        reject_message_task.delay(appointment.id)
+        reject_mail_both_task.delay(appointment.id)
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
@@ -225,7 +263,8 @@ def fullcalendar(request):
     return render(request,'ReqAppt/fullcalendar.html',context)
 
 def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+    #try error handling
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
@@ -304,8 +343,8 @@ def fullcalendar(request):
     }
     return render(request,'ReqAppt/fullcalendar.html',context)
 
-def archive_apt(request,id):
-    appointment = ApptTable.objects.get(apptId=id)
+def archive_apt(id):
+    appointment = ApptTable.objects.get(id=id)
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
@@ -313,10 +352,8 @@ def archive_apt(request,id):
         archiveAppt.patient = appointment.patient
         archiveAppt.save()
         appointment.delete()
-        return redirect('apptArchive')
     except Exception as e:
         print(e)
-        return render(request,"reqAppt/appointment.html")
 #
 # def zoom_callback(request):
 #     code = request.GET["code"]

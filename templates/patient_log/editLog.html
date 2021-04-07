@@ -1,7 +1,8 @@
-{% extends "patient_log/patient_log_base.html" %}
+{% extends "users_acc/base.html" %}
 {% block content %}
-<div class="orange">
-	<h1>Edit Today's Health & Wellness Log</h1>
+<div class="white">
+	
+    <div class="healthLog">Edit Health Log</div>
 	{% if messages %}
 	{% for message in messages %}
 	<h2 style="color:green;">{{message}}</h2>
@@ -11,49 +12,65 @@
 	<div class="patientLog">
 		<form method="POST">
 			{% csrf_token %}
-			<!-- {{ form.as_p }} -->
-			<p>
-				<b> {{edit_log.calories.label_tag}} </b>
-				{{edit_log.calories}}
-				<!-- <br><br> -->
-				<!-- <div class="current">
-				Your Current Calories are <span>{{form.calories}}</span>
-			</div> -->
-			</p>
+			<div class="caloriesBorder">
+                <div class="calories">
+                    <span>Calorie Intake</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="calorieIntake">
+                    <span>Total kCal</span>
+                    <div class="calorieIntakeInput">
+						{{edit_log.calories}}
+                    </div>
+                </div>
+            </div>
 
-			<p>
-				<b> {{edit_log.water.label_tag}} </b>
-				{{edit_log.water}}
-				<!-- <br><br> -->
-				<!-- <div class="current">
-				Your Current Water Intake is <span>{{form.water}}</span>
-			</div> -->
-			</p>
+			<div class="waterBorder">
+                <div class="water">
+                    <span>Water Intake</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="waterIntake">
+                    <span>Total oz</span>
+                    <div class="waterIntakeInput">
+						{{edit_log.water}}
+                    </div>
+                </div>
+            </div>
 
-			<p>
-				<b> {{edit_log.sleep.label_tag}} </b>
-				{{edit_log.sleep}}
-				<!-- <br><br> -->
-				<!-- <div class="current">
-				Your Current Sleep is <span>{{form.sleep}}</span>
-			</div> -->
-			</p>
+			<div class="sleepBorder">
+                <div class="sleep">
+                    <span>Hours Slept</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="sleepIntake">
+                    <span>Total Hours</span>
+                    <div class="sleepIntakeInput">
+						{{edit_log.sleep}}
+                    </div>
+                </div>
+            </div>
 
-			<p>
-				<b> {{edit_log.mood.label_tag}} </b>
-				{{edit_log.mood}}
-				<!-- <br><br> -->
-				<!-- <div class="current">
-				Your Current Mood is <span>{{form.mood}}</span>
-			</div> -->
-			</p>
-
+            <div class="moodBorder">
+                <div class="mood">
+                    <span>Current Mood</span>
+                </div>
+                <!-- should be a message icon next to each message -->
+                <div class="moodIntake">
+                    Scale of 1 to 5 <span>(1 is the lowest, 5 is the highest)</span>
+                    <div class="moodIntakeInput">
+						{{edit_log.mood}}
+                    </div>
+                </div>
+            </div>
 			<div class="button patientLogButton">
-				<button type="submit" class="btn btn-primary btn-large btn-block">Edit Log</button>
+				<button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+				<a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.id %}">See Chart</a>
+
 			</div>
 		</form>
 	</div>
-	<div class="current">
+	<!-- <div class="current">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -79,6 +96,6 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</div> -->
 </div>
 {% endblock content %}

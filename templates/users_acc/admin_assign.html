@@ -1,25 +1,175 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 
-<div class="orange">
-    {% if patient %}
-    <p>{{patient.user.first_name}}</p>
-    <p>{{patient.user.last_name}}</p>
+<div class="white">
+  <!--    {% if patient %}-->
+  <!--    <p>{{patient.user.first_name}}</p>-->
+  <!--    <p>{{patient.user.last_name}}</p>-->
+  <!--    {% else %}-->
+  <div class="appointments">Providers</div>
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for patient">
+  <div class="apptArchiveTable">
+    <table id="myTable" class="table">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Patient Name</th>
+          <th onclick="sortTable(1)">Physician</th>
+          <th onclick="sortTable(2)">Dietician</th>
+          <th onclick="sortTable(3)">Health Coach</th>
+          <th onclick="sortTable(4)">Assign Team</th>
+          <!-- <th>View Notes</th> -->
+        </tr>
+      </thead>
+      {% for i in patients %}
+      <tr>
+        <td class="appointmentBubbleProvider"> {{i.user.get_full_name}}</td>
+        {% if i.doc_p %}
+        <td class="appointmentBubbleProvider">{{i.doc_p.user.get_full_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        {% if i.doc_d %}
+        <td class="appointmentBubbleProvider">{{i.doc_d.user.get_full_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        {% if i.doc_c %}
+        <td class="appointmentBubbleProvider">{{i.doc_c.user.get_full_name}}</td>
+        {% else %}
+        <td class="appointmentBubbleProvider">Unassigned</td>
+        {% endif %}
+        <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
+            href="{% url 'admin_display_team' i.id %}"><span> Assign Team</span></a></td>
+      <tr>
+        {%endfor%}
+    </table>
+  </div>
+  {% if patients.has_other_pages %}
+  <ul class="pagination">
+    {% if patients.has_previous %}
+      <li><a href="?page={{apptArpatientschive.previous_page_number}}">&#8592;</a></li>
     {% else %}
-    <h1>Assign Care Team</h1>
+      <li class="disabled"><span>&#8592;</span></li>
     {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {% for route in form %}
-        <p> {{route}} </p>
-        {% endfor %}
-        {% for k in form2 %}
-        <p> {{k}} </p>
-        {% endfor %}
-        <!--    should be nested four loops for a combined dictioarny-->
-        <div class="button assignCareTeamButton">
-            <button type="submit" class="btn btn-primary btn-large btn-block">Ok</button>
-        </div>
-    </form>
+    {% for i in patients.paginator.page_range %}
+      {% if patients.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif patients.paginator.num_pages > 5%}
+      {% if i > patients.number|add:'-3' and i < patients.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == patients.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{patients.paginator.num_pages}}">{{patients.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if patients.has_next %}
+      <li><a href="?page={{patients.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </div>
+
+<script>
+function myFunction() {
+    // Declare variables
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
+            }
+        }
+    }
+}
+
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount++;
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+</script>
+<!--    {% endif %}-->
+<!--    <form method="post">-->
+<!--        <div class="assignCareTeam">-->
+<!--            {% csrf_token %}-->
+<!--            {% for route in form %}-->
+<!--            <p> {{route}} </p>-->
+<!--            {% endfor %}-->
+<!--            {% for k in form2 %}-->
+<!--            <p> {{k}} </p>-->
+<!--            {% endfor %}-->
+<!--            &lt;!&ndash;    should be nested four loops for a combined dictioarny&ndash;&gt;-->
+<!--            <div class="button assignCareTeamButton">-->
+<!--                <button type="submit" class="btn btn-primary btn-large btn-block">Ok</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
 {% endblock content %}

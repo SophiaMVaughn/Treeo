@@ -1,27 +1,39 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 
-<div class="orange">
+<div class="white">
   <div class="messaging">
     <div id="container">
-      <nav class="navbar navbar-expand  navbar-dark bg-dark">
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ">
-            <a class="nav-link" href="{% url 'Patient1' %}">Patient1</a>
-            <a class="nav-link" href="{% url 'Patient2' %}">Patient2</a>
-            <a class="nav-link" href="{% url 'Patient3' %}">Patient3</a>
-            <a class="nav-link" href="{% url 'Patient4' %}">Patient4</a>
-            <a class="nav-link" href="{% url 'Patient5' %}">Patient5</a>
-            <a class="nav-link" href="{% url 'Patient6' %}">Patient6</a>
-            <a class="nav-link" href="{% url 'Patient7' %}">Patient7</a>
-            <a class="nav-link" href="{% url 'Patient8' %}">Patient8</a>
-            <a class="nav-link" href="{% url 'Patient9' %}">Patient9</a>
-            <a class="nav-link" href="{% url 'Patient10' %}">Patient10</a>
-          </div>
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Patients
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'Health_Coach' %}">{{name1}}</a>
+                <a class="dropdown-item" href="{% url 'Patient2' %}">{{name2}}</a>
+                <a class="dropdown-item" href="{% url 'Patient3' %}">{{name3}}</a>
+                <a class="dropdown-item" href="{% url 'Patient4' %}">{{name4}}</a>
+                <a class="dropdown-item" href="{% url 'Patient5' %}">{{name5}}</a>
+                <a class="dropdown-item" href="{% url 'Patient6' %}">{{name6}}</a>
+                <a class="dropdown-item" href="{% url 'Patient7' %}">{{name7}}</a>
+                <a class="dropdown-item" href="{% url 'Patient8' %}">{{name8}}</a>
+                <a class="dropdown-item" href="{% url 'Patient9' %}">{{name9}}</a>
+                <a class="dropdown-item" href="{% url 'Patient10' %}">{{name10}}</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
-    <h1>Patient 4: {{ q.user.first_name}} {{ q.user.last_name}}</h1>
+    <h1>Patient 4: {{ q.user.get_full_name}}</h1>
     <form method="POST">
       {% csrf_token %}
       <div class="messageBox">

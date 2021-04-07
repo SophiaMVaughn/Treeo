@@ -1,19 +1,29 @@
-{% extends "patient_log/patient_log_base.html" %}
+{% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<div class="orange">
-    <h1>Patient Health Wellness Log</h1>
+<!-- <div class="white">
+    <h1>You have successfully submitted your log!</h1>
     {% if messages %}
     {% for message in messages %}
     <h2 style="color:green;">{{message}}</h2>
     {% endfor %}
     {% endif %}
-    <p>
-        <b>You have successfully submitted your log!</b>
-    </p>
-    <div class="button deleteConfirmButtonAppointment">
+    <div class="button patientLogSubmitButton">
         <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
-        <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">View
-            Chart</a>
+        <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
+            View Chart</a>
     </div>
+</div> -->
+<div class="verification">
+    Log submitted.
+</div>
+<div class="checkmark"></div>
+<div class="almostDone">
+    <span>You may edit your log or view your chart.</span>
+</div>
+
+<div class="button fileUploadCompleteButton">
+    <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
+    <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
+        View Chart</a>
 </div>
 {% endblock content %}
