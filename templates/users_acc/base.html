@@ -101,29 +101,60 @@ function active_navbar(){
     //we get all the elements from the navbar element that are that li and loop throught them
     //to use break we label each of the nested loops
     loop1:
-    for (let i of document.getElementById("navwrapper").getElementsByTagName("li")) {
-    loop2:
-        for (let j of i.childNodes) {
-            // special case for home as it causes matches for all nav elements
-            if (window.location.origin+'/' == window.location.href && window.location.href == j.href) {
-                j.classList.add('nav_active');
-                //we set the class so the correct navelment is highlighted and break the loop
-                break loop1;
+        for (let i of document.getElementById("navwrapper").getElementsByTagName("li")) {
+            loop2:
+                for (let j of i.childNodes) {
+                    // special case for home as it causes matches for all nav elements
+                    if (window.location.origin+'/'!= j.href){
+                    if (window.location.href.includes(j.href))
+                        {
+                            //we set the class so the correct navelment is highlighted
+                            j.classList.add('nav_active');
+                            break loop1;
+                        }
+                    //special case for apptArchive
+                        else if (j.href.includes('ReqAppt') && window.location.href.includes('apptArchive')){
+                            j.classList.add('nav_active');
+                            break loop1;
+                        }
+                    }
+                        // here we see if the current page has the base element of one of the nav bar eleSments
+                    else if (window.location.origin+'/' == window.location.href && window.location.href == j.href) {
+                        j.classList.add('nav_active');
+                        //we set the class so the correct navelment is highlighted and break the loop
+                        break loop1;
+                    }
+
+
+                }
+        }
+}
+//ok so we are allowing there to be other pages that extend this html to use onload events
+//we are making a function here and we get the window.onload thing here
+function addLoadEvent(functorunonpageload) {
+    var previousonload = window.onload;
+    //here we see if the onload has been called
+    if (typeof window.onload != 'function') {
+        //if on load hasnt been called we set the onload to the function(functorunonpageload) we want to run
+        window.onload = functorunonpageload;
+        console.log("cold")
+    }
+    else {
+        //if on load has been called been called already we take the window.onload
+        window.onload = function() {
+            // and add the previous window.onload funtion contents saved under previousonload
+            if (previousonload) {
+            	console.log("hot");
+                previousonload();
             }
-            // here we see if the current page has the base elements of one of the nav bar elments
-            else if (j.href.includes(window.location.href))
-            {
-            //we set the class so the correct navelment is highlighted
-                j.classList.add('nav_active');
-                break loop1;
-            }
+            //and add the function(functorunonpageload) we want to run
+            console.log("hot2");
+            functorunonpageload();
+
         }
     }
 }
-    window.onload = function() {
-    //since this is the base nav bar it loads the script into each page however this limits the pages as there can only be one onload
-        active_navbar();
-    };
+addLoadEvent(active_navbar);
 {% endif %}
 </script>
 </body>
