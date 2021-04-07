@@ -206,6 +206,13 @@ input:focus {
   box-sizing: border-box;
 }
 
+#navwrapper ul li .nav_active {
+  background-color: #fff;
+  color: #faa172;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 /* #navwrapper nav a:visited {
   color: #45a29e;
 } */
@@ -4652,7 +4659,6 @@ body {
   margin-left: 238px;
   top: 406px;
   overflow: auto;
-  max-height: 400px;
 }
 
 .downloadTable .table {

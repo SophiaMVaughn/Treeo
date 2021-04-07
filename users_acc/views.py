@@ -114,10 +114,12 @@ def button(request):
         # m.reciever_loc = 'Inbox'
         # m.save()
 
-        m=ApptTable.objects.first()
-        archive_apt(m.id)
-        m.delete()
-        #thread.objects.create(sender=g, reciever=m)
+        # m=ApptTable.objects.first()
+        # archive_apt(m.id)
+        # m.delete()
+        g=get_user_model().objects.first()
+        m=get_user_model().objects.first()
+        thread.objects.create(sender=g, reciever=m)
         # if thread.objects.filter(sender=g, reciever=m).exists():
         #     print("thread exists")
         #     return redirect('button')

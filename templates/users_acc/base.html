@@ -106,7 +106,7 @@ function active_navbar(){
         for (let j of i.childNodes) {
             // special case for home as it causes matches for all nav elements
             if (window.location.origin+'/' == window.location.href && window.location.href == j.href) {
-                i.classList.add('nav_active');
+                j.classList.add('nav_active');
                 //we set the class so the correct navelment is highlighted and break the loop
                 break loop1;
             }
@@ -114,7 +114,7 @@ function active_navbar(){
             else if (j.href.includes(window.location.href))
             {
             //we set the class so the correct navelment is highlighted
-                i.classList.add('nav_active');
+                j.classList.add('nav_active');
                 break loop1;
             }
         }

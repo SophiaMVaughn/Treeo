@@ -160,6 +160,14 @@ body {
   border-right: 1px solid var(--light);
   border-left: 1px solid var(--light);
   width: calc(100% + 2px);
+  max-height: 500px;
+  overflow: auto;
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+.messageContainer .left .people::-webkit-scrollbar {
+  display: none; 
 }
 .messageContainer .left .people .person {
   position: relative;
@@ -270,9 +278,14 @@ body {
 }
 .messageContainer .right .chat.active-chat {
   display: block;
-  display: flex;
   max-height: 550px;
-  overflow: scroll;
+  overflow: auto;
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+.messageContainer .right .chat.active-chat::-webkit-scrollbar {
+  display: none; 
 }
 .messageContainer .right .chat.active-chat .bubble {
   transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
@@ -448,6 +461,12 @@ word-wrap: break-word;
   right: 0;
 }
 
+#charcount {
+  position: relative;
+  top: 23%;
+  left: 4%;
+}
+
 @keyframes slideFromLeft {
   0% {
     margin-left: -200px;
@@ -488,3 +507,4 @@ word-wrap: break-word;
     opacity: 1;
   }
 }
+
