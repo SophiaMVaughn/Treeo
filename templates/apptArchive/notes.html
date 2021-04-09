@@ -1,44 +1,40 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 <div class="white">
-    <div class="first">
-        <div class="notes">Notes</div>
-
-        <p>{{apptArchive.meetingDate}}</p>
-        <p>{{apptArchive.provider.user.get_full_name}}</p>
-        <p>{{apptArchive.patient.user.get_full_name}}</p>
-        <div class="notesTable">
-            <!-- <div class="messagingTable"> -->
-            <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="Search Notes">
-            <table id="myTable" class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {% for i in aptnotes %}
-                <tr>
-                    <td> {{i.notes}}</td>
-                <td> <p>{{apptArchive.provider.user.get_full_name}}</p> {{i.date}}</td>
-                </tr>
-                    {%endfor%}
-            </table>
-        </div>
-        {% if user.user_type == 2 %}
-        <form method="post">
-            {% csrf_token %}
-            <div class="notesSubmit">
-                {{form.notes}}
-                <p><input type="submit" value="Submit" /></p>
-            </div>
-        </form>
-        {% endif %}
+  <div class="first">
+    <div class="notes">Notes</div>
+    <div class="patientNote">
+      {{apptArchive.patient.user.get_full_name}} - 
+      {{apptArchive.meetingDate}}
     </div>
+    <!-- <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="Search Notes"> -->
+    <div class="notesTable">
+      <!-- <div class="messagingTable"> -->
+      <table id="myTable" class="table">
+        {% for i in aptnotes %}
+        <tr>
+          <td>
+            <p>{{apptArchive.provider.user.get_full_name}}</p> {{i.date}}
+          </td>
+          <td> {{i.notes}}</td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+    {% if user.user_type == 2 %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="notesSubmit">
+        {{form.notes}}
+        <p><input type="submit" value="Submit" /></p>
+      </div>
+    </form>
+    {% endif %}
+  </div>
 
 </div>
 <script>
-function myFunction() {
+  function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
     filter = document.getElementById("myInput").value.toUpperCase();
@@ -48,17 +44,17 @@ function myFunction() {
     // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
     // the results are of a significant size which is mitigated by the pagination
     for (let i of tr) {
-        td = i.getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().includes(filter) == true) {
-                i.style.display = "";
-            } else {
-                i.style.display = "none";
-            }
+      td = i.getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().includes(filter) == true) {
+          i.style.display = "";
+        } else {
+          i.style.display = "none";
         }
+      }
     }
-}
+  }
 
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

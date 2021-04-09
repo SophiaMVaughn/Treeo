@@ -4770,15 +4770,16 @@ body {
 
 .notesTable {
   position: absolute;
-  width: 62%;
+  width: auto;
   margin-left: 238px;
   top: 236px;
-  overflow: auto;
-  max-height: 400px;
+  max-width: 62%;
+  /* overflow: auto; */
+  /* max-height: 500px; */
 }
 
 .notesTable .table {
-  width: 19%;
+  width: auto;
   position: relative;
   left: 10%;
   top: 100%;
@@ -4790,6 +4791,7 @@ body {
 .notesTable table td {
   /* border-bottom: transparent; */
   border-top: transparent;
+  width: auto;
 }
 
 .notesTable table th {
@@ -4904,5 +4906,20 @@ body {
 }
 
 .paginationAppt li:active, .paginationAppt a:active {
+  color: #faa172;
+}
+
+.patientNote {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 393px;
+  top: 164px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.01em;
+
   color: #faa172;
 }
