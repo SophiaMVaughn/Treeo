@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
-      <change afterPath="$PROJECT_DIR$/users_acc/decorators.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct/views.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/apptArchive/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/notes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/survey.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/survey.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -62,6 +71,7 @@
       <recent name="C:\Users\Nraco\Treeo\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\patient_data_log\Treeo\templates" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo" />
       <recent name="D:\Raw\New folder\Senior Project 4996_4997\Repo\Django\Treeo\static" />
     </key>
@@ -137,5 +147,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="preparing to merge with nicoleprototype3" />
     <option name="LAST_COMMIT_MESSAGE" value="preparing to merge with nicoleprototype3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/two_factor_auth/views.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

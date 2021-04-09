@@ -58,19 +58,28 @@ def view_archived_appointment(request,id):
     else:
         if request.user.user_type== 3 and apptArchive.patient.user.id==request.user.id:
             print("user")
-            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': notes, "form": NotesForm()})
+            pagination = Paginator(notes, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
+            # general except 501????
+            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': pagination, "form": NotesForm()})
         elif (request.user.user_type== 2 and (apptArchive.patient.doc_c == apptArchive.provider or apptArchive.patient.doc_p == apptArchive.provider or apptArchive.patient.doc_d == apptArchive.provider)):
             print("provider")
-            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive, 'aptnotes': notes, "form": NotesForm()})
+            pagination = Paginator(notes, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
+            # general except 501????
+            return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': pagination, "form": NotesForm()})
         else:
             print("andmin")
             return redirect("home")
-# def create_note(request, id):
-#    if request.user.user_type == 2:
-#       if request.method =="POST":
-#            form = NotesForm(request.POST)
-#            if form.is_valid():
-#                form.save()
-#                return render(request, 'notes.html', {"form": NotesForm()})
-#        else:
-#            return render(request, 'notes.html', {"form": NotesForm()})
