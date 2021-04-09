@@ -4770,12 +4770,10 @@ body {
 
 .notesTable {
   position: absolute;
-  width: auto;
+  width: 62%;
+  max-width: 62%;
   margin-left: 352px;
   top: 236px;
-  max-width: 62%;
-  overflow: auto;
-  max-height: 500px;
 }
 
 .notesTable .table {
@@ -4791,7 +4789,7 @@ body {
   /* border-bottom: transparent; */
   /* border-top: transparent; */
   border: 2px solid black;
-  width: auto;
+  /* width: auto; */
 }
 
 .notesTable table th {
@@ -4821,6 +4819,14 @@ body {
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.theNotes {
+  min-width: 80%;
+}
+
+.theMaker {
+  max-width: 300px;
 }
 
 .healthLogTable {
@@ -4906,6 +4912,29 @@ body {
 }
 
 .paginationAppt li:active, .paginationAppt a:active {
+  color: #faa172;
+}
+
+.paginationNote {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 720px;
+  left: 29%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.paginationNote li, .paginationNote a {
+  color: #faa172;
+}
+
+.paginationNote li:hover, .paginationNote a:hover {
+  color: #faa172;
+}
+
+.paginationNote li:active, .paginationNote a:active {
   color: #faa172;
 }
 

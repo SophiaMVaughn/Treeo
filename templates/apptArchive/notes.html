@@ -4,7 +4,7 @@
   <div class="first">
     <div class="notes">Notes</div>
     <div class="patientNote">
-      {{apptArchive.patient.user.get_full_name}}: 
+      {{apptArchive.patient.user.get_full_name}}:
       {{apptArchive.meetingDate}}
     </div>
     <!-- <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="Search Notes"> -->
@@ -13,10 +13,10 @@
       <table id="myTable" class="table">
         {% for i in aptnotes %}
         <tr>
-          <td>
+          <td class="theMaker">
             <p>{{apptArchive.provider.user.get_full_name}}</p> {{i.date}}
           </td>
-          <td> {{i.notes}}</td>
+          <td class="theNotes"> {{i.notes}}</td>
         </tr>
         {%endfor%}
       </table>
@@ -32,7 +32,7 @@
     {% endif %}
   </div>
   {% if aptnotes.has_other_pages %}
-  <ul class="pagination">
+  <ul class="paginationNote">
     {% if aptnotes.has_previous %}
     <li class="page-item"><a class="page-link" href="?page={{apptArchive.previous_page_number}}">&#8592;</a></li>
     {% else %}
