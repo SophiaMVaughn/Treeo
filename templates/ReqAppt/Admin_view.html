@@ -29,40 +29,41 @@
       </table>
     </div>
   </div>
-      {% if ApptTable.has_other_pages %}
-  <ul class="pagination">
+  {% if ApptTable.has_other_pages %}
+  <ul class="paginationAppt">
     {% if ApptTable.has_previous %}
-      <li><a href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
     {% else %}
-      <li class="disabled"><span>&#8592;</span></li>
+    <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
     {% for i in ApptTable.paginator.page_range %}
-      {% if ApptTable.number == i %}
-        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
-      {% elif ApptTable.paginator.num_pages > 5%}
-      {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %}
-       <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% elif i == 1 %}
-        <li><a href="?page=1">1</a></li>
-        <li>...</a></li>
-      {% elif i == ApptTable.paginator.num_pages %}
-      <li>...</a></li>
-        <li><a href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
-      {% endif %}
-      {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if ApptTable.has_next %}
-      <li><a href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
-    {% else %}
-      <li class="disabled"><span>&#8594;</span></li>
-    {% endif %}
-  </ul>
-{% endif %}
+    {% if ApptTable.number == i %}
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only"> (current)</span></span></li>
+    {% elif ApptTable.paginator.num_pages > 5%}
+    {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %} <li>
+        <a href="?page={{ i }}">{{i}}</a></li>
+        {% elif i == 1 %}
+        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+        <li class="page-item page-link">...</li>
+        {% elif i == ApptTable.paginator.num_pages %}
+        <li class="page-item page-link">...</li>
+        <li class="page-item"><a class="page-link"
+                href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
+        {% endif %}
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if ApptTable.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
+        {% else %}
+        <li class="disabled page-item page-link"><span>&#8594;</span></li>
+        {% endif %}
+</ul>
+  {% endif %}
 </div>
 <script>
-function myFunction() {
+  function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
     filter = document.getElementById("myInput").value.toUpperCase();
@@ -72,17 +73,17 @@ function myFunction() {
     // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
     // the results are of a significant size which is mitigated by the pagination
     for (let i of tr) {
-        td = i.getElementsByTagName("td")[2];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().includes(filter) == true) {
-                i.style.display = "";
-            } else {
-                i.style.display = "none";
-            }
+      td = i.getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().includes(filter) == true) {
+          i.style.display = "";
+        } else {
+          i.style.display = "none";
         }
+      }
     }
-}
+  }
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

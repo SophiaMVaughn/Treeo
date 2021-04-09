@@ -189,6 +189,14 @@ def provider(request):
         print(e)
         return render(request, 'blogsys/noprovider.html')
 
+        return render(request, 'blogsys/provider.html',
+                      {"form": form, 'PostQ': x, "First": First, "Last": Last})
+    except AttributeError:
+        return render(request, 'blogsys/noprovider.html')
+    except Exception as e:
+        print(e)
+        return render(request, 'blogsys/noprovider.html')
+
 
 def dietitian(request):
     try:
@@ -729,6 +737,13 @@ def Patient10(request):
                           {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
                            "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
                            "name10": name[9]})
+
+
+def noassigned(request):
+    name = setter(request)
+    return render(request, 'blogsys/noassigned.html', {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
+                                                       "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
+                                                       "name10": name[9]})
 
 
 def noassigned(request):

@@ -3177,8 +3177,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 406px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTable .table {
@@ -3285,8 +3283,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 333px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTableAdmin .table {
@@ -3393,8 +3389,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 333px;
-  overflow: auto;
-  max-height: 400px;
   text-align: left;
 }
 
@@ -3480,8 +3474,6 @@ input:focus {
   width: 69%;
   margin-left: 238px;
   top: 406px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTableProvider .table {
@@ -4508,8 +4500,6 @@ body {
   width: 62%;
   margin-left: 191px;
   top: 293px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .apptArchiveTable .table {
@@ -4868,5 +4858,51 @@ body {
   text-align: center;
   position: relative;
   left: 1%;
+  color: #faa172;
+}
+
+.pagination {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 790px;
+  left: 29%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.pagination li, .pagination a {
+  color: #faa172;
+}
+
+.pagination li:hover, .pagination a:hover {
+  color: #faa172;
+}
+
+.pagination li:active, .pagination a:active {
+  color: #faa172;
+}
+
+.paginationAppt {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 850px;
+  left: 29%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.paginationAppt li, .paginationAppt a {
+  color: #faa172;
+}
+
+.paginationAppt li:hover, .paginationAppt a:hover {
+  color: #faa172;
+}
+
+.paginationAppt li:active, .paginationAppt a:active {
   color: #faa172;
 }
