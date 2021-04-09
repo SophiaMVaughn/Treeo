@@ -27,6 +27,15 @@ body {
   background-repeat: none;
 }
 
+.theT {
+  background: url("../img/T.png") no-repeat;
+  background-size: 217px 209px;
+  position: absolute;
+  width: 238px;
+  height: 184px;
+  left: 1677px;
+  top: 744px;
+}
 
 #navwrapper {
   position: absolute;
@@ -99,7 +108,7 @@ body {
   width: 80%;
   height: 75%;
   /* background-color: var(--white); */
-  background-color: aliceblue;
+  background-color: white;
   transform: translate(-50%, -50%);
 }
 .messageContainer .left {
@@ -108,7 +117,7 @@ body {
   height: 100%;
   border: 1px solid var(--light);
   /* background-color: var(--white); */
-  background-color: aliceblue;
+  background-color: white;
 }
 .messageContainer .left .top {
   position: relative;
@@ -207,7 +216,7 @@ body {
   font-size: 14px;
   position: absolute;
   top: 16px;
-  right: 10%;
+  right: 3%;
   padding: 0 0 5px 5px;
   color: var(--grey);
   background-color: var(--white);
@@ -226,7 +235,7 @@ body {
   margin-left: -1px;
   padding-top: 13px;
   border: 0;
-  background-color: var(--blue);
+  background-color: #faa172;
   width: calc(100% + 2px);
   padding-left: calc(10% + 1px);
 }
@@ -242,15 +251,15 @@ body {
   float: left;
   width: 62.4%;
   height: 100%;
-
-  background-color: aliceblue;
+  background-color: white;
+  border: 1px solid #e6e6e6;
 }
 .messageContainer .right .top {
   width: 100%;
   height: 47px;
   padding: 15px 29px;
   /* background-color: #eceff1; */
-  background-color: aliceblue;
+  background-color: white;
   border: 1px solid var(--light);
   border-bottom: none;
   border-left: none;
@@ -411,28 +420,28 @@ max-width: 400px;
 word-wrap: break-word;
   float: left;
   color: var(--white);
-  background-color: var(--blue);
+  background-color: #676464;
   align-self: flex-start;
   -webkit-animation-name: slideFromLeft;
           animation-name: slideFromLeft;
 }
 .messageContainer .right .bubble.you:before {
   left: -3px;
-  background-color: var(--blue);
+  background-color: #676464;
 }
 .messageContainer .right .bubble.me {
 max-width: 400px;
 word-wrap: break-word;
   float: right;
   color: var(--dark);
-  background-color: #eceff1;
+  background-color: #faa172;
   align-self: flex-end;
   -webkit-animation-name: slideFromRight;
           animation-name: slideFromRight;
 }
 .messageContainer .right .bubble.me:before {
   right: -3px;
-  background-color: #eceff1;
+  background-color: #faa172;
 }
 .messageContainer .right .conversation-start {
   position: relative;
