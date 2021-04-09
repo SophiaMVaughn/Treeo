@@ -52,7 +52,16 @@ def view_archived_appointment(request,id):
             if form.is_valid():
                 Notes.objects.create(apptId=apptArchive, notes=form.cleaned_data.get('notes'))
                 notes = Notes.objects.filter(apptId=id).order_by("date")
-                return render(request, 'apptArchive/notes.html', {'apptArchive': apptArchive,'aptnotes': notes, "form": NotesForm()})
+                pagination = Paginator(notes, 5)
+                page = request.GET.get('page', 1)
+                try:
+                    pagination = pagination.page(page)
+                except PageNotAnInteger:
+                    pagination = pagination.page(1)
+                except EmptyPage:
+                    pagination = pagination.page(pagination.num_pages)
+                # general except 501????
+                return render(request, 'apptArchive/notes.html',{'apptArchive': apptArchive, 'aptnotes': pagination, "form": NotesForm()})
         else:
             return redirect("apptArchive")
     else:
