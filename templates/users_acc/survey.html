@@ -196,6 +196,7 @@
     if (k.type.toLowerCase() == 'radio') {
             k.addEventListener("click", function () {
             document.getElementById("next").disabled = false;
+            k.classList.add('survey_active');
             });
     }
     }
