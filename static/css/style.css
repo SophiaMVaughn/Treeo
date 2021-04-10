@@ -48,6 +48,12 @@ body {
   font-size: 1.5em;
 }
 
+/* input[type="radio"] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+} */
+
 input[type="text"] {
   text-align: center;
   background-color: white;
@@ -4774,6 +4780,8 @@ body {
   max-width: 62%;
   margin-left: 352px;
   top: 236px;
+  max-height: 500px;
+  overflow: auto;
 }
 
 .notesTable .table {
@@ -4880,15 +4888,18 @@ body {
   padding-right: 30%;
 }
 
-.pagination li, .pagination a {
+.pagination li,
+.pagination a {
   color: #faa172;
 }
 
-.pagination li:hover, .pagination a:hover {
+.pagination li:hover,
+.pagination a:hover {
   color: #faa172;
 }
 
-.pagination li:active, .pagination a:active {
+.pagination li:active,
+.pagination a:active {
   color: #faa172;
 }
 
@@ -4903,15 +4914,18 @@ body {
   padding-right: 30%;
 }
 
-.paginationAppt li, .paginationAppt a {
+.paginationAppt li,
+.paginationAppt a {
   color: #faa172;
 }
 
-.paginationAppt li:hover, .paginationAppt a:hover {
+.paginationAppt li:hover,
+.paginationAppt a:hover {
   color: #faa172;
 }
 
-.paginationAppt li:active, .paginationAppt a:active {
+.paginationAppt li:active,
+.paginationAppt a:active {
   color: #faa172;
 }
 
@@ -4921,20 +4935,23 @@ body {
   list-style: none;
   position: relative;
   top: 720px;
-  left: 29%;
+  left: 43%;
   width: 883px;
   padding-right: 30%;
 }
 
-.paginationNote li, .paginationNote a {
+.paginationNote li,
+.paginationNote a {
   color: #faa172;
 }
 
-.paginationNote li:hover, .paginationNote a:hover {
+.paginationNote li:hover,
+.paginationNote a:hover {
   color: #faa172;
 }
 
-.paginationNote li:active, .paginationNote a:active {
+.paginationNote li:active,
+.paginationNote a:active {
   color: #faa172;
 }
 

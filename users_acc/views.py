@@ -524,7 +524,7 @@ def user_deactivate(request):
         if request.user.user_type == 3 or request.user.user_type == 2:
             request.user.is_active = False
             request.user.save()
-            return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated']})
+            return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated!']})
 
 @login_required
 def take_survey(request):
