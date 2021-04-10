@@ -189,17 +189,39 @@
     // sets the prev button and renders the first page
     document.getElementById("prev").disabled = true
     renderpage(page_on)
-
+var labels = document.getElementsByTagName('LABEL');
+//labels all of the radio buttons being added to the .label of the buttons
+for (let p of labels) {
+    if (p.htmlFor != '') {
+        var elem = document.getElementById(p.htmlFor);
+        if (elem && elem.tagName.toLowerCase()=='input'){
+        if(elem.type.toLowerCase() == 'radio'){
+        //console.log(elem.type.toLowerCase())
+            elem.label = p;
+            }
+        }
+    }
+}
+ var all_inputs = document.getElementsByTagName('input');
 //here we make it so when the radio buttons are clicked the next button is no longer disabled
-    var all_inputs = document.getElementsByTagName('input');
-    for (let k of all_inputs) {
+for (let k of all_inputs) {
     if (k.type.toLowerCase() == 'radio') {
-            k.addEventListener("click", function () {
+        k.addEventListener("click", function () {
             document.getElementById("next").disabled = false;
-            k.classList.add('survey_active');
-            });
+            //find all inputs with the same name asn see if any are labeled survey active if so remove it
+            for (let o of document.getElementsByName(k.name)) {
+                if (o.label.classList.contains('survey_active')) {
+                    o.label.classList.remove('survey_active');
+                    //console.log(k);
+                   // console.log(o);
+                    break;
+                }
+            }
+            //add active to the clicked element
+            k.label.classList.add('survey_active');
+        });
     }
-    }
+}
 //here we update the progress bar based on a page num as argument
     function updateprogress(var1) {
         var progbar = document.getElementById('pbar');
@@ -277,26 +299,17 @@ function renderpage(var1) {
         pages[page_on].style.display = "";
         //display answers code
         var test = pages[page_on].getElementsByClassName("survey_answer");
-        var chx = all_inputs;
-       var labels = document.getElementsByTagName('LABEL');
-		for (let p of labels) {
-			if (p.htmlFor != '') {
-				 var elem = document.getElementById(p.htmlFor);
-				 if (elem && p.id!="pbarlabel"){
-				 //console.log(p.innerHTML)
-				elem.label = p.innerHTML;
-					}
-			}
-		}
+        //var chx = all_inputs;
+
         for (var i = 0; i < pages.length-1; i++) {
             chx = pages[i].getElementsByTagName('input');
             //console.log(chx)
             for (var j = 0; j < chx.length; j++) {
                 // If you have more than one radio group, also check the name attribute
-                // for the one you want as in && chx[i].name == 'choose'
+                // for the one you want
                 // Return true from the function on first match of a checked item
                 if (chx[j].type == 'radio' && chx[j].checked) {
-                    test[i].getElementsByTagName("p")[0].innerHTML = chx[j].label;
+                    test[i].getElementsByTagName("p")[0].innerHTML = chx[j].label.innerHTML;
                 }
             }
         }
