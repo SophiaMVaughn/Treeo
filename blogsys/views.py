@@ -1,3 +1,4 @@
+#ALLAN IMSEIS
 from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest
 from blogsys.models import PostQ
@@ -25,7 +26,8 @@ def setter(request):
             j = len(name)
     while (len(name) != 10):
         j = j + 1
-        name.append("Patient " + str(j) + " Not Assigned")
+        name.append(" ")
+        # Patient " + str(j) + " Not Assigned
     return name
 
 
