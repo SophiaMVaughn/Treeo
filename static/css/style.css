@@ -48,11 +48,11 @@ body {
   font-size: 1.5em;
 }
 
-/* input[type="radio"] {
+input[type="radio"] {
   position: fixed;
   opacity: 0;
   pointer-events: none;
-} */
+}
 
 input[type="text"] {
   text-align: center;

@@ -137,18 +137,18 @@ function addLoadEvent(functorunonpageload) {
     if (typeof window.onload != 'function') {
         //if on load hasnt been called we set the onload to the function(functorunonpageload) we want to run
         window.onload = functorunonpageload;
-        console.log("cold")
+       // console.log("cold")
     }
     else {
         //if on load has been called been called already we take the window.onload
         window.onload = function() {
             // and add the previous window.onload funtion contents saved under previousonload
             if (previousonload) {
-            	console.log("hot");
+            	//console.log("hot");
                 previousonload();
             }
             //and add the function(functorunonpageload) we want to run
-            console.log("hot2");
+            //console.log("hot2");
             functorunonpageload();
 
         }

@@ -25,7 +25,8 @@ def setter(request):
             j = len(name)
     while (len(name) != 10):
         j = j + 1
-        name.append("Patient " + str(j) + " Not Assigned")
+        name.append("Patient " + str(j))
+        # name.append("Patient " + str(j) + " Not Assigned")
     return name
 
 
