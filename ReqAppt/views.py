@@ -1,3 +1,6 @@
+#Brandon
+#Giorgi
+#Allan
 import calendar
 import json
 
@@ -183,12 +186,14 @@ def approve(request,id):
     appointment.meeturlpatient=patient_url
     print(appointment.meeturlprovider)
     print(appointment.meeturlpatient)
+    #Confirm Appointment
     appointment.status=True
     appointment.save()
     approve_message_task.delay(appointment.id)
     approved_mail_both_task.delay(appointment.id,patient_pwd)
     return redirect("reqAppt_Doctor")
 
+# Delete Appointment
 def Destroy(request, id):
     appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':

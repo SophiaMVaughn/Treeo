@@ -7,21 +7,8 @@
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apptArchive/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/apptArchive/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/apptArchive/notes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/two_factor_auth/core/setup_complete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/survey.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/survey.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
