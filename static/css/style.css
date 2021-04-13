@@ -206,6 +206,13 @@ input:focus {
   box-sizing: border-box;
 }
 
+#navwrapper ul li .nav_active {
+  background-color: #fff;
+  color: #faa172;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 /* #navwrapper nav a:visited {
   color: #45a29e;
 } */
@@ -560,7 +567,7 @@ input:focus {
 
 .signupLink {
   position: absolute;
-  width: 448px;
+  width: auto;
   height: 40px;
   left: 868px;
   top: 845px;
@@ -720,6 +727,14 @@ input:focus {
   color: #ffffff;
 }
 
+.passResetButton .btn:hover {
+  background-color: #fff;
+  color: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 .confirmResetButton {
   position: absolute;
   width: 198px;
@@ -761,8 +776,6 @@ input:focus {
   top: -86px;
 }
 
-
-}
 @media only screen and (max-width: 1280px) {
   .orange {
     width: 200%;
@@ -884,7 +897,7 @@ input:focus {
 
 .lname {
   position: absolute;
-  width: 167px;
+  width: auto;
   height: 40px;
   left: 808px;
   top: 364px;
@@ -1147,12 +1160,13 @@ input:focus {
 }
 
 .registerPasswordOneInput p {
-  font-size: 18px;
-  color: black;
+  font-size: 22px;
+  color: white;
   line-height: 30px;
   position: absolute;
   width: 342px;
   top: 105px;
+  letter-spacing: 0px;
 }
 
 .registerPasswordOneInput input[type="password"] {
@@ -1262,12 +1276,13 @@ input:focus {
 }
 
 .registerPhoneInput p {
-  font-size: 18px;
-  color: black;
+  font-size: 22px;
+  color: white;
   line-height: 30px;
   position: absolute;
   width: 342px;
   top: 105px;
+  letter-spacing: 0px;
 }
 
 .registerPhoneInput input[type="tel"] {
@@ -1432,7 +1447,7 @@ input:focus {
   height: 86px;
   font-style: normal;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 22px;
   line-height: 173%;
   /* or 62px */
   letter-spacing: 0.015em;
@@ -1663,7 +1678,7 @@ input:focus {
 
 .account {
   position: absolute;
-  width: 247px;
+  width: auto;
   height: 76px;
   left: 311px;
   top: 111px;
@@ -1699,7 +1714,7 @@ input:focus {
 
 .patientName {
   position: absolute;
-  width: 247px;
+  width: auto;
   height: 57px;
   left: 59px;
   top: 41px;
@@ -2023,7 +2038,7 @@ input:focus {
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  width: 151px;
+  width: 209px;
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
@@ -2050,7 +2065,7 @@ input:focus {
 
 .editProfileButtonConfirm .btn {
   background: #ffffff;
-  border: 2px solid #faa172;
+  border: 4px solid #faa172;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2060,6 +2075,13 @@ input:focus {
   line-height: 173%;
   letter-spacing: 0.015em;
   color: #faa172;
+}
+
+.editProfileButtonConfirm .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .newProfilePic {
@@ -2249,7 +2271,7 @@ input:focus {
 
 .welcome {
   position: absolute;
-  width: 351px;
+  width: auto;
   height: 76px;
   left: 320px;
   top: 63px;
@@ -3083,6 +3105,13 @@ input:focus {
   box-sizing: border-box;
 }
 
+.appointmentViews .activeButton {
+  background-color: #fff;
+  color: #faa172;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
+
 .upcoming {
   position: absolute;
   width: 52%;
@@ -3139,7 +3168,7 @@ input:focus {
 .bookNewAppointment .btn:hover {
   background-color: #faa172;
   color: #fff;
-  border: 4px solid #fff;
+  border: 4px solid #faa172;
   box-sizing: border-box;
 }
 
@@ -3217,7 +3246,7 @@ input:focus {
   font-style: normal;
   font-weight: normal;
   font-size: 18.9366px;
-  line-height: 106%;
+  line-height: 266%;
 
   /* or 20px */
   letter-spacing: 0.01em;
@@ -3325,7 +3354,7 @@ input:focus {
   font-style: normal;
   font-weight: normal;
   font-size: 18.9366px;
-  line-height: 106%;
+  line-height: 266%;
 
   /* or 20px */
   letter-spacing: 0.01em;
@@ -3507,7 +3536,7 @@ input:focus {
   font-style: normal;
   font-weight: normal;
   font-size: 18.9366px;
-  line-height: 106%;
+  line-height: 266%;
 
   /* or 20px */
   letter-spacing: 0.01em;
@@ -4462,13 +4491,13 @@ body {
 
 .apptArchive {
   position: absolute;
-  width: 351px;
+  width: auto;
   height: 76px;
   left: 320px;
   top: 63px;
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 72px;
   line-height: 108px;
   letter-spacing: 0.01em;
 
@@ -4477,8 +4506,8 @@ body {
 .apptArchiveTable {
   position: absolute;
   width: 62%;
-  margin-left: 238px;
-  top: 406px;
+  margin-left: 191px;
+  top: 293px;
   overflow: auto;
   max-height: 400px;
 }
@@ -4495,6 +4524,7 @@ body {
 .apptArchiveTable table td {
   border-bottom: transparent;
   border-top: transparent;
+  line-height: 56px;
 }
 
 .apptArchiveTable table th {
@@ -4508,10 +4538,58 @@ body {
 
   /* or 20px */
   letter-spacing: 0.01em;
-  text-align: left;
+  text-align: center;
   position: relative;
   left: 1%;
   color: #faa172;
+}
+
+.apptArchiveTable table .appointmentBubbleProvider {
+  width: 26%;
+  height: 60px;
+  background: #676464;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 100px;
+  font-size: 19px;
+}
+.apptArchiveTable table .appointmentBubbleApprove {
+  height: 60px;
+  background: #faa172;
+  color: white;
+  text-align: center;
+  line-height: 34px;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.apptArchiveTable table .appointmentBubbleApprove .btn {
+  color: #fff;
+  /* padding: 8px 0px;
+  position: absolute;
+  text-decoration: none; */
+  width: 239.22px;
+  height: 53.18px;
+  /* left: -56px;
+  top: 199.35px; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19.1585px;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  background: #faa172;
+  border: 2.95447px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 73.8617px;
+}
+
+.apptArchiveTable table .appointmentBubbleApprove:hover {
+  background-color: #fff;
+  color: #faa172;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
 }
 
 .apptArchiveContainer {
@@ -4581,7 +4659,6 @@ body {
   margin-left: 238px;
   top: 406px;
   overflow: auto;
-  max-height: 400px;
 }
 
 .downloadTable .table {
@@ -4609,9 +4686,9 @@ body {
 
   /* or 20px */
   letter-spacing: 0.01em;
-  text-align: left;
+  text-align: center;
   position: relative;
-  left: 1%;
+  left: 0%;
   color: #faa172;
 }
 
@@ -4663,8 +4740,8 @@ body {
   position: absolute;
   width: 321px;
   height: 57px;
-  left: 51%;
-  top: 170px;
+  left: 34%;
+  top: 121px;
 }
 
 .viewApptArchive .btn {
@@ -4675,7 +4752,7 @@ body {
   font-style: normal;
   font-weight: 600;
   font-size: 17px;
-  line-height: 53%;
+  line-height: 54%;
   padding: 20px 0;
 
   /* or 12px */
@@ -4684,5 +4761,112 @@ body {
   color: #faa172;
 }
 
+.viewApptArchive .btn:hover {
+  background-color: #faa172;
+  color: #fff;
+  border: 4px solid #faa172;
+  box-sizing: border-box;
+}
 
+#title {
+  display: block;
+}
 
+.active,
+.chartButton:hover {
+  background-color: #faa172;
+  color: white;
+}
+
+.notesTable {
+  position: absolute;
+  width: 62%;
+  margin-left: 238px;
+  top: 236px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.notesTable .table {
+  width: 19%;
+  position: relative;
+  left: 10%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  text-align: center;
+}
+
+.notesTable table td {
+  /* border-bottom: transparent; */
+  border-top: transparent;
+}
+
+.notesTable table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.notesTable table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: left;
+  position: relative;
+  left: 1%;
+  color: #faa172;
+}
+
+.notesSubmit {
+  position: absolute;
+  width: auto;
+  height: 110px;
+  left: 823px;
+  top: 603px;
+  /* top: 1057px; */
+  /* top: 890px; */
+  /* top: 822px; temp until password reqs accounted for in another way */
+  /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.healthLogTable {
+  position: absolute;
+  width: 69%;
+  margin-left: 238px;
+  top: 406px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.healthLogTable .table {
+  width: 86%;
+  position: relative;
+  left: 4%;
+  top: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.healthLogTable table td {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.healthLogTable table th {
+  border-bottom: transparent;
+  border-top: transparent;
+}
+
+.healthLogTable table thead {
+  font-size: 18.9366px;
+  line-height: 106%;
+
+  /* or 20px */
+  letter-spacing: 0.01em;
+  text-align: center;
+  position: relative;
+  left: 1%;
+  color: #faa172;
+}

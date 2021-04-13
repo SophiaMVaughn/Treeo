@@ -1,15 +1,15 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
 <div class="verification">
-    upload complete.
+    Upload complete.
 </div>
 <div class="checkmark"></div>
 <div class="almostDone">
-    <span>you may now return to the previous page to upload another file.</span>
+    <span>You may now return to the previous page to upload another file.</span>
 </div>
-<div class="theT"></div>
+
 <div class="button fileUploadCompleteButton">
-    <a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">upload a
-        different file</a>
+    <a href="{% url 'upload_download_file_upload' %}" class="btn btn-primary btn-large btn-block">Upload a
+        Different File</a>
 </div>
 {% endblock content %}

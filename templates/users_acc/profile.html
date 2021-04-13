@@ -2,12 +2,12 @@
 {% block content %}
 <div class="white">
     <div class="account">
-        account
+        Account
     </div>
     <div class="accountProfilePic">
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         <div class="button editProfileButton">
-            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">edit profile</a>
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
             {% if user.user_type != 1%}
             <a href="{% url 'user_deactivate' %}" class="btn btn-primary btn-large btn-block">Deactivate Account</a>
             {% endif %}
@@ -16,21 +16,21 @@
 
     <div class="patientNameBox">
         <div class="patientName">
-            {{user.first_name|lower}} {{user.last_name|lower}}
+            {{user.get_full_name}}
             <!-- {{user.date_joined}} -->
         </div>
     </div>
     <div class="providerTeamBox">
         {% if user.user_type == 3%}
         <div class="providerTeam">
-            provider team
+            Provider Team
         </div>
         <div class="dietitianBox">
             <div class="dietitianName">
-                dietitian: {{user.patient.doc_d.user.first_name|lower}} {{user.patient.doc_d.user.last_name|lower}}
+                Dietitian: {{user.patient.doc_d.user.get_full_name}}
             </div>
             <div class="button viewProviderDetailsButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+                <a href="{% url 'diet_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
             </div>
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
@@ -38,10 +38,10 @@
         </div>
         <div class="physicianBox">
             <div class="physicianName">
-                physician: {{user.patient.doc_p.user.first_name|lower}} {{user.patient.doc_p.user.last_name|lower}}
+                Physician: {{user.patient.doc_p.user.get_full_name}}
             </div>
             <div class="button viewProviderDetailsButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+                <a href="{% url 'doctor_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
             </div>
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
@@ -49,10 +49,10 @@
         </div>
         <div class="coachBox">
             <div class="coachName">
-                health coach: {{user.patient.doc_c.user.first_name|lower}} {{user.patient.doc_c.user.last_name|lower}}
+                Health Coach: {{user.patient.doc_c.user.get_full_name}}
             </div>
             <div class="button viewProviderDetailsButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">view provider details</a>
+                <a href="{% url 'coach_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
             </div>
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
@@ -60,17 +60,17 @@
         </div>
 
         {% endif %}
-        <!-- <div class="questionBox">
+        <div class="questionBox">
             <div class="button helpButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">?</a>
             </div>
             <div class="questionName">
                 questions? contact a treeo admin
             </div>
-        </div> -->
+        </div>
 
     </div>
-    <div class="theT"></div>
+    
     <!-- <div class="profile">
         <p><b>Username: </b>{{user.username}}</p>
 

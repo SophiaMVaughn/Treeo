@@ -18,7 +18,7 @@
             <thead>
                 <tr>
                     <th onclick="sortTable(0)">File Name</th>
-                    <th onclick="sortTable(1)">File Type</th>
+                    <th onclick="sortTable(1)">Document</th>
                     <th onclick="sortTable(2)">User</th>
                     <th onclick="sortTable(3)">Date Created</th>
                     <th>Download</th>
@@ -42,31 +42,62 @@
             </tbody>
         </table>
     </div>
+{% if file_list.has_other_pages %}
+  <ul class="pagination">
+    {% if file_list.has_previous %}
+      <li><a href="?page={{file_list.previous_page_number}}">&#8592;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8592;</span></li>
     {% endif %}
+    {% for i in file_list.paginator.page_range %}
+      {% if file_list.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif file_list.paginator.num_pages > 5%}
+      {% if i > file_list.number|add:'-3' and i < file_list.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == file_list.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{file_list.paginator.num_pages}}">{{file_list.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if file_list.has_next %}
+      <li><a href="?page={{file_list.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endif %}
 </div>
 
 <script>
-    function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInputPatient");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
+function myFunction() {
+    // Declare variables
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
             }
         }
     }
+}
 
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

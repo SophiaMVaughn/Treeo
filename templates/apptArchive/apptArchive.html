@@ -4,27 +4,137 @@
   <div class="first">
     <div class="apptArchive">Archived Appointments</div>
 
-      <div class="apptArchiveTable">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Doctor Name</th>
-              <th></th>
-              <th>Patient Name</th>
-              <th></th>
-              <th>Date and Time</th>
-          <!-- <th>View Notes</th> -->
-            </tr>
-        </thead>
-      {% for i in apptArchive %}
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
+    <div class="apptArchiveTable">
+      <table id="myTable" class="table">
+        <thead>
           <tr>
-            <td> {{i.provider.user.first_name}} {{i.provider.user.last_name}}</td>
-            <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
-            <td>{{i.meetingDate}}</td>
-         <tr>
-      {%endfor%}
+            <th onclick="sortTable(0)">Provider Name</th>
+            <th onclick="sortTable(1)">Patient Name</th>
+            <th onclick="sortTable(2)">Date and Time</th>
+            <th></th>
+          </tr>
+        </thead>
+        {% for i in apptArchive %}
+        <tr>
+          <td> {{i.provider.user.get_full_name}}</td>
+          <td>{{i.patient.user.get_full_name}}</td>
+          <td>{{i.meetingDate}}</td>
+          <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
+              href="{% url 'archived_appointment' i.id %}"><span>View Meeting Notes </span></a></td>
+        <tr>
+          {%endfor%}
       </table>
     </div>
   </div>
+ {% if apptArchive.has_other_pages %}
+  <ul class="pagination">
+    {% if apptArchive.has_previous %}
+      <li><a href="?page={{apptArchive.previous_page_number}}">&#8592;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8592;</span></li>
+    {% endif %}
+    {% for i in apptArchive.paginator.page_range %}
+      {% if apptArchive.number == i %}
+        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+      {% elif apptArchive.paginator.num_pages > 5%}
+      {% if i > apptArchive.number|add:'-3' and i < apptArchive.number|add:'3' %}
+       <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% elif i == 1 %}
+        <li><a href="?page=1">1</a></li>
+        <li>...</a></li>
+      {% elif i == apptArchive.paginator.num_pages %}
+      <li>...</a></li>
+        <li><a href="?page={{apptArchive.paginator.num_pages}}">{{apptArchive.paginator.num_pages}}</a></li>
+      {% endif %}
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if apptArchive.has_next %}
+      <li><a href="?page={{apptArchive.next_page_number}}">&#8594;</a></li>
+    {% else %}
+      <li class="disabled"><span>&#8594;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 </div>
+<script>
+function myFunction() {
+    // Declare variables
+    var filter, tr, td, txtValue;
+    filter = document.getElementById("myInput").value.toUpperCase();
+    tr = document.getElementById("myTable").getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+    // the results are of a significant size which is mitigated by the pagination
+    for (let i of tr) {
+        td = i.getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().includes(filter) == true) {
+                i.style.display = "";
+            } else {
+                i.style.display = "none";
+            }
+        }
+    }
+}
+
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount++;
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+</script>
 {% endblock content %}

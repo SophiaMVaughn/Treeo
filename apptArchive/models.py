@@ -10,5 +10,5 @@ class ApptArchive(models.Model):
 class Notes(models.Model):
     notes = models.CharField(max_length=600)
     apptId = models.ForeignKey(ApptArchive, on_delete=models.CASCADE)
-    #dateAdded = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now=True)
 

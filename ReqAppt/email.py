@@ -66,7 +66,7 @@ def approved_mail_both(apt,patient_pwd):
     print("Email succesfully delivered")
 
 
-def delete_mail_both(apt):
+def reject_mail_both(apt):
 
     subject = "Appointment Cancelled"
     message_for_patient = f"Your appointment with the Treeo provider " \

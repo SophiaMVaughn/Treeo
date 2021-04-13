@@ -28,6 +28,7 @@ urlpatterns = [
     path('patient_log/', include('patient_log.urls')),
     path('blogsys/', include('blogsys.urls')),
     path('messaging/', include('messaging.urls')),
+    path('direct/', include('direct.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

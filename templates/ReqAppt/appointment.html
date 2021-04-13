@@ -3,7 +3,7 @@
 <div class="white">
     <div class="appointments">Appointments</div>
     <div class="newAppointment">Book New Appointment</div>
-    <div class="theT"></div>
+    
     <form action="{% url 'create_Appointment' %}" method="post">
         {% csrf_token %}
         <div class="appointment">

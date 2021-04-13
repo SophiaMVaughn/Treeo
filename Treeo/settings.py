@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
+    'direct',
 ]
 
 MIDDLEWARE = [

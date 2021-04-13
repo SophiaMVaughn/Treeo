@@ -7,7 +7,7 @@ from .models import *
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.decorators import login_required
 from users_acc.models import *
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #upatient files should not be in admin view (upload/download)
 
@@ -19,12 +19,17 @@ def render_file_upload(request):
             fname = request.FILES["file"].name
             if request.FILES["file"].size <= 52428800:
                 if len(fname) <= 100:
-                    if (fname.endswith(".doc") or fname.endswith(".docx") or fname.endswith(".odf") or fname.endswith(".pdf") or fname.endswith(".jpeg") or fname.endswith(".jpg") or fname.endswith(".png") or fname.endswith(".bmp") or fname.endswith(".gif")):
+                    fcheck=False
+                    for i in [".doc",".docx",".odf",".pdf",".jpeg",".jpg",".png",".bmp",".gif"]:
+                        if fname.endswith(i):
+                            fcheck = True
+                    if fcheck==True:
                         f=Uploaded_File()
                         f.usern=request.user
                         print(request.FILES["file"].name)
                         f.file_name = request.FILES["file"].name
                         f.file =request.FILES["file"]
+                        f.file_type=up_form.cleaned_data.get('file_type')
                         f.save()
                         return render(request, 'upload_download/file_upload_Complete.html')
                     else:
@@ -66,15 +71,46 @@ def render_file_download(request):
                         'File_Type': i.get_file_type_display(),
                         'id': i.pk
                     })
+                pagination = Paginator(files, 5)
+                page = request.GET.get('page', 1)
+                try:
+                    pagination = pagination.page(page)
+                except PageNotAnInteger:
+                    pagination = pagination.page(1)
+                except EmptyPage:
+                    pagination = pagination.page(pagination.num_pages)
+                #general except 501????
                 context = {
-                    'file_list': files
+                    'file_list': pagination
                 }
                 return render(request, 'upload_download/filedownload.html', context)
             else:
                 return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
     else:
         if request.user.user_type == 1:
-            return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
+            for i in Uploaded_File.objects.all():
+                # just find a way to query the request.user instead of all
+                if i.usern.user_type == 2:
+                    files.append({
+                        'FileName': i.file_name,
+                        'Uploader': i.usern.username,
+                        'file': i.file.url,
+                        'date_uploaded': i.date_created,
+                        'File_Type': i.get_file_type_display(),
+                        'id': i.pk
+                    })
+            pagination = Paginator(files, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
+            context = {
+                'file_list': pagination
+            }
+            return render(request, 'upload_download/filedownload.html', context)
         elif request.user.user_type == 2:
             temp = Uploaded_File.objects.none()
             g = Uploaded_File.objects.filter(usern=request.user)
@@ -109,9 +145,16 @@ def render_file_download(request):
                     'File_Type': i.get_file_type_display(),
                     'id': i.pk
                 })
-
+        pagination = Paginator(files, 5)
+        page = request.GET.get('page', 1)
+        try:
+            pagination = pagination.page(page)
+        except PageNotAnInteger:
+            pagination = pagination.page(1)
+        except EmptyPage:
+            pagination = pagination.page(pagination.num_pages)
         context = {
-            'file_list': files
+            'file_list': pagination
         }
         return render(request, 'upload_download/filedownload.html', context)
 

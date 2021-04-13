@@ -161,6 +161,13 @@
 		border: 4px solid #faa172;
 		box-sizing: border-box;
 	}
+
+	.appointmentViews .activeButton {
+		background-color: #fff;
+		color: #faa172;
+		border: 4px solid #faa172;
+		box-sizing: border-box;
+	}
 </style>
 
 <body>
@@ -170,29 +177,29 @@
 		{% if user.user_type == 1 %}
 		<div id="navwrapper">
 			<ul>
-				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'admin_view' %}">assign trio</a></li> -->
-				<li><a class="nav-link" href="{% url 'doctor_registration' %}">register provider</a></li>
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
-				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
-				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
-				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
 			</ul>
 		</div>
 		{% else %}
 		<div id="navwrapper">
 			<ul>
-				<li><a class="nav-link" href="{% url 'home' %}">home</a></li>
-				<li><a class="nav-link" href="{% url 'reqAppt' %}">appointments</a></li>
-				<li><a class="nav-link" href="{% url 'patientlog' %}">health log</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">file upload</a></li>
-				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">file download</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">messages</a></li>
-				<li><a class="nav-link" href="{% url 'profile' %}">account</a></li>
-				<li><a class="nav-link" href="{% url 'logout' %}">log out</a></li>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
 			</ul>
 		</div>
 		{% endif %}
@@ -202,7 +209,8 @@
 				<div class="appointments">Appointments</div>
 				<div class="appointmentViews">
 					<div class="button appointmentViews">
-						<a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">Calendar
+						<a class="btn btn-primary btn-large btn-block activeButton"
+							href="{% url 'reqAppt_calendar' %}">Calendar
 							View</a>
 						<a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt' %}">List View</a>
 					</div>

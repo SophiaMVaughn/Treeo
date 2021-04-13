@@ -1,6 +1,6 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<div class="white">
+<!-- <div class="white">
     <h1>You have successfully submitted your log!</h1>
     {% if messages %}
     {% for message in messages %}
@@ -12,5 +12,18 @@
         <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
             View Chart</a>
     </div>
+</div> -->
+<div class="verification">
+    Log submitted.
+</div>
+<div class="checkmark"></div>
+<div class="almostDone">
+    <span>You may edit your log or view your chart.</span>
+</div>
+
+<div class="button fileUploadCompleteButton">
+    <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
+    <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
+        View Chart</a>
 </div>
 {% endblock content %}
