@@ -6,10 +6,10 @@ import random
 import string
 
 
-/*
-	Author: Giorgi Nozadze
-	This method generates the zoom link by using zoom provided credentials, zoom API is ran using wrapper called zoomus
-*/
+
+	#Author: Giorgi Nozadze
+	#This method generates the zoom link by using zoom provided credentials, zoom API is ran using wrapper called zoomus
+
 
 def generate_zoom(request):
 
