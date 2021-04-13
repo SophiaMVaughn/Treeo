@@ -38,8 +38,14 @@
     //
 
 
+    /*
+	Author: Giorgi Nozadze
+    Code bellow is responsible for dynamic time slots in request appointment features.
+*/
 
 
+    
+    // This function calls datepicker calendar for appointment scheduling
 
     $(function () {
         $("#datepicker").datepicker({
@@ -65,6 +71,9 @@
 
     });
 
+    
+
+  // This method loads queried timeslots and then loads them into timeslot dropdown menu
 
     const loadTimeSlots = (data) => {
         const timeslots = $("#timeslots");
@@ -79,7 +88,9 @@
             timeslots.append(`<option value="${d}">${display}</option>`)
         });
     }
-
+    
+    
+          //This method checks inputs for values, if both values are not null, sends the http request
     const changeHandler = () => {
         const provider_id = $('#id_provider').val();
         const date = $('#datepicker').val();
@@ -92,7 +103,7 @@
         }
     };
 
-
+      //Listen on changes from these two elements. These values are needed to query for available hour slots
     $(() => $("#id_provider, #datepicker").on('change', changeHandler));
 
 </script>
