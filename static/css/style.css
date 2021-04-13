@@ -408,7 +408,7 @@ input:focus {
 }
 
 .twitter {
-  background: url("../img/TwitterLogo.png");
+  /* background: url("../img/TwitterLogo.png"); */
   background-size: 177px 162px;
   position: absolute;
   width: 141px;
@@ -418,7 +418,7 @@ input:focus {
 }
 
 .instagram {
-  background: url("../img/InstagramLogo.png");
+  /* background: url("../img/InstagramLogo.png"); */
   background-size: 133px 125px;
   position: absolute;
   width: 141px;
@@ -427,7 +427,7 @@ input:focus {
   top: 651px;
 }
 .facebook {
-  background: url("../img/FacebookLogo.png");
+  /* background: url("../img/FacebookLogo.png"); */
   background-size: 133px 125px;
   position: absolute;
   width: 141px;
