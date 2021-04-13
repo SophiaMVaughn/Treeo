@@ -89,7 +89,12 @@ def home(request):
 def Pending(request):
     return render(request,'ReqAppt/Pending.html')
 
-
+/*
+	Author: Giorgi Nozadze
+	This method is responsible for scheduling appointment scheduling, first it checks form validation, 
+    if valid appointment is scheduled and some of the methods of other features are called, 
+    line 123 calls mail notification, line 125 calls text message
+*/
 def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
@@ -203,6 +208,11 @@ def Destroy(request, id):
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
+
+/*
+	Author: Giorgi Nozadze
+	This method checks for available time slots for the appointments
+*/
 STARTING_HOUR = 8
 ENDING_HOUR = 16
 def Doctor_avail_view(request, id, date_str):
@@ -222,13 +232,20 @@ def Doctor_avail_view(request, id, date_str):
 
     unavailable_times = {appt_to_time(appt) for appt in appointments}
 
+    # in order to switch time slots from 60 minutes to 30 minutes use line 237 instead of 238
+    # second one simply divides h by 2
     # data = [h/2 for h in range(STARTING_HOUR * 2, (ENDING_HOUR + 1) * 2) if h/2 not in unavailable_times]
     data = [h for h in range(STARTING_HOUR , ENDING_HOUR + 1) if h not in unavailable_times]
 
+    # return json response of available time slots
     return JsonResponse(data, safe=False)
 
 
 #### FULL CALL
+/*
+	Author: Giorgi Nozadze
+	This method checks for available time slots for the appointments
+*/
 def event(request):
     meeting_arr = []
     #if request.GET.get('patient') == "all":
