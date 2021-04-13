@@ -16,10 +16,10 @@ from .utils import generate_zoom
 # zoom_link = generate_zoom(request=1)
 
 
-/*
-	Author: Giorgi Nozadze
-	This method sends the scheduling notification email to both Patient and The Provider
-*/
+
+	#Author: Giorgi Nozadze
+	#This method sends the scheduling notification email to both Patient and The Provider
+
 
 def scheduled_mail_both(apt):
 
@@ -45,10 +45,10 @@ def scheduled_mail_both(apt):
     )
     
     
-/*
-	Author: Giorgi Nozadze
-	This method sends the approved appointment notification email to both Patient and The Provider
-*/
+
+	#Author: Giorgi Nozadze
+	#This method sends the approved appointment notification email to both Patient and The Provider
+
 
 
 def approved_mail_both(apt,patient_pwd):
@@ -77,10 +77,10 @@ def approved_mail_both(apt,patient_pwd):
     print("Email succesfully delivered")
 
     
-/*
-	Author: Giorgi Nozadze
-	This method sends the appointment rejection notification email to both Patient and The Provider
-*/
+
+	#Author: Giorgi Nozadze
+	#This method sends the appointment rejection notification email to both Patient and The Provider
+
 
 def reject_mail_both(apt):
 
