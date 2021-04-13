@@ -308,41 +308,7 @@ def archive_apt(request,id):
     except Exception as e:
         print(e)
         return render(request,"reqAppt/appointment.html")
-#
-# def zoom_callback(request):
-#     code = request.GET["code"]
-#     data = requests.post(f"https://zoom.us/oauth/token?grant_type=authorization_code&code="
-#                          f"obBEe8ewaL_KdYKjnimT4KPd8KKdQt9FQ&redirect_uri="
-#                          f"http://127.0.0.1:8000/ReqAppt/Appointment", headers={
-#         "Authorization": "Basic " + base64_encode("OoIw_Ll1SPG3Me81tIYqQ:0pbxapRDeB187rtT6SQSztYV9obAQpK6")
-#     })
-#     print(data.text)
-#     requests.session["zoom_access_token"] = data.json()["access_token"]
-#
-#     return HttpResponseRedirect("/ReqAppt/appointment")
-#
-#
-#
-# def schedule_interview(request):
-#     if request.method == "POST":
-#
-#         patient = User.objects.get(id=int(request.POST["patient"]))
-#         # patient = Profile.objects.get(patient=patient)
-#
-#         data = requests.post("https://api.zoom.us/v2/users/me/meetings", headers={
-#             'content-type': "application/json",
-#             "authorization": f"Bearer {request.session['zoom_access_token']}"
-#         }, data=json.dumps({
-#             "topic": f"Interview with {ApptTable.patient.name}",
-#             "type": 2,
-#             "start_time": request.POST["time"],
-#         }))
-#
-#         print("*)(@*$)@($*)@($*@)(#*@#)(*@#")
-#         print(data.json()["join_url"], data.json()["start_url"])
-#
-#         return HttpResponseRedirect(f"/ReqAppt/Appointment")
-#
+
 
     is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
     if is_patient:
@@ -386,41 +352,5 @@ def archive_apt(id):
         appointment.delete()
     except Exception as e:
         print(e)
-#
-# def zoom_callback(request):
-#     code = request.GET["code"]
-#     data = requests.post(f"https://zoom.us/oauth/token?grant_type=authorization_code&code="
-#                          f"obBEe8ewaL_KdYKjnimT4KPd8KKdQt9FQ&redirect_uri="
-#                          f"http://127.0.0.1:8000/ReqAppt/Appointment", headers={
-#         "Authorization": "Basic " + base64_encode("OoIw_Ll1SPG3Me81tIYqQ:0pbxapRDeB187rtT6SQSztYV9obAQpK6")
-#     })
-#     print(data.text)
-#     requests.session["zoom_access_token"] = data.json()["access_token"]
-#
-#     return HttpResponseRedirect("/ReqAppt/appointment")
-#
-#
-#
-# def schedule_interview(request):
-#     if request.method == "POST":
-#
-#         patient = User.objects.get(id=int(request.POST["patient"]))
-#         # patient = Profile.objects.get(patient=patient)
-#
-#         data = requests.post("https://api.zoom.us/v2/users/me/meetings", headers={
-#             'content-type': "application/json",
-#             "authorization": f"Bearer {request.session['zoom_access_token']}"
-#         }, data=json.dumps({
-#             "topic": f"Interview with {ApptTable.patient.name}",
-#             "type": 2,
-#             "start_time": request.POST["time"],
-#         }))
-#
-#         print("*)(@*$)@($*)@($*@)(#*@#)(*@#")
-#         print(data.json()["join_url"], data.json()["start_url"])
-#
-#         return HttpResponseRedirect(f"/ReqAppt/Appointment")
-#
-
 
 
