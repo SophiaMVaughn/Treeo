@@ -40,10 +40,10 @@ def base64_encode(message):
 
 
 
-/*
-	Author: Giorgi Nozadze
-	This is the second version of full calendar that can be used, based on client's preference
-*/
+
+	#Author: Giorgi Nozadze
+	#This is the second version of full calendar that can be used, based on client's preference
+
 
 def reqAppt_calendar(request):
     # def get_context_data(self, **kwargs):
@@ -95,12 +95,12 @@ def home(request):
 def Pending(request):
     return render(request,'ReqAppt/Pending.html')
 
-/*
-	Author: Giorgi Nozadze
-	This method is responsible for scheduling appointment scheduling, first it checks form validation, 
-    if valid appointment is scheduled and some of the methods of other features are called, 
-    line 123 calls mail notification, line 125 calls text message
-*/
+
+	#Author: Giorgi Nozadze
+	#This method is responsible for scheduling appointment scheduling, first it checks form validation, 
+   	# if valid appointment is scheduled and some of the methods of other features are called, 
+   	# line 123 calls mail notification, line 125 calls text message
+
 def create_Appointment(request):
     if request.method == 'POST':
         form = ApptRequestFormPatient(data=request.POST, instance=request.user)
@@ -215,10 +215,10 @@ def Destroy(request, id):
     return render(request,"reqAppt/DeleteConfirm.html")
 
 
-/*
-	Author: Giorgi Nozadze
-	This method checks for available time slots for the appointments
-*/
+
+	#Author: Giorgi Nozadze
+	#This method checks for available time slots for the appointments
+
 STARTING_HOUR = 8
 ENDING_HOUR = 16
 def Doctor_avail_view(request, id, date_str):
@@ -247,11 +247,11 @@ def Doctor_avail_view(request, id, date_str):
     return JsonResponse(data, safe=False)
 
 
-#### FULL CALL
-/*
-	Author: Giorgi Nozadze
-	This method displays appointment time bars on the full calendar
-*/
+#### FULL CALLENDAR
+
+	#Author: Giorgi Nozadze
+	#This method displays appointment time bars on the full calendar
+
 def event(request):
     meeting_arr = []
     #if request.GET.get('patient') == "all":
@@ -277,10 +277,10 @@ def event(request):
         meeting_arr.append(meeting_sub_arr)
     return HttpResponse(json.dumps(meeting_arr))
 
-/*
-	Author: Giorgi Nozadze
-	This method displays full calendar 
-*/
+
+	#Author: Giorgi Nozadze
+	#This method displays full calendar 
+
 def fullcalendar(request):
     all_meetings = ApptTable.objects.all()
     get_meeting_patients = ApptTable.objects.only('patient')
