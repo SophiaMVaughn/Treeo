@@ -39,6 +39,12 @@ def base64_encode(message):
 
 
 
+
+/*
+	Author: Giorgi Nozadze
+	This is the second version of full calendar that can be used, based on client's preference
+*/
+
 def reqAppt_calendar(request):
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
