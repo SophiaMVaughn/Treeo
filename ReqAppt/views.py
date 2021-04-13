@@ -244,7 +244,7 @@ def Doctor_avail_view(request, id, date_str):
 #### FULL CALL
 /*
 	Author: Giorgi Nozadze
-	This method checks for available time slots for the appointments
+	This method displays appointment time bars on the full calendar
 */
 def event(request):
     meeting_arr = []
@@ -271,6 +271,10 @@ def event(request):
         meeting_arr.append(meeting_sub_arr)
     return HttpResponse(json.dumps(meeting_arr))
 
+/*
+	Author: Giorgi Nozadze
+	This method displays full calendar 
+*/
 def fullcalendar(request):
     all_meetings = ApptTable.objects.all()
     get_meeting_patients = ApptTable.objects.only('patient')
