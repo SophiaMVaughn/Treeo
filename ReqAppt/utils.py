@@ -6,6 +6,10 @@ import random
 import string
 
 
+/*
+	Author: Giorgi Nozadze
+	This method generates the zoom link by using zoom provided credentials, zoom API is ran using wrapper called zoomus
+*/
 
 def generate_zoom(request):
 
@@ -23,7 +27,6 @@ def generate_zoom(request):
     user_list = json.loads(user_list_response.content)
 
 
-    print(user_list_response.content)
 
       # print(json.loads(user_list_response.content))
 
