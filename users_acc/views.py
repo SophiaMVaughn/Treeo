@@ -100,7 +100,7 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
 
-
+#delete this funtion
 def button(request):
     if request.method == 'POST':
         #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')

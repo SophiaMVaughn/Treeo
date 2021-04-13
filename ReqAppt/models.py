@@ -4,10 +4,10 @@ from users_acc.models import *
 
 
 
-/*
+"""
 	Author: Giorgi Nozadze
 	This class createst the model(mysql table) for appointment feature
-*/
+"""
 
 
 class ApptTable(models.Model):

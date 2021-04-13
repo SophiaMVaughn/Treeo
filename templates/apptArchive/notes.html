@@ -34,7 +34,7 @@
   {% if aptnotes.has_other_pages %}
   <ul class="paginationNote">
     {% if aptnotes.has_previous %}
-    <li class="page-item"><a class="page-link" href="?page={{apptArchive.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{aptnotes.previous_page_number}}">&#8592;</a></li>
     {% else %}
     <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
@@ -50,14 +50,14 @@
       {% elif i == aptnotes.paginator.num_pages %}
       <li class="page-item page-link">...</li>
       <li class="page-item"><a class="page-link"
-          href="?page={{apptArchive.paginator.num_pages}}">{{aptnotes.paginator.num_pages}}</a></li>
+          href="?page={{aptnotes.paginator.num_pages}}">{{aptnotes.paginator.num_pages}}</a></li>
       {% endif %}
       {% else %}
       <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% endif %}
       {% endfor %}
       {% if aptnotes.has_next %}
-      <li class="page-item"><a class="page-link" href="?page={{apptArchive.next_page_number}}">&#8594;</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{aptnotes.next_page_number}}">&#8594;</a></li>
       {% else %}
       <li class="disabled page-item page-link"><span>&#8594;</span></li>
       {% endif %}
