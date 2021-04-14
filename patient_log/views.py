@@ -1,3 +1,5 @@
+#Nicole
+#Brandon
 from django.shortcuts import render, redirect
 from django.http import HttpResponseBadRequest
 from patient_log.models import PatientLog
@@ -16,6 +18,8 @@ import calendar
 from users_acc.models import *
 from django.db.models import Q
 
+#Author: Nicole
+#This method allows a patietn to input their calories, water intake, hours of sleep and their mood.
 @login_required
 def patientlog(request):
     if request.method =='POST':
@@ -35,6 +39,7 @@ def patientlog(request):
                 #when this is saved tis saved as monday rathe than sun
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
+                #message error here
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm(),'formerrors': form})
         elif request.user.user_type==2:
             return redirect('log-chart', request.POST['patient'])
@@ -74,6 +79,9 @@ def patientlog(request):
             #reject admins
             return redirect('home')
 
+#Author: Nicole
+#This method edits the daily health log with the paitnets new input
+
 def edit_log(request,id):
     temp = PatientLog.objects.get(id=id)
     form = PatientLogForm()
@@ -94,6 +102,7 @@ def edit_log(request,id):
         return render(request,'patient_log/editLog.html', {'edit_log': form2,'formerrors': form, 'form':temp})
     else:
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
+
 
 def line_chart_Year(id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
