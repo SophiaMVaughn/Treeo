@@ -52,7 +52,7 @@ def Health_Coach(request):
                 if form.is_valid():
                     save = PostQ()
                     save.Message = form.cleaned_data.get('Message')
-                    #Stores The number of acual sender and receiver in database
+                    #Stores The number of actual sender and receiver in database
                     save.Thereciever = (request.user.patient.user)
                     save.TheActualsender = (request.user.patient.user)
                     save.Thesender = (request.user.patient.doc_c.user)
@@ -99,7 +99,7 @@ def Health_Coach(request):
             #Form content sent to database
             if form.is_valid():
                 save = PostQ()
-                #Stores The number of acual sender and receiver in database
+                #Stores The number of actual sender and receiver in database
                 save.Message = form.cleaned_data.get('Message')
                 save.TheActualsender = (request.user.provider.user)
                 save.Thesender = (request.user.provider.user)
