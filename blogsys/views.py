@@ -5,7 +5,9 @@ from blogsys.models import PostQ
 from .forms import PostQform
 from users_acc.models import *
 
-
+#Allan 
+#Provider type determined by number
+#Patients names stored in list
 def setter(request):
     name = []
     name.clear()
@@ -33,12 +35,15 @@ def setter(request):
     return name
 
 
-# This First Function is a bit long due to it being called and used for both patient and provider.
+# This First Function is a bit long due to it being called and used for both patient 1 and Health Coach depending on user type.
+# First HTML called takes user to this function and locates if statement based on user type. After that the user will only see that content linked to that html.
 def Health_Coach(request):
     # If patient
-
     try:
         if request.user.user_type == 3:
+            # For user.patient.doc_c (Health Coach)
+            #Takes in message from forms
+            #Sent to database
             x = PostQ.objects.filter(Thereciever=(
                 request.user.patient.user), Thesender=(request.user.patient.doc_c.user))
             if request.method == 'POST':
@@ -52,7 +57,7 @@ def Health_Coach(request):
                     save.Thesender = (request.user.patient.doc_c.user)
                     save.save()
                     form = PostQform()
-
+                    #Takes current patients Health Coach Name
                     if request.user.user_type == 3:
                         First = request.user.patient.doc_c.user.first_name
                         Last = request.user.patient.doc_c.user.last_name
@@ -68,16 +73,20 @@ def Health_Coach(request):
                     if request.user.user_type == 3:
                         First = request.user.patient.doc_c.user.first_name
                         Last = request.user.patient.doc_c.user.last_name
-
+                        #Content sent to html
                         return render(request, 'blogsys/Health_Coach.html',
                                       {"form": form, 'PostQ': x, "First": First, "Last": Last})
     except AttributeError:
+        #If no provider assigned return this html
         return render(request, 'blogsys/noprovider.html')
     except Exception as e:
         print(e)
         return render(request, 'blogsys/noprovider.html')
 
     if request.user.user_type == 2:
+        # If provider
+        #Finds what provider based on number
+        #Takes first patient assigned to said provider [0:]
         if request.user.provider.Provider_type == 1:
             q = Patient.objects.filter(doc_p=request.user.provider)[0:]
         elif request.user.provider.Provider_type == 2:
@@ -86,7 +95,7 @@ def Health_Coach(request):
             q = Patient.objects.filter(doc_c=request.user.provider)[0:]
         if request.method == 'POST':
             form = PostQform(request.POST)
-
+            #Form content sent to database
             if form.is_valid():
                 save = PostQ()
                 save.Message = form.cleaned_data.get('Message')
@@ -111,6 +120,8 @@ def Health_Coach(request):
                     if len(q) >= 1:
                         name = setter(request)
                         x = PostQ.objects.filter(Thesender=(
+                            #names of all patients sent to HTML from above setter
+                            #Content sent to html
                             request.user.provider.user), Thereciever=(q[0].user))
                         return render(request, 'blogsys/patient1.html', {"form": form, 'PostQ': x, "q": q[0], "name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
                                                                          "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
@@ -145,6 +156,7 @@ def Health_Coach(request):
 
                 else:
                     name = setter(request)
+                    #No patient assigned return this HTML
                     return render(request, 'blogsys/noassigned.html',
                                   {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3],
                                    "name5": name[4],
@@ -153,6 +165,8 @@ def Health_Coach(request):
 
 
 def provider(request):
+    #If patient
+    #Same as description above but for provider patient.doc_p
     try:
         if request.user.user_type == 3:
             x = PostQ.objects.filter(Thereciever=(request.user.patient.user),
@@ -203,6 +217,8 @@ def provider(request):
 
 
 def dietitian(request):
+    #If Patient
+    #Same as description above but for dietitian patient.doc_d
     try:
         if request.user.user_type == 3:
             x = PostQ.objects.filter(Thereciever=(request.user.patient.user),
@@ -245,6 +261,8 @@ def dietitian(request):
 
 
 def Patient1(request):
+    #If Provider
+    #Same as function above Patient number 1 [0:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[0:]
     elif request.user.provider.Provider_type == 2:
@@ -295,6 +313,8 @@ def Patient1(request):
 
 
 def Patient2(request):
+    #If Provider
+    #Same as function above Patient number 2 [1:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[1:]
     elif request.user.provider.Provider_type == 2:
@@ -345,6 +365,8 @@ def Patient2(request):
 
 
 def Patient3(request):
+    #If Provider
+    #Same as function above Patient number 3 [2:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[2:]
     elif request.user.provider.Provider_type == 2:
@@ -395,6 +417,8 @@ def Patient3(request):
 
 
 def Patient4(request):
+    #If Provider
+    #Same as function above Patient number 4 [3:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[3:]
     elif request.user.provider.Provider_type == 2:
@@ -445,6 +469,8 @@ def Patient4(request):
 
 
 def Patient5(request):
+    #If Provider
+    #Same as function above Patient number 5 [4:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[4:]
     elif request.user.provider.Provider_type == 2:
@@ -495,6 +521,8 @@ def Patient5(request):
 
 
 def Patient6(request):
+    #If Provider
+    #Same as function above Patient number 6 [5:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[5:]
     elif request.user.provider.Provider_type == 2:
@@ -545,6 +573,8 @@ def Patient6(request):
 
 
 def Patient7(request):
+    #If Provider
+    #Same as function above Patient number 7 [6:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[6:]
     elif request.user.provider.Provider_type == 2:
@@ -595,6 +625,8 @@ def Patient7(request):
 
 
 def Patient8(request):
+    #If Provider
+    #Same as function above Patient number 8 [7:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[7:]
     elif request.user.provider.Provider_type == 2:
@@ -645,6 +677,8 @@ def Patient8(request):
 
 
 def Patient9(request):
+    #If Provider
+    #Same as function above Patient number 9 [8:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[8:]
     elif request.user.provider.Provider_type == 2:
@@ -695,6 +729,8 @@ def Patient9(request):
 
 
 def Patient10(request):
+    #If Provider
+    #Same as function above Patient number 10 [9:]
     if request.user.provider.Provider_type == 1:
         q = Patient.objects.filter(doc_p=request.user.provider)[9:]
     elif request.user.provider.Provider_type == 2:
@@ -744,6 +780,7 @@ def Patient10(request):
 
 
 def noassigned(request):
+    #No Patient assigned list sent to html from above setter
     name = setter(request)
     return render(request, 'blogsys/noassigned.html', {"name1": name[0], "name2": name[1], "name3": name[2], "name4": name[3], "name5": name[4],
                                                        "name6": name[5], "name7": name[6], "name8": name[7], "name9": name[8],
