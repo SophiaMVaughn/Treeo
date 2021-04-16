@@ -1,19 +1,11 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Author: George Esho
+    This page allows a user to enter their email linked to an account to begin the password reset process.
+-->
 <form method="post">
     {% csrf_token %}
-    <!-- <div class="row">
-        <div class="col">
-            <div style="display:inline-block; text-align:left; padding-right:75px; padding-bottom: 10px">
-                <b> {{form.email.label_tag}} </b>
-                {{form.email}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-primary btn-large btn-block">Request Password Reset</button>
-            </div>
-        </div> -->
     <div class="resetPassword">Reset Password</div>
     <div class="stepOne">Step 1: Enter your email</div>
     <div class="emailBoxReset">
@@ -24,6 +16,6 @@
     <div class="button passResetButton">
         <button type="submit" class="btn btn-primary btn-large btn-block">Done</button>
     </div>
-    
+
 </form>
 {% endblock content %}

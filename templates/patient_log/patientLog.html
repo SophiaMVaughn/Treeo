@@ -1,9 +1,17 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+	Authors: Nicole Racovites, Bradon Breen, and George Esho
+    This page contains two views: the patient and provider.
+	The patient view of this page allows a patient to submit their daily health log.
+	The patient view of this page displays 4 inputs for each of the fields: calories, water, sleep, and mood. Once the patient submits their health log, 
+    their data will be added to the database, and the patient is able to go the chart_View page.
+
+    The provider view of this page allows a provider to select an assigned patient's chart to view.
+-->
 <div class="white">
     {% if user.user_type == 3 %}
     <div class="healthLog">Daily Health Log</div>
-
     <div class="patientLog">
         <form method="POST">
             {% csrf_token %}
@@ -95,12 +103,9 @@
             </table>
         </div>
 <script>
-    function hide() {
-        var confirm = document.querySelectorAll('.confirm');
-        confirm[0].classList.add('hidden');
-        confirm[1].classList.add('hidden');
-    }
-
+/* 
+    This function allows a user to filter the table by provider using the search bar.
+*/
 function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
@@ -123,6 +128,9 @@ function myFunction() {
     }
 }
 
+/* 
+    This function allows a user to sort the table by its headers.
+*/
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");
@@ -177,6 +185,11 @@ function myFunction() {
             }
         }
     }
+
+/*
+    Author: Brandon Breen
+    This function allows the column containing the meeting date and time to be sortable due to django displaying the date as a string.
+*/
     function sortTabledates(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");

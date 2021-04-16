@@ -1,7 +1,12 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+	Authors: Nicole Racovites, Bradon Breen, and George Esho
+	This page allows a patient to edit any value of their daily health log within that day after initial submission.
+	This page displays 4 inputs for each of the fields: calories, water, sleep, and mood. 
+	This page allows a patient to submit their changes, reflect their changes in the database, and allows the patient to go the chart_View page.
+-->
 <div class="white">
-	
     <div class="healthLog">Edit Health Log</div>
 	{% if messages %}
 	{% for message in messages %}
@@ -70,32 +75,5 @@
 			</div>
 		</form>
 	</div>
-	<!-- <div class="current">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th colspan="2">Current Values</th>
-				</tr>
-			</thead>
-			<tbody class="border-end-0">
-				<tr>
-					<td>Calories (kCal)</td>
-					<td>{{form.calories}}</td>
-				</tr>
-				<tr>
-					<td>Water Intake (oz)</td>
-					<td>{{form.water}}</td>
-				</tr>
-				<tr>
-					<td>Sleep (hrs)</td>
-					<td>{{form.sleep}}</td>
-				</tr>
-				<tr>
-					<td>Mood (1-5)</td>
-					<td>{{form.mood}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div> -->
 </div>
 {% endblock content %}

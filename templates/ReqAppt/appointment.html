@@ -1,5 +1,9 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Author: Giorgi Nozadze and George Esho
+    This page allows patients and providers to create a new appointment with a provider or patient assigned to them.
+-->
 <div class="white">
     <div class="appointments">Appointments</div>
     <div class="newAppointment">Book New Appointment</div>
@@ -14,38 +18,20 @@
         </div>
     </form>
 </div>
-<!-- <table class="table table" id="-table">
-
-
-
-    </table> -->
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
 
-
-
-    // $( function() {
-    //   $("#datepicker").datepicker({
-    //   });
-    // } );
-    //
-    // $(function() {
-    //   $( "#datepicker" ).datepicker();
-    //       });
-    //
-
-
     /*
-	Author: Giorgi Nozadze
-    Code bellow is responsible for dynamic time slots in request appointment features.
-*/
+        Author: Giorgi Nozadze
+        Code below is responsible for dynamic time slots in request appointment features.
+    */
 
 
     
-    // This function calls datepicker calendar for appointment scheduling
+    // This function calls datepicker calendar for appointment scheduling.
 
     $(function () {
         $("#datepicker").datepicker({
@@ -73,7 +59,7 @@
 
     
 
-  // This method loads queried timeslots and then loads them into timeslot dropdown menu
+  // This method loads queried timeslots and then loads them into timeslot dropdown menu.
 
     const loadTimeSlots = (data) => {
         const timeslots = $("#timeslots");
@@ -90,20 +76,20 @@
     }
     
     
-          //This method checks inputs for values, if both values are not null, sends the http request
+          //This method checks inputs for values, if both values are not null, sends the http request.
     const changeHandler = () => {
         const provider_id = $('#id_provider').val();
         const date = $('#datepicker').val();
         if (!!provider_id && !!date) {
             $.get(`availability/provider/${provider_id}/date/${date.replaceAll('/', '-')}`, loadTimeSlots)
         } else {
-            //Clear out dropdown if either provider or date is null
+            //Clear out dropdown if either provider or date is null.
             const timeslots = $("#timeslots");
             timeslots.empty();
         }
     };
 
-      //Listen on changes from these two elements. These values are needed to query for available hour slots
+      //Listen on changes from these two elements. These values are needed to query for available hour slots.
     $(() => $("#id_provider, #datepicker").on('change', changeHandler));
 
 </script>

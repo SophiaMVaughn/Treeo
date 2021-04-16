@@ -1,13 +1,13 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
+<!-- 
+    Author: George Esho
+    This page displays the provider view for appointments list.
+    This page displays a table that lists the meeting date and time with the listed patient and either the Zoom link if
+    the meeting is approved, or a checkmark and X button if a meeting is pending approval.
+-->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<style>
-    .hidden {
-        display: none !important;
-    }
-</style>
-
 <div class="white">
     <div class="first">
         <div class="appointments">Appointments</div>
@@ -33,7 +33,9 @@
                     Appointments</a>
             </div>
         </div>
-
+        <!-- 
+            This displays the search bar that allows a user to filter the table by patient.
+        -->
         <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for patient">
         <div class="appointmentTableProvider">
             <table id="myTable" class="table approve">
@@ -93,6 +95,9 @@
             </table>
         </div>
     </div>
+    <!-- 
+        This displays pagination of the table, creating a new page that holds five rows per page.
+    -->
     {% if ApptTable.has_other_pages %}
     <ul class="paginationAppt">
         {% if ApptTable.has_previous %}
@@ -127,12 +132,9 @@
     {% endif %}
 </div>
 <script>
-    function hide() {
-        var confirm = document.querySelectorAll('.confirm');
-        confirm[0].classList.add('hidden');
-        confirm[1].classList.add('hidden');
-    }
-
+    /* 
+        This function allows a user to filter the table by provider using the search bar.
+    */
     function myFunction() {
         // Declare variables
         var filter, tr, td, txtValue;
@@ -154,7 +156,9 @@
             }
         }
     }
-
+    /* 
+        This function allows a user to sort the table by its headers.
+    */
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");
@@ -209,6 +213,10 @@
             }
         }
     }
+    /*
+        Author: Brandon Breen
+        This function allows the column containing the meeting date and time to be sortable due to django displaying the date as a string.
+    */
     function sortTabledates(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");

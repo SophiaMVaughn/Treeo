@@ -1,18 +1,9 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<!-- <div class="white">
-    <h1>You have successfully submitted your log!</h1>
-    {% if messages %}
-    {% for message in messages %}
-    <h2 style="color:green;">{{message}}</h2>
-    {% endfor %}
-    {% endif %}
-    <div class="button patientLogSubmitButton">
-        <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
-        <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
-            View Chart</a>
-    </div>
-</div> -->
+<!-- 
+    Author: George Esho
+    This page informs a patient that their daily health log has been submitted, and they may edit their log or view their chart.
+-->
 <div class="verification">
     Log submitted.
 </div>
