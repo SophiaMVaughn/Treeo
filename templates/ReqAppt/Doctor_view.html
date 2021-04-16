@@ -74,21 +74,6 @@
                                 href="{% url 'reqAppt_delete' a.id  %}"><span> X </span></a>
                             {% endif %}
                         </td>
-                        <!-- <td>
-                        {%if a.status%}
-                        <span></span>
-                        {% else %}
-                        <a href="{% url 'reqAppt_delete' a.id  %}"><span> &#10060; </span></a>
-                        {% endif %}
-                    </td> -->
-                        <!-- <td><a href="{% url 'archive' a.id %}"> Click to Archive </a></td> -->
-                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"> Delete </a></td> -->
-                        <!-- <td><a href="{% url 'reqAppt_delete' a.id %}"><img alt="Delete"
-                                src="{% static 'img/trash.png' %}" width="30" height="35" alt=""
-                                loading="lazy" /></a>
-                    </td> -->
-                        <!--        <td> {{a.patientFname}} </td>-->
-
                     </tr>
                     {% endfor %}
                 </tbody>

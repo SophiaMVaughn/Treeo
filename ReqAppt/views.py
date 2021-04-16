@@ -19,8 +19,6 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from .sms import *
-from .email import *
 from datetime import datetime
 import requests
 from .tasks import *
@@ -197,14 +195,17 @@ def approve(request,id):
     appointment.meeturlpatient=patient_url
     print(appointment.meeturlprovider)
     print(appointment.meeturlpatient)
+    #Allan
+    #If Confirmed on click changes database value to 1
     #Confirm Appointment
     appointment.status=True
     appointment.save()
     approve_message_task.delay(appointment.id)
     approved_mail_both_task.delay(appointment.id,patient_pwd)
     return redirect("reqAppt_Doctor")
-
-# Delete Appointment
+#Allan Imseis
+#Asks if user wishes to delete Appt
+#Delete Appointment
 def Destroy(request, id):
     appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
@@ -294,9 +295,7 @@ def fullcalendar(request):
     }
     return render(request,'ReqAppt/fullcalendar.html',context)
 
-def archive_apt(request,id):
-    #try error handling
-    appointment = ApptTable.objects.get(id=id)
+def archive_apt(appointment):
     try:
         archiveAppt = ApptArchive.objects.create()
         archiveAppt.meetingDate = appointment.meetingDate
@@ -304,40 +303,7 @@ def archive_apt(request,id):
         archiveAppt.patient = appointment.patient
         archiveAppt.save()
         appointment.delete()
-        return render(request,"reqAppt/appointment.html")
     except Exception as e:
         print(e)
-        return render(request,"reqAppt/appointment.html")
-
-
-    is_patient = [type_name for t, type_name in USER_TYPE_CHOICES if t == request.user.user_type][0] == 'Patient'
-    if is_patient:
-        all_meetings = ApptTable.objects.filter(patient__user_id=request.user.id).all()
-    else:
-        all_meetings = ApptTable.objects.filter(provider__user_id=request.user.id).all()
-
-    for i in all_meetings:
-        meeting_sub_arr = {}
-        user = (i.provider if is_patient else i.patient).user
-        meeting_sub_arr['title'] = f"{user.first_name} {user.last_name}"
-        start = i.meetingDate.strftime('%Y-%m-%dT%H:%M:%S')
-        end = (i.meetingDate + timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S')
-        #meetingDate = datetime.strptime(str(i.meetingDate.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-        meeting_sub_arr['start'] = start
-        meeting_sub_arr['end'] = end
-        meeting_arr.append(meeting_sub_arr)
-    return HttpResponse(json.dumps(meeting_arr))
-
-# def archive_apt(id):
-#     appointment = ApptTable.objects.get(id=id)
-#     try:
-#         archiveAppt = ApptArchive.objects.create()
-#         archiveAppt.meetingDate = appointment.meetingDate
-#         archiveAppt.provider = appointment.provider
-#         archiveAppt.patient = appointment.patient
-#         archiveAppt.save()
-#         appointment.delete()
-#     except Exception as e:
-#         print(e)
 
 
