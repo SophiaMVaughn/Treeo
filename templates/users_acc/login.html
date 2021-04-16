@@ -1,8 +1,10 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<!-- <div class="error">
-    {{errorMsg}}
-</div> -->
+<!-- 
+    Author: George Esho
+    This page allows a user to log in to the web app.
+    This page defaults as the home page for users not logged in to an account.
+-->
 <form method="post">
     {% csrf_token %}
     {% load static %}

@@ -1,6 +1,11 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-<!-- <div class="whiteAppointments"> -->
+<!-- 
+    Author: George Esho
+    This page displays the patient view for appointments list.
+    This page displays a table that lists the meeting date and time with the listed providerand either the Zoom link if
+    the meeting is approved, or a "Pending" button if a meeting is pending approval.
+-->
 <div class="white">
   <div class="first">
     <div class="appointments">Appointments</div>
@@ -23,7 +28,9 @@
         <a class="btn btn-primary btn-large btn-block" href="{% url 'apptArchive' %}">View Archived Appointments</a>
       </div>
     </div>
-
+    <!-- 
+            This displays the search bar that allows a user to filter the table by provider.
+        -->
     <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for provider">
     <div class="appointmentTable">
       <table id="myTable" class="table approve">
@@ -52,6 +59,9 @@
       </table>
     </div>
   </div>
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
   {% if ApptTable.has_other_pages %}
   <ul class="paginationAppt">
     {% if ApptTable.has_previous %}
@@ -85,6 +95,9 @@
   {% endif %}
 </div>
 <script>
+  /* 
+    This function allows a user to filter the table by provider using the search bar.
+  */
   function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
@@ -106,7 +119,9 @@
       }
     }
   }
-
+  /* 
+    This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
@@ -161,7 +176,10 @@
       }
     }
   }
-
+  /*
+    Author: Brandon Breen
+    This function allows the column containing the meeting date and time to be sortable due to django displaying the date as a string.
+  */
   function sortTabledates(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

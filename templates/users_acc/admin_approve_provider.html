@@ -1,9 +1,15 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page allows an admin to approve pending providers into the system and revoke an existing provider's privileges.
+-->
 <div class="white">
     <div class="appointments">Providers</div>
-
+    <!-- 
+        This displays the search bar that allows a user to filter the table by file provider.
+    -->
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
     <div class="careTeamTable">
         <table id="myTable" class="table approve">
@@ -40,6 +46,9 @@
         </table>
     </div>
     {% if results.has_other_pages %}
+    <!-- 
+        This displays pagination of the table, creating a new page that holds five rows per page.
+    -->
     <ul class="pagination">
         {% if results.has_previous %}
         <li class="page-item"><a class="page-link" href="?page={{results.previous_page_number}}">&#8592;</a></li>
@@ -57,7 +66,8 @@
             <li class="page-item page-link">...</li>
             {% elif i == results.paginator.num_pages %}
             <li class="page-item page-link">...</li>
-            <li class="page-item"><a class="page-link" href="?page={{results.paginator.num_pages}}">{{results.paginator.num_pages}}</a></li>
+            <li class="page-item"><a class="page-link"
+                    href="?page={{results.paginator.num_pages}}">{{results.paginator.num_pages}}</a></li>
             {% endif %}
             {% else %}
             <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
@@ -72,6 +82,9 @@
     {% endif %}
 </div>
 <script>
+    /* 
+        This function allows a user to filter the table by provider using the search bar.
+    */
     function myFunction() {
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
@@ -96,7 +109,9 @@
             }
         }
     }
-
+    /* 
+        This function allows a user to sort the table by its headers.
+    */
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");

@@ -1,11 +1,10 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-
+<!-- 
+  Authors: Brandon Breen and George Esho
+  This page allows an admin to view a patient's current care team.
+-->
 <div class="white">
-  <!--    {% if patient %}-->
-  <!--    <p>{{patient.user.first_name}}</p>-->
-  <!--    <p>{{patient.user.last_name}}</p>-->
-  <!--    {% else %}-->
   <div class="appointments">Providers</div>
 
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for patient">
@@ -18,7 +17,6 @@
           <th onclick="sortTable(2)">Dietician</th>
           <th onclick="sortTable(3)">Health Coach</th>
           <th onclick="sortTable(4)">Assign Team</th>
-          <!-- <th>View Notes</th> -->
         </tr>
       </thead>
       {% for i in patients %}
@@ -46,6 +44,9 @@
     </table>
   </div>
   {% if patients.has_other_pages %}
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
   <ul class="pagination">
     {% if patients.has_previous %}
     <li class="page-item"><a class="page-link" href="?page={{apptArpatientschive.previous_page_number}}">&#8592;</a>
@@ -55,13 +56,13 @@
     {% endif %}
     {% for i in patients.paginator.page_range %}
     {% if patients.number == i %}
-    <li  class="page-item page-link"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only">(current)</span></span></li>
     {% elif patients.paginator.num_pages > 5%}
     {% if i > patients.number|add:'-3' and i < patients.number|add:'3' %} <li class="page-item">
       <a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% elif i == 1 %}
       <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-      <li  class="page-item page-link">...</li>
+      <li class="page-item page-link">...</li>
       {% elif i == patients.paginator.num_pages %}
       <li class="page-item page-link">...</li>
       <li class="page-item"><a class="page-link"
@@ -81,6 +82,9 @@
 </div>
 
 <script>
+  /* 
+      This function allows a user to filter the table by provider using the search bar.
+  */
   function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
@@ -102,7 +106,9 @@
       }
     }
   }
-
+  /* 
+      This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
@@ -158,20 +164,4 @@
     }
   }
 </script>
-<!--    {% endif %}-->
-<!--    <form method="post">-->
-<!--        <div class="assignCareTeam">-->
-<!--            {% csrf_token %}-->
-<!--            {% for route in form %}-->
-<!--            <p> {{route}} </p>-->
-<!--            {% endfor %}-->
-<!--            {% for k in form2 %}-->
-<!--            <p> {{k}} </p>-->
-<!--            {% endfor %}-->
-<!--            &lt;!&ndash;    should be nested four loops for a combined dictioarny&ndash;&gt;-->
-<!--            <div class="button assignCareTeamButton">-->
-<!--                <button type="submit" class="btn btn-primary btn-large btn-block">Ok</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
 {% endblock content %}

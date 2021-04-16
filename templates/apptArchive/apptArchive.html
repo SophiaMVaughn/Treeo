@@ -1,9 +1,17 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+  Author: George Esho
+  This page displays previously held meetings between a provider and a patient.
+  A table displays the provider, the patient, the date and time of the meeting held, and a button to view the notes made by the provider
+  of the meeting.
+-->
 <div class="white">
   <div class="first">
     <div class="apptArchive">Archived Appointments</div>
-
+  <!-- 
+    This displays the search bar that allows a user to filter the table by provider.
+  -->
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
     <div class="apptArchiveTable">
       <table id="myTable" class="table">
@@ -27,6 +35,9 @@
       </table>
     </div>
   </div>
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
   {% if apptArchive.has_other_pages %}
   <ul class="pagination">
     {% if apptArchive.has_previous %}
@@ -61,6 +72,9 @@
   {% endif %}
 </div>
 <script>
+  /* 
+    This function allows a user to filter the table by provider using the search bar.
+  */
   function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
@@ -83,6 +97,9 @@
     }
   }
 
+  /* 
+    This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

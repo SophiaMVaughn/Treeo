@@ -1,5 +1,10 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+  Author: George Esho
+  This page displays notes taken by the provider in regards to the meeting.
+  A table displays the provider who took the note, the date and time the note was submitted, and the note itself. 
+-->
 <div class="white">
   <div class="first">
     <div class="notes">Notes</div>
@@ -7,6 +12,9 @@
       {{apptArchive.patient.user.get_full_name}}:
       {{apptArchive.meetingDate}}
     </div>
+    <!-- 
+      This displays the search bar that allows a user to filter the table by notes.
+    -->
     <!-- <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="Search Notes"> -->
     <div class="notesTable">
       <!-- <div class="messagingTable"> -->
@@ -31,6 +39,9 @@
     </form>
     {% endif %}
   </div>
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
   {% if aptnotes.has_other_pages %}
   <ul class="paginationNote">
     {% if aptnotes.has_previous %}
@@ -65,28 +76,34 @@
   {% endif %}
 </div>
 <script>
-  function myFunction() {
-    // Declare variables
-    var filter, tr, td, txtValue;
-    filter = document.getElementById("myInput").value.toUpperCase();
-    tr = document.getElementById("myTable").getElementsByTagName("tr");
-    // Loop through all table rows, and hide those who don't match the search query
-    // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
-    // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
-    // the results are of a significant size which is mitigated by the pagination
-    for (let i of tr) {
-      td = i.getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().includes(filter) == true) {
-          i.style.display = "";
-        } else {
-          i.style.display = "none";
+  /* 
+    This function allows a user to filter the table by provider using the search bar.
+  */
+  /*  function myFunction() {
+      // Declare variables
+      var filter, tr, td, txtValue;
+      filter = document.getElementById("myInput").value.toUpperCase();
+      tr = document.getElementById("myTable").getElementsByTagName("tr");
+      // Loop through all table rows, and hide those who don't match the search query
+      // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+      // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+      // the results are of a significant size which is mitigated by the pagination
+      for (let i of tr) {
+        td = i.getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().includes(filter) == true) {
+            i.style.display = "";
+          } else {
+            i.style.display = "none";
+          }
         }
       }
-    }
-  }
+    } */
 
+  /* 
+    This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
@@ -142,6 +159,10 @@
     }
   }
 
+  /*
+    Author: Brandon Breen
+    This function allows the column containing the meeting date and time to be sortable due to django displaying the date as a string.
+  */
   function sortTabledates(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

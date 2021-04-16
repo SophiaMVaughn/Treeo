@@ -1,6 +1,11 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page displays a table of a user's previously uploaded files available for download. 
+    A patient's providers can view and download all the files a patient uploads.
+-->
 <div class="white">
     <div class="fileDownload">File Download</div>
     {% if form %}
@@ -12,6 +17,9 @@
         </div>
     </form>
     {% else %}
+    <!-- 
+        This displays the search bar that allows a user to filter the table by file name.
+    -->
     <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for file name">
     <div class="downloadTable">
         <table id="myTable" class="table download">
@@ -43,6 +51,9 @@
         </table>
     </div>
     {% if file_list.has_other_pages %}
+    <!-- 
+        This displays pagination of the table, creating a new page that holds five rows per page.
+    -->
     <ul class="pagination">
         {% if file_list.has_previous %}
         <li class="page-item"><a class="page-link" href="?page={{file_list.previous_page_number}}">&#8592;</a></li>
@@ -78,6 +89,9 @@
 </div>
 
 <script>
+    /* 
+        This function allows a user to filter the table by provider using the search bar.
+    */
     function myFunction() {
         // Declare variables
         var filter, tr, td, txtValue;
@@ -100,6 +114,9 @@
         }
     }
 
+    /* 
+        This function allows a user to sort the table by its headers.
+    */
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");

@@ -1,5 +1,11 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Authors: Giorgi Nozadze, Brandon Breen, and George Esho
+    This page displays a user's profile account.
+    This page displays a user's profile picture, their name, the option to edit their profile, 
+    and, if the user is a patient, their care team with the ability to view their provider's profile.
+-->
 <div class="white">
     <div class="account">
         Account
@@ -8,9 +14,9 @@
         <img class="rounded-circle account-img " src="{{user.profile_pic.url}} " alt="">
         <div class="button editProfileButton">
             <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
-            {% if user.user_type != 1%}
+            <!-- {% if user.user_type != 1%}
             <a href="{% url 'user_deactivate' %}" class="btn btn-primary btn-large btn-block">Deactivate Account</a>
-            {% endif %}
+            {% endif %} -->
         </div>
     </div>
 
