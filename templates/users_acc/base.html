@@ -95,6 +95,7 @@
 			<div class="login-screen">
 				{% load humanize %}
 				{% load tz %}
+				{% get_current_timezone as TIME_ZONE %}
 				{% block content %}
 				{% endblock %}
 			</div>

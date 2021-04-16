@@ -7,7 +7,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .email import *
 from .sms import *
-from .views import archive_apt
+# from .views import archive_apt
 from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)

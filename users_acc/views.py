@@ -46,7 +46,6 @@ def register(request):
                 message,
                 settings.EMAIL_HOST_USER,
                 [m.email],
-                fail_silently=False,
             )
             #m.email_user(subject, message)
             #you could also designate a dedicated help account
@@ -216,7 +215,6 @@ def doctor_registration(request):
                 message,
                 settings.EMAIL_HOST_USER,
                 [m.email],
-                fail_silently=False,
             )
             #m.email_user(subject, message)
             return redirect('account_activation_sent')
