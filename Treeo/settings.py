@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': 'M!ddle1*',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
