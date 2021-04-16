@@ -2,6 +2,7 @@
 import os
 from twilio.rest import Client
 from users_acc import models
+from django.utils import timezone
 import datetime
 # Your Account Sid and Auth Token from twilio.com/console
 # and set the environment variables. See http://twil.io/secure
@@ -99,7 +100,7 @@ def target_time_print(apt):
     t = apt.meetingDate
     print(t)
     print(t.timestamp())
-    time_left = t.timestamp() - datetime.datetime.now().timestamp()
+    time_left = t.timestamp() - timezone.now().timestamp()
     time_left = time_left - 10000
     print("time left until appointment")
     print(time_left)

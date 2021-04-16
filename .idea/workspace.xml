@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="preparing to merge with nicoleprototype3">
+    <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="archive task">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReqAppt/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/sms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReqAppt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/Doctor_view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616804532237</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="archive task">
+      <created>1618540005544</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618540005544</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -140,7 +147,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="preparing to merge with nicoleprototype3" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing to merge with nicoleprototype3" />
+    <MESSAGE value="archive task" />
+    <option name="LAST_COMMIT_MESSAGE" value="archive task" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

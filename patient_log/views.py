@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 import sched, time
 from django.views.generic.edit import UpdateView
 import datetime
+from django.utils import timezone
 import calendar
 from users_acc.models import *
 from django.db.models import Q
@@ -34,8 +35,8 @@ def patientlog(request):
                 saverecord.mood = form.cleaned_data.get('mood')
                 saverecord.sleep = form.cleaned_data.get('sleep')
                 saverecord.save()
-                saverecord.date = datetime.datetime.today()
-                saverecord.save()
+                # saverecord.date = timezone.now()
+                # saverecord.save()
                 #when this is saved tis saved as monday rathe than sun
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
@@ -47,7 +48,7 @@ def patientlog(request):
             return redirect('log-chart', request.POST['patient'])
     else:
         if request.user.user_type==3:
-            today = datetime.datetime.today().date()
+            today = timezone.now().date()
             if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
                 saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
                 return redirect('edit_log',saverecord.id)
@@ -111,7 +112,7 @@ def line_chart_Year(id):
     data3 = []
     data4 = []
     #for current year loop through the months and append the average to list make 0 jan 2 feb ect
-    cur_date = datetime.datetime.today()
+    cur_date = timezone.now().date()
 
     #second for loop for the years in the PatientLog
     for i in range(1, 13):
@@ -158,7 +159,7 @@ def line_chart_Month(id):
     data3 = []
     data4 = []
     #for current week
-    cur_date = datetime.datetime.today()
+    cur_date = timezone.now().date()
     num_days = calendar.monthrange(cur_date.year, cur_date.month)[1]
     # print(num_days)
     for day in range(1, num_days + 1):
@@ -205,7 +206,7 @@ def line_chart_Week(id):
     data3 = []
     data4 = []
     #for current week
-    cur_date = datetime.datetime.today()
+    cur_date = timezone.now().date()
     weekday = cur_date.weekday()
     dates = []
     date = cur_date - datetime.timedelta(days=weekday)

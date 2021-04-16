@@ -11,16 +11,15 @@ from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
 from datetime import datetime, date, timedelta
+from django.utils import timezone
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from ReqAppt import models
 from ReqAppt.forms import *
 from ReqAppt.models import ApptTable
 from django.contrib.auth.decorators import login_required
-from datetime import datetime, date
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from datetime import datetime
-import requests
+import django.utils.timezone
 from .tasks import *
 from apptArchive.models import ApptArchive
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -69,7 +68,7 @@ def reqAppt_calendar(request):
         year, month = int(year), int(month)
         dday = date(year=year, month=month, day=1)
     else:
-        dday = datetime.now()
+        dday = timezone.now()
 
     cal = Calendar(dday.year, dday.month, request)
     html_cal = cal.formatTheMonth(withyear=True)
@@ -114,7 +113,7 @@ def create_Appointment(request):
             apptHour = float(request.POST['apptHour'])
             print(apptDate)
             print(apptHour)
-            meetingDate = datetime.datetime.strptime(apptDate, "%m/%d/%Y")
+            meetingDate = timezone.make_aware(datetime.datetime.strptime(apptDate, "%m/%d/%Y"))
             hour = int(math.floor(apptHour))
             minute = int((apptHour - hour) * 60)
             meetingDate = meetingDate.replace(hour=hour, minute=minute)
