@@ -123,9 +123,23 @@ def create_Appointment(request):
             )
 
             # Oath, TODO use JWT if this doesn't work
-            scheduled_mail_both_task.delay(appointment.id)
+#             scheduled_mail_both_task.delay(appointment.id)
+#             target_time_print(appointment)
+#             send_message_task.delay(appointment.id)
+		
+	    try:
+		 scheduled_mail_both_task.delay(appointment.id)
+            except:
+                print("error with email feature")
+		
             target_time_print(appointment)
-            send_message_task.delay(appointment.id)
+
+            try:
+                send_message(appointment)
+            except :
+                print("error with sms feature")	
+		
+		
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -199,9 +213,24 @@ def approve(request,id):
     #Confirm Appointment
     appointment.status=True
     appointment.save()
-    approve_message_task.delay(appointment.id)
+	
     approved_mail_both_task.delay(appointment.id,patient_pwd)
+	
+	
+    try:
+        approve_message_task.delay(appointment.id)
+    except:
+        print("error with sms feature")
+    try:
+        approved_mail_both_task.delay(appointment.id,patient_pwd)
+    except:
+        print("error with email feature")
+	
     return redirect("reqAppt_Doctor")
+
+
+
+
 #Allan Imseis
 #Asks if user wishes to delete Appt
 #Delete Appointment
@@ -209,8 +238,19 @@ def Destroy(request, id):
     appointment = ApptTable.objects.get(id=id)
     if request.method == 'POST':
         appointment.delete()
-        reject_message_task.delay(appointment.id)
-        reject_mail_both_task.delay(appointment.id)
+#         reject_message_task.delay(appointment.id)
+#         reject_mail_both_task.delay(appointment.id)
+	
+	try:
+            reject_message_task.delay(appointment.id)
+        except:
+            print("error with sms feature")
+        try:
+            reject_mail_both_task.delay(appointment.id)
+        except:
+            print("error with email feature")
+	
+	
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
