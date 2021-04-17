@@ -53,12 +53,15 @@
 
         <div class="registerPasswordOne">
             Password
+            <div class="popup" onclick="myFunction()"><u><b>Requirements</b></u>
+                <span class="popuptext" id="myPopup">At least 8 characters with 1 uppercase letter, 1 lowercase letter,
+                    and 1 number. Should not be too similar to your personal information, nor a commonly used
+                    password.</span>
+            </div>
         </div>
         <div class="registerPasswordOneBox">
             <div class="registerPasswordOneInput">
                 {{form.password1}}
-                <p>At least 8 characters with 1 uppercase letter, 1 lowercase letter, and 1 number. Should not too similar to
-                    your personal information, nor a commonly used password</p>
             </div>
         </div>
 
@@ -75,10 +78,15 @@
         <div class="registerPhone">
             Phone Number
         </div>
+
         <div class="registerPhoneBox">
             <div class="registerPhoneInput">
                 {{form.phone_no}}
-                <p>This field is optional. Do not include the country code, spaces, or any other characters</p>
+            </div>
+            <div class="popup2" onclick="myFunction2()"><u><b>Note</b></u>
+                <span class="popuptext2" id="myPopup2">This field is optional. Do not include the country code, spaces,
+                    or
+                    any other characters.</span>
             </div>
         </div>
         <div class="button registerButton">
@@ -86,4 +94,17 @@
         </div>
     </form>
 </div>
+
+<script>
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+
+    function myFunction2() {
+        var popup2 = document.getElementById("myPopup2");
+        popup2.classList.toggle("show");
+    }
+</script>
 {% endblock content %}

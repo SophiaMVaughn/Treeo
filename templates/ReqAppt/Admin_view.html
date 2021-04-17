@@ -8,6 +8,12 @@
 <div class="white">
   <div class="first">
     <div class="appointments">Appointments</div>
+    <div class="appointmentViews">
+      <div class="button appointmentViews">
+        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">Calendar View</a>
+        <a class="btn btn-primary btn-large btn-block activeButton" href="{% url 'reqAppt' %}">List View</a>
+      </div>
+    </div>
     <!-- 
       This displays the search bar that allows a user to filter the table by provider.
     -->
