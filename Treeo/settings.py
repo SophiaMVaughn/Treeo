@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
+    'tz_detect',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'users_acc.middleware.SessionTimeoutMiddleware',
+    'tz_detect.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'Treeo.urls'
@@ -96,7 +98,7 @@ DATABASES = {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'treeohealthdb',
         'USER': 'root',
-        'PASSWORD': '#GGnorem8',
+        'PASSWORD': 'xcDq6mptESIL5nMlYLbF',
         'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         # 'ENGINE': 'mysql.connector.django',
@@ -133,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

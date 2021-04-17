@@ -579,8 +579,6 @@ def home(request):
         elif request.user.user_type == 3:
             context["appointment"] = ApptTable.objects.filter(patient=request.user.patient).order_by("meetingDate")[:2]
             context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2]
-            print(ApptTable.objects.filter(patient=request.user.patient).order_by("-meetingDate")[:2])
-            print(PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2])
         else:
             context["appointment"] = ApptTable.objects.none
             context["recentMessages"] = PostQ.objects.none
