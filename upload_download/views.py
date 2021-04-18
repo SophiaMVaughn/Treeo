@@ -9,8 +9,9 @@ from django.contrib.auth.decorators import login_required
 from users_acc.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-#upatient files should not be in admin view (upload/download)
 
+#Author: Brandon
+#This is the file upload page where the user can upload the file.
 @login_required
 def render_file_upload(request):
     if request.method == 'POST':
@@ -54,7 +55,8 @@ def render_file_upload(request):
 
 
 
-
+#Author: Brandon
+#This is the file download page where the user can download the files they have access to.
 @login_required
 def render_file_download(request):
     files = []
@@ -158,7 +160,8 @@ def render_file_download(request):
         }
         return render(request, 'upload_download/filedownload.html', context)
 
-
+#Author: Brandon
+#This is the file delete page where the user can delete a file they have access too.
 @login_required
 def delete_file(request, id):
     if request.method == "POST":

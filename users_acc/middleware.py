@@ -13,7 +13,8 @@ except ImportError:
 
 
 
-
+#Author: Brandon
+#This is the sessin timeout funtionality in django this middleware is loaded for each query and we see if the user has been inactive and then we log them out.
 class SessionTimeoutMiddleware(MiddlewareMixin):
     def process_request(self, request):
         # is there a signed in user and does this request have a session atribute
