@@ -97,7 +97,7 @@
                     <td></td>
                     <td id="{{a.date.isoformat}}">{{a.date}}</td>
                     <td></td>
-                    <td><a href="{% url 'log-chart' a.patient.user.id %}"><span> View Log</span></a></td>
+                    <td><a href="{% url 'log-chart' a.patient.id %}"><span> View Log</span></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

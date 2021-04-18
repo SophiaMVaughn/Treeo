@@ -262,6 +262,8 @@ def Doctor_avail_view(request, id, date_str):
     # parse datetime
     # query appointments for id(provider) on date
     # filter for available hour slots from 8-4 , return json list
+    #storing current time zone before we change to utc for database calls
+    temptz=timezone.get_current_timezone()
     #error in the timezone package we are useing where ther is a unassigned time zone on this page so we set the time zone manually here
     timezone.activate('UTC')
     month, day, year = date_str.split('-')
@@ -279,7 +281,11 @@ def Doctor_avail_view(request, id, date_str):
     ).all())
 
     def appt_to_time(appt: ApptTable):
-        return appt.meetingDate.hour + (appt.meetingDate.minute * 0.5)
+        temp =timezone.make_aware(timezone.make_naive(appt.meetingDate), timezone=temptz)
+        print(appt.meetingDate + temp.utcoffset())
+        temp=appt.meetingDate + temp.utcoffset()
+        print(temp.hour,(temp.minute * 0.5))
+        return temp.hour + (temp.minute * 0.5)
 
     unavailable_times = {appt_to_time(appt) for appt in appointments}
 
