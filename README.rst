@@ -81,7 +81,7 @@ Deployment
 ---------
 In order to deploy a Django application you must make some changes involving the static files and debug flag.
 The celery and flower server configuration must be completed using these commands in separate terminals.
-celery -A Treeo worker -l info --pool=solo
+celery -A Treeo worker -l info --pool=solo | 
 flower -A Treeo --port=5555
 
 
