@@ -65,7 +65,7 @@ def patientlog(request):
                     q = Patient.objects.filter(doc_d=request.user.provider)
                 elif request.user.provider.Provider_type ==3:
                     q = Patient.objects.filter(doc_c=request.user.provider)
-                # g=PatientLog.objects.filter(patient__in=q)
+                # argument that we might want to do a list of patients and then a list of patient logs
                 for i in q:
                     if PatientLog.objects.filter(patient=i).exists():
                         master_list.append(PatientLog.objects.filter(patient=i).order_by('date').first())
@@ -84,7 +84,7 @@ def patientlog(request):
 #This method edits the daily health log with the paitnets new input
 
 def edit_log(request,id):
-    temp = PatientLog.objects.get(id=id)
+    temp = PatientLog.objects.get(public_id=id)
     form = PatientLogForm()
     if request.method =='POST':
         print("edit_log")
@@ -249,9 +249,14 @@ def line_chart_Week(id):
         'timeframe':timeframe
     }
 def render_chart(request, id):
-    yearly=line_chart_Year(id)
-    monthly=line_chart_Month(id)
-    weekly=line_chart_Week(id)
+    pat = Patient.objects.none()
+    try:
+        pat = Patient.objects.get(public_id=id)
+    except:
+        pass
+    yearly=line_chart_Year(pat.id)
+    monthly=line_chart_Month(pat.id)
+    weekly=line_chart_Week(pat.id)
     return render(request, 'patient_log/chart_View.html', {
         'Weekly': weekly,
         'Monthly': monthly,

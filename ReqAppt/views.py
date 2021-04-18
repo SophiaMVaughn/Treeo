@@ -126,20 +126,20 @@ def create_Appointment(request):
 #             scheduled_mail_both_task.delay(appointment.id)
 #             target_time_print(appointment)
 #             send_message_task.delay(appointment.id)
-		
-	    try:
-		 scheduled_mail_both_task.delay(appointment.id)
-            except:
-                print("error with email feature")
-		
-            target_time_print(appointment)
 
-            try:
-                send_message(appointment)
-            except :
-                print("error with sms feature")	
-		
-		
+        try:
+            scheduled_mail_both_task.delay(appointment.id)
+        except:
+            print("error with email feature")
+
+        target_time_print(appointment)
+
+        try:
+            send_message(appointment)
+        except :
+            print("error with sms feature")
+
+
             return render(request, 'ReqAppt/Pending.html')
 
 
@@ -201,7 +201,7 @@ def Patient_view(request):
     return render(request,'ReqAppt/Patient_view.html',context)
 
 def approve(request,id):
-    appointment=ApptTable.objects.get(id=id)
+    appointment=ApptTable.objects.get(public_id=id)
     #need error handling
     provider_url, patient_url, patient_pwd = generate_zoom(request=1)
     appointment.meeturlprovider=provider_url
@@ -213,10 +213,9 @@ def approve(request,id):
     #Confirm Appointment
     appointment.status=True
     appointment.save()
-	
     approved_mail_both_task.delay(appointment.id,patient_pwd)
-	
-	
+
+
     try:
         approve_message_task.delay(appointment.id)
     except:
@@ -225,7 +224,7 @@ def approve(request,id):
         approved_mail_both_task.delay(appointment.id,patient_pwd)
     except:
         print("error with email feature")
-	
+
     return redirect("reqAppt_Doctor")
 
 
@@ -235,13 +234,13 @@ def approve(request,id):
 #Asks if user wishes to delete Appt
 #Delete Appointment
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(id=id)
+    appointment = ApptTable.objects.get(public_id=id)
     if request.method == 'POST':
         appointment.delete()
 #         reject_message_task.delay(appointment.id)
 #         reject_mail_both_task.delay(appointment.id)
-	
-	try:
+
+        try:
             reject_message_task.delay(appointment.id)
         except:
             print("error with sms feature")
@@ -249,8 +248,8 @@ def Destroy(request, id):
             reject_mail_both_task.delay(appointment.id)
         except:
             print("error with email feature")
-	
-	
+
+
         return redirect ("reqAppt_Doctor")
     return render(request,"reqAppt/DeleteConfirm.html")
 
