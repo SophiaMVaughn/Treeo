@@ -21,7 +21,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #Author: Nicole
-#This method allows a patietn to input their calories, water intake, hours of sleep and their mood.
+#This method allows a patient to input their calories, water intake, hours of sleep, and their mood.
 @login_required
 def patientlog(request):
     if request.method =='POST':
@@ -38,7 +38,7 @@ def patientlog(request):
                 saverecord.save()
                 # saverecord.date = timezone.now()
                 # saverecord.save()
-                #when this is saved tis saved as monday rathe than sun
+                #when this is saved it's saved as Monday rather than Sunday
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
                 #message error here
@@ -49,7 +49,7 @@ def patientlog(request):
             return redirect('log-chart', request.POST['patient'])
     else:
         if request.user.user_type==3:
-            #error in the timezone package we are useing where ther is a unassigned time zone on this page so we set the time zone manually here
+            #error in the timezone package we are using where thee is a unassigned time zone on this page so we set the time zone manually here
             timezone.activate('UTC')
             today = timezone.now().date()
             print(PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today))
@@ -93,7 +93,7 @@ def patientlog(request):
             return redirect('home')
 
 #Author: Nicole
-#This method edits the daily health log with the paitnets new input
+#This method edits the daily health log with the patient's new input
 
 def edit_log(request,id):
     temp = PatientLog.objects.get(id=id)
@@ -117,7 +117,7 @@ def edit_log(request,id):
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 
 #Author: Brandon
-#Year function if passed patient.id retuns the average of all the entries of each month that year and returns a dictionary for the chart js
+#Year function if passed patient.id returns the average of all the entries of each month that year and returns a dictionary for the chart js
 def line_chart_Year(id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
     calories = []
@@ -265,7 +265,7 @@ def line_chart_Week(id):
         'timeframe':timeframe
     }
 def render_chart(request, id):
-    #error in the timezone package we are useing where ther is a unassigned time zone on this page so we set the time zone manually here
+    #error in the timezone package we are using where there is a unassigned time zone on this page so we set the time zone manually here
     timezone.activate('UTC')
     yearly=line_chart_Year(id)
     monthly=line_chart_Month(id)

@@ -27,7 +27,7 @@ from ReqAppt.tasks import *
 from ReqAppt.views import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 #Author: Brandon
-#This is the register funtion it allows peole to register as patient users.
+#This is the register funtion it allows people to register as patient users.
 def register(request):
     if request.method == 'POST':
         form = PatientRegisterForm(request.POST)
@@ -70,12 +70,12 @@ def register(request):
         return render(request, 'users_acc/register.html', {'form': PatientRegisterForm()})
 
 #Author: Brandon
-#This is redirects the user to here if the activation was sucessful.
+#This redirects the user to here if the activation was successful.
 def account_activation_sent(request):
     return render(request, 'users_acc/account_activation_sent.html')
 
 #Author: Brandon
-#This is the activation funtion processes the link that is sent by email to new users.
+#This is the activation function processes the link that is sent by email to new users.
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -106,7 +106,7 @@ def loginuser(request):
             if userl.is_email_confirmed == True:
                 # print("test2")
                 login(request, userl)
-                # get the stuff or the get responce theing here
+                # get the stuff or the get response thing here
                 return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Is Not Confirmed']})
