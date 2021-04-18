@@ -18,6 +18,7 @@ from django.utils import timezone
 import calendar
 from users_acc.models import *
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #Author: Nicole
 #This method allows a patietn to input their calories, water intake, hours of sleep and their mood.
@@ -48,7 +49,10 @@ def patientlog(request):
             return redirect('log-chart', request.POST['patient'])
     else:
         if request.user.user_type==3:
+            #error in the timezone package we are useing where ther is a unassigned time zone on this page so we set the time zone manually here
+            timezone.activate('UTC')
             today = timezone.now().date()
+            print(PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today))
             if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
                 saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
                 return redirect('edit_log',saverecord.id)
@@ -73,7 +77,15 @@ def patientlog(request):
                         pass
             except Exception as e:
                 print(e)
-            context['patients']=master_list
+            pagination = Paginator(master_list, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
+            context['patients']=pagination
             print(master_list)
             return render(request, 'patient_log/patientLog.html', context)
         elif request.user.user_type == 1:
@@ -113,7 +125,7 @@ def line_chart_Year(id):
     data4 = []
     #for current year loop through the months and append the average to list make 0 jan 2 feb ect
     cur_date = timezone.now().date()
-
+    print(cur_date.year)
     #second for loop for the years in the PatientLog
     for i in range(1, 13):
         temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('calories')).values())
@@ -206,13 +218,13 @@ def line_chart_Week(id):
     data3 = []
     data4 = []
     #for current week
-    cur_date = timezone.now().date()
+    cur_date = datetime.datetime.now()
     weekday = cur_date.weekday()
     dates = []
     date = cur_date - datetime.timedelta(days=weekday)
-
     for i in range(7):
         dates.append(date + datetime.timedelta(days=i))
+    #print(PatientLog.objects.filter(patient=id).filter(date__date=i)) 
     for i in dates:
         temp = list(PatientLog.objects.filter(patient=id).filter(date__date=i).aggregate(Sum('calories')).values())
         if None not in temp:
@@ -238,7 +250,7 @@ def line_chart_Week(id):
             data4 += temp
         else:
             data4 += ['NaN']
-    #print(data,data2,data3,data4)
+    print(data,data2,data3,data4)
     timeframe=dates[0].strftime("%B %d-") + dates[6].strftime("%d, %Y")
     return {
         'labels': labels,
@@ -249,6 +261,8 @@ def line_chart_Week(id):
         'timeframe':timeframe
     }
 def render_chart(request, id):
+    #error in the timezone package we are useing where ther is a unassigned time zone on this page so we set the time zone manually here
+    timezone.activate('UTC')
     yearly=line_chart_Year(id)
     monthly=line_chart_Month(id)
     weekly=line_chart_Week(id)
