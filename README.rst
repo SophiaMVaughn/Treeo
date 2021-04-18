@@ -73,16 +73,16 @@ Installation
 ============
 In order to run this framework you will need to have at least one user account created that is an admin. You can create this account directly from the Django shell by creating a superuser account and then modifying its values either in the admin panel or in your database directly. From there, all accounts are added through the normal means or through the Django shell, though there may be some profile issues when adding accounts through the shell.
 You must also be running a celery worker, so the tasks execute properly.
-
+celery -A Treeo worker -l info --pool=solo
+flower -A Treeo --port=5555
 
 
 
 Deployment
----------
+----------
 In order to deploy a Django application you must make some changes involving the static files and debug flag.
 The celery and flower server configuration must be completed using these commands in separate terminals.
-celery -A Treeo worker -l info --pool=solo | 
-flower -A Treeo --port=5555
+
 
 
 
