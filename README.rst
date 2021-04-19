@@ -41,11 +41,8 @@ In order to run this framework you will need to have at least one user account c
 After this you can user the standard manage.py commands to run the server.
 You must also be running a celery worker, so the tasks execute properly.
 Make sure to install the messaging service rabbitMQ
-To do so run:
-celery -A Treeo worker -l info --pool=solo
-this starts one celery worker in a windows environment
-flower -A Treeo --port=5555
-this starts the flower service on port 5555 (its default) in a windows environment
+To do so run the command "celery -A Treeo worker -l info --pool=solo". This starts one celery worker in a windows environment.
+"flower -A Treeo --port=5555". This starts the flower service on port 5555 (its default) in a windows environment.
 
 
 Deployment
