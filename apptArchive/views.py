@@ -4,9 +4,10 @@ from django.shortcuts import render, redirect
 from apptArchive.models import ApptArchive, Notes
 from apptArchive.forms import NotesForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+#Author: Brandon & Nicole
+#Here a user can see all of the archived apointments that a user has acess too
 def view_all_archived_appointments(request):
-    # query appointment table or notes after they select a n appointment request.user
+    # query appointment table or notes after they select an appointment request.user
     if request.user.user_type == 3:
         apptArchive=ApptArchive.objects.filter( patient=request.user.patient).order_by('meetingDate')
         pagination = Paginator(apptArchive, 5)
@@ -39,7 +40,8 @@ def view_all_archived_appointments(request):
         return render(request, 'apptArchive/apptArchive.html', context)
     else:
         return redirect('home')
-
+#Author: Brandon & Nicole
+#Here a user can see the details of a specific archived apointment and if a provider commented on
 def view_archived_appointment(request,id):
     notes = Notes.objects.none()
     try:

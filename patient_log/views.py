@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from patient_log.models import PatientLog
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 import sched, time
 from django.views.generic.edit import UpdateView
@@ -18,9 +18,10 @@ from django.utils import timezone
 import calendar
 from users_acc.models import *
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #Author: Nicole
-#This method allows a patietn to input their calories, water intake, hours of sleep and their mood.
+#This method allows a patient to input their calories, water intake, hours of sleep, and their mood.
 @login_required
 def patientlog(request):
     if request.method =='POST':
@@ -37,7 +38,7 @@ def patientlog(request):
                 saverecord.save()
                 # saverecord.date = timezone.now()
                 # saverecord.save()
-                #when this is saved tis saved as monday rathe than sun
+                #when this is saved it's saved as Monday rather than Sunday
                 return render(request, 'patient_log/patientLog_submit.html', {"form": saverecord})
             else:
                 #message error here
@@ -48,7 +49,10 @@ def patientlog(request):
             return redirect('log-chart', request.POST['patient'])
     else:
         if request.user.user_type==3:
+            #error in the timezone package we are using where thee is a unassigned time zone on this page so we set the time zone manually here
+            timezone.activate('UTC')
             today = timezone.now().date()
+            print(PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today))
             if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
                 saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
                 return redirect('edit_log',saverecord.id)
@@ -73,7 +77,15 @@ def patientlog(request):
                         pass
             except Exception as e:
                 print(e)
-            context['patients']=master_list
+            pagination = Paginator(master_list, 5)
+            page = request.GET.get('page', 1)
+            try:
+                pagination = pagination.page(page)
+            except PageNotAnInteger:
+                pagination = pagination.page(1)
+            except EmptyPage:
+                pagination = pagination.page(pagination.num_pages)
+            context['patients']=pagination
             print(master_list)
             return render(request, 'patient_log/patientLog.html', context)
         elif request.user.user_type == 1:
@@ -81,7 +93,7 @@ def patientlog(request):
             return redirect('home')
 
 #Author: Nicole
-#This method edits the daily health log with the paitnets new input
+#This method edits the daily health log with the patient's new input
 
 def edit_log(request,id):
     temp = PatientLog.objects.get(public_id=id)
@@ -104,60 +116,62 @@ def edit_log(request,id):
     else:
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 
-
+#Author: Brandon
+#Year function if passed patient.id returns the average of all the entries of each month that year and returns a dictionary for the chart js
 def line_chart_Year(id):
     labels = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"]
-    data = []
-    data2 = []
-    data3 = []
-    data4 = []
-    #for current year loop through the months and append the average to list make 0 jan 2 feb ect
+    calories = []
+    water = []
+    sleep = []
+    mood = []
+    #for current year loop through the months and append the average to list
     cur_date = timezone.now().date()
-
+    print(cur_date.year)
     #second for loop for the years in the PatientLog
     for i in range(1, 13):
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('calories')).values())
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('calories')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data += temp
+            calories += temp
         else:
-            data += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('water')).values())
+            calories += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('water')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data2 += temp
+            water += temp
         else:
-            data2 += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('sleep')).values())
+            water += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('sleep')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data3 += temp
+            sleep += temp
         else:
-            data3 += ['NaN']
-        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Sum('mood')).values())
+            sleep += ['NaN']
+        temp = list(PatientLog.objects.filter(patient=id).filter(date__year=cur_date.year).filter(date__month=i).aggregate(Avg('mood')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data4 += temp
+            mood += temp
         else:
-            data4 += ['NaN']
-    #print(data, data2, data3, data4)
+            mood += ['NaN']
+    #print(calories, water, sleep, mood)
     timeframe=cur_date.strftime("%Y")
     # print(timeframe)
     return {
         'labels': labels,
-        'Calories': data,
-        'Water': data2,
-        'Sleep': data3,
-        'Mood': data4,
+        'Calories': calories,
+        'Water': water,
+        'Sleep': sleep,
+        'Mood': mood,
         'timeframe':timeframe}
-
+#Author: Brandon
+#Month function if passed patient.id retuns each days of all the entries of that month and returns a dictionary for the chart js
 def line_chart_Month(id):
     #???? declare as empty and populate with the days as it loops
     labels = []
-    data = []
-    data2 = []
-    data3 = []
-    data4 = []
+    calories = []
+    water = []
+    sleep = []
+    mood = []
     #for current week
     cur_date = timezone.now().date()
     num_days = calendar.monthrange(cur_date.year, cur_date.month)[1]
@@ -167,88 +181,92 @@ def line_chart_Month(id):
         temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('calories')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data += temp
+            calories += temp
         else:
-            data += ['NaN']
+            calories += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('water')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data2 += temp
+            water += temp
         else:
-            data2 += ['NaN']
+            water += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('sleep')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data3 += temp
+            sleep += temp
         else:
-            data3 += ['NaN']
+            sleep += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__month=cur_date.month).filter(date__day=day).aggregate(Sum('mood')).values())
         if None not in temp:
             temp[0]=float(temp[0])
-            data4 += temp
+            mood += temp
         else:
-            data4 += ['NaN']
-    #print(data,data2,data3,data4)
+            mood += ['NaN']
+    #print(calories,water,sleep,mood)
     timeframe=cur_date.strftime("%B")
     # print(timeframe)
     return {
         'labels': labels,
-        'Calories': data,
-        'Water': data2,
-        'Sleep': data3,
-        'Mood': data4,
+        'Calories': calories,
+        'Water': water,
+        'Sleep': sleep,
+        'Mood': mood,
         'timeframe':timeframe
     }
+#Author: Brandon
+#Week function if passed patient.id retuns each days of all the entries of that current week and returns a dictionary for the chart js
 def line_chart_Week(id):
     labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    data = []
-    data2 = []
-    data3 = []
-    data4 = []
+    calories = []
+    water = []
+    sleep = []
+    mood = []
     #for current week
-    cur_date = timezone.now().date()
+    cur_date = datetime.datetime.now()
     weekday = cur_date.weekday()
     dates = []
     date = cur_date - datetime.timedelta(days=weekday)
-
     for i in range(7):
         dates.append(date + datetime.timedelta(days=i))
+    #print(PatientLog.objects.filter(patient=id).filter(date__date=i)) 
     for i in dates:
         temp = list(PatientLog.objects.filter(patient=id).filter(date__date=i).aggregate(Sum('calories')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data += temp
+            calories += temp
         else:
-            data += ['NaN']
+            calories += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__date=i).aggregate(Sum('water')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data2 += temp
+            water += temp
         else:
-            data2 += ['NaN']
+            water += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__date=i).aggregate(Sum('sleep')).values())
         if None not in temp:
             temp[0] = float(temp[0])
-            data3 += temp
+            sleep += temp
         else:
-            data3 += ['NaN']
+            sleep += ['NaN']
         temp = list(PatientLog.objects.filter(patient=id).filter(date__date=i).aggregate(Sum('mood')).values())
         if None not in temp:
             temp[0]=float(temp[0])
-            data4 += temp
+            mood += temp
         else:
-            data4 += ['NaN']
-    #print(data,data2,data3,data4)
+            mood += ['NaN']
+    print(calories,water,sleep,mood)
     timeframe=dates[0].strftime("%B %d-") + dates[6].strftime("%d, %Y")
     return {
         'labels': labels,
-        'Calories': data,
-        'Water': data2,
-        'Sleep': data3,
-        'Mood': data4,
+        'Calories': calories,
+        'Water': water,
+        'Sleep': sleep,
+        'Mood': mood,
         'timeframe':timeframe
     }
 def render_chart(request, id):
+    #error in the timezone package we are using where there is a unassigned time zone on this page so we set the time zone manually here
+    timezone.activate('UTC')
     pat = Patient.objects.none()
     try:
         pat = Patient.objects.get(public_id=id)

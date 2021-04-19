@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load tz_detect %}
 <html lang="en">
 <!-- 
 	Authors: Brandon Breen and George Esho
@@ -8,8 +9,6 @@
 -->
 {% load static %}
 
-{% load tz_detect %}
-{% tz_detect %}
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +25,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
-{% load tz_detect %}
-{% tz_detect %}
+
 <body>
 	<div id="container">
 		<div class="theT"></div>
@@ -165,4 +163,7 @@ function addLoadEvent(functorunonpageload) {
 addLoadEvent(active_navbar);
 {% endif %}
 </script>
+
+
+{% tz_detect %}
 </body>

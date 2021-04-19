@@ -26,7 +26,8 @@ from messaging.models import *
 from ReqAppt.tasks import *
 from ReqAppt.views import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+#Author: Brandon
+#This is the register funtion it allows people to register as patient users.
 def register(request):
     if request.method == 'POST':
         form = PatientRegisterForm(request.POST)
@@ -68,11 +69,13 @@ def register(request):
     else:
         return render(request, 'users_acc/register.html', {'form': PatientRegisterForm()})
 
-
+#Author: Brandon
+#This redirects the user to here if the activation was successful.
 def account_activation_sent(request):
     return render(request, 'users_acc/account_activation_sent.html')
 
-
+#Author: Brandon
+#This is the activation function processes the link that is sent by email to new users.
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -84,53 +87,15 @@ def activate(request, uidb64, token):
         #user.is_active = True
         user.is_email_confirmed = True
         user.save()
-        # m=message.objects.create()
-        # m.sender = user
-        # m.reciever = user
-        # m.subject ='Welcome to Treeo'
-        # m.convoID = 1
-        # m.read_status = False
-        # m.sender_loc = 'Outbox'
-        # m.reciever_loc = 'Inbox'
-        # m.msgbody = 'Welcome to Treeo'
-        # m.save()
         login(request, user)
         return render(request, 'users_acc/account_activation_success.html')
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
 
-#delete this funtion
-def button(request):
-    if request.method == 'POST':
-        #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        # m=message.objects.create()
-        # m.sender = request.user
-        # m.reciever = request.user
-        # m.subject ='test'
-        # m.convoID = 1
-        # m.read_status = False
-        # m.sender_loc = 'Outbox'
-        # m.reciever_loc = 'Inbox'
-        # m.save()
-
-        # m=ApptTable.objects.first()
-        # archive_apt(m.id)
-        # m.delete()
-        g=get_user_model().objects.first()
-        m=get_user_model().objects.first()
-        thread.objects.create(sender=g, reciever=m)
-        # if thread.objects.filter(sender=g, reciever=m).exists():
-        #     print("thread exists")
-        #     return redirect('button')
-        # else:
-        #     thread.objects.create(sender=g, reciever=m)
-        #     print("thread created")
-        #     return redirect('button')
-        return redirect('button')
-    else:
-        return render(request, 'users_acc/button.html')
 
 
+#Author: Brandon
+#This is the login function it logs in users.
 def loginuser(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -141,7 +106,7 @@ def loginuser(request):
             if userl.is_email_confirmed == True:
                 # print("test2")
                 login(request, userl)
-                # get the stuff or the get responce theing here
+                # get the stuff or the get response thing here
                 return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Is Not Confirmed']})
@@ -153,17 +118,15 @@ def loginuser(request):
     else:
         return render(request, 'users_acc/login.html', {'form': AuthenticationForm()})
 
-
+#Author: Brandon
+#This is the profile for patient and providers it shows them the details of their accounts.
 @login_required
 def profile(request):
     return render(request, 'users_acc/profile.html')
-    # this would be required if you dont use @login_required
-    # if request.user.is_authenticated:
-    # return render(request, 'profile.html')
-    # else:
-    #     return redirect('/login/?next=%s' % request.path)
 
 
+#Author: Brandon
+#This is the function for edit profile for patient and providers it shows them the details of their accounts and allows them to change them.
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -190,7 +153,8 @@ def edit_profile(request):
         ep = User_Update_Form(instance=request.user)
     return render(request, 'users_acc/edit_profile.html', {'edit_profile': ep})
 
-
+#Author: Brandon
+#This allows the admin to register a provider and send them an invite email .
 def doctor_registration(request):
     if request.method == 'POST':
         form = ProviderRegisterForm(request.POST)
@@ -256,7 +220,8 @@ def admin_view(request):
     }
     return render(request, "users_acc/admin_assign.html", context)
 
-
+#Author: Brandon
+#This is the page where we can assign a patient to provider.
 @login_required
 def admin_display_team(request, id):
     try:
@@ -273,6 +238,7 @@ def admin_display_team(request, id):
                     patient.save()
                     doc.Patient_count += 1
                     doc.save()
+                    # make thread if no thread already exists
                     if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
                         print("thread exists")
                         pass
@@ -294,6 +260,7 @@ def admin_display_team(request, id):
                     patient.save()
                     doc.Patient_count += 1
                     doc.save()
+                    # make thread if no thread already exists
                     if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
                         print("thread exists")
                         pass
@@ -315,6 +282,7 @@ def admin_display_team(request, id):
                     patient.save()
                     doc.Patient_count += 1
                     doc.save()
+                    # make thread if no thread already exists
                     if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
                         print("thread exists")
                         pass
@@ -333,7 +301,8 @@ def admin_display_team(request, id):
         else:
             return render(request, "users_acc/admin_display_team.html", {'form': AdminProviderUpdateForm(instance=patient), 'patient': patient})
 
-
+#Author: Brandon
+#This is the page where we can remove a assigned patient from a provider.
 def admin_remove_provider(request, id, id2):
     if request.method == "POST":
         # id = patient id2 =provider
@@ -344,6 +313,7 @@ def admin_remove_provider(request, id, id2):
             pat.save()
             doc.Patient_count -= 1
             doc.save()
+            # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
                 print("thread exists")
                 #try except here
@@ -355,6 +325,7 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
+            # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
                 print("thread exists")
                 #try except here
@@ -371,6 +342,7 @@ def admin_remove_provider(request, id, id2):
             pat.save()
             doc.Patient_count -= 1
             doc.save()
+            # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
                 print("thread exists")
                 #try except here
@@ -382,6 +354,7 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
+            # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
                 print("thread exists")
                 #try except here
@@ -398,9 +371,9 @@ def admin_remove_provider(request, id, id2):
             pat.save()
             doc.Patient_count -= 1
             doc.save()
+            #remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
                 print("thread exists")
-                #try except here
                 test=thread.objects.get(sender=doc.user, reciever=pat.user)
                 if message.objects.filter(convoIDt=test).exists():
                     print("messages present")
@@ -409,6 +382,7 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
+            # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=pat.user, reciever=doc.user).exists():
                 print("thread exists")
                 #try except here
@@ -423,7 +397,8 @@ def admin_remove_provider(request, id, id2):
         return redirect('admin_display_team', pat.id)
     context = {'patient': id, 'provider': id2}
     return render(request, "users_acc/deleteconfirm.html", context)
-
+#Author: Brandon
+#This is the page where we display the providers and they can be approved or unapproved.
 @login_required
 def admin_approve_provider_render(request):
     temp=Provider.objects.filter().order_by('is_verified')
@@ -440,7 +415,8 @@ def admin_approve_provider_render(request):
         'results': pagination
     }
     return render(request, "users_acc/admin_approve_provider.html", context)
-
+#Author: Brandon
+#This is the page where we can approve providers .
 @login_required
 def admin_approve_provider(request, id):
     try:
@@ -452,7 +428,8 @@ def admin_approve_provider(request, id):
         temp.is_verified=True
         temp.save()
     return redirect("admin_approve_provider_render")
-
+#Author: Brandon
+#This is the page where we can unapprove providers.
 @login_required
 def admin_revoke_provider(request, id):
     try:
@@ -463,7 +440,8 @@ def admin_revoke_provider(request, id):
         temp.is_verified=False
         temp.save()
     return redirect("admin_approve_provider_render")
-
+#Author: Brandon
+#This is the page where an admin can deactivate user accouts .
 @login_required
 def admin_user_deactivate_render(request):
     temp=User.objects.filter(~Q(user_type= 1))
@@ -516,14 +494,16 @@ def admin_user_deactivate_render(request):
             'results': pagination
         }
         return render(request, "users_acc/admin_deactivate_user.html", context)
-
+#Author: Brandon
+#This is the page where a user can deactivate thier accout.
 @login_required
 def user_deactivate(request):
         if request.user.user_type == 3 or request.user.user_type == 2:
             request.user.is_active = False
             request.user.save()
             return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated!']})
-
+#Author: Brandon
+#This is the page where patient users take the survey.
 @login_required
 def take_survey(request):
     if request.user.user_type ==3:
@@ -547,7 +527,8 @@ def take_survey(request):
     else:
         return redirect("home")
 
-
+#Author: Brandon
+#This is the page where patient users take the survey.
 @login_required
 def render_survey(request):
     if request.user.user_type ==3:
@@ -569,16 +550,17 @@ def render_survey(request):
             return redirect("home")
     else:
         return redirect("home")
-
+#Author: Brandon
+#This is the home page that is personalized baed on the account type of the user.
 def home(request):
     if request.user.is_authenticated:
         context={}
         if request.user.user_type == 2:
             context["appointment"] = ApptTable.objects.filter(provider=request.user.provider).order_by("meetingDate")[:2]
-            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2]
+            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
         elif request.user.user_type == 3:
             context["appointment"] = ApptTable.objects.filter(patient=request.user.patient).order_by("meetingDate")[:2]
-            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("-meetingDate")[:2]
+            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
         else:
             context["appointment"] = ApptTable.objects.none
             context["recentMessages"] = PostQ.objects.none
@@ -588,15 +570,18 @@ def home(request):
 
 
     
-#coales to one view and add error handling
+#Author: Gio
+#This is the page a patient sees when they view the profile of their dietitian.
 @login_required
 def dietitian_details(request):
     return render(request, 'users_acc/diet_details.html')
-
+#Author: Gio
+#This is the page a patient sees when they view the profile of their pysician.
 @login_required
 def doctor_details(request):
     return render(request, 'users_acc/doctor_details.html')
-
+#Author: Gio
+#This is the page a patient sees when they view the profile of their health coach.
 @login_required
 def coach_details(request):
     return render(request, 'users_acc/coach_details.html')
