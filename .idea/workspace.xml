@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="archive task">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/forms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
