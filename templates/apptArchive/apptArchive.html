@@ -29,7 +29,7 @@
           <td>{{i.patient.user.get_full_name}}</td>
           <td>{{i.meetingDate}}</td>
           <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
-              href="{% url 'archived_appointment' i.public_id %}"><span>View Meeting Notes </span></a></td>
+              href="{% url 'archived_appointment' i.id %}"><span>View Meeting Notes </span></a></td>
         <tr>
           {%endfor%}
       </table>

@@ -45,7 +45,7 @@ def view_all_archived_appointments(request):
 def view_archived_appointment(request,id):
     notes = Notes.objects.none()
     try:
-        apptArchive = ApptArchive.objects.get(public_id=id)
+        apptArchive = ApptArchive.objects.get(id=id)
         notes = Notes.objects.filter(apptId=id).order_by("date")
     except:
         # 404 instead??

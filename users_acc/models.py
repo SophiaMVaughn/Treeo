@@ -8,7 +8,7 @@ from django.utils import timezone
 #from .managers import CustomUserManager
 from PIL import Image
 from phonenumber_field.modelfields import PhoneNumberField
-import uuid
+
 
 USER_TYPE_CHOICES = (
     (1, 'Admin'),
@@ -27,7 +27,6 @@ Survey_TYPE_CHOICES = (
 )
 
 class User(AbstractUser):
-    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     user_type = models.PositiveSmallIntegerField(
@@ -57,13 +56,11 @@ class User(AbstractUser):
 #object.get_chices_display
 
 class Admin(models.Model):
-    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name="admin", on_delete=models.CASCADE)
 
 
 class Provider(models.Model):
-    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name="provider", on_delete=models.CASCADE)
     Patient_count = models.PositiveSmallIntegerField(default=0)
@@ -73,7 +70,6 @@ class Provider(models.Model):
 
 
 class Patient(models.Model):
-    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name="patient", on_delete=models.CASCADE)
     doc_d = models.ForeignKey(
