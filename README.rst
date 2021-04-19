@@ -6,6 +6,53 @@ Treeo Django Web Application
 
 The web application is a django project.
 
+Dependencies
+============
+In this project, in order to accomplish the scope, we are relying on several dependencies.
+They are located in the requirement.txt file. You will need to run the requirement txt file before starting the application.
+Details on how to do so are in the file.
+
+1) The framework Django.
+
+2) The MySQL connector in order to connect to the Azure database provided to us by Treeo.
+
+3) Pillow to handle user profile pictures.
+
+4) Chart js as the front end in order to handle the charts.
+
+5) Babel for various language dependencies in the framework.
+
+6) Zoom US in order to interface with the Zoom API.
+
+7) Twillo in order to be able to send calls and text messages.
+
+8) The django phone number field and django phone numbers was used for several features involving the phone numbers that we store for user accounts.
+
+9) Celery and Flower are being used in order to run our asynchronous task queue. In addition, a local installation of their default messaging service rabbit MQ is required.
+
+10) The django time zone detect module. This allows us to make sure that the times displayed are correct in all browsers by comparing the UTC offset of the browser to the appropriate time zones.
+
+
+
+
+Installation
+============
+In order to run this framework you will need to have at least one user account created that is an admin. You can create this account directly from the Django shell by creating a superuser account and then modifying its values either in the admin panel or in your database directly. From there, all accounts are added through the normal means or through the Django shell, though there may be some profile issues when adding accounts through the shell.
+After this you can user the standard manage.py commands to run the server.
+You must also be running a celery worker, so the tasks execute properly.
+Make sure to install the messaging service rabbitMQ
+To do so run:
+celery -A Treeo worker -l info --pool=solo
+this starts one celery worker in a windows environment
+flower -A Treeo --port=5555
+this starts the flower service on port 5555 (its default) in a windows environment
+
+
+Deployment
+----------
+In order to deploy a Django application to a server you must make some changes involving the static files and debug flag.
+The celery and flower server configuration must be completed before deployment.
+
 
 User Model
 ==========
@@ -41,52 +88,10 @@ Django Apps
 
 
 
-Dependencies
-============
-In this project, in order to accomplish the scope, we are relying on several dependencies.
-They are located in the requirement.txt file.
-
-1) The framework Django.
-
-2) The MySQL connector in order to connect to the Azure database provided to us by Treeo.
-
-3) Pillow to handle user profile pictures.
-
-4) Chart js as the front end in order to handle the charts.
-
-5) Babel for various language dependencies in the framework.
-
-6) Zoom US in order to interface with the Zoom API.
-
-7) Twillo in order to be able to send calls and text messages.
-
-8) The django phone number field and django phone numbers was used for several features involving the phone numbers that we store for user accounts.
-
-9) Celery and Flower are being used in order to run our asynchronous task queue. In addition, a local installation of their default messaging service rabbit MQ is required.
-
-10) The django time zone detect module. This allows us to make sure that the times displayed are correct in all browsers by comparing the UTC offset of the browser to the appropriate time zones. This module, however, is flawed and does not always return the appropriate time zone. We compensated for this in the code especially in the charts page. It's important to note that a bespoke implementation might be a better fit, though the method for measuring the user's time zone using the UTC offset is still viable, though you could also go for an implementation using their public IP address to determine what time zone they are in.
-
-
-
-
-Installation
-============
-In order to run this framework you will need to have at least one user account created that is an admin. You can create this account directly from the Django shell by creating a superuser account and then modifying its values either in the admin panel or in your database directly. From there, all accounts are added through the normal means or through the Django shell, though there may be some profile issues when adding accounts through the shell.
-You must also be running a celery worker, so the tasks execute properly.
-celery -A Treeo worker -l info --pool=solo
-flower -A Treeo --port=5555
-
-
-
-Deployment
-----------
-In order to deploy a Django application you must make some changes involving the static files and debug flag.
-The celery and flower server configuration must be completed using these commands in separate terminals.
-
 
 
 
 License
 =======
-The License of the packages are available on their respective pypi.org pages .
+The License of the packages are available on their respective pypi.org pages.
 
