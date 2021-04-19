@@ -70,8 +70,7 @@
             </div>
 			<div class="button patientLogButton">
 				<button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
-				<a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.id %}">See Chart</a>
-
+				<a class="btn btn-primary btn-large btn-block" href="{% url 'log-chart' user.patient.public_id %}">See Chart</a>
 			</div>
 		</form>
 	</div>

@@ -14,7 +14,7 @@
 
 <div class="button fileUploadCompleteButton">
     <a href="{% url 'patientlog' %}" class="btn btn-primary btn-large btn-block">Edit Log</a>
-    <a href="{% url 'log-chart' request.user.patient.id%}" class="btn btn-primary btn-large btn-block">
+    <a href="{% url 'log-chart' request.user.patient.public_id%}" class="btn btn-primary btn-large btn-block">
         View Chart</a>
 </div>
 {% endblock content %}

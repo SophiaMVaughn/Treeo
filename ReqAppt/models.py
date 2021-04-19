@@ -1,7 +1,7 @@
 
 from django.db import models
 from users_acc.models import *
-
+import uuid
 
 
 """
@@ -12,6 +12,7 @@ from users_acc.models import *
 
 class ApptTable(models.Model):
     id = models.AutoField(primary_key=True)
+    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     #this needs to be user not patient? thats a redesign i dont want to do
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)

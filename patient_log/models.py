@@ -1,10 +1,12 @@
 #Nicole
 from django.db import models
 from users_acc.models import *
+import uuid
 #Author: Nicole
 #This is the model table for all patients user input to be stored in our database
 
 class PatientLog(models.Model):
+    public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
     calories = models.IntegerField(default=0)
     water = models.DecimalField(max_digits=5, decimal_places=2)

@@ -165,7 +165,7 @@ def render_file_download(request):
 @login_required
 def delete_file(request, id):
     if request.method == "POST":
-        obj = get_object_or_404(Uploaded_File, id=id)
+        obj = get_object_or_404(Uploaded_File, public_id=id)
         obj.delete()
         return redirect('upload_download_file_download')
     context = {'file': id}

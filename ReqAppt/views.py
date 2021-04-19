@@ -201,9 +201,10 @@ def Patient_view(request):
     return render(request, 'ReqAppt/Patient_view.html', context)
 
 
-def approve(request, id):
-    appointment = ApptTable.objects.get(id=id)
-    # need error handling
+
+def approve(request,id):
+    appointment=ApptTable.objects.get(public_id=id)
+    #need error handling
     provider_url, patient_url, patient_pwd = generate_zoom(request=1)
     appointment.meeturlprovider = provider_url
     appointment.meeturlpatient = patient_url
@@ -215,7 +216,9 @@ def approve(request, id):
     appointment.status = True
     appointment.save()
 
+
     approved_mail_both_task.delay(appointment.id, patient_pwd)
+
 
     try:
         approve_message_task.delay(appointment.id)
@@ -233,7 +236,7 @@ def approve(request, id):
 # Asks if user wishes to delete Appt
 # Delete Appointment
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(id=id)
+    appointment = ApptTable.objects.get(public_id=id)
     if request.method == 'POST':
         appointment.delete()
 #         reject_message_task.delay(appointment.id)
