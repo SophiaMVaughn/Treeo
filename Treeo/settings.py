@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
-    'direct',
+    'tz_detect',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'users_acc.middleware.SessionTimeoutMiddleware',
+    'tz_detect.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'Treeo.urls'

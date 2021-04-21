@@ -48,6 +48,12 @@ body {
   font-size: 1.5em;
 }
 
+input[type="radio"] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
 input[type="text"] {
   text-align: center;
   background-color: white;
@@ -402,7 +408,7 @@ input:focus {
 }
 
 .twitter {
-  background: url("../img/TwitterLogo.png");
+  /* background: url("../img/TwitterLogo.png"); */
   background-size: 177px 162px;
   position: absolute;
   width: 141px;
@@ -412,7 +418,7 @@ input:focus {
 }
 
 .instagram {
-  background: url("../img/InstagramLogo.png");
+  /* background: url("../img/InstagramLogo.png"); */
   background-size: 133px 125px;
   position: absolute;
   width: 141px;
@@ -421,7 +427,7 @@ input:focus {
   top: 651px;
 }
 .facebook {
-  background: url("../img/FacebookLogo.png");
+  /* background: url("../img/FacebookLogo.png"); */
   background-size: 133px 125px;
   position: absolute;
   width: 141px;
@@ -1440,6 +1446,29 @@ input:focus {
 }
 
 .portalButton .btn {
+  background: #faa172;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  width: 224px;
+  height: 86px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 200%;
+  /* or 62px */
+  letter-spacing: 0.015em;
+  color: #ffffff;
+}
+
+.returnButton {
+  position: absolute;
+  width: 224px;
+  height: 103px;
+  left: 852px;
+  top: 763px;
+}
+
+.returnButton .btn {
   background: #faa172;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 100px;
@@ -2670,7 +2699,7 @@ input:focus {
 }
 
 .approve span {
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .approve a {
@@ -3177,8 +3206,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 406px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTable .table {
@@ -3285,8 +3312,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 333px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTableAdmin .table {
@@ -3393,8 +3418,6 @@ input:focus {
   width: 62%;
   margin-left: 238px;
   top: 333px;
-  overflow: auto;
-  max-height: 400px;
   text-align: left;
 }
 
@@ -3480,8 +3503,6 @@ input:focus {
   width: 69%;
   margin-left: 238px;
   top: 406px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .appointmentTableProvider .table {
@@ -4508,8 +4529,6 @@ body {
   width: 62%;
   margin-left: 191px;
   top: 293px;
-  overflow: auto;
-  max-height: 400px;
 }
 
 .apptArchiveTable .table {
@@ -4781,16 +4800,16 @@ body {
 .notesTable {
   position: absolute;
   width: 62%;
-  margin-left: 238px;
+  max-width: 62%;
+  margin-left: 352px;
   top: 236px;
+  max-height: 500px;
   overflow: auto;
-  max-height: 400px;
 }
 
 .notesTable .table {
-  width: 19%;
+  width: auto;
   position: relative;
-  left: 10%;
   top: 100%;
   border-collapse: separate;
   border-spacing: 10px;
@@ -4799,7 +4818,9 @@ body {
 
 .notesTable table td {
   /* border-bottom: transparent; */
-  border-top: transparent;
+  /* border-top: transparent; */
+  border: 2px solid black;
+  /* width: auto; */
 }
 
 .notesTable table th {
@@ -4823,12 +4844,20 @@ body {
   position: absolute;
   width: auto;
   height: 110px;
-  left: 823px;
-  top: 603px;
+  left: 647px;
+  top: 775px;
   /* top: 1057px; */
   /* top: 890px; */
   /* top: 822px; temp until password reqs accounted for in another way */
   /* top: 715px;  temp until can put placeholder in username and password */
+}
+
+.theNotes {
+  min-width: 80%;
+}
+
+.theMaker {
+  max-width: 300px;
 }
 
 .healthLogTable {
@@ -4869,4 +4898,212 @@ body {
   position: relative;
   left: 1%;
   color: #faa172;
+}
+
+.pagination {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 790px;
+  left: 29%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.pagination li,
+.pagination a {
+  color: #faa172;
+}
+
+.pagination li:hover,
+.pagination a:hover {
+  color: #faa172;
+}
+
+.pagination li:active,
+.pagination a:active {
+  color: #faa172;
+}
+
+.paginationAppt {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 850px;
+  left: 29%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.paginationAppt li,
+.paginationAppt a {
+  color: #faa172;
+}
+
+.paginationAppt li:hover,
+.paginationAppt a:hover {
+  color: #faa172;
+}
+
+.paginationAppt li:active,
+.paginationAppt a:active {
+  color: #faa172;
+}
+
+.paginationNote {
+  display: block ruby;
+  /* padding-left: 0%; */
+  list-style: none;
+  position: relative;
+  top: 720px;
+  left: 43%;
+  width: 883px;
+  padding-right: 30%;
+}
+
+.paginationNote li,
+.paginationNote a {
+  color: #faa172;
+}
+
+.paginationNote li:hover,
+.paginationNote a:hover {
+  color: #faa172;
+}
+
+.paginationNote li:active,
+.paginationNote a:active {
+  color: #faa172;
+}
+
+.patientNote {
+  position: absolute;
+  width: auto;
+  height: 76px;
+  left: 393px;
+  top: 164px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.01em;
+
+  color: #faa172;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  /* top: 612px; */
+  bottom: 63px;
+  left: 158px;
+  /* left: 5%; */
+  color: white;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: -125%;
+  left: 185%;
+  margin-left: -80px;
+  font-size: 16px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  right: 100%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup container */
+.popup2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  top: 120px;
+  color: white;
+  font-size: 20px;
+}
+
+/* The actual popup (appears on top) */
+.popup2 .popuptext2 {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 60%;
+  margin-left: -80px;
+  font-size: 16px;
+}
+
+/* Popup arrow */
+.popup2 .popuptext2::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup2 .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }

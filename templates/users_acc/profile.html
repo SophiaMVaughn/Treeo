@@ -1,5 +1,11 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Authors: Giorgi Nozadze, Brandon Breen, and George Esho
+    This page displays a user's profile account.
+    This page displays a user's profile picture, their name, the option to edit their profile, 
+    and, if the user is a patient, their care team with the ability to view their provider's profile.
+-->
 <div class="white">
     <div class="account">
         Account
@@ -17,7 +23,6 @@
     <div class="patientNameBox">
         <div class="patientName">
             {{user.get_full_name}}
-            <!-- {{user.date_joined}} -->
         </div>
     </div>
     <div class="providerTeamBox">
@@ -25,6 +30,7 @@
         <div class="providerTeam">
             Provider Team
         </div>
+        {% if user.patient.doc_d %}
         <div class="dietitianBox">
             <div class="dietitianName">
                 Dietitian: {{user.patient.doc_d.user.get_full_name}}
@@ -32,89 +38,109 @@
             <div class="button viewProviderDetailsButton">
                 <a href="{% url 'diet_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
             </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
             </div> -->
         </div>
+        {% else %}
+        <div class="dietitianBox">
+            <div class="dietitianName">
+                Dietitian: {{user.patient.doc_d.user.get_full_name}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="{% url 'diet_details' %}" class="btn btn-primary btn-large btn-block disabled">View Provider
+                    Details</a>
+            </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
+            <!-- <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div> -->
+        </div>
+        {% endif %}
+        {% if user.patient.doc_p %}
         <div class="physicianBox">
             <div class="physicianName">
                 Physician: {{user.patient.doc_p.user.get_full_name}}
             </div>
             <div class="button viewProviderDetailsButton">
-                <a href="{% url 'doctor_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
+                <a href="{% url 'doctor_details' %}" class="btn btn-primary btn-large btn-block">View Provider
+                    Details</a>
             </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
             </div> -->
         </div>
+        {% else %}
+        <div class="physicianBox">
+            <div class="physicianName">
+                Physician: {{user.patient.doc_p.user.get_full_name}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="{% url 'doctor_details' %}" class="btn btn-primary btn-large btn-block disabled">View Provider
+                    Details</a>
+            </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
+            <!-- <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div> -->
+        </div>
+        {% endif %}
+        {% if user.patient.doc_c %}
         <div class="coachBox">
             <div class="coachName">
                 Health Coach: {{user.patient.doc_c.user.get_full_name}}
             </div>
             <div class="button viewProviderDetailsButton">
-                <a href="{% url 'coach_details' %}" class="btn btn-primary btn-large btn-block">View Provider Details</a>
+                <a href="{% url 'coach_details' %}" class="btn btn-primary btn-large btn-block">View Provider
+                    Details</a>
             </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
             <!-- <div class="button requestChangeButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
             </div> -->
         </div>
-
+        {% else %}
+        <div class="coachBox">
+            <div class="coachName">
+                Health Coach: {{user.patient.doc_c.user.get_full_name}}
+            </div>
+            <div class="button viewProviderDetailsButton">
+                <a href="{% url 'coach_details' %}" class="btn btn-primary btn-large btn-block disabled">View Provider
+                    Details</a>
+            </div>
+            <!-- 
+                This contains the as-of-yet active request change button to request a change in provider.
+            -->
+            <!-- <div class="button requestChangeButton">
+                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div> -->
+        </div>
         {% endif %}
-        <div class="questionBox">
+        {% endif %}
+        <!-- 
+            This contains the as-of-yet active help box that leads a user to the Messages page to contact a Treeo admin.
+        -->
+        <!-- <div class="questionBox">
             <div class="button helpButton">
                 <a href="#" class="btn btn-primary btn-large btn-block">?</a>
             </div>
             <div class="questionName">
                 questions? contact a treeo admin
             </div>
-        </div>
+        </div> -->
 
     </div>
-    
-    <!-- <div class="profile">
-        <p><b>Username: </b>{{user.username}}</p>
-
-        <p><b>Email: </b>{{user.email}}</p>
-
-        <p><b>First Name: </b>{{user.first_name}}</p>
-
-        <p><b>Last Name: </b>{{user.last_name}}</p>
-        <p><b>Phone Number: </b>{{user.phone_no.as_national}}</p>
-
-        <div class="button editProfileButton">
-            <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-large btn-block">Edit Profile</a>
-            <a href="{% url 'pass_reset' %}" class="btn btn-primary btn-large btn-block">Change Password</a>
-        </div>
-
-        {% if user.user_type == 3 %}
-        <div class="currentCareTeam">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2">Your Current Care Team</th>
-                    </tr>
-                </thead>
-                <tbody class="border-end-0">
-                    <tr>
-                        <td>Dietitian</td>
-                        <td>{{user.patient.doc_d.user.first_name}}
-                            {{user.patient.doc_d.user.last_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Physician</td>
-                        <td> {{user.patient.doc_p.user.first_name}}
-                            {{user.patient.doc_p.user.last_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Health Coach</td>
-                        <td> {{user.patient.doc_c.user.first_name}}
-                            {{user.patient.doc_c.user.last_name}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        {% endif %}
-    </div> -->
 </div>
 {% endblock content %}

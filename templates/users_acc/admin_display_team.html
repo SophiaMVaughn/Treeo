@@ -1,9 +1,12 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page allows an admin to assign or remove a provider to a chosen patient's care team.
+-->
 <div class="white">
     <div class="appointments">Providers</div>
-
     <div class="patient">Assign Patient: {{patient.user.get_full_name}}'s Care Team</div>
     <form action="" method="post">
         <div class="careTeamTable">

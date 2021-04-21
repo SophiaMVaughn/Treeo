@@ -2,6 +2,7 @@
 import os
 from twilio.rest import Client
 from users_acc import models
+from django.utils import timezone
 import datetime
 # Your Account Sid and Auth Token from twilio.com/console
 # and set the environment variables. See http://twil.io/secure
@@ -10,6 +11,13 @@ account_sid = 'ACd7bc48747087d5cf69476e8e4cd73851'
 auth_token = 'd72c441bc1d3f031a75224a9eefac411'
 client = Client(account_sid, auth_token)
 
+
+
+
+	#Author: Giorgi Nozadze
+	#This method checks sends text message notifying appointment scheduling to both parties. sms is sent using twilio API, 
+   # account information (if different is used) must be provided using line 9 and 10, if sms feature breaks it's most likely,
+   # due to wrong auth_token or account_sid. entire feature depends on those 2 things so make sure they are correct
 
 def send_message(aptobj):
     if aptobj.patient.user.phone_no is not None:
@@ -45,6 +53,9 @@ def send_message(aptobj):
     else:
         print("No Phone")
 
+	#Author: Giorgi Nozadze
+	#This method sends approval message via user provided phone numbers after the provider clicks approve message, sms is sent to both parties
+
 
 def approve_message(aptobj):
     if aptobj.patient.user.phone_no is not None:
@@ -61,6 +72,10 @@ def approve_message(aptobj):
         print(message.sid)
     else:
         print("No Phone")
+
+       
+	#Author: Giorgi Nozadze
+	#This method sends notification about rejction if provider doesn't approve the appointment
 
 
 def reject_message(aptobj):
@@ -85,7 +100,7 @@ def target_time_print(apt):
     t = apt.meetingDate
     print(t)
     print(t.timestamp())
-    time_left = t.timestamp() - datetime.datetime.now().timestamp()
+    time_left = t.timestamp() - timezone.now().timestamp()
     time_left = time_left - 10000
     print("time left until appointment")
     print(time_left)

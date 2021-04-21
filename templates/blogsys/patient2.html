@@ -1,6 +1,12 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-
+<!--
+  Author: Allan Imseis
+  This page displays the messaging page for a provider's 2nd assigned patient.
+  This page displays a navbar to switch between a provider's 1st through 10th assigned patient.
+  This page displays the 2nd assigned patient's name, a textbox to enter a message, and a table to display chat history between the sender and recipient.
+  The table displays the sender of the message, the message itself, and the date and time the message was sent.
+-->
 <div class="white">
   <div class="messaging">
     <div id="container">
@@ -18,15 +24,33 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{% url 'Health_Coach' %}">{{name1}}</a>
+                {% if name2 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient2' %}">{{name2}}</a>
+                {%endif%}
+                {% if name3 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient3' %}">{{name3}}</a>
+                {%endif%}
+                {% if name4 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient4' %}">{{name4}}</a>
+                {%endif%}
+                {% if name5 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient5' %}">{{name5}}</a>
+                {%endif%}
+                {% if name6 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient6' %}">{{name6}}</a>
+                {%endif%}
+                {% if name7 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient7' %}">{{name7}}</a>
+                {%endif%}
+                {% if name8 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient8' %}">{{name8}}</a>
+                {%endif%}
+                {% if name9 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient9' %}">{{name9}}</a>
+                {%endif%}
+                {% if name10 != 'No Patient Assigned' %}
                 <a class="dropdown-item" href="{% url 'Patient10' %}">{{name10}}</a>
+                {%endif%}
               </div>
             </li>
           </ul>

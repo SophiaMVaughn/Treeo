@@ -1,12 +1,13 @@
 from calendar import HTMLCalendar
 
 from ReqAppt.models import ApptTable
-
+from django.utils import timezone
 
 
 # python built in HTML calendar
 class Calendar(HTMLCalendar):
     def __init__(self, year=None, month=None, request=None):
+
         self.year = year
         self.month = month
         self.request = request

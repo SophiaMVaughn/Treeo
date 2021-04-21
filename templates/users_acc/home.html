@@ -1,11 +1,16 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page displays the home page of the specific user type logged in to their account.
+-->
 <div class="white">
 
     {% if user.user_type == None%}
 
     {%else%}
     {% if user.user_type == 1%}
+    <!-- The admin view only displays that this is the admin home. -->
     <div class="providerHome">Admin Home</div>
     <!-- <div class="newArrivalsBorder"> 
         <div class="newArrivals">
@@ -70,6 +75,9 @@
 </div> -->
 {% endif %}
 {% if user.user_type == 2%}
+<!-- 
+    The provider view displays the provider's full name, profile picture, and when their account was first created.
+-->
 <div class="providerHome">Provider Home</div>
 <div class="profileBorder">
     <div class="profileName">{{user.get_full_name}}</div>
@@ -79,6 +87,10 @@
     </div>
 </div>
 
+<!-- 
+    The provider view displays the provider's upcoming appointments with their patients, displaying their patient's profile
+    picture and the date and time of the appointment, as well as a button to book a new appointment.
+-->
 <div class="upcomingAppointmentsBorder">
     <div class="upcomingAppointments">Upcoming Appointments</div>
     <div class="appointmentsList">
@@ -90,7 +102,6 @@
                     height="60" alt="">
             </p>
         </div>
-        <!-- use humanize here for time You Have an Appointment at  -->
         <p class="meetingDate">{{ i.meetingDate }}</p>
         {% endfor %}
         {% else %}
@@ -103,17 +114,15 @@
         </div>
     </div>
 </div>
-
+<!-- 
+    The provider view displays the two most recent messages sent to them.
+-->
 <div class="recentMessagesBorder">
     <div class="recentMessages">
         <span>Recent Messages</span>
     </div>
     {% if recentMessages %}
     {% for i in recentMessages %}
-    <!-- doesthis class matter  -->
-    <!-- <div class="message2">
-            <p><span>{{i.TheActualsender}}: </span>{{i.Message|truncatechars:20}}</p>
-        </div> -->
     <div class="recentMessagesWrapper">
         <table class="table recentMessagesTable">
             <tr>
@@ -136,6 +145,9 @@
 
 {% endif %}
 {% if user.user_type == 3%}
+<!-- 
+    The patient view displays the patient's full name, profile picture, and when their account was first created.
+-->
 <div class="welcome">Patient Home</div>
 <!-- <div class="healthChart">
         health chart goes here.
@@ -149,6 +161,10 @@
     </div>
 </div>
 
+<!-- 
+    The patient view displays the patient's upcoming appointments with their providers, displaying their provider's profile
+    picture and the date and time of the appointment, as well as a button to book a new appointment.
+-->
 <div class="upcomingAppointmentsBorder">
     <div class="upcomingAppointments">Upcoming Appointments</div>
     <div class="appointmentsList">
@@ -174,7 +190,9 @@
         </div>
     </div>
 </div>
-
+<!-- 
+    The patient view displays the two most recent messages sent to them.
+-->
 <div class="recentMessagesBorder">
     <div class="recentMessages">
         <span>Recent Messages</span>

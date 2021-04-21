@@ -1,5 +1,10 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+    Author: George Esho
+    This page allows a user to enter a new password to replace their old password.
+    This page will only allow a new password to be entered if "new_password1" and "new_password2" are matching.
+-->
 <form method = "post">
     {% csrf_token %}
     {% for field in form %}
@@ -7,37 +12,6 @@
         {{ field.errors }}
     </div>
     {% endfor %}
-    <!-- {{form.as_p}} -->
-    <!-- <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em;">
-                {{form.new_password1.errors}}
-            </div>
-            <div style="display:inline-block; text-align:left; margin-left: 25px;">
-                <b> {{form.new_password1.label_tag}} </b>
-                {{form.new_password1}}
-                {% if form.new_password1.help_text %}
-                <div style="margin-top: 5px;">{{form.new_password1.help_text}}</div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div style="color: red; font-size: 1em; padding-right:50px;">
-                {{form.new_password2.errors}}
-            </div>
-            <div style="display:inline-block; text-align:left; padding-right: 225px;  padding-bottom:10px;">
-                <b> {{form.new_password2.label_tag}} </b>
-                {{form.new_password2}}
-                {% if form.new_password2.help_text %}
-            </div>
-            <div style="padding-top: 5px; padding-right:17px;">
-                {{form.new_password2.help_text}}
-            </div>
-            {% endif %}
-        </div>
-    </div> -->
     <div class="resetPasswordTwo">Reset Password</div>
     <div class="stepThree">Step 3: Set new password</div>
     <div class="newPassword">New Password</div>

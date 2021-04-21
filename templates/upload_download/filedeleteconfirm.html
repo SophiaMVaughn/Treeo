@@ -1,5 +1,9 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
+<!-- 
+    Author: George Esho
+    This page requests a confirmation that the user does want to delete a file and remove it from the database.
+-->
 <div class="white">
     <div class="verification">Are you sure you want to delete this file?</div>
         <form action="{% url 'upload_download_file_delete' file %}" method="post">
