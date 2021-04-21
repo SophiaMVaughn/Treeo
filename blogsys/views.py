@@ -5,13 +5,10 @@ from blogsys.models import PostQ
 from .forms import PostQform
 from users_acc.models import *
 
-<<<<<<< HEAD
-=======
 # Allan
 # Provider type determined by number
 # Patients names stored in list
 
->>>>>>> d9302dd603f9c973f154b8d901ea059ebd6db5f1
 
 def setter(request):
     name = []
@@ -32,12 +29,7 @@ def setter(request):
             name.append(i.user.first_name + " " + i.user.last_name)
             j = len(name)
     while (len(name) != 10):
-<<<<<<< HEAD
-        j = j + 1
-        name.append("Patient " + str(j) + " Not Assigned")
-=======
         name.append("No Patient Assigned")
->>>>>>> d9302dd603f9c973f154b8d901ea059ebd6db5f1
     return name
 
 
@@ -47,12 +39,9 @@ def Health_Coach(request):
     # If patient
     try:
         if request.user.user_type == 3:
-<<<<<<< HEAD
-=======
             # For user.patient.doc_c (Health Coach)
             # Takes in message from forms
             # Sent to database
->>>>>>> d9302dd603f9c973f154b8d901ea059ebd6db5f1
             x = PostQ.objects.filter(Thereciever=(
                 request.user.patient.user), Thesender=(request.user.patient.doc_c.user))
             if request.method == 'POST':
