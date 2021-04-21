@@ -13,7 +13,8 @@ except ImportError:
 
 
 
-
+#Author: Brandon
+#This is the session timeout funtionality in django. This middleware is loaded for each query and we see if the user has been inactive, and then we log them out.
 class SessionTimeoutMiddleware(MiddlewareMixin):
     def process_request(self, request):
         # is there a signed in user and does this request have a session atribute
@@ -23,7 +24,7 @@ class SessionTimeoutMiddleware(MiddlewareMixin):
         Initial_time = request.session.setdefault("Initial_time", time.time())
         timelimit = getattr(settings, "SESSION_COOKIE_AGE", 300)
         # print(Initial_time,timelimit)
-        #if the current time minus the initial is more than the timelimit then redirect to login with forewarding and logout
+        #if the current time minus the initial is more than the timelimit then redirect to login with forwarding and logout
         if (time.time() - Initial_time) > timelimit:
             auth.logout(request)
             #add message about time out to the redirect

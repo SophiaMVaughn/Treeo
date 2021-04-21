@@ -1,11 +1,10 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
-
+<!-- 
+  Authors: Brandon Breen and George Esho
+  This page allows an admin to view a patient's current care team.
+-->
 <div class="white">
-  <!--    {% if patient %}-->
-  <!--    <p>{{patient.user.first_name}}</p>-->
-  <!--    <p>{{patient.user.last_name}}</p>-->
-  <!--    {% else %}-->
   <div class="appointments">Providers</div>
 
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for patient">
@@ -18,7 +17,6 @@
           <th onclick="sortTable(2)">Dietician</th>
           <th onclick="sortTable(3)">Health Coach</th>
           <th onclick="sortTable(4)">Assign Team</th>
-          <!-- <th>View Notes</th> -->
         </tr>
       </thead>
       {% for i in patients %}
@@ -46,40 +44,48 @@
     </table>
   </div>
   {% if patients.has_other_pages %}
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
   <ul class="pagination">
     {% if patients.has_previous %}
-      <li><a href="?page={{apptArpatientschive.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{apptArpatientschive.previous_page_number}}">&#8592;</a>
+    </li>
     {% else %}
-      <li class="disabled"><span>&#8592;</span></li>
+    <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
     {% for i in patients.paginator.page_range %}
-      {% if patients.number == i %}
-        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
-      {% elif patients.paginator.num_pages > 5%}
-      {% if i > patients.number|add:'-3' and i < patients.number|add:'3' %}
-       <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% if patients.number == i %}
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+    {% elif patients.paginator.num_pages > 5%}
+    {% if i > patients.number|add:'-3' and i < patients.number|add:'3' %} <li class="page-item">
+      <a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% elif i == 1 %}
-        <li><a href="?page=1">1</a></li>
-        <li>...</a></li>
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item page-link">...</li>
       {% elif i == patients.paginator.num_pages %}
-      <li>...</a></li>
-        <li><a href="?page={{patients.paginator.num_pages}}">{{patients.paginator.num_pages}}</a></li>
+      <li class="page-item page-link">...</li>
+      <li class="page-item"><a class="page-link"
+          href="?page={{patients.paginator.num_pages}}">{{patients.paginator.num_pages}}</a></li>
       {% endif %}
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% endif %}
-    {% endfor %}
-    {% if patients.has_next %}
-      <li><a href="?page={{patients.next_page_number}}">&#8594;</a></li>
-    {% else %}
-      <li class="disabled"><span>&#8594;</span></li>
-    {% endif %}
+      {% endfor %}
+      {% if patients.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{patients.next_page_number}}">&#8594;</a></li>
+      {% else %}
+      <li class="disabled page-item page-link"><span>&#8594;</span></li>
+      {% endif %}
   </ul>
-{% endif %}
+  {% endif %}
 </div>
 
 <script>
-function myFunction() {
+  /* 
+      This function allows a user to filter the table by provider using the search bar.
+  */
+  function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
     filter = document.getElementById("myInput").value.toUpperCase();
@@ -89,18 +95,20 @@ function myFunction() {
     // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
     // the results are of a significant size which is mitigated by the pagination
     for (let i of tr) {
-        td = i.getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().includes(filter) == true) {
-                i.style.display = "";
-            } else {
-                i.style.display = "none";
-            }
+      td = i.getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().includes(filter) == true) {
+          i.style.display = "";
+        } else {
+          i.style.display = "none";
         }
+      }
     }
-}
-
+  }
+  /* 
+      This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
@@ -156,20 +164,4 @@ function myFunction() {
     }
   }
 </script>
-<!--    {% endif %}-->
-<!--    <form method="post">-->
-<!--        <div class="assignCareTeam">-->
-<!--            {% csrf_token %}-->
-<!--            {% for route in form %}-->
-<!--            <p> {{route}} </p>-->
-<!--            {% endfor %}-->
-<!--            {% for k in form2 %}-->
-<!--            <p> {{k}} </p>-->
-<!--            {% endfor %}-->
-<!--            &lt;!&ndash;    should be nested four loops for a combined dictioarny&ndash;&gt;-->
-<!--            <div class="button assignCareTeamButton">-->
-<!--                <button type="submit" class="btn btn-primary btn-large btn-block">Ok</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
 {% endblock content %}

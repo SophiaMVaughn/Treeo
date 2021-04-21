@@ -4,6 +4,12 @@ from users_acc.models import *
 
 
 
+"""
+	Author: Giorgi Nozadze
+	This class createst the model(mysql table) for appointment feature
+"""
+
+
 class ApptTable(models.Model):
     id = models.AutoField(primary_key=True)
     #this needs to be user not patient? thats a redesign i dont want to do

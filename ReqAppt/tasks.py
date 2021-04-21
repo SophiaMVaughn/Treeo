@@ -7,6 +7,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from .email import *
 from .sms import *
+# from .views import archive_apt
 from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
@@ -83,3 +84,13 @@ def reject_mail_both_task(aptobj_id):
     except:
         logger.info('Failed to Send Email Messages for Appointment Rejection:'+str(aptobj_id))
 
+
+@shared_task(name='Treeo.tasks.send_message_task')
+def archive_apt_task(aptobj_id):
+    try:
+        aptobj = ApptTable.objects.get(pk=aptobj_id)
+        x=archive_apt(aptobj)
+        for i in x:
+            logger.info(i)
+    except:
+        logger.info('Archive Appointment:'+str(aptobj.id))

@@ -1,9 +1,22 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+  Author: George Esho
+  This page displays the admin view for appointments list.
+  This page displays a table that lists the meeting date and time with the listed provider and the listed patient.
+-->
 <div class="white">
   <div class="first">
     <div class="appointments">Appointments</div>
-
+    <div class="appointmentViews">
+      <div class="button appointmentViews">
+        <a class="btn btn-primary btn-large btn-block" href="{% url 'reqAppt_calendar' %}">Calendar View</a>
+        <a class="btn btn-primary btn-large btn-block activeButton" href="{% url 'reqAppt' %}">List View</a>
+      </div>
+    </div>
+    <!-- 
+      This displays the search bar that allows a user to filter the table by provider.
+    -->
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
     <div class="appointmentTableAdmin">
       <table id="myTable" class="table">
@@ -29,40 +42,47 @@
       </table>
     </div>
   </div>
-      {% if ApptTable.has_other_pages %}
-  <ul class="pagination">
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
+  {% if ApptTable.has_other_pages %}
+  <ul class="paginationAppt">
     {% if ApptTable.has_previous %}
-      <li><a href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{ApptTable.previous_page_number}}">&#8592;</a></li>
     {% else %}
-      <li class="disabled"><span>&#8592;</span></li>
+    <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
     {% for i in ApptTable.paginator.page_range %}
-      {% if ApptTable.number == i %}
-        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
-      {% elif ApptTable.paginator.num_pages > 5%}
-      {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %}
-       <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% if ApptTable.number == i %}
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only"> (current)</span></span></li>
+    {% elif ApptTable.paginator.num_pages > 5%}
+    {% if i > ApptTable.number|add:'-3' and i < ApptTable.number|add:'3' %} <li>
+      <a href="?page={{ i }}">{{i}}</a></li>
       {% elif i == 1 %}
-        <li><a href="?page=1">1</a></li>
-        <li>...</a></li>
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item page-link">...</li>
       {% elif i == ApptTable.paginator.num_pages %}
-      <li>...</a></li>
-        <li><a href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
+      <li class="page-item page-link">...</li>
+      <li class="page-item"><a class="page-link"
+          href="?page={{ApptTable.paginator.num_pages}}">{{ApptTable.paginator.num_pages}}</a></li>
       {% endif %}
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% endif %}
-    {% endfor %}
-    {% if ApptTable.has_next %}
-      <li><a href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
-    {% else %}
-      <li class="disabled"><span>&#8594;</span></li>
-    {% endif %}
+      {% endfor %}
+      {% if ApptTable.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ApptTable.next_page_number}}">&#8594;</a></li>
+      {% else %}
+      <li class="disabled page-item page-link"><span>&#8594;</span></li>
+      {% endif %}
   </ul>
-{% endif %}
+  {% endif %}
 </div>
 <script>
-function myFunction() {
+  /* 
+    This function allows a user to filter the table by provider using the search bar.
+  */
+  function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
     filter = document.getElementById("myInput").value.toUpperCase();
@@ -72,17 +92,20 @@ function myFunction() {
     // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
     // the results are of a significant size which is mitigated by the pagination
     for (let i of tr) {
-        td = i.getElementsByTagName("td")[2];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().includes(filter) == true) {
-                i.style.display = "";
-            } else {
-                i.style.display = "none";
-            }
+      td = i.getElementsByTagName("td")[2];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().includes(filter) == true) {
+          i.style.display = "";
+        } else {
+          i.style.display = "none";
         }
+      }
     }
-}
+  }
+  /* 
+    This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
@@ -137,7 +160,10 @@ function myFunction() {
       }
     }
   }
-
+  /*
+    Author: Brandon Breen
+    This function allows the column containing the meeting date and time to be sortable due to django displaying the date as a string.
+  */
   function sortTabledates(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");

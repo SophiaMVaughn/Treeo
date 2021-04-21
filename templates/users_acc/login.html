@@ -1,16 +1,25 @@
 {% extends "users_acc/baseNoNavBar.html" %}
 {% block content %}
-<!-- <div class="error">
-    {{errorMsg}}
-</div> -->
+<!-- 
+    Author: George Esho
+    This page allows a user to log in to the web app.
+    This page defaults as the home page for users not logged in to an account.
+-->
 <form method="post">
     {% csrf_token %}
+    {% load static %}
     <div class="white">
         <div class="rectangle">
             <div class="treeoLogo"></div>
-            <div class="twitter"></div>
-            <div class="instagram"></div>
-            <div class="facebook"></div>
+            <div class="twitter">
+                <a href="https://twitter.com/treeohealth"><img class="rounded-circle account-img " src="{% static 'img/TwitterLogo.png' %}" width="177px" height="162px" alt="Twitter"></a>
+            </div>
+            <div class="instagram">
+                <a href="https://www.instagram.com/treeohealth/"><img class="rounded-circle account-img " src="{% static 'img/InstagramLogo.png' %}" width="133px" height="125px" alt="Instagram"></a>
+            </div>
+            <div class="facebook">
+                <a href="https://www.facebook.com/treeohealth"><img class="rounded-circle account-img " src="{% static 'img/FacebookLogo.png' %}" width="133px" height="125px" alt="Facebook"></a>
+            </div>
             <p class="textOne">We’re here to help you start healing.</p>
         </div>
         <div class="textTwo">

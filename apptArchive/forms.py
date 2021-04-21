@@ -7,3 +7,7 @@ class NotesForm(forms.ModelForm):
     class Meta:
         model = Notes
         fields = ['notes']
+
+    def __init__(self, *args, **kwargs):
+        super(NotesForm, self).__init__(*args, **kwargs)
+        self.fields['notes'].widget.attrs['style'] = 'width:675px; height:135px;'

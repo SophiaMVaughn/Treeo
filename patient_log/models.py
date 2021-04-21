@@ -1,12 +1,8 @@
+#Nicole
 from django.db import models
 from users_acc.models import *
-#blood_category ={
-               #('red blood cells', 'red blood cells'),
-                #('white blood cells', 'white blood cells'),
-                #('platelets', 'platelets'),
-                #('hemoglobin', 'hemoglobin'),
-                #('hematocrit', 'hematocrit'),
-                #}
+#Author: Nicole
+#This is the model table for all patients user input to be stored in our database
 
 class PatientLog(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)

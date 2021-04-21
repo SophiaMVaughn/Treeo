@@ -2,78 +2,80 @@
 {% block content %}
 {% load static %}
 <div class="white">
-    <div class="appointments">providers</div>
-    
-    <div class="careTeamTable">
-        <table class="table approve">
-            <thead>
-                <tr>
-                    <th>name</th>
-                    <th>Deactivate User</th>
-                    <th>Reactivate User</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for a in results %}
-                <tr>
-                    <td class="careTeamBubble">{{a.get_full_name}}</td>
-                    {%if a.is_active%}
-                    <td>
-                        <form method="POST" >
-                         {% csrf_token %}
-                         <input type="hidden" id="id" name="id" value="{{a.id}}">
-                         <input type="submit" name="btn" value="X" class="providerApprove button btn btn-primary btn-large btn-block">
-                        </form>
-                    </td>
-                    {% else %}
-                      <td></td>
-                    {% endif %}
-                    {%if a.is_active%}
-                    <td></td>
-                    {% else %}
-                    <td>
-                         <form method="POST" >
-                         {% csrf_token %}
-                         <input type="hidden" id="id2" name="id2" value="{{a.id}}">
-                         <input type="submit" name="btn" value="✓" class="providerApprove button btn btn-primary btn-large btn-block">
-                        </form>
-                    </td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% if results.has_other_pages %}
+  <div class="appointments">providers</div>
+
+  <div class="careTeamTable">
+    <table class="table approve">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Deactivate User</th>
+          <th>Reactivate User</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in results %}
+        <tr>
+          <td class="careTeamBubble">{{a.get_full_name}}</td>
+          {%if a.is_active%}
+          <td>
+            <form method="POST">
+              {% csrf_token %}
+              <input type="hidden" id="id" name="id" value="{{a.id}}">
+              <input type="submit" name="btn" value="X"
+                class="providerApprove button btn btn-primary btn-large btn-block">
+            </form>
+          </td>
+          {% else %}
+          <td></td>
+          {% endif %}
+          {%if a.is_active%}
+          <td></td>
+          {% else %}
+          <td>
+            <form method="POST">
+              {% csrf_token %}
+              <input type="hidden" id="id2" name="id2" value="{{a.id}}">
+              <input type="submit" name="btn" value="✓"
+                class="providerApprove button btn btn-primary btn-large btn-block">
+            </form>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if results.has_other_pages %}
   <ul class="pagination">
     {% if results.has_previous %}
-      <li><a href="?page={{results.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{results.previous_page_number}}">&#8592;</a></li>
     {% else %}
-      <li class="disabled"><span>&#8592;</span></li>
+    <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
     {% for i in results.paginator.page_range %}
-      {% if results.number == i %}
-        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
-      {% elif results.paginator.num_pages > 5%}
-      {% if i > results.number|add:'-3' and i < results.number|add:'3' %}
-       <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% if results.number == i %}
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only">(current)</span></span></li>
+    {% elif results.paginator.num_pages > 5%}
+    {% if i > results.number|add:'-3' and i < results.number|add:'3' %} <li class="page-item">
+      <a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% elif i == 1 %}
-        <li><a href="?page=1">1</a></li>
-        <li>...</a></li>
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item page-link">...</li>
       {% elif i == results.paginator.num_pages %}
-      <li>...</a></li>
-        <li><a href="?page={{results.paginator.num_pages}}">{{results.paginator.num_pages}}</a></li>
+      <li class="page-item page-link">...</li>
+      <li class="page-item"><a class="page-link" href="?page={{results.paginator.num_pages}}">{{results.paginator.num_pages}}</a></li>
       {% endif %}
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% endif %}
-    {% endfor %}
-    {% if results.has_next %}
-      <li><a href="?page={{results.next_page_number}}">&#8594;</a></li>
-    {% else %}
-      <li class="disabled"><span>&#8594;</span></li>
-    {% endif %}
+      {% endfor %}
+      {% if results.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{results.next_page_number}}">&#8594;</a></li>
+      {% else %}
+      <li class="disabled page-item page-link"><span>&#8594;</span></li>
+      {% endif %}
   </ul>
-{% endif %}
+  {% endif %}
 </div>
 {% endblock content %}

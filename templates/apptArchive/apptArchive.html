@@ -1,9 +1,17 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
+<!-- 
+  Author: George Esho
+  This page displays previously held meetings between a provider and a patient.
+  A table displays the provider, the patient, the date and time of the meeting held, and a button to view the notes made by the provider
+  of the meeting.
+-->
 <div class="white">
   <div class="first">
     <div class="apptArchive">Archived Appointments</div>
-
+  <!-- 
+    This displays the search bar that allows a user to filter the table by provider.
+  -->
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="search for provider">
     <div class="apptArchiveTable">
       <table id="myTable" class="table">
@@ -27,40 +35,47 @@
       </table>
     </div>
   </div>
- {% if apptArchive.has_other_pages %}
+  <!-- 
+    This displays pagination of the table, creating a new page that holds five rows per page.
+  -->
+  {% if apptArchive.has_other_pages %}
   <ul class="pagination">
     {% if apptArchive.has_previous %}
-      <li><a href="?page={{apptArchive.previous_page_number}}">&#8592;</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{apptArchive.previous_page_number}}">&#8592;</a></li>
     {% else %}
-      <li class="disabled"><span>&#8592;</span></li>
+    <li class="disabled page-item page-link"><span>&#8592;</span></li>
     {% endif %}
     {% for i in apptArchive.paginator.page_range %}
-      {% if apptArchive.number == i %}
-        <li class="active"><span>{{i}}<span class="sr-only">(current)</span></span></li>
-      {% elif apptArchive.paginator.num_pages > 5%}
-      {% if i > apptArchive.number|add:'-3' and i < apptArchive.number|add:'3' %}
-       <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% if apptArchive.number == i %}
+    <li class="page-item page-link"><span>{{i}}<span class="sr-only"> (current)</span></span></li>
+    {% elif apptArchive.paginator.num_pages > 5%}
+    {% if i > apptArchive.number|add:'-3' and i < apptArchive.number|add:'3' %} <li class="page-item">
+      <a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% elif i == 1 %}
-        <li><a href="?page=1">1</a></li>
-        <li>...</a></li>
+      <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+      <li class="page-item page-link">...</li>
       {% elif i == apptArchive.paginator.num_pages %}
-      <li>...</a></li>
-        <li><a href="?page={{apptArchive.paginator.num_pages}}">{{apptArchive.paginator.num_pages}}</a></li>
+      <li class="page-item page-link">...</li>
+      <li class="page-item"><a class="page-link"
+          href="?page={{apptArchive.paginator.num_pages}}">{{apptArchive.paginator.num_pages}}</a></li>
       {% endif %}
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
       {% endif %}
-    {% endfor %}
-    {% if apptArchive.has_next %}
-      <li><a href="?page={{apptArchive.next_page_number}}">&#8594;</a></li>
-    {% else %}
-      <li class="disabled"><span>&#8594;</span></li>
-    {% endif %}
+      {% endfor %}
+      {% if apptArchive.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{apptArchive.next_page_number}}">&#8594;</a></li>
+      {% else %}
+      <li class="disabled page-item page-link"><span>&#8594;</span></li>
+      {% endif %}
   </ul>
-{% endif %}
+  {% endif %}
 </div>
 <script>
-function myFunction() {
+  /* 
+    This function allows a user to filter the table by provider using the search bar.
+  */
+  function myFunction() {
     // Declare variables
     var filter, tr, td, txtValue;
     filter = document.getElementById("myInput").value.toUpperCase();
@@ -70,18 +85,21 @@ function myFunction() {
     // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
     // the results are of a significant size which is mitigated by the pagination
     for (let i of tr) {
-        td = i.getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().includes(filter) == true) {
-                i.style.display = "";
-            } else {
-                i.style.display = "none";
-            }
+      td = i.getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().includes(filter) == true) {
+          i.style.display = "";
+        } else {
+          i.style.display = "none";
         }
+      }
     }
-}
+  }
 
+  /* 
+    This function allows a user to sort the table by its headers.
+  */
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("myTable");
