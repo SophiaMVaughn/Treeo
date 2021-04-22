@@ -38,7 +38,7 @@
 				<li><a class="nav-link" href="{% url 'admin_view' %}">Assign Trio</a></li>
 				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
 				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
-				<!-- <li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li> -->
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'profile' %}">account</a></li> -->
@@ -53,7 +53,7 @@
 				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
 				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
 				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
 			</ul>
@@ -65,7 +65,7 @@
 		{%for message in messages%}
 		<div class="message">
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong>{{message.tags}}!</strong>
+<!--				<strong>{{message.tags}}!</strong>-->
 				{{message}}
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>

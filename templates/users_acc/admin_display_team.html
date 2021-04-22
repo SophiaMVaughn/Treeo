@@ -28,7 +28,7 @@
                         <td class="careTeamBubble">Dietician</td>
                         <td class="careTeamBubble">{{patient.doc_d.user.get_full_name}}</td>
                         <td></td>
-                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_d.id %}"><img alt="Delete"
+                        <td><a href="{% url 'admin_remove_provider' patient.public_id patient.doc_d.public_id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
                                     loading="lazy" /></a>
                         </td>
@@ -43,7 +43,7 @@
                         <td class="careTeamBubble">Coach</td>
                         <td class="careTeamBubble">{{patient.doc_c.user.get_full_name}}</td>
                         <td></td>
-                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.id %}"><img alt="Delete"
+                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_c.public_id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
                                     loading="lazy" /></a>
                         </td>
@@ -58,7 +58,7 @@
                         <td class="careTeamBubble">Physician</td>
                         <td class="careTeamBubble">{{patient.doc_p.user.get_full_name}}</td>
                         <td></td>
-                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.id %}"><img alt="Delete"
+                        <td><a href="{% url 'admin_remove_provider' patient.id patient.doc_p.public_id %}"><img alt="Delete"
                                     src="{% static 'img/trash.png' %}" width="30" height="40" alt=""
                                     loading="lazy" /></a>
                         </td>

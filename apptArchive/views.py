@@ -46,7 +46,7 @@ def view_archived_appointment(request,id):
     notes = Notes.objects.none()
     try:
         apptArchive = ApptArchive.objects.get(public_id=id)
-        notes = Notes.objects.filter(apptId=id).order_by("date")
+        notes = Notes.objects.filter(apptId=apptArchive.id).order_by("date")
     except:
         # 404 instead??
         redirect('home')
@@ -66,6 +66,16 @@ def view_archived_appointment(request,id):
                     pagination = pagination.page(pagination.num_pages)
                 # general except 501????
                 return render(request, 'apptArchive/notes.html',{'apptArchive': apptArchive, 'aptnotes': pagination, "form": NotesForm()})
+            else:
+                pagination = Paginator(notes, 5)
+                page = request.GET.get('page', 1)
+                try:
+                    pagination = pagination.page(page)
+                except PageNotAnInteger:
+                    pagination = pagination.page(1)
+                except EmptyPage:
+                    pagination = pagination.page(pagination.num_pages)
+                return render(request, 'apptArchive/notes.html',{'apptArchive': apptArchive, 'aptnotes': pagination, "form": NotesForm(),'formerrors': form})
         else:
             return redirect("apptArchive")
     else:

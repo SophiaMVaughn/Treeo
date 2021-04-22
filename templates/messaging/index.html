@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Treeo</title>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+{% extends "users_acc/base2.html" %}
+{% block content %}
 {% load static %}
 {% load humanize %}
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
-<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"> -->
-<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
-
-</head>
 <body>
-    <div id="container">
+    <div id="container2">
 		<div class="theT"></div>
         {% if user.is_authenticated %}
 		{% if user.user_type == 1 %}
@@ -24,7 +14,7 @@
 				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">approve provider</a></li> -->
 				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
 				<!-- <li><a class="nav-link" href="{% url 'profile' %}">account</a></li> -->
@@ -39,7 +29,7 @@
 				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
 				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
-				<li><a class="nav-link" href="{% url 'Health_Coach' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
 				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
 				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
 			</ul>
@@ -202,5 +192,4 @@ function setAciveChat(f) {
     console.log(document.getElementById("convoid").value);
 }</script>
 
-</body>
-</html>
+{% endblock content %}

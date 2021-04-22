@@ -41,11 +41,23 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_d.public_id%}" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
         </div>
         {% else %}
+
+
+
+
+
+
+<!--        should say not assigned!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+
+
+
+
         <div class="dietitianBox">
             <div class="dietitianName">
                 Dietitian: {{user.patient.doc_d.user.get_full_name}}
@@ -57,9 +69,9 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_d.public_id%}" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div>
         </div>
         {% endif %}
         {% if user.patient.doc_p %}
@@ -74,9 +86,9 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_p.public_id%}" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
         </div>
         {% else %}
         <div class="physicianBox">
@@ -90,9 +102,9 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_p.public_id%}" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div>
         </div>
         {% endif %}
         {% if user.patient.doc_c %}
@@ -107,9 +119,9 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_c.public_id %}" class="btn btn-primary btn-large btn-block">request change</a>
+            </div>
         </div>
         {% else %}
         <div class="coachBox">
@@ -123,23 +135,23 @@
             <!-- 
                 This contains the as-of-yet active request change button to request a change in provider.
             -->
-            <!-- <div class="button requestChangeButton">
-                <a href="#" class="btn btn-primary btn-large btn-block disabled">request change</a>
-            </div> -->
+             <div class="button requestChangeButton">
+                <a href="{% url 'request_provider_change' user.patient.doc_c.public_id%}" class="btn btn-primary btn-large btn-block disabled">request change</a>
+            </div>
         </div>
         {% endif %}
         {% endif %}
-        <!-- 
+        <!--
             This contains the as-of-yet active help box that leads a user to the Messages page to contact a Treeo admin.
         -->
-        <!-- <div class="questionBox">
+         <div class="questionBox">
             <div class="button helpButton">
-                <a href="#" class="btn btn-primary btn-large btn-block">?</a>
+                <a href="{% url 'messaging_home' %}" class="btn btn-primary btn-large btn-block">?</a>
             </div>
             <div class="questionName">
                 questions? contact a treeo admin
             </div>
-        </div> -->
+        </div>
 
     </div>
 </div>

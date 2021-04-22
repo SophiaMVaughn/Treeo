@@ -11,7 +11,7 @@
   --dark: #1a1a1a;
   --light: #e6e6e6;
   --wrapper: 1000px;
-  --blue: #00b0ff;
+  --m_orange: #f99f71;
 }
 
 body {
@@ -158,7 +158,7 @@ body {
   height: 42px;
   margin-left: 10px;
   border: 1px solid var(--light);
-  background-color: var(--blue);
+  background-color: var(--m_orange);
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/name-type.png");
   background-repeat: no-repeat;
   background-position: top 12px left 14px;

@@ -60,6 +60,8 @@ def test2(request):
             context['curconvo'] = request.POST.get("convoid")
             return render(request, 'messaging/index.html', context)
         else:
+            context['form'] = MessageForm()
+            context['formerrors']= form
             return render(request, 'messaging/index.html', context)
     else:
         return render(request, 'messaging/index.html', context)

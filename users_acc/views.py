@@ -1,6 +1,7 @@
 from django.core.exceptions import MultipleObjectsReturned
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -20,7 +21,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from messaging.models import *
 from patient_log.models import *
-from blogsys.models import *
+#from blogsys.models import *
 from ReqAppt.models import *
 from messaging.models import *
 from ReqAppt.tasks import *
@@ -225,7 +226,7 @@ def admin_view(request):
 @login_required
 def admin_display_team(request, id):
     try:
-        patient = Patient.objects.get(id=id)
+        patient = Patient.objects.get(public_id=id)
     except Exception as e:
         print(e)
         return render(request, "users_acc/admin_assign.html", {'form': AdminAssignForm()})
@@ -234,21 +235,24 @@ def admin_display_team(request, id):
             if 'doc_d' in request.POST and not request.POST['doc_d'] == '':
                 try:
                     doc = get_object_or_404(Provider, id=request.POST['doc_d'])
-                    patient.doc_d = doc
-                    patient.save()
-                    doc.Patient_count += 1
-                    doc.save()
-                    # make thread if no thread already exists
-                    if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
-                        print("thread exists")
-                        pass
+                    if doc.Patient_count < 10:
+                        patient.doc_d = doc
+                        patient.save()
+                        doc.Patient_count += 1
+                        doc.save()
+                        # make thread if no thread already exists
+                        if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=doc.user, reciever=patient.user)
+                        if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=patient.user, reciever=doc.user)
                     else:
-                        thread.objects.create(sender=doc.user, reciever=patient.user)
-                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
-                        print("thread exists")
-                        pass
-                    else:
-                        thread.objects.create(sender=patient.user, reciever=doc.user)
+                        return render(request, "users_acc/admin_display_team.html",{'form': AdminProviderUpdateForm(instance=patient), 'patient': patient,'messages': ['Your Account Is Deactivated']})
                 except:
                     pass
             else:
@@ -256,21 +260,24 @@ def admin_display_team(request, id):
             if 'doc_p' in request.POST and not request.POST['doc_p'] == '':
                 try:
                     doc = get_object_or_404(Provider, id=request.POST['doc_p'])
-                    patient.doc_p = doc
-                    patient.save()
-                    doc.Patient_count += 1
-                    doc.save()
-                    # make thread if no thread already exists
-                    if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
-                        print("thread exists")
-                        pass
+                    if doc.Patient_count < 10:
+                        patient.doc_p = doc
+                        patient.save()
+                        doc.Patient_count += 1
+                        doc.save()
+                        # make thread if no thread already exists
+                        if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=doc.user, reciever=patient.user)
+                        if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=patient.user, reciever=doc.user)
                     else:
-                        thread.objects.create(sender=doc.user, reciever=patient.user)
-                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
-                        print("thread exists")
-                        pass
-                    else:
-                        thread.objects.create(sender=patient.user, reciever=doc.user)
+                        return render(request, "users_acc/admin_display_team.html",{'form': AdminProviderUpdateForm(instance=patient), 'patient': patient,'messages': ['Your Account Is Deactivated']})
                 except:
                     pass
             else:
@@ -278,21 +285,24 @@ def admin_display_team(request, id):
             if 'doc_c' in request.POST and not request.POST['doc_c'] == '':
                 try:
                     doc = get_object_or_404(Provider, id=request.POST['doc_c'])
-                    patient.doc_c = doc
-                    patient.save()
-                    doc.Patient_count += 1
-                    doc.save()
-                    # make thread if no thread already exists
-                    if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
-                        print("thread exists")
-                        pass
+                    if doc.Patient_count < 10:
+                        patient.doc_c = doc
+                        patient.save()
+                        doc.Patient_count += 1
+                        doc.save()
+                        # make thread if no thread already exists
+                        if thread.objects.filter(sender=doc.user, reciever=patient.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=doc.user, reciever=patient.user)
+                        if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
+                            print("thread exists")
+                            pass
+                        else:
+                            thread.objects.create(sender=patient.user, reciever=doc.user)
                     else:
-                        thread.objects.create(sender=doc.user, reciever=patient.user)
-                    if thread.objects.filter(sender=patient.user, reciever=doc.user).exists():
-                        print("thread exists")
-                        pass
-                    else:
-                        thread.objects.create(sender=patient.user, reciever=doc.user)
+                        return render(request, "users_acc/admin_display_team.html",{'form': AdminProviderUpdateForm(instance=patient), 'patient': patient,'messages': ['Your Account Is Deactivated']})
                 except:
                     pass
             else:
@@ -306,12 +316,13 @@ def admin_display_team(request, id):
 def admin_remove_provider(request, id, id2):
     if request.method == "POST":
         # id = patient id2 =provider
-        pat = get_object_or_404(Patient, id=id)
-        doc = get_object_or_404(Provider, id=id2)
+        pat = get_object_or_404(Patient, public_id=id)
+        doc = get_object_or_404(Provider, public_id=id2)
         if doc.Provider_type == 1:
             pat.doc_p = None
             pat.save()
-            doc.Patient_count -= 1
+            if doc.Patient_count>0:
+                doc.Patient_count -= 1
             doc.save()
             # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
@@ -340,7 +351,8 @@ def admin_remove_provider(request, id, id2):
         if doc.Provider_type == 2:
             pat.doc_d = None
             pat.save()
-            doc.Patient_count -= 1
+            if doc.Patient_count>0:
+                doc.Patient_count -= 1
             doc.save()
             # remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
@@ -369,7 +381,8 @@ def admin_remove_provider(request, id, id2):
         if doc.Provider_type == 3:
             pat.doc_c = None
             pat.save()
-            doc.Patient_count -= 1
+            if doc.Patient_count>0:
+                doc.Patient_count -= 1
             doc.save()
             #remove thread if empty or dont if messages present
             if thread.objects.filter(sender=doc.user, reciever=pat.user).exists():
@@ -394,7 +407,7 @@ def admin_remove_provider(request, id, id2):
                     print("no messages deleting conversation")
             else:
                 pass
-        return redirect('admin_display_team', pat.id)
+        return redirect('admin_display_team', pat.public_id)
     context = {'patient': id, 'provider': id2}
     return render(request, "users_acc/deleteconfirm.html", context)
 #Author: Brandon
@@ -420,7 +433,7 @@ def admin_approve_provider_render(request):
 @login_required
 def admin_approve_provider(request, id):
     try:
-        temp = Provider.objects.get(id=id)
+        temp = Provider.objects.get(public_id=id)
     except Exception as e:
         print(e)
         return redirect("admin_approve_provider_render")
@@ -433,7 +446,7 @@ def admin_approve_provider(request, id):
 @login_required
 def admin_revoke_provider(request, id):
     try:
-        temp = Provider.objects.get(id=id)
+        temp = Provider.objects.get(public_id=id)
     except Exception as e:
         print(e)
     else:
@@ -450,7 +463,7 @@ def admin_user_deactivate_render(request):
         if "id" in request.POST:
             id=request.POST.get("id")
             try:
-                usertmp = User.objects.get(id=id)
+                usertmp = User.objects.get(public_id=id)
                 print(usertmp.is_active)
             except Exception as e:
                 print(e)
@@ -460,7 +473,7 @@ def admin_user_deactivate_render(request):
         elif "id2" in request.POST:
             id=request.POST.get("id2")
             try:
-                usertmp = User.objects.get(id=id)
+                usertmp = User.objects.get(public_id=id)
                 print(usertmp.is_active)
             except Exception as e:
                 print(e)
@@ -557,13 +570,15 @@ def home(request):
         context={}
         if request.user.user_type == 2:
             context["appointment"] = ApptTable.objects.filter(provider=request.user.provider).order_by("meetingDate")[:2]
-            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
+            #context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
         elif request.user.user_type == 3:
+            if request.user.patient.survey_status == 1:
+                return redirect('take_survey')
             context["appointment"] = ApptTable.objects.filter(patient=request.user.patient).order_by("meetingDate")[:2]
-            context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
+            #context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
         else:
             context["appointment"] = ApptTable.objects.none
-            context["recentMessages"] = PostQ.objects.none
+            #context["recentMessages"] = PostQ.objects.none
         return render(request, 'users_acc/home.html',context)
     else:
         return redirect('login')
@@ -587,3 +602,50 @@ def coach_details(request):
     return render(request, 'users_acc/coach_details.html')
 
 
+#Author: Brandon
+#This function request a change of provider.
+@login_required
+def request_provider_change(request, id):
+    doc = Provider.objects.get(public_id=id)
+    admin = Admin.objects.first()
+    pat=request.user
+    if thread.objects.filter(sender=pat, reciever=admin.user).exists():
+        curthread=thread.objects.get(sender=pat, reciever=admin.user)
+        message.objects.create(convoIDt=curthread, sender=pat, msgbody="I would like to request that a new provider to replace my current "+str(doc.get_Provider_type_display())  +" : "+str(doc.user.get_full_name())+".")
+        print("thread exists")
+    else:
+        curthread=thread.objects.create(sender=pat, reciever=admin.user)
+        curthread.save()
+        message.objects.create(convoIDt=curthread, sender=pat, msgbody="I would like to request that a new provider to replace my current "+str(doc.get_Provider_type_display())  +" : "+str(doc.user.get_full_name())+".")
+        print("thread created")
+    messages.success(request, 'Request Sent.')
+    return redirect('profile')
+
+def button(request):
+    if request.method == 'POST':
+        #m = get_user_model().objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        # m=message.objects.create()
+        # m.sender = request.user
+        # m.reciever = request.user
+        # m.subject ='test'
+        # m.convoID = 1
+        # m.read_status = False
+        # m.sender_loc = 'Outbox'
+        # m.reciever_loc = 'Inbox'
+        # m.save()
+        m=ApptTable.objects.first()
+        archive_apt(m)
+        # m.delete()
+        # g=get_user_model().objects.first()
+        # m=get_user_model().objects.first()
+        # thread.objects.create(sender=g, reciever=m)
+        # if thread.objects.filter(sender=g, reciever=m).exists():
+        #     print("thread exists")
+        #     return redirect('button')
+        # else:
+        #     thread.objects.create(sender=g, reciever=m)
+        #     print("thread created")
+        #     return redirect('button')
+        return redirect('button')
+    else:
+        return render(request, 'users_acc/button.html')

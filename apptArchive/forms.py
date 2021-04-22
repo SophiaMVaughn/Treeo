@@ -1,8 +1,9 @@
 from .models import ApptArchive, Notes
 from django import forms
+from users_acc.Validator import *
 
 class NotesForm(forms.ModelForm):
-    notes = forms.CharField(widget=forms.Textarea,max_length=600)
+    notes = forms.CharField(widget=forms.Textarea,max_length=600, validators=[validate_profanity])
     #dateAdded= forms.DateTimeField(auto_now=True)
     class Meta:
         model = Notes

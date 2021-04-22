@@ -5,8 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4babef84-c843-4353-ab8a-a160e223ceca" name="Default Changelist" comment="archive task">
+      <change afterPath="$PROJECT_DIR$/users_acc/Validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReqAppt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ReqAppt/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Treeo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treeo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apptArchive/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apptArchive/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/messaging/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patient_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient_log/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ReqAppt/fullcalendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ReqAppt/fullcalendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blogsys/Health_Coach.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blogsys/Health_Coach.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/messaging/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messaging/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_approve_provider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_assign.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_deactivate_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_deactivate_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/admin_display_team.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/base2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/base2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users_acc/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_acc/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_download/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_download/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_acc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users_acc/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>

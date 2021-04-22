@@ -77,12 +77,13 @@ Django Apps
 4) patient_log
 - In the patient log we have all the functions related to storing users patient log. There is also all the functions related to the generating the JavaScript charts using charge as these query the database and then return the data as a serialized series of values.
 
-5) blogsys
-- This is the current messaging system which which has a HTML page and view function for every possible combination of patient and provider.
 
 6) apptArchive
 - Here's the code for the archived appointments. This is where the providers will make notes on archived appointments. All users will be able to view any archived appointments that they have.
 
+Depreciated
+5) blogsys
+- This is the current messaging system which which has a HTML page and view function for every possible combination of patient and provider.
 
 
 

@@ -15,7 +15,7 @@ path('account_activation_sent/', users_acc_views.account_activation_sent, name='
 path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',users_acc_views.activate, name='activate'),
 path('account/profile/', users_acc_views.profile, name='profile'),
 path('account/edit_profile/', users_acc_views.edit_profile, name='edit_profile'),
-#path('button/', users_acc_views.button, name='button'),
+path('button/', users_acc_views.button, name='button'),
 path('', users_acc_views.home, name='home'),
 path('login/', users_acc_views.loginuser, name='login'),
 path('doctor_registration/', users_acc_views.doctor_registration, name='doctor_registration'),
@@ -32,5 +32,6 @@ path('take_survey/', users_acc_views.render_survey, name='render_survey'),
 path('account/profile/diet-details', users_acc_views.dietitian_details, name='diet_details'),
 path('account/profile/doctor-details', users_acc_views.doctor_details, name='doctor_details'),
 path('account/profile/coach-details', users_acc_views.coach_details, name='coach_details'),
+path('account/profile/request_provider_change/<id>/', users_acc_views.request_provider_change, name='request_provider_change'),
 
 ]

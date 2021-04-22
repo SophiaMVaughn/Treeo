@@ -357,7 +357,8 @@ def fullcalendar(request):
     }
     return render(request, 'ReqAppt/fullcalendar.html', context)
 
-
+# Brandon
+#archives a appointment takes a appointmetn object as an argument
 def archive_apt(appointment):
     try:
         archiveAppt = ApptArchive.objects.create()

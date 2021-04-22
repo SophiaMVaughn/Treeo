@@ -38,7 +38,7 @@
         <td class="appointmentBubbleProvider">Unassigned</td>
         {% endif %}
         <td><a class="appointmentBubbleApprove button btn btn-large btn-block"
-            href="{% url 'admin_display_team' i.id %}"><span> Assign Team</span></a></td>
+            href="{% url 'admin_display_team' i.public_id %}"><span> Assign Team</span></a></td>
       <tr>
         {%endfor%}
     </table>

@@ -55,7 +55,7 @@ def patientlog(request):
             print(PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today))
             if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
                 saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
-                return redirect('edit_log',saverecord.id)
+                return redirect('edit_log',saverecord.public_id)
             else:
                 #link to chart on the page
                 return render(request, 'patient_log/patientLog.html', {"form": PatientLogForm()})
@@ -270,8 +270,8 @@ def render_chart(request, id):
     pat = Patient.objects.none()
     try:
         pat = Patient.objects.get(public_id=id)
-    except:
-        pass
+    except Exception as e:
+        print(e)
     yearly=line_chart_Year(pat.id)
     monthly=line_chart_Month(pat.id)
     weekly=line_chart_Week(pat.id)

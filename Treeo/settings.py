@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'chartjs',
     'channels',
     'phonenumber_field',
-    'blogsys.apps.BlogsysConfig',
+    #'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
     'tz_detect',
 ]

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
+{% load tz_detect %}
 <html lang="en">
-
+<!--
+	Authors: Brandon Breen and George Esho
+	This is the template used by most of the other HTML pages.
+	This template displays the navbar for each specified user type (admin, provider, or patient), the alert message box for Django and Bootstrap,
+	the Bootstrap and JavaScript scripts, link to the .css file, link to the browser tab icon, and the div each page is contained in.
+-->
 {% load static %}
 
 <head>
@@ -9,57 +15,159 @@
 	<title>Treeo</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+<!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"> -->
+<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
 </head>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
 
 <body>
 	<div id="container">
-		<nav class="navbar navbar-expand  navbar-dark bg-dark">
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav ">
-					<a class="nav-link" href="{% url 'home' %}">Home</a>
-					<a class="nav-link" href="{% url 'Health_Coach' %}">Health Coach</a>
-					<a class="nav-link" href="{% url 'provider' %}">Provider</a>
-					<a class="nav-link" href="{% url 'dietitian' %}">Dietitian</a>
-					<!--	<a href="{% url 'register' %}">Inbox</a>-->
-				</div>
-			</div>
-		</nav>
-	</div>
-
-	{% if messages%}
-	{%for message in messages%}
-	<div class="message">
-		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			<strong>{{message.tags}}!</strong>
-			{{message}}
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-	</div>
-	{% endfor %}
-	{% endif %}
- 	<!-- Form Error messaging -->
-    {% if formerrors %}
-	<div id="errors">
-		<div class="inner">
-			<p>There was a problem with the information you entered. Please correct the following:</p>
-			{{ formerrors.non_field_errors }}
+		<div class="theT"></div>
+		{% if user.is_authenticated %}
+		{% if user.user_type == 1 %}
+		<div id="navwrapper">
 			<ul>
-				{% for field in formerrors %}
-					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-				{% endfor %}
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<li><a class="nav-link" href="{% url 'admin_approve_provider_render' %}">Approve Provider</a></li>
+				<li><a class="nav-link" href="{% url 'admin_view' %}">Assign Trio</a></li>
+				<li><a class="nav-link" href="{% url 'doctor_registration' %}">Register Provider</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<!-- <li><a class="nav-link" href="{% url 'profile' %}">account</a></li> -->
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
 			</ul>
 		</div>
-	</div>
-{% endif %}
-	<!-- /Form Error messaging -->
-	<div class="login">
-		<div class="login-screen">
-			{% block content %}
-			{% endblock %}
+		{% else %}
+		<div id="navwrapper">
+			<ul>
+				<li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+				<li><a class="nav-link" href="{% url 'reqAppt' %}">Appointments</a></li>
+				<li><a class="nav-link" href="{% url 'patientlog' %}">Health Log</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_upload' %}">File Upload</a></li>
+				<li><a class="nav-link" href="{% url 'upload_download_file_download' %}">File Download</a></li>
+				<li><a class="nav-link" href="{% url 'messaging_home' %}">Messages</a></li>
+				<li><a class="nav-link" href="{% url 'profile' %}">Account</a></li>
+				<li><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+			</ul>
+		</div>
+		{% endif %}
+		{% endif %}
+
+		{% if messages%}
+		{%for message in messages%}
+		<div class="message">
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+<!--				<strong>{{message.tags}}!</strong>-->
+				{{message}}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
+		<!-- Form Error messaging -->
+		{{form.non_field_errors}}
+		{% if formerrors %}
+		<div class="message">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				There was a problem with the information you entered. Please correct the following:
+				{{ formerrors.non_field_errors }}
+				<ul>
+					{% for field in formerrors %}
+					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		<!-- End Form Error messaging -->
+		<div class="login">
+			<div class="login-screen">
+				{% load humanize %}
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div>
 	</div>
+<script>
+	//Authors: Brandon Breen and George Esho
+	//This checks if the user is logged in. If yes, the tab the user is currently on is highlighted.
+{% if user.is_authenticated %}
+function active_navbar(){
+    //All the elements from the navbar element that are in li tags are collected and loop through.
+    //To use break, each of the nested loops are labeled.
+    loop1:
+        for (let i of document.getElementById("navwrapper").getElementsByTagName("li")) {
+            loop2:
+                for (let j of i.childNodes) {
+                    // special case for home as it causes matches for all nav elements
+                    if (window.location.origin+'/'!= j.href){
+                    if (window.location.href.includes(j.href))
+                        {
+                            //Set the class, so the correct navbar element is highlighted.
+                            j.classList.add('nav_active');
+                            break loop1;
+                        }
+                    //special case for apptArchive
+                        else if (j.href.includes('ReqAppt') && window.location.href.includes('apptArchive')){
+                            j.classList.add('nav_active');
+                            break loop1;
+                        }
+                    }
+                        //Check iff the current page has the base element of one of the navbar elements.
+                    else if (window.location.origin+'/' == window.location.href && window.location.href == j.href) {
+                        j.classList.add('nav_active');
+                        //Set the class so the correct nav element is highlighted and break the loop.
+                        break loop1;
+                    }
+
+
+                }
+        }
+}
+//This allows there to be other pages that extend this html to use onload events.
+//We are making a function here and we get the window.onload event.
+function addLoadEvent(functorunonpageload) {
+    var previousonload = window.onload;
+    //Here we see if the onload event has been called
+    if (typeof window.onload != 'function') {
+        //If on load hasn't been called, then we set the onload event to the "functorunonpageload" we want to run.
+        window.onload = functorunonpageload;
+    }
+    else {
+        /*
+			If onload has been called already, then we take the window.onload and add the previous window.onload
+			function contents saved under "previousonload" and add the "functorunonpageload" we want to run .
+		*/
+        window.onload = function() {
+            if (previousonload) {
+                previousonload();
+            }
+            functorunonpageload();
+
+        }
+    }
+}
+
+addLoadEvent(active_navbar);
+{% endif %}
+</script>
+
+
+{% tz_detect %}
 </body>

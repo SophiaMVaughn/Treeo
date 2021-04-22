@@ -29,12 +29,12 @@
                     {%if a.is_verified%}
                     <td></td>
                     {% else %}
-                    <td><a href="{% url 'admin_approve_provider' a.id %}"
+                    <td><a href="{% url 'admin_approve_provider' a.public_id %}"
                             class="providerApprove button btn btn-primary btn-large btn-block"><span>&#10004;</span></a>
                     </td>
                     {% endif %}
                     {%if a.is_verified%}
-                    <td><a href="{% url 'admin_revoke_provider' a.id %}"><img alt="Delete"
+                    <td><a href="{% url 'admin_revoke_provider' a.public_id %}"><img alt="Delete"
                                 src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
                     </td>
                     {% else %}

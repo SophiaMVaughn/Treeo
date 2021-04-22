@@ -26,7 +26,7 @@ urlpatterns = [
     path('upload_download/', include('upload_download.urls')),
     path('', include('users_acc.urls')),
     path('patient_log/', include('patient_log.urls')),
-    path('blogsys/', include('blogsys.urls')),
+    #path('blogsys/', include('blogsys.urls')),
     path('messaging/', include('messaging.urls')),
     path(r'^tz_detect/', include('tz_detect.urls')),
 ]

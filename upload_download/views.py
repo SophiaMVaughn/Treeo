@@ -71,7 +71,7 @@ def render_file_download(request):
                         'file': i.file.url,
                         'date_uploaded': i.date_created,
                         'File_Type': i.get_file_type_display(),
-                        'id': i.pk
+                        'public_id': i.public_id
                     })
                 pagination = Paginator(files, 5)
                 page = request.GET.get('page', 1)
@@ -99,7 +99,7 @@ def render_file_download(request):
                         'file': i.file.url,
                         'date_uploaded': i.date_created,
                         'File_Type': i.get_file_type_display(),
-                        'id': i.pk
+                        'public_id': i.public_id
                     })
             pagination = Paginator(files, 5)
             page = request.GET.get('page', 1)
@@ -134,7 +134,7 @@ def render_file_download(request):
                     'file': i.file.url,
                     'date_uploaded': i.date_created,
                     'File_Type': i.get_file_type_display(),
-                    'id': i.pk
+                    'public_id': i.public_id
                 })
         elif request.user.user_type == 3:
             for i in Uploaded_File.objects.filter(usern=request.user):
@@ -145,7 +145,7 @@ def render_file_download(request):
                     'file': i.file.url,
                     'date_uploaded': i.date_created,
                     'File_Type': i.get_file_type_display(),
-                    'id': i.pk
+                    'public_id': i.public_id
                 })
         pagination = Paginator(files, 5)
         page = request.GET.get('page', 1)

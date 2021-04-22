@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-
 class thread(models.Model):
 
     # ok so this is interesting do the messages have to be scene from the people after the user is deactivated yes
