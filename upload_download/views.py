@@ -17,38 +17,16 @@ def render_file_upload(request):
     if request.method == 'POST':
         up_form = Fileform(request.POST, request.FILES)
         if up_form.is_valid():
-            fname = request.FILES["file"].name
-            if request.FILES["file"].size <= 52428800:
-                if len(fname) <= 100:
-                    fcheck=False
-                    for i in [".doc",".docx",".odf",".pdf",".jpeg",".jpg",".png",".bmp",".gif"]:
-                        if fname.endswith(i):
-                            fcheck = True
-                    if fcheck==True:
-                        f=Uploaded_File()
-                        f.usern=request.user
-                        print(request.FILES["file"].name)
-                        f.file_name = request.FILES["file"].name
-                        f.file =request.FILES["file"]
-                        f.file_type=up_form.cleaned_data.get('file_type')
-                        f.save()
-                        return render(request, 'upload_download/file_upload_Complete.html')
-                    else:
-                        context = {"errorMsg": "Unsupported File Type The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif"}
-                        print("Unsupported File Type The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif")
-                        return render(request, 'upload_download/file_upload_Failed.html', context)
-                else:
-                    context = {"errorMsg": "Your File Name is Too Long"}
-                    print(
-                        "Your File Name is Too Long")
-                    return render(request, 'upload_download/file_upload_Failed.html', context)
-            else:
-                context = {"errorMsg":"Your File is Too Big >50MB"}
-                print(
-                    "Your File is Too Big >50MB")
-                return render(request, 'upload_download/file_upload_Failed.html', context)
+            f=Uploaded_File()
+            f.usern=request.user
+            print(request.FILES["file"].name)
+            f.file_name = request.FILES["file"].name
+            f.file =request.FILES["file"]
+            f.file_type=up_form.cleaned_data.get('file_type')
+            f.save()
+            return render(request, 'upload_download/file_upload_Complete.html')
         else:
-            return render(request, 'upload_download/file_upload_Failed.html')
+            return render(request, 'upload_download/file_upload_Failed.html',{'formerrors': up_form})
     else:
         return render(request, 'upload_download/fileupload.html',{"form":Fileform()})
 
@@ -170,3 +148,4 @@ def delete_file(request, id):
         return redirect('upload_download_file_download')
     context = {'file': id}
     return render(request, "upload_download/filedeleteconfirm.html", context)
+

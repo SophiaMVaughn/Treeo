@@ -2,10 +2,10 @@ from django import forms
 from .models import *
 from users_acc.forms import CustomModelChoiceField
 from users_acc.models import *
-
+from utils.Validator import *
 
 class Fileform(forms.ModelForm):
-    #file = forms.FileField()
+    file = forms.FileField(validators=[ValidateFile()], max_length=500)
 
     class Meta:
         model = Uploaded_File

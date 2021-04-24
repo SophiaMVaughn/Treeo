@@ -1,9 +1,10 @@
 #Nicole
 #Brandon
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from apptArchive.models import ApptArchive, Notes
 from apptArchive.forms import NotesForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 #Author: Brandon & Nicole
 #Here a user can see all of the archived apointments that a user has acess too
 def view_all_archived_appointments(request):
@@ -45,7 +46,7 @@ def view_all_archived_appointments(request):
 def view_archived_appointment(request,id):
     notes = Notes.objects.none()
     try:
-        apptArchive = ApptArchive.objects.get(public_id=id)
+        apptArchive = ApptArchive.objects.get_object_or_404(public_id=id)
         notes = Notes.objects.filter(apptId=apptArchive.id).order_by("date")
     except:
         # 404 instead??

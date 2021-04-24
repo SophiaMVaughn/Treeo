@@ -1,0 +1,11 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page displays a error when tripped.
+-->
+<div class="white">
+<div class="welcome">Error{{HTTP_error_type}}</div>
+<div class="profileName">{{HTTP_error_message}}</div>
+</div>
+{% endblock content %}

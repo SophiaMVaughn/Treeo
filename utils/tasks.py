@@ -3,10 +3,8 @@ from ReqAppt.models import *
 from smtplib import SMTP
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .email import *
-from .sms import *
+from utils.email import *
+from utils.sms import *
 # from .views import archive_apt
 from celery.utils.log import get_task_logger
 

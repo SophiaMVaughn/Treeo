@@ -10,7 +10,7 @@ from patient_log.models import *
 from Treeo import email_info
 from users_acc import models
 # import zoom
-from .utils import generate_zoom
+from ReqAppt.utils import generate_zoom
 
 
 # zoom_link = generate_zoom(request=1)

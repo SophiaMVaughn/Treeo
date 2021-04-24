@@ -17,10 +17,10 @@ from ReqAppt import models
 from ReqAppt.forms import *
 from ReqAppt.models import ApptTable
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 import django.utils.timezone
-from .tasks import *
+from utils.tasks import *
 from apptArchive.models import ApptArchive
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
@@ -203,7 +203,7 @@ def Patient_view(request):
 
 
 def approve(request,id):
-    appointment=ApptTable.objects.get(public_id=id)
+    appointment=ApptTable.objects.get_object_or_404(public_id=id)
     #need error handling
     provider_url, patient_url, patient_pwd = generate_zoom(request=1)
     appointment.meeturlprovider = provider_url
@@ -236,7 +236,7 @@ def approve(request,id):
 # Asks if user wishes to delete Appt
 # Delete Appointment
 def Destroy(request, id):
-    appointment = ApptTable.objects.get(public_id=id)
+    appointment = ApptTable.objects.get_object_or_404(public_id=id)
     if request.method == 'POST':
         appointment.delete()
 #         reject_message_task.delay(appointment.id)

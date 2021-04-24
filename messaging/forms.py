@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-from users_acc.Validator import *
+from utils.Validator import *
 class MessageForm(forms.ModelForm):
     #msgbody = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}),max_length=600)
     msgbody = forms.CharField(max_length=600, label='', validators=[validate_profanity])

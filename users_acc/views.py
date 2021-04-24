@@ -1,5 +1,4 @@
 from django.core.exceptions import MultipleObjectsReturned
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
@@ -24,7 +23,7 @@ from patient_log.models import *
 #from blogsys.models import *
 from ReqAppt.models import *
 from messaging.models import *
-from ReqAppt.tasks import *
+from utils.tasks import *
 from ReqAppt.views import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 #Author: Brandon
@@ -433,7 +432,7 @@ def admin_approve_provider_render(request):
 @login_required
 def admin_approve_provider(request, id):
     try:
-        temp = Provider.objects.get(public_id=id)
+        temp = Provider.objects.get_object_or_404(public_id=id)
     except Exception as e:
         print(e)
         return redirect("admin_approve_provider_render")
@@ -446,7 +445,7 @@ def admin_approve_provider(request, id):
 @login_required
 def admin_revoke_provider(request, id):
     try:
-        temp = Provider.objects.get(public_id=id)
+        temp = Provider.objects.get_object_or_404(public_id=id)
     except Exception as e:
         print(e)
     else:
@@ -463,7 +462,7 @@ def admin_user_deactivate_render(request):
         if "id" in request.POST:
             id=request.POST.get("id")
             try:
-                usertmp = User.objects.get(public_id=id)
+                usertmp = User.objects.get_object_or_404(public_id=id)
                 print(usertmp.is_active)
             except Exception as e:
                 print(e)
@@ -473,7 +472,7 @@ def admin_user_deactivate_render(request):
         elif "id2" in request.POST:
             id=request.POST.get("id2")
             try:
-                usertmp = User.objects.get(public_id=id)
+                usertmp = User.objects.get_object_or_404(public_id=id)
                 print(usertmp.is_active)
             except Exception as e:
                 print(e)
@@ -606,7 +605,7 @@ def coach_details(request):
 #This function request a change of provider.
 @login_required
 def request_provider_change(request, id):
-    doc = Provider.objects.get(public_id=id)
+    doc = Provider.objects.get_object_or_404(public_id=id)
     admin = Admin.objects.first()
     pat=request.user
     if thread.objects.filter(sender=pat, reciever=admin.user).exists():
@@ -649,3 +648,36 @@ def button(request):
         return redirect('button')
     else:
         return render(request, 'users_acc/button.html')
+
+
+#Author: Brandon
+#This a error page handler for 404 errors.
+def error_404(request, exception):
+    data = {"HTTP_error_message":"404", "HTTP_error_type":"Oops looks like there is nothing here."}
+    return render(request, 'users_acc/error_page_base.html', data)
+
+#Author: Brandon
+#This a error page handler for 500 errors.
+
+
+def error_500(request, exception):
+    # data = {"HTTP_error_message":"500", "HTTP_error_type":"There was a internal server error."}
+    data={}
+    return render(request, 'users_acc/error_page_base.html', data)
+
+#Author: Brandon
+#This a error page handler for 400 errors.
+
+
+def error_400(request, exception):
+    data = {"HTTP_error_message":"400", "HTTP_error_type":"There was a eternal server error."}
+    return render(request, 'users_acc/error_page_base.html', data)
+
+#Author: Brandon
+#This a error page handler for 403 errors.
+
+
+def error_403(request, exception):
+    data = {"HTTP_error_message":"403", "HTTP_error_type":"You don't hare permishion to access this data."}
+    return render(request, 'users_acc/error_page_base.html', data)
+

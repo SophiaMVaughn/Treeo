@@ -185,11 +185,13 @@ function setAciveChat(f) {
     chat.current.classList.remove('active-chat');
     //console.log('[id="#' + chat.person + 'chat"]');
     console.log(document.querySelector('#' + chat.person + 'chat'));
-    chat.container.querySelector('#' + chat.person + 'chat').classList.add('active-chat');
+    var new_current=chat.container.querySelector('#' + chat.person + 'chat')
+    new_current.classList.add('active-chat');
     persons.name = f.querySelector('.name').innerText;
     chat.name.innerHTML = persons.name;
     document.getElementById("convoid").value = chat.person.slice(6);
     console.log(document.getElementById("convoid").value);
+    new_current.scrollTop = new_current.scrollHeight;
 }</script>
 
 {% endblock content %}

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from users_acc.views import *
 
 urlpatterns = [
     path('apptArchive/', include('apptArchive.urls')),
@@ -30,6 +30,12 @@ urlpatterns = [
     path('messaging/', include('messaging.urls')),
     path(r'^tz_detect/', include('tz_detect.urls')),
 ]
+handler404 = 'users_acc.views.error_404'
+handler403 = 'users_acc.views.error_403'
+handler400 = 'users_acc.views.error_400'
+
+#handler500 = 'users_acc.views.error_500'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) is for debug only for prodution consult documentation for deploying static files

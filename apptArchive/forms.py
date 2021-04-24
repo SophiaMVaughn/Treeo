@@ -1,6 +1,6 @@
-from .models import ApptArchive, Notes
+from .models import Notes
 from django import forms
-from users_acc.Validator import *
+from utils.Validator import *
 
 class NotesForm(forms.ModelForm):
     notes = forms.CharField(widget=forms.Textarea,max_length=600, validators=[validate_profanity])

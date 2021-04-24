@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
-
+import magic
+from django.template.defaultfilters import filesizeformat
 #Author: Brandon
 # This is a profainty validator to user on user input. a no exasutive list that can be suited for the needs of the application
 
@@ -717,3 +718,60 @@ def validate_profanity(value):
             raise ValidationError("Please Use Appropriate Language in Your Comunications")
     else:
         return value
+
+    # Author: Brandon
+    # This is a file validator to user on user file input. we also use the validate profanity figure
+
+
+class ValidateFile(object):
+    error_messages = {
+        'size_limit': "The file size can't be greater than %(size_limit)s."
+                     " The file you submited was %(size)s.",
+        'content_type': "The file type %(content_type)s is not supported. The Supported File Types are .doc, .docx, .odf, .pdf, .jpeg, .jpg, .png, .bmp, .gif",
+    }
+
+    def __init__(self):
+        self.size_limit = 52428800
+        self.content_types = ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document",  "application/pdf", "image/jpeg", "image/png", "image/bmp", "image/gif"]
+        self.file_extentions = [".odf"]
+
+
+    def __call__(self, data):
+        #check is the file size is too big
+        #there is a flaw here in django wher it will acept a file of any size GB even and hang until the file is processed should probably
+        # look limiting the upload size on the backend in some way
+        if self.size_limit is not None and data.size > self.size_limit:
+            params = {
+                'size_limit': filesizeformat(self.size_limit),
+                'size': filesizeformat(data.size),
+            }
+            raise ValidationError(self.error_messages['size_limit'],
+                                  'size_limit', params)
+        #using the file magic we examine the file optimization her might be to only look at the first 2048 bytes(.read(2048)) to check theough this can lead to some inacuracy
+        content_type = magic.from_buffer(data.read(), mime=True)
+        data.seek(0)
+        #check if the file name is profane
+        validate_profanity(data.name)
+        #check if file is actuyaly one of the file types we recognize
+        if content_type not in self.content_types:
+            try:
+                #check if file has one of the extentions of one of the files one of the file types we recognize
+                if data.name.endswith() not in self.file_extentions:
+                    params = {'content_type': data.name.endswith()}
+                    raise ValidationError(self.error_messages['content_type'],
+                                          'content_type:', params)
+            except:
+                #the file endswith failed so we we asume an error wit the file type
+                params = {'content_type': content_type}
+                raise ValidationError(self.error_messages['content_type'],
+                                      'content_type:', params)
+
+
+
+    def __eq__(self, other):
+        return (
+                isinstance(other, ValidateFile) and
+                self.size_limit == other.size_limit and
+                self.content_types == other.content_types
+        )
+

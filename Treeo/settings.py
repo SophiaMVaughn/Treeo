@@ -55,6 +55,11 @@ INSTALLED_APPS = [
     #'blogsys.apps.BlogsysConfig',
     'django.contrib.humanize',
     'tz_detect',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_hotp',
+    'django_otp.plugins.otp_static',
+    'guardian',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +72,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'users_acc.middleware.SessionTimeoutMiddleware',
     'tz_detect.middleware.TimezoneMiddleware',
+    'django_otp.middleware.OTPMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # this is default
+    'guardian.backends.ObjectPermissionBackend',
+)
 
 ROOT_URLCONF = 'Treeo.urls'
 
@@ -162,7 +173,10 @@ PHONENUMBER_DEFAULT_FORMAT ='NATIONAL'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-
+#Gaurdian
+#ANONYMOUS_USER_NAME =None
+GUARDIAN_RAISE_403=True
+#GUARDIAN_RENDER_403=True
 
 
 # Static files (CSS, JavaScript, Images)

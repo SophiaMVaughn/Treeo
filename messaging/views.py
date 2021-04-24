@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.db import models
@@ -39,6 +39,7 @@ def test2(request):
                 mes.save()
             except Exception as e:
                 print(e)
+                context['messages'] = "There was a internal error code 501:1"
                 return render(request, 'messaging/index.html', context)
             context = {}
             master_list = []

@@ -1,6 +1,6 @@
 #Nicole
 #Brandon
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseBadRequest
 from patient_log.models import PatientLog
 from .forms import PatientLogForm, AdminProviderLogForm
@@ -54,7 +54,7 @@ def patientlog(request):
             today = timezone.now().date()
             print(PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today))
             if PatientLog.objects.filter(patient=request.user.patient.id).filter(date__date=today).exists():
-                saverecord = PatientLog.objects.get(Q(patient=request.user.patient.id) & Q(date__date=today))
+                saverecord = PatientLog.objects.get_object_or_404(Q(patient=request.user.patient.id) & Q(date__date=today))
                 return redirect('edit_log',saverecord.public_id)
             else:
                 #link to chart on the page
@@ -96,7 +96,7 @@ def patientlog(request):
 #This method edits the daily health log with the patient's new input
 
 def edit_log(request,id):
-    temp = PatientLog.objects.get(public_id=id)
+    temp = PatientLog.objects.get_object_or_404(public_id=id)
     form = PatientLogForm()
     if request.method =='POST':
         print("edit_log")
@@ -269,7 +269,7 @@ def render_chart(request, id):
     timezone.activate('UTC')
     pat = Patient.objects.none()
     try:
-        pat = Patient.objects.get(public_id=id)
+        pat = Patient.objects.get_object_or_404(public_id=id)
     except Exception as e:
         print(e)
     yearly=line_chart_Year(pat.id)
