@@ -8,11 +8,11 @@ from django.views.generic.edit import DeleteView
 from django.contrib.auth.decorators import login_required
 from users_acc.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django_otp.decorators import otp_required
 
 #Author: Brandon
 #This is the file upload page where the user can upload the file.
-@login_required
+@otp_required(if_configured=True)
 def render_file_upload(request):
     if request.method == 'POST':
         up_form = Fileform(request.POST, request.FILES)
@@ -35,50 +35,49 @@ def render_file_upload(request):
 
 #Author: Brandon
 #This is the file download page where the user can download the files they have access to.
-@login_required
+@otp_required(if_configured=True)
 def render_file_download(request):
     files = []
     if request.method == 'POST':
         if request.user.user_type == 1:
             form = AdminProviderFileForm(request.POST)
-            if form.is_valid():
-                for i in Uploaded_File.objects.filter(usern=form.provider.user):
-                    files.append({
-                        'FileName': i.file_name,
-                        'Uploader': i.usern.username,
-                        'file': i.file.url,
-                        'date_uploaded': i.date_created,
-                        'File_Type': i.get_file_type_display(),
-                        'public_id': i.public_id
-                    })
-                pagination = Paginator(files, 5)
-                page = request.GET.get('page', 1)
-                try:
-                    pagination = pagination.page(page)
-                except PageNotAnInteger:
-                    pagination = pagination.page(1)
-                except EmptyPage:
-                    pagination = pagination.page(pagination.num_pages)
-                #general except 501????
-                context = {
-                    'file_list': pagination
-                }
-                return render(request, 'upload_download/filedownload.html', context)
-            else:
-                return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
+            # if form.is_valid():
+            #     for i in Uploaded_File.objects.filter(usern=form.provider.user):
+            #         files.append({
+            #             'FileName': i.file_name,
+            #             'Uploader': i.usern.username,
+            #             'file': i.file.url,
+            #             'date_uploaded': i.date_created,
+            #             'File_Type': i.get_file_type_display(),
+            #             'public_id': i.public_id
+            #         })
+            #     pagination = Paginator(files, 5)
+            #     page = request.GET.get('page', 1)
+            #     try:
+            #         pagination = pagination.page(page)
+            #     except PageNotAnInteger:
+            #         pagination = pagination.page(1)
+            #     except EmptyPage:
+            #         pagination = pagination.page(pagination.num_pages)
+            #     #general except 501????
+            #     context = {
+            #         'file_list': pagination
+            #     }
+            #     return render(request, 'upload_download/filedownload.html', context)
+            # else:
+            #     return render(request, 'upload_download/filedownload.html', {"form": AdminProviderFileForm()})
     else:
         if request.user.user_type == 1:
-            for i in Uploaded_File.objects.all():
+            for i in Uploaded_File.objects.filter(usern__user_type=2):
                 # just find a way to query the request.user instead of all
-                if i.usern.user_type == 2:
-                    files.append({
-                        'FileName': i.file_name,
-                        'Uploader': i.usern.username,
-                        'file': i.file.url,
-                        'date_uploaded': i.date_created,
-                        'File_Type': i.get_file_type_display(),
-                        'public_id': i.public_id
-                    })
+                files.append({
+                    'FileName': i.file_name,
+                    'Uploader': i.usern.username,
+                    'file': i.file.url,
+                    'date_uploaded': i.date_created,
+                    'File_Type': i.get_file_type_display(),
+                    'public_id': i.public_id
+                })
             pagination = Paginator(files, 5)
             page = request.GET.get('page', 1)
             try:
@@ -140,7 +139,7 @@ def render_file_download(request):
 
 #Author: Brandon
 #This is the file delete page where the user can delete a file they have access too.
-@login_required
+@otp_required(if_configured=True)
 def delete_file(request, id):
     if request.method == "POST":
         obj = get_object_or_404(Uploaded_File, public_id=id)

@@ -11,6 +11,8 @@ def On_create_Patient(sender, instance, created, **kwargs):
             Admin.objects.create(user=instance)
             instance.is_email_confirmed=1
             instance.save()
+        elif instance.user_type == 1:
+            Admin.objects.create(user=instance)
         # elif instance.user_type == 2:
         #     Provider.objects.create(user=instance)
         elif instance.user_type == 3:

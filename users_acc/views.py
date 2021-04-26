@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import *
+from django_otp.decorators import otp_required
+import django.utils.timezone
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.conf import settings
@@ -26,6 +28,8 @@ from messaging.models import *
 from utils.tasks import *
 from ReqAppt.views import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django_otp.plugins.otp_static.models import *
+
 #Author: Brandon
 #This is the register funtion it allows people to register as patient users.
 def register(request):
@@ -49,7 +53,7 @@ def register(request):
                 [m.email],
             )
             #m.email_user(subject, message)
-            #you could also designate a dedicated help account
+            #you could also designate a dedicated help account rather than the first admin that is available
             g=Admin.objects.first()
             if thread.objects.filter(sender=g.user, reciever=m).exists():
                 print("thread exists")
@@ -65,7 +69,7 @@ def register(request):
             # some logic to make sure its actually sent
             # return render(request, 'account_activation_sent.html')
         else:
-            return render(request, 'users_acc/register.html', {'form': form})
+            return render(request, 'users_acc/register.html', {'form': PatientRegisterForm(),'formerrors': form})
     else:
         return render(request, 'users_acc/register.html', {'form': PatientRegisterForm()})
 
@@ -104,10 +108,13 @@ def loginuser(request):
         if userl is not None:
             # print("test1")
             if userl.is_email_confirmed == True:
-                # print("test2")
-                login(request, userl)
-                # get the stuff or the get response thing here
-                return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
+                # test
+                if not userl.ota_wait==None and timezone.now()>userl.ota_wait:
+                    login(request, userl)
+                    return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
+                else:
+                    login(request, userl)
+                    return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Is Not Confirmed']})
         else:
@@ -120,14 +127,14 @@ def loginuser(request):
 
 #Author: Brandon
 #This is the profile for patient and providers it shows them the details of their accounts.
-@login_required
+@otp_required(if_configured=True)
 def profile(request):
     return render(request, 'users_acc/profile.html')
 
 
 #Author: Brandon
 #This is the function for edit profile for patient and providers it shows them the details of their accounts and allows them to change them.
-@login_required
+@otp_required(if_configured=True)
 def edit_profile(request):
     if request.method == 'POST':
         #form = User_Update_Form(request.POST or None)
@@ -185,11 +192,11 @@ def doctor_registration(request):
             # some logic to make sure its actually sent
             # return render(request, 'account_activation_sent.html')
         else:
-            return render(request, 'users_acc/register_provider.html', {'form': form})
+            return render(request, 'users_acc/register_provider.html', {'form': ProviderRegisterForm(),'formerrors':form})
     else:
         return render(request, 'users_acc/register_provider.html', {'form': ProviderRegisterForm()})
 
-@login_required
+@otp_required(if_configured=True)
 def admin_view(request):
     # if request.method == 'POST':
     #     form = AdminAssignForm(request.POST)
@@ -222,7 +229,7 @@ def admin_view(request):
 
 #Author: Brandon
 #This is the page where we can assign a patient to provider.
-@login_required
+@otp_required(if_configured=True)
 def admin_display_team(request, id):
     try:
         patient = Patient.objects.get(public_id=id)
@@ -411,7 +418,7 @@ def admin_remove_provider(request, id, id2):
     return render(request, "users_acc/deleteconfirm.html", context)
 #Author: Brandon
 #This is the page where we display the providers and they can be approved or unapproved.
-@login_required
+@otp_required(if_configured=True)
 def admin_approve_provider_render(request):
     temp=Provider.objects.filter().order_by('is_verified')
     pagination = Paginator(temp, 5)
@@ -429,7 +436,7 @@ def admin_approve_provider_render(request):
     return render(request, "users_acc/admin_approve_provider.html", context)
 #Author: Brandon
 #This is the page where we can approve providers .
-@login_required
+@otp_required(if_configured=True)
 def admin_approve_provider(request, id):
     try:
         temp = Provider.objects.get_object_or_404(public_id=id)
@@ -442,7 +449,7 @@ def admin_approve_provider(request, id):
     return redirect("admin_approve_provider_render")
 #Author: Brandon
 #This is the page where we can unapprove providers.
-@login_required
+@otp_required(if_configured=True)
 def admin_revoke_provider(request, id):
     try:
         temp = Provider.objects.get_object_or_404(public_id=id)
@@ -454,7 +461,7 @@ def admin_revoke_provider(request, id):
     return redirect("admin_approve_provider_render")
 #Author: Brandon
 #This is the page where an admin can deactivate user accouts .
-@login_required
+@otp_required(if_configured=True)
 def admin_user_deactivate_render(request):
     temp=User.objects.filter(~Q(user_type= 1))
     if request.method == 'POST':
@@ -508,7 +515,7 @@ def admin_user_deactivate_render(request):
         return render(request, "users_acc/admin_deactivate_user.html", context)
 #Author: Brandon
 #This is the page where a user can deactivate thier accout.
-@login_required
+@otp_required(if_configured=True)
 def user_deactivate(request):
         if request.user.user_type == 3 or request.user.user_type == 2:
             request.user.is_active = False
@@ -516,7 +523,7 @@ def user_deactivate(request):
             return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated!']})
 #Author: Brandon
 #This is the page where patient users take the survey.
-@login_required
+@otp_required(if_configured=True)
 def take_survey(request):
     if request.user.user_type ==3:
         if request.user.patient.survey_status==1:
@@ -541,7 +548,7 @@ def take_survey(request):
 
 #Author: Brandon
 #This is the page where patient users take the survey.
-@login_required
+@otp_required(if_configured=True)
 def render_survey(request):
     if request.user.user_type ==3:
         if request.user.patient.survey_status==1:
@@ -586,24 +593,24 @@ def home(request):
     
 #Author: Gio
 #This is the page a patient sees when they view the profile of their dietitian.
-@login_required
+@otp_required(if_configured=True)
 def dietitian_details(request):
     return render(request, 'users_acc/diet_details.html')
 #Author: Gio
 #This is the page a patient sees when they view the profile of their pysician.
-@login_required
+@otp_required(if_configured=True)
 def doctor_details(request):
     return render(request, 'users_acc/doctor_details.html')
 #Author: Gio
 #This is the page a patient sees when they view the profile of their health coach.
-@login_required
+@otp_required(if_configured=True)
 def coach_details(request):
     return render(request, 'users_acc/coach_details.html')
 
 
 #Author: Brandon
 #This function request a change of provider.
-@login_required
+@otp_required(if_configured=True)
 def request_provider_change(request, id):
     doc = Provider.objects.get_object_or_404(public_id=id)
     admin = Admin.objects.first()
@@ -645,6 +652,12 @@ def button(request):
         #     thread.objects.create(sender=g, reciever=m)
         #     print("thread created")
         #     return redirect('button')
+        if not request.user.staticdevice_set.first():
+            request.user.staticdevice_set.create(name='backup')
+        print(request.user.staticdevice_set.first())
+        request.user.staticdevice_set.first().token_set.all().delete()
+        for i in range(5):
+            request.user.staticdevice_set.first().token_set.create(token=StaticToken.random_token())
         return redirect('button')
     else:
         return render(request, 'users_acc/button.html')

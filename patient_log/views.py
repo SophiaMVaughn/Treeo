@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 import sched, time
 from django.views.generic.edit import UpdateView
 import datetime
+from django_otp.decorators import otp_required
 from django.utils import timezone
 import calendar
 from users_acc.models import *
@@ -22,7 +23,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #Author: Nicole
 #This method allows a patient to input their calories, water intake, hours of sleep, and their mood.
-@login_required
+@otp_required(if_configured=True)
 def patientlog(request):
     if request.method =='POST':
         if request.user.user_type==3:
@@ -111,8 +112,7 @@ def edit_log(request,id):
             #redirects to self
             return render(request, 'patient_log/patientLog_submit.html')
         else:
-            form2=PatientLogForm()
-        return render(request,'patient_log/editLog.html', {'edit_log': form2,'formerrors': form, 'form':temp})
+            return render(request,'patient_log/editLog.html', {'edit_log': PatientLogForm(),'formerrors': form, 'form':temp})
     else:
         return render(request, 'patient_log/editLog.html', {'edit_log': form, 'form': temp})
 

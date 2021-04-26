@@ -29,6 +29,7 @@ urlpatterns = [
     #path('blogsys/', include('blogsys.urls')),
     path('messaging/', include('messaging.urls')),
     path(r'^tz_detect/', include('tz_detect.urls')),
+    path('two_factor_authentication/', include('two_factor_authentication.urls')),
 ]
 handler404 = 'users_acc.views.error_404'
 handler403 = 'users_acc.views.error_403'

@@ -38,6 +38,7 @@ class User(AbstractUser):
     phone_no = PhoneNumberField(null=True, blank=True, unique=True)
     profile_pic = models.ImageField(
         default='img/profile.png', upload_to='profile_pictures')
+    ota_wait = models.DateTimeField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         # this is using a pillow package might be resource heavy on server side alternatives???

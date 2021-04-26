@@ -1,0 +1,175 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load static %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page displays a table of a user's previously uploaded files available for download. 
+    A patient's providers can view and download all the files a patient uploads.
+-->
+<div class="white">
+    <div class="fileDownload">File Download</div>
+    {% if form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.patient }}
+        <div class="button uploadFileButton">
+            <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+        </div>
+    </form>
+    {% else %}
+    <!-- 
+        This displays the search bar that allows a user to filter the table by file name.
+    -->
+    <input type="text" id="myInputPatient" onkeyup="myFunction()" placeholder="search for file name">
+    <div class="downloadTable">
+        <table id="myTable" class="table download">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">File Name</th>
+                    <th onclick="sortTable(1)">Document</th>
+                    <th onclick="sortTable(2)">User</th>
+                    <th onclick="sortTable(3)">Date Created</th>
+                    <th>Download</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in file_list %}
+                <tr>
+                    <td>{{file.FileName}}</td>
+                    <td>{{file.File_Type}}</td>
+                    <td>{{file.Uploader}}</td>
+                    <td>{{file.date_uploaded}}</td>
+                    <td><a href="{{file.file}}" target="_blank" download="file.FileName"><img alt="Download"
+                                src="{% static 'img/downloadArrow.png' %}" width="90" height="40" alt=""
+                                loading="lazy" /></a></td>
+                    <td><a href="{% url 'upload_download_file_delete' file.public_id %}"><img alt="Delete"
+                                src="{% static 'img/trash.png' %}" width="30" height="40" alt="" loading="lazy" /></a>
+                    </td>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if file_list.has_other_pages %}
+    <!-- 
+        This displays pagination of the table, creating a new page that holds five rows per page.
+    -->
+    <ul class="pagination">
+        {% if file_list.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{file_list.previous_page_number}}">&#8592;</a></li>
+        {% else %}
+        <li class="disabled page-item page-link"><span>&#8592;</span></li>
+        {% endif %}
+        {% for i in file_list.paginator.page_range %}
+        {% if file_list.number == i %}
+        <li class="page-item page-link"><span> {{i}}<span class="sr-only"> (current)</span></span></li>
+        {% elif file_list.paginator.num_pages > 5%}
+        {% if i > file_list.number|add:'-3' and i < file_list.number|add:'3' %} <li class="page-item">
+            <a class="page-link" href="?page={{ i }}"> {{i}}</a></li>
+            {% elif i == 1 %}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            <li class="page-item page-link">...</li>
+            {% elif i == file_list.paginator.num_pages %}
+            <li class="page-item page-link">...</li>
+            <li class="page-item"><a class="page-link"
+                    href="?page={{file_list.paginator.num_pages}}">{{file_list.paginator.num_pages}}</a></li>
+            {% endif %}
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}"> {{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if file_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{file_list.next_page_number}}">&#8594;</a></li>
+            {% else %}
+            <li class="disabled page-item page-link"><span>&#8594;</span></li>
+            {% endif %}
+    </ul>
+    {% endif %}
+    {% endif %}
+</div>
+
+<script>
+    /* 
+        This function allows a user to filter the table by provider using the search bar.
+    */
+    function myFunction() {
+        // Declare variables
+        var filter, tr, td, txtValue;
+        filter = document.getElementById("myInputPatient").value.toUpperCase();
+        tr = document.getElementById("myTable").getElementsByTagName("tr");
+        // Loop through all table rows, and hide those who don't match the search query
+        // The use of 'includes' allows for partial matches, though this will result in a abundance of records in larger tables and with records
+        // that are similarly named, for example: 'file1', 'file2', etc., though using it on names is relatively unlikely to be a problem until
+        // the results are of a significant size which is mitigated by the pagination
+        for (let i of tr) {
+            td = i.getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().includes(filter) == true) {
+                    i.style.display = "";
+                } else {
+                    i.style.display = "none";
+                }
+            }
+        }
+    }
+
+    /* 
+        This function allows a user to sort the table by its headers.
+    */
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        // Set the sorting direction to ascending:
+        dir = "asc";
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /* Loop through all table rows (except the
+            first, which contains table headers): */
+            for (i = 1; i < (rows.length - 1); i++) {
+                // Start by saying there should be no switching:
+                shouldSwitch = false;
+                /* Get the two elements you want to compare,
+                one from current row and one from the next: */
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /* Check if the two rows should switch place,
+                based on the direction, asc or desc: */
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        // If so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark that a switch has been done: */
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                // Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /* If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again. */
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+{% endblock content %}

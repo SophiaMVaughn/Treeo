@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.db import models
+from django_otp.decorators import otp_required
 from django.contrib.auth.decorators import login_required
 import json
 from .forms import *
@@ -11,7 +12,7 @@ from django.core import serializers
 import datetime
 #Author: Brandon
 #This is the messaging page code its not different per user it loops to the .
-@login_required()
+@otp_required(if_configured=True)
 def test2(request):
     context = {}
     master_list=[]

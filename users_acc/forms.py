@@ -24,7 +24,9 @@ class PatientRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1',
                   'password2', 'first_name', 'last_name', 'phone_no']
-
+        labels = {
+            'phone_no': ('Notification Phone Number')
+        }
         def save(self, commit=True):
             user = super(PatientRegisterForm, self).save(commit=False)
             user.email = self.cleaned_data['email']
@@ -55,7 +57,9 @@ class ProviderRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1',
                   'password2', 'first_name', 'last_name', 'phone_no']
         exclude = ('user_type',)
-
+        labels = {
+            'phone_no': ('Notification Phone Number')
+        }
         def save(self, commit=True):
             user = super(PatientRegisterForm, self).save(commit=False)
             user.email = self.cleaned_data['email']
@@ -79,17 +83,21 @@ class User_Update_Form(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'first_name',
                   'last_name', 'phone_no', 'profile_pic']
+        # some labels here for the html
         labels = {
-            'phone_no': ('Phone Number'), 'last_name': ('Last Name'), 'first_name': ('First Name'),
+            'phone_no': ('Notification Phone Number'), 'last_name': ('Last Name'), 'first_name': ('First Name'),
         }
-# some labels here for the html
 
 
-# class TestForm(forms.Form):
-#     pass
 
-class AdminAssignForm(forms.Form):
-    patient = CustomModelChoiceField(queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
+
+
+
+
+
+
+
+
 
 
 
@@ -126,6 +134,16 @@ class AdminProviderUpdateForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = ['doc_d', 'doc_c', 'doc_p']
+
+
+#depreciated forms
+
+class AdminAssignForm(forms.Form):
+    patient = CustomModelChoiceField(queryset=(Patient.objects.all()), empty_label="(Select a Patient)")
+
+
+
+
 #             self.fields['doc_p'].widget = forms.HiddenInput()
 #             # this custom chice field retuns fname and lanme not object id in dropdown
 #             self.fields['provider'] = CustomModelChoiceField(providers, empty_label="(Select a Provider)")

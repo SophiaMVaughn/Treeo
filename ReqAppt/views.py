@@ -6,7 +6,7 @@ import json
 
 from django.contrib.sites import requests
 import math
-
+from django_otp.decorators import otp_required
 from utils.calendar import Calendar
 from django.utils.safestring import mark_safe
 from ReqAppt import models
@@ -76,7 +76,7 @@ def reqAppt_calendar(request):
     return render(request, 'ReqAppt/apt_calendar.html', context)
 
 
-@login_required
+@otp_required(if_configured=True)
 def home(request):
     if request.user.user_type == 1:
         return Admin_view(request)

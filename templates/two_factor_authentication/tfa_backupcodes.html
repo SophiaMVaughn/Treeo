@@ -1,0 +1,16 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load static %}
+<!-- 
+    Authors: Brandon Breen and George Esho
+    This page displays a table of a user's previously uploaded files available for download. 
+    A patient's providers can view and download all the files a patient uploads.
+-->
+<div class="white">
+    These are your backup codes.
+    Store them so you can acess your account if you loose your other verification device.
+{% for i in codes %}
+    <div>{{i}}</div>
+{% endfor %}
+</div>
+{% endblock content %}
