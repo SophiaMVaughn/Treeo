@@ -1,0 +1,17 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load i18n %}
+{% load static %}
+<div class="profileName">Enter The Code from Your Authenticator App</div>
+<div>
+<form method="POST">
+  {% csrf_token %}
+  {% if authentication_form%}
+  {{authentication_form}}
+  {%endif%}
+  <div class="button patientLogButton">
+      <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+  </div>
+  </form>
+  </div>
+{% endblock %}

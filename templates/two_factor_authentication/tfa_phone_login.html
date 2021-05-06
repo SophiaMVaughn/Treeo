@@ -1,0 +1,21 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load i18n %}
+{% load static %}
+<div class="profileName">Select and Option Enter the Message You Reciecved on Your Phone</div>
+{% if phone_num%}
+***-***-{{phone_num}}
+{%endif%}
+<div>
+  <a href="{% url 'verify_phone_call' %}" class="btn btn-primary btn-large btn-block">Call Me With A Code</a><a href="{% url 'verify_phone_message' %}" class="btn btn-primary btn-large btn-block">Send Me A Text Message</a>
+<form method="POST">
+  {% csrf_token %}
+  {% if authentication_form%}
+  {{authentication_form}}
+  {%endif%}
+  <div class="button patientLogButton">
+      <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+  </div>
+  </form>
+  </div>
+{% endblock %}

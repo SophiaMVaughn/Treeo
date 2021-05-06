@@ -1,0 +1,8 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load i18n %}
+{% load static %}
+<div class="profileName">Select a Divice</div>
+  <a href="{% url 'verify_authenticaor' %}" class="btn btn-primary btn-large btn-block">Authenticaor</a>
+  <a href="{% url 'verify_phone' %}" class="btn btn-primary btn-large btn-block">Phone</a>
+{% endblock %}

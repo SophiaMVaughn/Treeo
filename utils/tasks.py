@@ -5,6 +5,8 @@ from django.core.mail import send_mail, EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
 from utils.email import *
 from utils.sms import *
+from utils.call import *
+from two_factor_authentication.models import *
 # from .views import archive_apt
 from celery.utils.log import get_task_logger
 
@@ -83,7 +85,7 @@ def reject_mail_both_task(aptobj_id):
         logger.info('Failed to Send Email Messages for Appointment Rejection:'+str(aptobj_id))
 
 
-@shared_task(name='Treeo.tasks.send_message_task')
+@shared_task(name='Treeo.tasks.archive_apt_task')
 def archive_apt_task(aptobj_id):
     try:
         aptobj = ApptTable.objects.get(pk=aptobj_id)
@@ -92,3 +94,33 @@ def archive_apt_task(aptobj_id):
             logger.info(i)
     except:
         logger.info('Archive Appointment:'+str(aptobj.id))
+
+@shared_task(name='Treeo.tasks.tfa_message_task')
+def tfa_message_task(device_id, token):
+    try:
+        device_obj = PhoneDevice.objects.get(pk=device_id)
+        x = tfa_message(device_obj.number, token)
+        for i in x:
+            logger.info(i)
+    except:
+        logger.info('Two Factor Authentication Message Failled For:'+str(device_obj.number))
+
+@shared_task(name='Treeo.tasks.tfa_call_task')
+def tfa_call_task(device_id, token):
+    try:
+        device_obj = PhoneDevice.objects.get(pk=device_id)
+        x = tfa_call(device_obj.number, token)
+        for i in x:
+            logger.info(i)
+    except:
+        logger.info('Two Factor Authentication Call Failled For:'+str(device_obj.number))
+
+@shared_task(name='Treeo.tasks.reject_message_task')
+def reject_message_task(aptobj_id):
+    try:
+        aptobj = ApptTable.objects.get(pk=aptobj_id)
+        x=reject_message(aptobj)
+        for i in x:
+            logger.info(i)
+    except:
+        logger.info('Failed to Send SMS Messages for Appointment Rejection:'+str(aptobj_id))

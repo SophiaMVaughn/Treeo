@@ -129,7 +129,7 @@
     </div>
 </div>
 
-  <script>
+<script>
 var inputform = document.getElementById('{{ form.msgbody.id_for_label }}');
 inputform.onkeyup = function () {
     var char_count = inputform.value.length;
@@ -168,9 +168,11 @@ console.log('#' +'person'+'{{curconvo}}' + 'chat');
 console.log('#' +'person'+'{{curconvo}}');
 document.querySelector('#' +'person'+'{{curconvo}}' + 'chat').classList.add('active-chat');
 document.querySelector('#' +'person'+'{{curconvo}}').classList.add('active');
+document.querySelector('#' +'person'+'{{curconvo}}' + 'chat').scrollTop = document.querySelector('#' +'person'+'{{curconvo}}' + 'chat').scrollHeight;
 {% else %}
 document.querySelector('.chat').classList.add('active-chat');
 document.querySelector('.person').classList.add('active');
+document.querySelector('.chat').scrollTop = document.querySelector('.chat').scrollHeight;
 {% endif %}
 
 var temp = document.querySelector('.person').getAttribute('id');

@@ -11,7 +11,9 @@ from users_acc.models import *
 from django.core import serializers
 import datetime
 #Author: Brandon
-#This is the messaging page code its not different per user it loops to the .
+#This is the messaging page code its not different for each user it should work for all users.
+#there are some errors with the style sheets as it has 2 and its inigation like the nav bar active hilights and other things
+#the syle sheets shouldl be merged and worked on at some point
 @otp_required(if_configured=True)
 def test2(request):
     context = {}

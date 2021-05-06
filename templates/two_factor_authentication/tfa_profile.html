@@ -1,16 +1,32 @@
 {% extends "users_acc/base.html" %}
 {% block content %}
 {% load static %}
-<!-- 
-    Authors: Brandon Breen and George Esho
-    This page displays a table of a user's previously uploaded files available for download. 
-    A patient's providers can view and download all the files a patient uploads.
--->
 <div class="white">
+    <br>
+    Your Devices:
+    {% if phone%}
+    You Have a Phone Registered
+    ***-***-{{phone}}
+    {% elif authenticator%}
+    You Have a Authenticator App Registered
+    {%endif%}
+    <br><br>
+    {% if backup_codes%}
     These are your backup codes.
-    Store them so you can acess your account if you loose your other verification device.
-{% for i in devices %}`
+    Store them so you can access your account if you loose access your other verification device.
+    {% for i in backup_codes %}
     <div>{{i}}</div>
-{% endfor %}
+    {% endfor %}
+    {% else%}
+    You Can Generate Backup Codes.
+    You can use these to access your account if you loose access your other verification device.
+    Write These Down And Store Them in a Safe Place.
+    <a href="{% url 'generate_backup_codes' %}" class="btn btn-primary btn-large btn-block">Generate Backup Codes</a>
+    {%endif%}
+    <br>
+   <div>
+       <a class="btn btn-primary btn-large btn-block" href="{% url 'profile' %}">Profile</a>
+       <a class="btn btn-primary btn-large btn-block" href="{% url 'disable_2fa' %}">Disable Two Factor Authentication</a>
+   </div>
 </div>
 {% endblock content %}

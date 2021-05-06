@@ -16,6 +16,8 @@ django_otp
 django-guardian
 python-magic
 python-magic-bin
+django-formtools
+
 
 #to use run
 #python -m pip install -r requirements.txt

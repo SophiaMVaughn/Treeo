@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import *
+from two_factor_authentication.views import *
 from django_otp.decorators import otp_required
 import django.utils.timezone
 from django.db.models import Sum
@@ -29,6 +30,38 @@ from utils.tasks import *
 from ReqAppt.views import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django_otp.plugins.otp_static.models import *
+
+
+
+#assiging permishions to a group and creating a group
+#admins = Group.objects.create(name='admins')
+#assign_perm('see_records', admins, user_object)
+#assiging permishions betweeen 2 objects
+#assign_perm('is_provider_for', provider, patient)
+#permishins check for a object
+#from django.core.exceptions import PermissionDenied
+#if provider.has_perm('is_provider_for', patient)==True:
+#   do thing
+# else:
+#   raise PermissionDenied
+
+
+
+
+#a minior note this is the decorator it combines login required with haveing a tfa  authenticated
+#if_configured=True means that you can still acess the funtion with only a login if you havent set up tfa
+#@otp_required(if_configured=True)
+
+
+
+
+
+
+
+
+
+
+
 
 #Author: Brandon
 #This is the register funtion it allows people to register as patient users.
@@ -91,7 +124,7 @@ def activate(request, uidb64, token):
         #user.is_active = True
         user.is_email_confirmed = True
         user.save()
-        login(request, user)
+        django.contrib.auth.login(request, user)
         return render(request, 'users_acc/account_activation_success.html')
     else:
         return render(request, 'users_acc/account_activation_invalid.html')
@@ -108,12 +141,18 @@ def loginuser(request):
         if userl is not None:
             # print("test1")
             if userl.is_email_confirmed == True:
-                # test
-                if not userl.ota_wait==None and timezone.now()>userl.ota_wait:
-                    login(request, userl)
-                    return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
+                if not userl.ota_wait==None:
+                    if timezone.now()>userl.ota_wait:
+                        django.contrib.auth.login(request, userl, backend="django.contrib.auth.backends.ModelBackend")
+                        return redirect('tfa_login')#, userl.public_id
+                    elif timezone.now()<userl.ota_wait:
+                        devices = get_devices(userl)
+                        django.contrib.auth.login(request, userl, backend="django.contrib.auth.backends.ModelBackend")
+                        #the default login funtion is overridden by the one in django_otp
+                        login(request, devices[0])
+                        return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
                 else:
-                    login(request, userl)
+                    django.contrib.auth.login(request, userl, backend="django.contrib.auth.backends.ModelBackend")
                     return redirect(request.POST.get('next') or request.GET.get('next') or 'home')
             else:
                 return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Is Not Confirmed']})
@@ -522,7 +561,7 @@ def user_deactivate(request):
             request.user.save()
             return render(request, 'users_acc/login.html', {'form': AuthenticationForm(), 'messages': ['Your Account Has Been Deactivated!']})
 #Author: Brandon
-#This is the page where patient users take the survey.
+#This is the page where patient users take the survey (this is done in js vs the formtools wisard method you can retool it if you want some consistancy).
 @otp_required(if_configured=True)
 def take_survey(request):
     if request.user.user_type ==3:
@@ -576,15 +615,45 @@ def home(request):
         context={}
         if request.user.user_type == 2:
             context["appointment"] = ApptTable.objects.filter(provider=request.user.provider).order_by("meetingDate")[:2]
-            #context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
+            #This only returns the most recent message of each tread it doesnt then sort those messages by so
+            # we create query sets so we can filter the results but this results in a large mumber of queries to the date base and is inefficent
+            threads = thread.objects.filter(reciever=request.user)
+            #lists=[]
+            message_qset = message.objects.none()
+            print(threads)
+            for i in threads:
+                if message.objects.filter(convoIDt=i).order_by("send_time").first():
+                    #lists.append(message.objects.filter(convoIDt=i).order_by("send_time").first())
+                    message_qset |= message.objects.filter(pk=message.objects.filter(convoIDt=i).order_by("send_time").first().pk)
+            print(message_qset)
+            context["recentMessages"] = message_qset.order_by("send_time")[:2]
         elif request.user.user_type == 3:
             if request.user.patient.survey_status == 1:
                 return redirect('take_survey')
             context["appointment"] = ApptTable.objects.filter(patient=request.user.patient).order_by("meetingDate")[:2]
-            #context["recentMessages"] = PostQ.objects.filter(Thereciever=request.user).order_by("meetingDate")[:2]
+            threads = thread.objects.filter(reciever=request.user)
+            #lists=[]
+            message_qset = message.objects.none()
+            print(threads)
+            for i in threads:
+                if message.objects.filter(convoIDt=i).order_by("send_time").first():
+                    #print(message.objects.filter(convoIDt=i).order_by("send_time").first().msgbody,message.objects.filter(convoIDt=i).order_by("send_time").first().send_time)
+                    #lists.append(message.objects.filter(convoIDt=i).order_by("send_time").first())
+                    message_qset |= message.objects.filter(pk=message.objects.filter(convoIDt=i).order_by("send_time").first().pk)
+            print(message_qset)
+            context["recentMessages"] = message_qset.order_by("send_time")[:2]
         else:
             context["appointment"] = ApptTable.objects.none
-            #context["recentMessages"] = PostQ.objects.none
+            threads = thread.objects.filter(reciever=request.user)
+            #lists = []
+            message_qset = message.objects.none()
+            print(threads)
+            for i in threads:
+                if message.objects.filter(convoIDt=i).order_by("send_time").first():
+                    #lists.append(message.objects.filter(convoIDt=i).order_by("send_time").first())
+                    message_qset |= message.objects.filter(pk=message.objects.filter(convoIDt=i).order_by("send_time").first().pk)
+            print(message_qset)
+            context["recentMessages"] = message_qset.order_by("send_time")[:2]
         return render(request, 'users_acc/home.html',context)
     else:
         return redirect('login')

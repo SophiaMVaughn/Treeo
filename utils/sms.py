@@ -95,6 +95,21 @@ def reject_message(aptobj):
         print("No Phone")
 
 
+def tfa_message(phone_no, token):
+    if phone_no is not None:
+        print(phone_no.as_e164)
+        message = client.messages \
+                        .create(
+                            body=f"Your Two Factor Authentication Code is {str(token)} This Code will expire in 5 minuites. "
+                            f"you shortly.",
+                            from_='+16085808427',
+                            to=f'{phone_no.as_e164}'
+                        )
+
+        print(message.sid)
+    else:
+        print("No Phone")
+
 def target_time_print(apt):
 
     t = apt.meetingDate

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_static',
     'guardian',
     'two_factor_authentication',
+    'formtools',
 ]
 
 MIDDLEWARE = [
@@ -159,7 +160,7 @@ USE_TZ = True
 #when you close the browser it doesnt log you out
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #your session are closed out after 5min 300 sec
-SESSION_COOKIE_AGE = 30000
+SESSION_COOKIE_AGE = 300000
 SESSION_SAVE_EVERY_REQUEST = True
 
 
@@ -174,9 +175,11 @@ PHONENUMBER_DEFAULT_FORMAT ='NATIONAL'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
+
 #Gaurdian
 #ANONYMOUS_USER_NAME =None
 GUARDIAN_RAISE_403=True
+ANONYMOUS_USER_NAME=None
 #GUARDIAN_RENDER_403=True
 
 

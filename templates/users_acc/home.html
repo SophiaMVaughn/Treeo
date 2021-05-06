@@ -12,6 +12,32 @@
     {% if user.user_type == 1%}
     <!-- The admin view only displays that this is the admin home. -->
     <div class="providerHome">Admin Home</div>
+    <div class="recentMessagesBorder">
+    <div class="recentMessages">
+        <span>Recent Messages</span>
+    </div>
+    {% if recentMessages %}
+    {% for i in recentMessages %}
+    <div class="recentMessagesWrapper">
+        akjsdhfkjasdhfjkashdjklkjsadlfhkjlsad
+        <table class="table recentMessagesTable">
+            <tr>
+                <td>From <span>{{i.sender}}: </span><a
+                        href="{% url 'messaging_home' %}">{{i.msgbody|truncatechars:20}}</a></td>
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="recentMessagesWrapper">
+        <table class="table recentMessagesTable">
+            <tr>
+                <td><span>You have no recent messages</span></td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+</div>
     <!-- <div class="newArrivalsBorder"> 
         <div class="newArrivals">
             New Arrivals
@@ -124,10 +150,11 @@
     {% if recentMessages %}
     {% for i in recentMessages %}
     <div class="recentMessagesWrapper">
+        akjsdhfkjasdhfjkashdjklkjsadlfhkjlsad
         <table class="table recentMessagesTable">
             <tr>
-<!--                <td>From <span>{{i.TheActualsender}}: </span><a-->
-<!--                        href="{% url 'messaging_home' %}">{{i.Message|truncatechars:20}}</a></td>-->
+                <td>From <span>{{i.sender}}: </span><a
+                        href="{% url 'messaging_home' %}">{{i.msgbody|truncatechars:20}}</a></td>
             </tr>
         </table>
         {% endfor %}
@@ -206,8 +233,10 @@
     <div class="recentMessagesWrapper">
         <table class="table recentMessagesTable">
             <tr>
-<!--                <td>From <span>{{i.TheActualsender}}: </span><a-->
-<!--                        href="{% url 'messaging_home' %}">{{i.Message|truncatechars:20}}</a></td>-->
+            <tr>
+                <td>From <span>{{i.sender}}: </span><a
+                        href="{% url 'messaging_home' %}">{{i.msgbody|truncatechars:20}}</a></td>
+            </tr>
             </tr>
         </table>
         {% endfor %}

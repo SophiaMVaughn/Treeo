@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 class thread(models.Model):
 
-    # ok so this is interesting do the messages have to be scene from the people after the user is deactivated yes
+    # sender and reciever are more like user one or two not indicative a orole
     sender = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='t_sender', null=True, blank=True)
     reciever = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='t_reciever', null=True,blank=True)
     last_message_time = models.DateTimeField(auto_now_add=True)

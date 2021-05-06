@@ -20,7 +20,7 @@
             {% if user.ota_wait == None%}
             <a href="{% url 'enable_2fa' %}" class="btn btn-primary btn-large btn-block">Enable Two Factor Authentication</a>
             {% else %}
-            <a href="{% url 'twofa_profile_view' %}" class="btn btn-primary btn-large btn-block">View Two Factor Authentication Settings</a>
+            <a href="{% url 'tfa_profile_view' %}" class="btn btn-primary btn-large btn-block">View Two Factor Authentication Settings</a>
             {% endif %}
         </div>
     </div>

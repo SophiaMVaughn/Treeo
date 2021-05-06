@@ -1,0 +1,25 @@
+{% extends "users_acc/base.html" %}
+{% block content %}
+{% load i18n %}
+{% load static %}
+{% if phone_num%}
+<div class="profileName">Enter the Message You Reciecved on Your Phone</div>
+***-***-{{phone_num}}
+{% elif phone_form%}
+<div class="profileName">Enter Your Phone Number</div>
+{%endif%}
+<div>
+<form method="POST">
+  {% csrf_token %}
+  {% if phone_form%}
+  {{phone_form}}
+  {% elif authentication_form%}
+    <a href="{% url 'verify_phone_call' %}" class="btn btn-primary btn-large btn-block">Call Me With A Code</a><a href="{% url 'verify_phone_message' %}" class="btn btn-primary btn-large btn-block">Send Me A Text Message</a>
+  {{authentication_form}}
+  {%endif%}
+  <div class="button patientLogButton">
+      <button type="submit" class="btn btn-primary btn-large btn-block">Submit</button>
+  </div>
+  </form>
+  </div>
+{% endblock %}
